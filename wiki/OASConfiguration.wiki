@@ -148,6 +148,10 @@ A description of each property follows:
 
 == Providers Configuration Options ==
 
+The providers configuration block exists primarily for players that allow separate "protocol providers" to be loaded - Flowplayer is an example where different protocols are supported by separately loaded plugins.
+
+The configuration block allows a loadable provider to be defined for the protocols supported by the Ad Streamers - http and rtmp (at this time). More protocols will be supported shortly.
+
 An example provider configuration is as follows:
 
 {{{
@@ -156,9 +160,11 @@ An example provider configuration is as follows:
              },
 }}}
 
+In this Flowplayer example, RTMP streams will be played by the plugin provider `flowplayer.rtmp-3.1.3-dev.swf` 
+
 || *Property name* || *Since* || *Description* ||
-|| `rmtp` || always || ||
-|| `http` || always || ||
+|| `rmtp` || always || The path and filename of the provider to be loaded to serve RTMP streams ||
+|| `http` || always || The path and filename of the provider to be loaded to serve HTTP streams ||
 
 == Shows Configuration Options ==
 
