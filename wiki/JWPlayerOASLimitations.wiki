@@ -1,0 +1,7 @@
+#summary Known Limitations of the JW Player Video Ad Streamer
+#sidebar TableOfContents
+
+The following limitations in functionality exist for this release:
+  
+  * Requires JW Player 4.5 or higher
+  * Testing has been limited to RTMP and HTTP Download
