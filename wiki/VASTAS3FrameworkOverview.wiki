@@ -63,6 +63,8 @@ A custom player implementation receives notifications of state changes in the fr
   * VAST data load events
   * Companion events
 
+The bulk of the activity required when integrating the VAST framework with a custom player centers around the definition of the appropriate event listeners.
+
 ===3. The VAST Model Package===
 
 The Model (`org.openvideoads.vast.model`) package contains a series of classes that define the VAST data model. The VAST data returned by the VAST complaint ad server is parsed and a traversable model of the ad(s) is formed. This package forms the heart of the VAST framework: 
@@ -75,6 +77,8 @@ The Model (`org.openvideoads.vast.model`) package contains a series of classes t
       * `CompanionAd` - defines an associated display ad that is to be shown outside of the player (on the web page) as a linear or non-linear ad is played
       * `NonLinearVideoAd` - encapsulates the notion of an overlay style (non-linear) video ad (that is also of type `TrackedVideoAd`)
     * `TemplateLoadListener` - the interface that must be implemented by a player to be notified when the VAST data has been loaded or a failure to load has occurred
+
+In general a custom player implementation will not have to explicitly access and manipulate this model. Instead most of the work centers around the manipulation of Ad Slots and Streams that are scheduled as a result of parsing this model and the definition of the show streams that the player is to play.
 
 ===4. The Ad & Stream Schedule Package===
 
@@ -129,4 +133,6 @@ The `OpenXAdServer` requires an instance of the `OpenXConfig` class when initial
 
 ===8. The Overlay Management Package===
 
- (`org.openvideoads.vast.overlay`) 
+The framework supports the triggering and display of overlay (non-linear) advertising while a show stream is in play. The Overlay Management package (`org.openvideoads.vast.overlay`) provides the classes necessary to monitor stream progress to display and hide overlays as required.
+
+The overlay classes make use of the generic Regions framework (`org.openvideoads.regions`) to display the overlay content on the player stage.
