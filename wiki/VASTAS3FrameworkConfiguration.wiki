@@ -3,7 +3,9 @@
 
 The first step to be taken to integrate the VAST framework is to instantiate it and configure the baseline operating condititions.
 
-The following code snippet has been taken from the Flowplayer Open Ad Streamer to illustrate how it fires up the VAST framework:
+The framework has a master class known as the `VASTController`. To integrate the framework, an instance of this class must be instantiated and configured. Once complete, access to the framework is controlled through this class. The bulk of the public API for the framework is implemented by the `VASTController`.
+
+The following code snippet has been taken from the Flowplayer Open Ad Streamer to illustrate how it fires up the VAST framework via the `VASTController`:
 
 {{{
     // Load up the config and configure the framework
