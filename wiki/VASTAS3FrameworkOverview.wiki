@@ -14,7 +14,7 @@ The framework is housed under the package:
 
 The following diagram illustrates the package structure of the framework:
 
-<img src="http://static.bouncingminds.com/images/open-video-ads/vast-framework-architecture.png" width="500" border="0">
+<img src="http://static.bouncingminds.com/images/open-video-ads/vast-framework-architecture.png" length="500" border="0">
 
 There are 6 key packages that work together to request, parse and manipulate a VAST response from a VAST complaint ad server:
 
