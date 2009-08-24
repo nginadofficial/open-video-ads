@@ -1,7 +1,7 @@
 #summary Introducing The Framework
 #sidebar TableOfContents
 
-The VAST framework is an actionscript 3.0 implementation of a series of classes that:
+The VAST framework is a set of Actionscript 3 classes that:
 
   * Control calls to a VAST compliant ad server to request and retrieve any number of VAST compliant video ads
   * Manage the process of tracking timing events as ads play, triggering the appropriate action at the required time
