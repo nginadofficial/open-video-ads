@@ -1,0 +1,20 @@
+#summary How to Compile the JW Player Ad Streamer
+#sidebar TableOfContents
+
+= The build.sh script =
+
+A simple build script (build.sh) is provided in the build directory to compile the release.
+
+Before using the build script, make sure that the FLEXPATH variable is set so that it correctly points to the location of your flex 3 sdk install.
+
+To build the release:
+
+     `./build.sh`
+
+from the release "build" directory.
+
+= A Note on Debugging =
+
+We use the Firebug and [http://www.demonsterdebugger.com De MonsterDebugger] - you'll see these included in the source and the `Debuggable` declaration. Replace this with the standard flash debugger by changing the `Debuggable` declarations for `doLog()` and `doLogAndTrace()`
+
+For more information on how to configure the debug options, refer to the section on "Debug" configuration in the [OASConfiguration Configuration guide].
