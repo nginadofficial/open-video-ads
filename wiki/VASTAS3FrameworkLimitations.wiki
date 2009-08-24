@@ -1,0 +1,7 @@
+#summary Known Limitations with the Framework
+#sidebar TableOfContents
+
+  # Have not implemented support for non-overlay at this time
+  # Playlists formats other than XSFP haven't been tested
+  # No test scripts yet - sorry - will sort with priority
+  # No API doc yet - sorry - will also sort with priority
