@@ -50,6 +50,7 @@
         * [VASTAS3FrameworkTrackingAds Tracking ]
         * [VASTAS3FrameworkHowToDebug Debugging]
     * [http://openvideoads.googlecode.com/files/openvideoads.vast.as3-latest.tar.gz Download]
+    * [VASTAS3FrameworkBuild Building]
     * [VASTAS3FrameworkLimitations Known Limitations]
     * [VASTAS3FrameworkChangeLog Change Log]
   * [KeyTerminology Terminology]
