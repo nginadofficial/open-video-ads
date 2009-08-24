@@ -1,0 +1,32 @@
+#summary Some test video ads and companions to get you going
+#sidebar TableOfContents
+
+To help you get up and running, we've placed a few test ads here for you to download. 
+
+==Linear Video Ads==
+
+  * 5 sec spots:
+    * [http://static.bouncingminds.com/ads/5secs/baileys_5sec.mp4 Baileys] (mp4: 5 secs)
+    * [http://static.bouncingminds.com/ads/5secs/dodson_5sec.mp4 Dodson & Horrell] (mp4: 5 secs)
+  * 15 sec spots:
+    * [http://static.bouncingminds.com/ads/15secs/dogs_600.mp4 H&C dogs] (mp4: 15 secs)
+    * [http://static.bouncingminds.com/ads/15secs/dogs_600.flv H&C dogs] (flv: 15 secs)
+    * [http://static.bouncingminds.com/ads/15secs/horse_how_to_600.mp4 H&C Horse How-To] (mp4: 19 secs)
+    * [http://static.bouncingminds.com/ads/15secs/horse_sport_howto_600.mp4 H&C Sport How-To] (mp4: 19 secs)
+  * 30 sec spots:
+    * [http://static.bouncingminds.com/ads/30secs/bigger_badminton_600.mp4 H&C Bigger Badminton]  (mp4: 29 secs)
+    * [http://static.bouncingminds.com/ads/30secs/country_life_butter.mp4 Country Life Butter] (mp4: 30 secs)
+    * [http://static.bouncingminds.com/ads/30secs/heinz_deli_mayo.mp4 Heinz Deli Mayo] (mp4: 30 secs)
+    * [http://static.bouncingminds.com/ads/30secs/howard_kirby_intro_600.mp4 H&C Howard Kirby] (mp4: 29 secs)
+    * [http://static.bouncingminds.com/ads/30secs/john_bailey_intro_600.mp4 H&C John Bailey] (mp4: 29 secs)
+    * [http://static.bouncingminds.com/ads/30secs/schwepps_bull.mp4 Schwepps Bull] (mp4: 31 secs)
+    * [http://static.bouncingminds.com/ads/30secs/sexy_subaru_carwash.mp4 Sexy Subaru] (mp4: 35 secs)
+    * [http://static.bouncingminds.com/ads/30secs/sharon_hunt_intro_600.mp4 H&C Sharon Hunt] (mp4: 34 secs)
+
+==Non Linear Video Ads==
+
+  * [http://static.bouncingminds.com/ads/overlays/subaru-overlay-426x40.png subaru-overlay-426x40.png] (426 x 40 pixels)
+
+==Companion Ads==
+
+  * [http://static.bouncingminds.com/ads/companions/companion_150_360.png companion_150_360.png] (150 x 360 pixels)
