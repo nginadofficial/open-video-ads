@@ -36,7 +36,7 @@
   * [VASTAS3Framework VAST AS3 Framework]
     * [VASTAS3FrameworkOverview Overview]
     * [VASTAS3FrameworkHowItWorks How it Works]
-    * [http://openvideoads.googlecode.com/files/openvideoads.vast.as3t.tar.gz Download]
+    * [http://openvideoads.googlecode.com/files/openvideoads.vast.as3.tar.gz Download]
     * [VASTAS3FrameworkCreatePlayer Implementation]
         * [VASTAS3FrameworkConfiguration Configuration]
         * [VASTAS3FrameworkAdServing Ad Serving]
