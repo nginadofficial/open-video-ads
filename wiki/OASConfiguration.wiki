@@ -118,6 +118,8 @@ Let's assess the detailed options available in each of these configuration group
 
 == General Configuration Options ==
 
+General configuration options are applied across all configuration groups. In general they apply to the way streams are to be played by the player (e.g. indicating if the ad streamer is only to serve "progressive" or "streaming" types, the bit rate of the streams, the type of stream (mp4 or flv), if file extensions are to be automatically removed, and the base address for streams.
+
 A full example of a general config grouping is:
 
 {{{
@@ -134,14 +136,14 @@ A full example of a general config grouping is:
 A description of each property follows:
 
 || *Property name* || *Since* || *Description* ||
-|| `autoStart` || || ||
-|| `baseURL` || || ||
-|| `bitrate` || || ||
-|| `deliveryType` || || ||
-|| `metaData` || || ||
-|| `playContiguously` || || ||
-|| `removeFileExtension` || Always || Forces removal of file extensions for video stream file names returned in the VAST data - particularly useful for ensuring that FLV streams play on an FMS ||
-|| `streamType` || || ||
+|| `autoStart` || always || A true or false value that identifies whether or not each stream is to automatically start playing ||
+|| `baseURL` || always || Declares the base address for the streams to be played ||
+|| `bitrate` || always || Identifies the acceptable bit rates for this instance of the player - acceptable values are "any" or a range such as "600-700" ||
+|| `deliveryType` || always || The type of streams to be served - can be either "progressive" or "streaming" ||
+|| `metaData` || always || ||
+|| `playContiguously` || always || ||
+|| `removeFileExtension` || always || Forces removal of file extensions for video stream file names returned in the VAST data - particularly useful for ensuring that FLV streams play on an FMS ||
+|| `streamType` || always || A specific value that identifies the type of stream to be played - can be either "mp4" or "flv" ||
 
 
 == Providers Configuration Options ==
@@ -155,14 +157,13 @@ An example provider configuration is as follows:
 }}}
 
 || *Property name* || *Since* || *Description* ||
-|| `rmtp` || || ||
-|| `http` || || ||
+|| `rmtp` || always || ||
+|| `http` || always || ||
 
 == Shows Configuration Options ==
 
-
-|| *Property name* || *Level* || *Version* || *Description* ||
-|| `streams` || General || 0.4.5 ||  An array of stream definitions which identifies the main programme RTMP streams to be played by the player - ads are sequenced in accordance with the Ad Slot schedule against these streams. As the property is an array, the following format is expected `[ { stream1-name, stream1-duration }, ... { streamN-name, streamN-duration} ]`. The `stream-duration` must be declared in timestamp format `HH:MM:SS` (e.g. `01:10:15` for a duration of 1 hour 10 minutes and 15 seconds). ||
+|| *Property name* || *Since* || *Description* ||
+|| `streams` || always ||  An array of stream definitions which identifies the main programme RTMP streams to be played by the player - ads are sequenced in accordance with the Ad Slot schedule against these streams. As the property is an array, the following format is expected `[ { stream1-name, stream1-duration }, ... { streamN-name, streamN-duration} ]`. The `stream-duration` must be declared in timestamp format `HH:MM:SS` (e.g. `01:10:15` for a duration of 1 hour 10 minutes and 15 seconds). ||
 || `subscribe` || || ||
 
 == Overlays Configuration Options ==
