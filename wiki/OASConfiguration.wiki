@@ -118,24 +118,24 @@ Let's assess the detailed options available in each of these configuration group
 
 == General Configuration Options ==
 
+|| *Property name* || *Level* || *Version* || *Description* ||
+|| `removeFileExtension` || General || 0.4.8 || Forces removal of file extensions for video stream file names returned in the VAST data - particularly useful for ensuring that FLV streams play on an FMS ||
+
 == Providers Configuration Options ==
 
 == Shows Configuration Options ==
+
+|| *Property name* || *Level* || *Version* || *Description* ||
+|| `streams` || General || 0.4.5 ||  An array of stream definitions which identifies the main programme RTMP streams to be played by the player - ads are sequenced in accordance with the Ad Slot schedule against these streams. As the property is an array, the following format is expected `[ { stream1-name, stream1-duration }, ... { streamN-name, streamN-duration} ]`. The `stream-duration` must be declared in timestamp format `HH:MM:SS` (e.g. `01:10:15` for a duration of 1 hour 10 minutes and 15 seconds). ||
 
 == Overlays Configuration Options ==
 
 == Ads Configuration Options ==
 
-== Debug Configuration Options ==
-
 || *Property name* || *Level* || *Version* || *Description* ||
-|| `url` || General || 0.4.5 || The url of the OpenX Ad Streamer plugin ||
-|| `streams` || General || 0.4.5 ||  An array of stream definitions which identifies the main programme RTMP streams to be played by the player - ads are sequenced in accordance with the Ad Slot schedule against these streams. As the property is an array, the following format is expected `[ { stream1-name, stream1-duration }, ... { streamN-name, streamN-duration} ]`. The `stream-duration` must be declared in timestamp format `HH:MM:SS` (e.g. `01:10:15` for a duration of 1 hour 10 minutes and 15 seconds). ||
 || `vastServerURL` || General || 0.4.5 ||  The url of the OpenX VAST server ||
-|| `regionsPluginName` || General || 0.4.5 ||  The identifying name given to the Regions plugin in this player configuration. The default value is `openXRegions` ||
 || `disableControls` || Both || 0.4.5 ||  Specifies whether or not the stop/scrubber is to be disabled when ads are played. The default value is `true`. Can be overriden at the `Ad Slot` level. ||
 || `companionDivIDs` || Both || 0.4.5 ||  Identifies the companion div blocks that are to be used to display companion ads accompanying a video ad. An array of identifiers is expected in the format of `[ { id:Z, width:X, height:Y }, ... { id:Z, width:X, height:Y } ]` allowing multiple companion div blocks to be specified across the web page. The `id` value must match the div block `id` in the web page. The `width` and `height` values are used by the plugin to identify which companion (specified in the VAST template) is to be shown in each div block. ||
-|| `enablePopupVideoAds` || General || 0.4.5 ||  Specifies whether or not a video ad can be started from an overlay or non-overlay ad. Default value is `true` ||
 || `adSchedule` || General || 0.4.5 ||  Allows a range of `ad spots` to be specified. Each `ad spot` is a unique definition of a particular type of video ad to be played against the programme stream. For example, if a `pre-roll`, `mid-roll` and `post-roll` video ad were to be scheduled when a stream plays, three individual ad spots would have to be defined - one for each video ad type. If a `pre-roll` and `overlay` were to be scheduled, 2 unique `Ad Spot` definitions are required. Ad Spot definitions can be limited to a particular "stream" or duration, and in the case of overlay/non-overlay video ads, can be scheduled to start at a particular time during a programme stream. Ad Spots are defined as an array with the format `[ { adspot1-options }, ... { adSpotN-options} ]`. Each `Ad Spot` definition must define at least a `zone`, `position` and `duration`. In addition, Overlay and Non-Overlay ads must also define a `width` and `height`. ||
 || `zone` || AdSpot || 0.4.5 ||  The OpenX `zone` mapping to this ad spot. Zones are special constructs in the OpenX Ad Server. Please see the OpenX ad server documentation for more details. ||
 || `position` || AdSpot || 0.4.5 ||  The position of this ad - can be one of the following values: for linear ads `pre-roll`, `mid-roll`, `post-roll`, for non-linear overlay and non-overlay ads, the value must be specified as a region ID. ||
@@ -146,14 +146,5 @@ Let's assess the detailed options available in each of these configuration group
 || `width` || AdSpot || 0.4.5 ||  The width of the ad spot - applicable for non-linear overlay/non-overlay ads which are bound by strict dimensions. An ad must be found in the VAST data to match this width to ensure that it is displayed.||
 || `height` || AdSpot || 0.4.5 ||  The height of the ad spot - applicable for non-linear overlay/non-overlay ads which are bound by strict dimensions. An ad must be found in the VAST data to match this width to ensure that it is displayed. ||
 || `startTime` || AdSpot || 0.4.5 ||  The time an ad is to start - used by mid-roll and non-linear ads to identify when an ad is to be started during the programme stream. The value must be specified in the form of a timestamp `'HH:MM:SS'` ||
-|| `onTemplateLoaded` || General || 0.4.5 ||  The javascript callback triggered when the VAST data is loaded ||
-|| `onStreamSequenced` || General || 0.4.5 ||  The javascript callback triggered once the programme and ad stream has been successfully formed ||
-|| `onAdStart`  || General || 0.4.5 ||  The javascript callback triggered when a video ad starts ||
-|| `onAdPause` || General || 0.4.5 ||  The javascript callback triggered when a video ad is paused ||
-|| `onAdResume` || General || 0.4.5 ||  The javascript callback triggered when a video ad is resumed ||
-|| `onAdStop` || General || 0.4.5 ||  The javascript callback triggered when a video ad stops ||
-|| `onAdEnd` || General || 0.4.5 ||  The javascript callback triggered when a video ad completes ||
-|| `onCuepointInfo` || General || 0.4.5 ||  The javascript callback triggered when a tracking event triggers ||
-|| `onAdClick` || General || 0.4.5 ||  The javascript callback triggered when a video ad is clicked ||
-|| `onAdClose` || General || 0.4.5 || The javascript callback triggered when a video ad is closed ||
-|| `removeFileExtension` || General || 0.4.8 || Forces removal of file extensions for video stream file names returned in the VAST data - particularly useful for ensuring that FLV streams play on an FMS ||
+
+== Debug Configuration Options ==
