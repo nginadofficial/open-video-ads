@@ -13,7 +13,7 @@ To build the release:
 
 from the release "build" directory.
 
-= A Note on Debugging =
+== A Note on Debugging ==
 
 We support two options - [http://www.getfirebug.com Firebug] and the [http://www.demonsterdebugger.com De MonsterDebugger] - you'll see both of these referenced in the source and the `Debuggable` declaration. If you wish to use a different debugger just replace these by modifying the `org.openvideoads.base.Debuggable` declarations for `doLog()` and `doLogAndTrace()`
 
