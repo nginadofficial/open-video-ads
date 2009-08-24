@@ -30,4 +30,4 @@ video advertising and how they are best deployed. It's worth reading this guidel
 OpenX Video Advertising plugin supports out of the box.
 
 For detailed information on the work of the committee, and the VAST standard please refer 
-to [www.iab.net/vast www.iab.net/vast]
+to [http://www.iab.net/vast www.iab.net/vast]
