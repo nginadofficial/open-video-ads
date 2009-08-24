@@ -6,10 +6,10 @@ The framework can output a range of debug information as it runs.
 The debug configuration is controlled through the "debug" config group. A typical configuration is:
 
 {{{
-            "debug": {
-	        "debugger": "firebug",
-    	        "levels": "all"
-            },
+        "debug": {
+	    "debugger": "firebug",
+    	    "levels": "all"
+        },
 }}}
 
 This config says to report "all" debug information to the "firebug" console. It's worth noting, reporting "all" debug information will slow down the framework operation considerably.
