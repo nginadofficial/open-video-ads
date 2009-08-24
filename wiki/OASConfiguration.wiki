@@ -169,16 +169,16 @@ In this Flowplayer example, RTMP streams will be played by the plugin provider `
 == Shows Configuration Options ==
 
 {{{
-            "shows": {
-		    "baseURL": "rtmp://ne7c0nwbit.rtmphost.com/videoplayer",
-	            "streams": [ { "file":"mp4:bbb_640x360_h264.mp4", "duration":"00:00:35" } ]
-                    "deliveryType": "progressive",
-                    "streamType:", "flv",
-                    "bitrate": "any",
-                    "metaData": false,
-                    "removeFileExtension": true,
-                    "playContiguously": true,
-            },
+    "shows": {
+            "baseURL": "rtmp://ne7c0nwbit.rtmphost.com/videoplayer",
+	    "streams": [ { "file":"mp4:bbb_640x360_h264.mp4", "duration":"00:00:35" } ]
+            "deliveryType": "progressive",
+            "streamType:", "flv",
+            "bitrate": "any",
+            "metaData": false,
+            "removeFileExtension": true,
+            "playContiguously": true,
+    },
 }}}
 
 || *Property name* || *Since* || *Description* ||
