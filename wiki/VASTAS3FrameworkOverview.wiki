@@ -16,7 +16,7 @@ The following diagram illustrates the package structure of the framework:
 
 <img src="http://static.bouncingminds.com/images/open-video-ads/vast-framework-architecture.png" height="500" border="0">
 
-There are 7 key packages that work together to request, parse and manipulate a VAST response from a VAST complaint ad server:
+There are 8 key packages that work together to request, parse and manipulate a VAST response from a VAST complaint ad server:
 
   # *Configuration*
   # *Events*  
@@ -25,17 +25,23 @@ There are 7 key packages that work together to request, parse and manipulate a V
   # Ad *Tracking*
   # *Playlist* management
   # Ad *Server* control
+  # *Overlay* management
 
 These packages in turn rely on a number of support packages that provide more generic functionality:
 
   # A set of *base* classes
   # A set of *utility* classes
-  # The *Regions* framework 
+  # The *Regions* framework (used by the overlay classes)
 
-Finally, access to the framework is controlled through a centralised class known as the 'VASTController'.
+In general access to the framework is controlled through a centralised class known as the 'VASTController'.
+
+===1. Configuration===
 
 
-===1. The VAST Model Package===
+===2. Events===
+
+
+===3. The VAST Model Package===
 
 The Model package contains a series of classes that define the VAST data model. The VAST data returned by the VAST complaint ad server is parsed and a traversable model of the ad(s) is formed. This package forms the heart of the VAST framework: 
 
@@ -48,7 +54,7 @@ The Model package contains a series of classes that define the VAST data model. 
       * `NonLinearVideoAd` - encapsulates the notion of an overlay style (non-linear) video ad (that is also of type `TrackedVideoAd`)
     * `TemplateLoadListener` - the interface that must be implemented by a player to be notified when the VAST data has been loaded or a failure to load has occurred
 
-===2. The Ad Schedule Package===
+===4. The Ad Schedule Package===
 
 When an ad schedule is declared it results in a sequence of ad slots being defined and sequenced. That sequence of ad slots is then spliced together with a sequence of show streams to play to form a list of streams (shows and ads) that are to be played. This package provides the classes to manage streams, ad slots and sequences of both:
 
@@ -59,7 +65,7 @@ When an ad schedule is declared it results in a sequence of ad slots being defin
     * `AdSlot` - a specific type of stream that holds a VAST compliant video ad
     * `AdSequence` - a sequence of ad slots that are to be played in the order stored. Equates to the "ad schedule" that is declared in the player configuration
 
-===3. The Ad Tracking Package===
+===5. The Ad Tracking Package===
 
 The play progress of a VAST ad is tracked via the framework. The tracking data is reported to the VAST compliant ad server according to the tracking URLs that it provides.
 
@@ -77,7 +83,7 @@ The tracking package provides a series of classes that help manage the way these
   * The `TrackingPointListener` is the interface to be implemented by the player where the player supports a mechanism to record tracking points and fire them at specific times (e.g. the cuepoint API in Flowplayer)
   * A `TimeEvent` occurs at a specific point in time and is passed into the TrackingTable to determine if there is a TrackingEvent scheduled to occur at that point in time
 
-===4. The Playlist Management Package===
+===6. The Playlist Management Package===
 
 Ultimately the framework attempts to convert a VAST ad response into a viable playlist that can be loaded into the player.
 
@@ -91,7 +97,7 @@ The Playlist Management Package provides a series of classes that control the co
     * `XMLPlaylist`
   * `PlaylistController` - the key controller class that manages the process of constructing a playlist of a specified type given a `StreamSequence`
 
-===5. The Server Control Package===
+===7. The Ad Server Control Package===
 
 The Server Control Package provides the classes needed to make requests to the OpenX Ad Server.
 
@@ -99,8 +105,4 @@ A factory class `AdServerFactory` is provided to facilitate the construction of 
 
 The `OpenXAdServer` requires an instance of the `OpenXConfig` class when initialising to ensure that the appropriate URLs and settings can be applied when the calls are made to the OpenX ad server.
 
-===6. The Display Management Package===
-
-Non-Linear and companion ads must be displayed by the player on or around the player canvas. The Display Management Package provides two classes to facilitate callbacks to the specific player implementation when a non-linear or companion ad is to be displayed.
-
-These two classes are `VideoAdDisplayController` (a key interface to implement in your custom player) and `VideoAdDisplayEvent` which describes the type of video ad to display/hide.
+===8. The Overlay Management Package===
