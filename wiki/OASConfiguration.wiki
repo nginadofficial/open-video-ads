@@ -86,15 +86,47 @@ While reviewing that specific configuration it is important to acknowledge that 
     * Overlays
     * Debug
 
+Each of these "groupings" have a specific set of configuration options that impact the way ads are played by the VAST Framework and Open Ad Streamers.
 
+As a result, at a high level a typical configuration template appears as follows:
+
+{{{
+// general options here
+
+"providers": {
+     // provider options here
+},
+
+"shows": {
+     // show stream options here
+},
+
+"overlays": {
+     // overlay options here
+},
+
+"ads": {
+     // ad schedule options here
+},
+
+"debug": {
+     // debug configuration here
+}
+}}}
+
+Let's assess the detailed options available in each of these configuration groups.
 
 == General Configuration Options ==
 
+== Providers Configuration Options ==
 
-== Configuration Parameters ==
+== Shows Configuration Options ==
 
-Below is a complete list of configuration options for the *Ad Streamer* plugin. Some options are only available at the general plugin level, while others are restricted to the `Ad Slot` level. General level configuration options are applied
-across all `Ad Slots` unless otherwise specified.
+== Overlays Configuration Options ==
+
+== Ads Configuration Options ==
+
+== Debug Configuration Options ==
 
 || *Property name* || *Level* || *Version* || *Description* ||
 || `url` || General || 0.4.5 || The url of the OpenX Ad Streamer plugin ||
