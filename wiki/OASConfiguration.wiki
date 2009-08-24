@@ -212,7 +212,7 @@ The overlays configuration grouping allows multiple HTML "regions" to be defined
 
 === Declaring Regions ===
 
-By default, 4 regions are automatically declared - a *"top"* region that occupies the width of the player 50 pixels deep, a *"bottom"* region that is also the width of the player and 50 pixels height, a region that covers the *"full screen"*, and a thin region (20px high) at the base of the screen to be used for general ad messaging (tagged *"message"*).
+By default, 4 regions are automatically declared - a *"reserved-top"* region that occupies the width of the player 50 pixels deep, a *"reserved-bottom"* region that is also the width of the player and 50 pixels height, a region that covers the *"reserved-fullscreen"*, and a thin region (20px high) at the base of the screen to be used for general ad messaging (tagged *"reserved-system-message"*).
 
 In addition, any number of customised regions can be declared. To illustrate how this is done, review the following Flowplayer Ad Streamer example that illustrates the options that are declared for the default "message" region:
 
