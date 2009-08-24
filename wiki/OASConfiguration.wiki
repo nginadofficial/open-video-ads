@@ -140,8 +140,8 @@ A description of each property follows:
 || `baseURL` || always || Declares the base address for the streams to be played ||
 || `bitrate` || always || Identifies the acceptable bit rates for this instance of the player - acceptable values are "any" or a range such as "600-700" ||
 || `deliveryType` || always || The type of streams to be served - can be either "progressive" or "streaming" ||
-|| `metaData` || always || ||
-|| `playContiguously` || always || ||
+|| `metaData` || always || Indicates whether or not the player should wait for the metadata information in the stream to be received before starting to play  - always set to "false" if you notice a video can be heard but not seen - the value is "false" by default ||
+|| `playContiguously` || always || TO BE CHANGED TO format: "playlist or single" ||
 || `removeFileExtension` || always || Forces removal of file extensions for video stream file names returned in the VAST data - particularly useful for ensuring that FLV streams play on an FMS ||
 || `streamType` || always || A specific value that identifies the type of stream to be played - can be either "mp4" or "flv" ||
 
