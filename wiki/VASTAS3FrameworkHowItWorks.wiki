@@ -1,2 +1,9 @@
 #summary Building a Custom Player Implementation
 #sidebar TableOfContents
+
+Broadly speaking, when the VAST framework is integrated with a custom player to support ad scheduling and play, a decision must be made about approach to be taken to implementation. The decision on which approach to take will depend largely on the type of support made available in the player for the management of playlists, clips and time based cuepoints. For instance, Flowplayer and JW Player offer different APIs and approaches to the development and integration of pluginss. Accordingly, the implementations of the Open Ad Streamer for Flowplayer and JW Player differ quite significantly.
+
+  * Flowplayer allows time based cuepoints to be set, while JW Player reports time changes at a 1/10th of a second interval
+  * JW Player has strong support for playlists while Flowplayer provides a focused API that allows pre, post and mid-roll streams to be directly inserted into the timeline of a show stream
+
+These differences mean that each player requires a different approach to the way that the framework is integrated and operated as the player plays.
