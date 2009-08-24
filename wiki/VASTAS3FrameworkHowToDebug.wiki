@@ -35,7 +35,7 @@ The following table identifies the various debug information categories that can
 || `display_events` || Prints all debug messages associated with non-linear ad display events ||
 || `tracking_events` || Prints all debug messages tied to tracking events ||
 
-By default, the framework supports both the DeMonster debugger and output via Firebug.
+By default, the framework supports both the [http://demonsterdebugger.com/ DeMonster] debugger and output via Firebug.
 
 To output to DeMonster specify `demonster` as the `debugger` option.
 
