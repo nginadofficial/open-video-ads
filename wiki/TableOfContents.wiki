@@ -8,7 +8,7 @@
   * Supported Ad Servers
     * OpenX
       * [InstallingOpenXServerVideoPlugin  Enabling ]
-      * [https://developer.openx.org/wiki/display/DOCS/OpenX+Video+Plugin+Beta+--+Documentation OpenX Doc]
+      * [https://developer.openx.org/wiki/display/DOCS/OpenX+Video+Plugin+Beta+--+Documentation OpenX Documentation]
       * [SettingUpYourFirstOpenXCampaign First Campaign]
    * Other Ad Servers
       * How To Implement
