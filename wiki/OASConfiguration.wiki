@@ -79,8 +79,8 @@ In the example above a single RTMP show stream (bbb_640x360_h264.mp4) is to play
 
 To explore more configuration examples, review the following:
 
-  * The [FlowplayerOASExamples Flowplayer Open Ad Streamer worked examples]
-  * The [JWPlayerOASExampels JW Player Open Ad Streamer worked examples]
+  * The [http://www.bouncingminds.com/plugins/flowplayer/openvideoads/ea-0.1.1/bouncingminds.openX.flowplayer.http.bin/examples/index.html Flowplayer Open Ad Streamer worked examples]
+  * The [http://www.bouncingminds.com/plugins/longtail/jwplayer/openvideoads/ea-0.3.0/bouncingminds.openX.jwplayer.bin/examples/index.html JW Player Open Ad Streamer worked examples]
 
 While reviewing that specific configuration it is important to acknowledge that the configuration data is broken into 6 separate "groupings":
 
