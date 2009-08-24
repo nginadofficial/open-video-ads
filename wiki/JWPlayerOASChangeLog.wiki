@@ -1,0 +1,8 @@
+#summary Change Log for the JW Player Ad Streamer
+#sidebar TableOfContents
+
+0.2.1 - June 30, 2009
+
+  * The initial version - ad types supported are pre, mid, post roll linear video and companions 
+  * HTTP and RTMP protocols supported
+  * Overlay support being added now
