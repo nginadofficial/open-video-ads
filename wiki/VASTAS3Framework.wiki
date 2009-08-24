@@ -1,7 +1,7 @@
 #summary Supporting Custom Player implementations
 #sidebar TableOfContents
 
-The Open Video Ads VAST Actionscript 3 framework is designed to allow custom player implementations to be extended to support requests for and playback of VAST compliant video advertising.
+The Open Video Ads VAST Actionscript 3 framework is designed to allow custom player implementations to be extended to support requests for and the playback of VAST compliant video advertising.
 
 Through the integration of the framework, a custom player can make requests to VAST compliant ad servers, process the results, schedule the ads to be played, play them and track the results.
 
