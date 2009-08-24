@@ -10,24 +10,30 @@ The VAST framework is a set of Actionscript 3 classes that:
 
 The framework is housed under the package:
 
-     `org.openvideoads.*`
+     `org.openvideoads.vast.*`
 
 The following diagram illustrates the package structure of the framework:
 
 <img src="http://static.bouncingminds.com/images/open-video-ads/vast-framework-architecture.png" height="500" border="0">
 
-There are 6 key packages that work together to request, parse and manipulate a VAST response from a VAST complaint ad server:
+There are 7 key packages that work together to request, parse and manipulate a VAST response from a VAST complaint ad server:
 
-  # A set of base classes
-  # A set of utility classes
-  # The Regions framework 
-  # The VAST framework which includes:
-    * The VAST *model*
-    * Ad *Schedule*
-    * Ad *Tracking*
-    * *Playlist* management
-    * *Server* control
-    * *Display* management
+  # *Configuration*
+  # *Events*  
+  # The VAST *model*
+  # Ad & Stream *Scheduling*
+  # Ad *Tracking*
+  # *Playlist* management
+  # Ad *Server* control
+
+These packages in turn rely on a number of support packages that provide more generic functionality:
+
+  # A set of *base* classes
+  # A set of *utility* classes
+  # The *Regions* framework 
+
+Finally, access to the framework is controlled through a centralised class known as the 'VASTController'.
+
 
 ===1. The VAST Model Package===
 
