@@ -6,7 +6,7 @@
   * [GettingStarted Getting Started]
   * [TestAds Test Ads]
   * Supported Ad Servers
-    * OpenX
+    * [http://www.openx.org OpenX]
       * [InstallingOpenXServerVideoPlugin  Enabling the Video Plugin]
       * [https://developer.openx.org/wiki/display/DOCS/OpenX+Video+Plugin+Beta+--+Documentation OpenX Documentation]
       * [SettingUpYourFirstOpenXCampaign Your First Campaign]
