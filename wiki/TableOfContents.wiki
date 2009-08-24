@@ -29,7 +29,7 @@
       * [JWPlayerOASHowItWorks How It Works]
       * [http://code.google.com/p/openx-iab-vast/downloads/list Download]
       * [OASConfiguration Configuration]
-      * [JWPlayerOASExamples Examples]
+      * [http://www.bouncingminds.com/plugins/longtail/jwplayer/openvideoads/ea-0.3.0/bouncingminds.openX.jwplayer.bin/examples/index.html Examples]
       * [JWPlayerOASLimitations Limitations]
       * [JWPlayerOASBuild How to Build]
       * [JWPlayerOASChangeLog Change Log]
