@@ -13,4 +13,4 @@ We're now working on cleaning up the API a little, improving overall performance
 
 The goal however is to provide a nice, clean VAST framework for widespread use across all player implementations.
 
-In the meantime, please feel free to give it a go - you can download the latest version of the framework [http://code.google.com/p/open-video-ads/downloads/openvideoads.vast.as3.tar.gz].
+In the meantime, please feel free to give it a go - you can download the latest version of the framework [http://open-video-ads.googlecode.com/files/openvideoads.vast.as3.tar.gz here].
