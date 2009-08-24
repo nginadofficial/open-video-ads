@@ -10,7 +10,7 @@ build files that will create the required SWFs given that the required build env
 
 To build the release with Ant:
   * Make sure you have a fully operational [http://www.adobe.com/products/flex/ Flex SDK] build environment
-  * Download the [http://www.flowplayer.org Flowplayer 3.10 devkit]- rebuild that - if that works, you have a good base
+  * Download the [http://www.flowplayer.org Flowplayer 3.13+ devkit]- rebuild that - if that works, you have a good base
 
 By default, the OpenX plugin is configured to reference the `flowplayer.devkit/plugin-build.xml` file as
 `../flowplayer.devkit/plugin-build.xml` so it's generally a good idea to locate the OpenX package
