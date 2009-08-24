@@ -1,0 +1,24 @@
+#summary Loading Configuration Data
+#sidebar TableOfContents
+
+
+
+{{{
+// Load up the config and configure the framework
+_vastController = new VASTController();
+_vastController.setTimeBaseline(VASTController.RELATIVE_TO_CLIP);
+_vastController.trackStreamSlices = false;
+_vastController.startStreamSafetyMargin = 300; // needed because cuepoints at 0 for FLVs don't fire
+_vastController.initialise((new PropertyBinder(new Config(), null).copyProperties(_model.config) as Config));
+doLog("Flowplayer Open Video Ad Streamer constructed - build 0.1.1.1", Debuggable.DEBUG_ALL);
+}}}
+
+
+{{{
+// Load up the config and configure the framework
+_vastController = new VASTController();
+_vastController.endStreamSafetyMargin = 300;
+_vastController.setTimeBaseline(VASTController.RELATIVE_TO_CLIP);
+doLog("Raw config loaded as " + config.json, Debuggable.DEBUG_CONFIG);
+_vastController.initialise(JParser.decode(config.json));
+}}}
