@@ -75,12 +75,21 @@ flowplayer("a.example", "../dist/flowplayer-3.1.3-dev.swf", {
 });
 }}}
 
-In this example, 2 main programme streams are to be served (`HCTV004830001A` and `HCTV004830001A`). 
-As those two streams are played sequentially, a `30` second `pre-roll` ad with a `notice` is 
-to be sequenced before the first stream only. During the playback of the first programme stream, `00:00:15` seconds into the stream an overlay ad (that is allowed to start a video advertisement mid stream) is to be served in the `'bottom'` region for `15` seconds. An accompanying companion banner with the size `150 * 360` pixels 
-is to be displayed in a div block on the page identified as `companion`. Following both programme streams,  a `30` second `post-roll` video ad is to be served without an ad notice.
+In the example above a single RTMP show stream (bbb_640x360_h264.mp4) is to play 35 seconds. Before the show stream begins a pre-roll ad is to be served. During the playback of the stream an overlay ad is to be displayed in a region defined as "bottom". All debug output is to be sent to "firebug" as the Ad Streamer operates.
 
-In addition, this example illustrates how to disable the control bar during ad play (`disableControls`) and react to javascript callbacks when the VAST template is loaded (`onTemplateLoaded`) or ad event cuepoints are fired (`onCuepointInfo`).
+A number of points are important to acknowledge as you review that configuration:
+
+  # The configuration data is broken into 6 separate "groupings":
+    * General
+    * Show
+    * Ads
+    * Providers
+    * Overlays
+    * Debug
+
+
+== General Configuration Options ==
+
 
 == Configuration Parameters ==
 
