@@ -14,7 +14,7 @@ The framework is housed under the package:
 
 The following diagram illustrates the package structure of the framework:
 
-<img src="http://static.bouncingminds.com/images/open-video-ads/vast-framework-architecture.png" height="500" border="0">
+<img src="http://static.bouncingminds.com/images/open-video-ads/vast-framework-architecture.png" height="550" border="0">
 
 There are 8 key packages that work together to request, parse and manipulate a VAST response from a VAST complaint ad server:
 
@@ -37,13 +37,33 @@ In general access to the framework is controlled through a centralised class kno
 
 ===1. Configuration===
 
+The Configuration package (`org.openvideoads.vast.config`) contains a series of classes that define the way configuration information is passed around the framework.
+
+There is 1 core class in the package `org.openvideoads.vast.config.Config` through which all elements of the framework configuration are controlled. Broadly speaking, the configuration information is broken into 4 key groupings:
+
+  # Ad specific configuration information
+  # Show oriented configuration
+  # Debug configuration
+  # Overlay configuration
+
+Ad notices and the click through sign shown when a user mouses over a linear video ad with a click through defined can also be configured via this package.
 
 ===2. Events===
 
+A custom player implementation receives notifications of state changes in the framework via the Actionscript Events model. The VAST events package (`org.openvideoads.vast.events`) implements the different types of `events` that a custom player may listen for and process. These include:
+
+  * Linear ad play events
+  * Non-linear scheduling and display related events
+  * Ad Tracking events
+  * Ad notice events
+  * Stream scheduling events
+  * Control bar events
+  * VAST data load events
+  * Companion events
 
 ===3. The VAST Model Package===
 
-The Model package contains a series of classes that define the VAST data model. The VAST data returned by the VAST complaint ad server is parsed and a traversable model of the ad(s) is formed. This package forms the heart of the VAST framework: 
+The Model (`org.openvideoads.vast.model`) package contains a series of classes that define the VAST data model. The VAST data returned by the VAST complaint ad server is parsed and a traversable model of the ad(s) is formed. This package forms the heart of the VAST framework: 
 
   * `VideoAdServingTemplate` - the controller class that coordinates calls to and parsing of responses back from VAST compliant ad servers
   * `VideoAd` - The high level grouping object that represents one video ad to play at some point within a stream. The grouping may contain a linear video ad and an associated companion ad(s), or a non-linear ad (e.g. overlay), optional associated linear ad (triggered when the overlay is clicked) and associated companion ad(s)
@@ -56,7 +76,7 @@ The Model package contains a series of classes that define the VAST data model. 
 
 ===4. The Ad & Stream Schedule Package===
 
-When an ad schedule is declared it results in a sequence of ad slots being defined and sequenced. That sequence of ad slots is then spliced together with a sequence of show streams to play to form a list of streams (shows and ads) that are to be played. This package provides the classes to manage streams, ad slots and sequences of both:
+When an ad schedule is declared it results in a sequence of ad slots being defined and sequenced. That sequence of ad slots is then spliced together with a sequence of show streams to play to form a list of streams (shows and ads) that are to be played. The schedule package (`org.openvideoads.vast.schedule`) provides the classes to manage streams, ad slots and sequences of both:
 
   * `StreamConfig` - The configuration controller for a stream. Covers the storage and manipulation of the stream filename, location and where appropriate, the netconnection URL. Also covers properties such as the duration of the stream, the start time and whether or not it is only to be played once
   * `StreamSequence` - a sequence of streams that are to run in order from position 0 to the last position. May hold either standard show streams or ad slots
@@ -67,7 +87,7 @@ When an ad schedule is declared it results in a sequence of ad slots being defin
 
 ===5. The Ad Tracking Package===
 
-The play progress of a VAST ad is tracked via the framework. The tracking data is reported to the VAST compliant ad server according to the tracking URLs that it provides.
+The play progress of a VAST ad is tracked via the tracking package (`org.openvideoads.vast.tracking`). The tracking data is reported to the VAST compliant ad server according to the tracking URLs that it provides.
 
 The following events are tracked by the framework:
 
@@ -87,7 +107,7 @@ The tracking package provides a series of classes that help manage the way these
 
 Ultimately the framework attempts to convert a VAST ad response into a viable playlist that can be loaded into the player.
 
-The Playlist Management Package provides a series of classes that control the construction and manipulation of playlists. These classes include:
+The Playlist Management Package (`org.openvideoads.vast.playlist`) provides a series of classes that control the construction and manipulation of playlists. These classes include:
 
   * `Playlist` - the interface for all Playlist type instances. The framework generates the following playlist types:
     * `MediaRSSPlaylist`
@@ -99,10 +119,12 @@ The Playlist Management Package provides a series of classes that control the co
 
 ===7. The Ad Server Control Package===
 
-The Server Control Package provides the classes needed to make requests to the OpenX Ad Server.
+The Server Control Package  (`org.openvideoads.vast.server`) provides the classes needed to make requests to the OpenX Ad Server.
 
 A factory class `AdServerFactory` is provided to facilitate the construction of an `OpenXAdServer` instance. Eventually other VAST compliant ad servers will be supported by the framework.
 
 The `OpenXAdServer` requires an instance of the `OpenXConfig` class when initialising to ensure that the appropriate URLs and settings can be applied when the calls are made to the OpenX ad server.
 
 ===8. The Overlay Management Package===
+
+ (`org.openvideoads.vast.overlay`) 
