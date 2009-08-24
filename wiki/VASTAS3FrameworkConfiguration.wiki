@@ -1,24 +1,39 @@
 #summary Loading Configuration Data
 #sidebar TableOfContents
 
+The first step to be taken to integrate the VAST framework is to instantiate it and configure the baseline operating condititions.
 
-
-{{{
-// Load up the config and configure the framework
-_vastController = new VASTController();
-_vastController.setTimeBaseline(VASTController.RELATIVE_TO_CLIP);
-_vastController.trackStreamSlices = false;
-_vastController.startStreamSafetyMargin = 300; // needed because cuepoints at 0 for FLVs don't fire
-_vastController.initialise((new PropertyBinder(new Config(), null).copyProperties(_model.config) as Config));
-doLog("Flowplayer Open Video Ad Streamer constructed - build 0.1.1.1", Debuggable.DEBUG_ALL);
-}}}
-
+The following code snippet has been taken from the Flowplayer Open Ad Streamer to illustrate how it fires up the VAST framework:
 
 {{{
-// Load up the config and configure the framework
-_vastController = new VASTController();
-_vastController.endStreamSafetyMargin = 300;
-_vastController.setTimeBaseline(VASTController.RELATIVE_TO_CLIP);
-doLog("Raw config loaded as " + config.json, Debuggable.DEBUG_CONFIG);
-_vastController.initialise(JParser.decode(config.json));
+    // Load up the config and configure the framework
+    _vastController = new VASTController();
+    _vastController.setTimeBaseline(VASTController.RELATIVE_TO_CLIP);
+    _vastController.trackStreamSlices = false;
+    _vastController.startStreamSafetyMargin = 300; // needed because cuepoints at 0 for FLVs don't fire
+    _vastController.initialise((new PropertyBinder(new Config(), null).copyProperties(_model.config) as Config));
+    doLog("Flowplayer Open Video Ad Streamer constructed - build 0.1.1.1", Debuggable.DEBUG_ALL);
 }}}
+
+There are 4 separate calls made to get the framework up and into a working state:
+
+  # `setTimeBaseline()` - this call tells the framework that time is measured relative to each clip playing. This means that when a new clip starts, the time that the player reports on the timeline is reset to 0 so all tracking events in the framework should be set relative to the clip being played.
+  # `trackStreamSlices` - this is a slightly more complicated call and it relates specifically to how mid-roll ads are to be treated by the player - for Flowplayer it is set to `false` which means that the player is not interested in treating a stream "sliced" up by mid-roll ads as individual stream segments. Rather, it will view the show stream as one entire stream. This is possible because Flowplayer supports an API that allows streams to be inserted and played mid-stream without impacting the underlying parent stream. JW Player on the other hand does not support this type of API so the only way that a mid-roll ad can be accommodated is to physically slice a show stream into the part to play before the mid-roll ad and then the part after the mid-roll ad. If you look at the JW Player Open Ad Streamer initialisation code, you will see that `trackStreamSlices=true`
+  # `startStreamSafetyMargin` is a call that allows the framework to treat timing events that are to occur at the start of a stream a little differently by offsetting the start time by the "milliseconds" value specified as `startStreamSafetyMargin`. For example, when an ad stream starts, the `started` tracking event is to be fired and subsequently recorded by the ad server. There are circumstances where time based events fired at a 0 point in time in the stream do not reliably fire because the player is busy starting up the stream. To be safe, those events are delayed for 300 milliseconds (in the case of the Flowplayer config above)
+  # Finally then we get to the `initialise()` call - this is the call that allows the configuration data associated with the player and the framework to be read by the framework. Configuration data must always be passed to the `initialise()` call in the form of a well formed object. In the case of Flowplayer, the JSON configuration data can be placed directly into the `org.openvideoads.vast.config.Config` object (via the Flowplayer `PropertyBinder`). When the `VASTController` receives a `org.openvideoads.vast.config.Config` object it will just save it as is. If however it recieves a vanilla `Object`, it will interrogate that object to obtain the individual properties and will create a well formed `org.openvideoads.vast.config.Config` object as a result.
+
+The following code snippet has been taken from the JW Player Open Ad Streamer implementation:
+
+{{{
+   // Load up the config and configure the framework
+   _vastController = new VASTController();
+   _vastController.endStreamSafetyMargin = 300;
+   _vastController.setTimeBaseline(VASTController.RELATIVE_TO_CLIP);
+   doLog("Raw config loaded as " + config.json, Debuggable.DEBUG_CONFIG);
+  _vastController.initialise(JParser.decode(config.json));
+}}}
+
+Notice two key code differences with the Flowplayer code:
+
+  # There is no reference to `trackStreamSlices` which means that the framework is to split streams into their respective segments when inserting mid-roll linear ads (the default behavior for the framework)
+  # `initialise()` is taking a vanilla `Object` as a parameter which is the result of parsing the JSON configuration data using [http://www.waynemike.pwp.blueyonder.co.uk/jswoof/ JSwoop]'s JParser implementation.
