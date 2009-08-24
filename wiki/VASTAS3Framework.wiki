@@ -5,6 +5,4 @@ The Open Video Ads VAST Actionscript 3 framework is designed to allow custom pla
 
 Through the integration of the framework, a custom player can make requests to VAST compliant ad servers, process the results, schedule the ads to be played, play them and track the results.
 
-Both the [JW Player ] and [Flowplayer ] Open Ad Streamers utilise the framework in their implementation. In both cases, a minimal amount of code is required by each player to achieve 'VAST compliance'.
-
-
+Both the [JWPlayerOASIntroduction JW Player] and [FlowplayerOASIntroduction Flowplayer] Open Ad Streamers utilise the framework in their implementation. In both cases, a minimal amount of code is required by each player to achieve 'VAST compliance'.
