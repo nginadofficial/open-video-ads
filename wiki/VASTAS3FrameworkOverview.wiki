@@ -48,6 +48,8 @@ There is 1 core class in the package `org.openvideoads.vast.config.Config` throu
 
 Ad notices and the click through sign shown when a user mouses over a linear video ad with a click through defined can also be configured via this package.
 
+For a detailed guide on the configuration parameters permitted by the framework, read "[X Configuring an Ad Streamer]"
+
 ===2. Events===
 
 A custom player implementation receives notifications of state changes in the framework via the Actionscript Events model. The VAST events package (`org.openvideoads.vast.events`) implements the different types of `events` that a custom player may listen for and process. These include:
