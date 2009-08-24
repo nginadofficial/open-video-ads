@@ -15,6 +15,6 @@ from the release "build" directory.
 
 = A Note on Debugging =
 
-We use the Firebug and [http://www.demonsterdebugger.com De MonsterDebugger] - you'll see these included in the source and the `Debuggable` declaration. Replace this with the standard flash debugger by changing the `Debuggable` declarations for `doLog()` and `doLogAndTrace()`
+We support two options - [http://www.getfirebug.com Firebug] and the [http://www.demonsterdebugger.com De MonsterDebugger] - you'll see both of these referenced in the source and the `Debuggable` declaration. If you wish to use a different debugger just replace these by modifying the `org.openvideoads.base.Debuggable` declarations for `doLog()` and `doLogAndTrace()`
 
 For more information on how to configure the debug options, refer to the section on "Debug" configuration in the [OASConfiguration Configuration guide].
