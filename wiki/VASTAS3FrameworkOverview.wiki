@@ -3,13 +3,14 @@
 
 The VAST framework is an actionscript 3.0 implementation of a series of classes that:
 
-  * Control calls to the OpenX ad server to request and retrieve any number of VAST compliant video ads
+  * Control calls to a VAST compliant ad server to request and retrieve any number of VAST compliant video ads
   * Manage the process of tracking timing events as ads play, triggering the appropriate action at the required time
   * Translation of a VAST ad request into an appropriate playlist format that can be loaded into a player and played
+  * Facilitate the display and processing of overlay, non-overlay, companion ads and ad notices
 
 The framework is housed under the package:
 
-     `com.bouncingminds.vast.*`
+     `org.openvideoads.*`
 
 The following diagram illustrates the package structure of the framework:
 
@@ -17,12 +18,16 @@ The following diagram illustrates the package structure of the framework:
 
 There are 6 key packages that work together to request, parse and manipulate a VAST response from a VAST complaint ad server:
 
-  # The VAST *model*
-  # Ad *Schedule*
-  # Ad *Tracking*
-  # *Playlist* management
-  # *Server* control
-  # *Display* management
+  # A set of base classes
+  # A set of utility classes
+  # The Regions framework 
+  # The VAST framework which includes:
+    * The VAST *model*
+    * Ad *Schedule*
+    * Ad *Tracking*
+    * *Playlist* management
+    * *Server* control
+    * *Display* management
 
 ===1. The VAST Model Package===
 
