@@ -35,7 +35,7 @@
       * [JWPlayerOASChangeLog Change Log]
   * [VASTAs3Framework VAST AS3 Framework]
     * [VASTAS3FrameworkOverview Overview]
-    * [VASTAS3FrameworkCreatePlayer Creating a 'VAST compliant' video player]
+    * [VASTAS3FrameworkCreatePlayer Achieving 'VAST compliance']
         * [VASTAS3FrameworkApproaches Implementation Approaches]
         * [VASTAS3FrameworkConfiguration Configuration]
         * [VASTAS3FrameworkAdServer Ad Servers]
