@@ -820,10 +820,28 @@ Finally, the Open Ad Streamer supports playing ads just once. This is achieved b
 
 [ Example 17] illustrates the "playOnce" functionality.
 
-The configuration for example 17 is as follows:
+The "ads" grouping configuration for example 17 is as follows:
 
 {{{
+    "ads": {
+        "deliveryType": "streaming",
+        "playOnce": true,
+        "server": {
+            "type": "OpenX",
+            "vastURL": "http://openx.bouncingminds.com/openx/www/delivery/fc.php"
+        },
+        "schedule": [
+            {
+                "zone": "5",
+                "position": "pre-roll"
+            }
+        ],
+    },
 }}}
+
+In this instance the pre-roll ad will only be played once.
+
+To achieve this the Flowplayer Open Ad Streamer rebuilds the internal Flowplayer playlist once all of the clips have been played. 
 
 {{{
     protected function onTrackingPointFired(event:TrackingPointEvent):void {
@@ -851,3 +869,7 @@ The configuration for example 17 is as follows:
        );
     }
 }}}
+
+As streams are played the first time around the `StreamSequence` held by the `VASTController` marks each played stream as having been "played". Upon completion of each clip in the player, the Ad Streamer checks to see if the stream should just be played once - if it should and it has been played then it's not added to the replay list.
+
+When all streams are played the first time around, the playlsit is reset to the "replay" list which by now only contains clips that can be replayed. 
