@@ -185,11 +185,9 @@ The "server" configuration parameter (in the "ads" configuration grouping) ident
 
 ===Constructing an AdSchedule===
 
-An Ad Schedule is a central construct within the VAST AS3 Framework and the Flowplayer Open Ad Server as a result.
+An _Ad Schedule_ is a central construct within the VAST AS3 Framework and the Flowplayer Open Ad Server as a result. It is a series of Ad Slots that represent a single Video Ad instance to be played when the Video Player serves the streams.
 
-An Ad Schedule is a series of Ad Slots that represent a single Video Ad instance to be played when the Video Player serves the streams.
-
-An Ad Schedule is declared through the "schedule" configuration parameter in the "ads" configuration grouping. The declaration below is from our example 03:
+An Ad Schedule is declared through the "schedule" configuration parameter within the "ads" configuration grouping. The declaration below is from our example 03:
 
 {{{
                  "schedule": [
@@ -207,6 +205,24 @@ An Ad Schedule is declared through the "schedule" configuration parameter in the
                       }
                   ],
 }}}
+
+In this declaration, 2 _Ad Slots_ are declared - the first is a pre-roll ad identified as zone "5" in our OpenX instance, the second is a non-linear ad identified as Zone "12" to OpenX. The presence of "zones" allows each ad slot to be differentiated to the Ad Server.
+
+When the framework (the `VASTController`) is initialised, the _Ad Schedule_ declared in the configuration data is transposed into an object model that is internally used to represent the Ad Schedule. The object model is headed by a class termed `AdSchedule` and it contains 1 to many `AdSlots`.
+
+On initialisation the Ad Schedule is just an abstract definition of the Ads that are to be played by the Video Player.
+
+Once the VAST Framework makes a call to an Ad Server and receives the corresponding VAST data back, the Ad Schedule is turned into an actual representation of the Video Ads to be played in each _Ad Slot_.
+
+Consider our example 03. When the VAST Framework is initialised, the `AdSchedule` object model exists as illustrated below:
+
+{INSERT DIAGRAM}
+
+Following the load of the VAST data however, the object model expands to become:
+
+{INSERT DIAGRAM}
+
+
 
 ===Make sure that the Streaming Providers are Loaded===
 
