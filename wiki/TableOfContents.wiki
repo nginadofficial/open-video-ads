@@ -38,8 +38,8 @@
   * [VASTAS3Framework VAST AS3 Framework]
     * [VASTAS3FrameworkOverview Architecture]
     * [VASTAS3FrameworkInAction Review In Action]
-      * Flowplayer
-      * JW Player
+      * [FlowplayerOASImplementationOverview Flowplayer]
+      * [JWPlayerOASImplementationOverview JW Player]
     * [VASTAS3FrameworkHowItWorks How it Works]
     * [http://open-video-ads.googlecode.com/files/openvideoads.vast.as3.tar.gz Download]
     * [VASTAS3FrameworkCreatePlayer Implementation]
