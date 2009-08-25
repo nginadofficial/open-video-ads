@@ -61,16 +61,6 @@ The following diagram illustrates the high level process that the Flowplayer Ope
 _*Figure 1: The Open Ad Streamer Process*_
 <br/>
 
-In broad terms the Open Ad Streamer delivers video advertising by:
-
-  * Operating in accordance with the JSON configuration that it is given
-  * Setting up listeners for and responding to player and framework specific events
-  * Allowing the VAST framework to handle the display of non-linear advertising
-  * Formulating and making requests to a VAST compliant ad server
-  * Parsing the result forming a stream sequence in the process that in turn can be used to drive the configuration of the Flowplayer clip based playlist
-  * Processing the Stream Sequence to form a Flowplayer clip based playlist that has cuepoints set at the right timepoints so that various ad related events can be triggered and processed by the framework
-  * Playing the clips one at a time, responding to player & framework events (including cuepoints) as they occur
-
 ==The Code==
 
 
