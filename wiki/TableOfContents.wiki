@@ -44,6 +44,7 @@
     * [VASTAS3FrameworkHowItWorks How it Works]
     * [VASTAS3FrameworkConfiguration Configuration Guide]
     * [VASTAS3FrameworkAdServing Ad Servers]
+    * [VASTAS3FrameworkAdTracking Ad Tracking]
     * [VASTAS3FrameworkEvents Events]
     * [VASTAS3FrameworkDisplayingOverlays Overlays]
     * [VASTAS3FrameworkPlaylists Playlists]
