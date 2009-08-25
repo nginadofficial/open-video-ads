@@ -212,7 +212,7 @@ If we look at the "fullscreen" handler `onFullScreen()`, we will see how the VAS
 
 When the player goes "fullscreen", the `_vastController` is informed via the `onPlayerResize()` API. The current index of the stream must be passed into that call so that the VAST Controller knows which stream has been impacted by the fullscreen action.
 
-  
+For a complete description of the "Player Event" related `VASTController` APIs,  please refer to the [VASTAS3FrameworkPlayerEvents "Managing Player Events Guide"].
 
 ===Configure the Key Event Listeners===
 
