@@ -364,3 +364,5 @@ The critical events for the Flowplayer Open Ad Streamer are:
         }
     }
 }}}
+
+===Ensuring a Linear Ad plays only once===
