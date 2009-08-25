@@ -7,11 +7,13 @@ This document steps through the design and implementation of the Flowplayer Open
 
 If you haven't downloaded the source code, do so [http://open-video-ads.googlecode.com/files/openvideoads.flowplayer.openadstreamer-0.2.1.tar.gz now]. We also recommend that you download the [http://open-video-ads.googlecode.com/files/openvideoads.vast.as3.tar.gz VAST AS3 Framework code] as this isn't packaged by default with the plug-in source. You'll need to refer to both as we step through the implementation.
 
+
 ==Check out the Examples==
 
 Before stepping through the detailed design of the Flowplayer Open Ad Streamer it's worth taking the time to review the  [http://www.bouncingminds.com/plugins/flowplayer/openvideoads/openadstreamer/latest/examples/index.html 30 odd examples] that have been created to show how the Ad Streamer can be configured.
 
 Each of these examples explores a different area of behavior for both the Ad Streamer and the VAST AS3 Framework. 
+
 
 ==A Bit About Flowplayer==
 
@@ -24,6 +26,7 @@ There are several key features of Flowplayer that need to be considered when fin
   # Finally, Flowplayer provides a good clip management API that allows a plugin to build up and management a specific playlist. This API is well suited to use by the framework to build up a sequence of advertising and show clips to play sequentially in the player. For more information on this API, please refer to this [http://www.flowplayer.org/apidoc/flowplayer documentation].
 
 All three API features influence the design and implementation of our Flowplayer Open Ad Streamer.
+
 
 ==Key Design Considerations==
 
@@ -46,6 +49,7 @@ In the case of Flowplayer, the answers are as follows:
   # *Displaying Non-Linear Advertising*: We will rely on the VAST Framework to do that, and we'll provide a handle to the Flowplayer DisplayContainer and a set of DisplayProperties that inform the framework about the dimensions of the player
   # *Managing stream sequencing*: We will do that directly via the Flowplayer Playlist and instream() API
   # *Managing providers*: We will check for and load the appropriate streaming providers as required/specified by the ad streamer configuration
+
 
 ==High Level Design==
 
@@ -140,6 +144,7 @@ The configuration for the OpenAdStreamer instance declares:
 
 For a detailed description of all of the configuration parameters permitted by the Flowplayer Open Ad Streamer (and the VAST Framework), please refer to the [http://code.google.com/p/open-video-ads/wiki/OASConfiguration Configuration Guide].
 
+
 ===Initialising the Framework===
 
 The first step to be taken to integrate the VAST framework is to instantiate it and configure the baseline operating condititions.
@@ -182,6 +187,7 @@ The "server" configuration parameter (in the "ads" configuration grouping) ident
         "vastURL": "http://openx.bouncingminds.com/openx/www/delivery/fc.php"
     },
 }}}
+
 
 ===Constructing an AdSchedule===
 
@@ -241,6 +247,7 @@ The following code asks the `VASTController` whether or not a provider definitio
     _player.loadPlugin(providerName, providerUrl, onProviderLoaded);
 }}}
 
+
 ===Managing Player Events===
 
 The next step in the initialisation process is to create the handlers to deal with user related events. 
@@ -277,6 +284,7 @@ When the player goes "fullscreen", the `_vastController` is informed via the `on
 For a complete description of the "Player Event" related `VASTController` APIs,  please refer to the [VASTAS3FrameworkPlayerEvents "Managing Player Events Guide"].
 
 For a full account of the ad tracking supported by the VAST framework, refer to the [VASTAS3FrameworkAdTracking Ad Tracking Guide].
+
 
 ===Configure the Key Event Listeners===
 
@@ -389,6 +397,7 @@ The three key activities undertaken by the framework during this period are:
 ====The Parsing of the Ad Server Response====
 
 ====The Construction of a Stream Sequence====
+
 
 ===Ad Tracking and Flowplayer Cuepoints===
 
