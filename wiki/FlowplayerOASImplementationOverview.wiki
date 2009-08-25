@@ -648,9 +648,27 @@ In the case of the Flowplayer Open Ad Streamer, `onToggleSeekerBar()` then grabs
 
 ===Displaying Companion Ads===
 
+The Flowplayer Ad Streamer has registered via the `CompanionAdDisplayEvent.DISPLAY` event to receive notifications when the framework determines that a Companion Ad is to be displayed with either a Linear or Non-Linear ad.
+
+To see companion ads in action, take a look at [http://www.bouncingminds.com/plugins/flowplayer/openvideoads/openadstreamer/latest/examples/http-example07.html Example 07].
+
+To display a companion ad, the Flowplayer Ad Streamer utilises the Flash `ExternalInterface` call to push the companion ad content directly into the "div" blocks identified in the plugin configuration.
+
+For example 07, the companion related configuration appears as follows within the "ads" configuration grouping:
+
+{{{
+    "displayCompanions": true,
+    "companions": [
+         { "id":"companion", "width":150, "height":360 }
+    ],
+}}} 
+
+This configuration tells the framework to enable the display of companion banners and that the companion banners are to be displayed in a DIV block with the `id` "companion". The div block is sized 150 by 360 pixels. The framework will search through the companions provided in the `VideoAdServingTemplate` for one that size. Multiple companions can be specified allowing companions of different size to be placed around the player in different DIV blocks. 
+
+The following code snippet is from the Flowplayer Ad Streamer - this is the code that responds to the "companion display" event saving the current content of the companion DIV block before the companion HTML is pushed into the DIV.
+
 {{{
     public function onDisplayCompanionAd(companionEvent:CompanionAdDisplayEvent):void {
-        doLogAndTrace("NOTIFICATION: Event received to display companion ad", companionEvent, Debuggable.DEBUG_DISPLAY_EVENTS);
         _previousDivContent = new Array();
         if(companionEvent.contentIsHTML()) {
 	    var previousContent:String = ExternalInterface.call("function(){ return document.getElementById('" + companionEvent.divID + "').innerHTML; }");
@@ -662,6 +680,8 @@ In the case of the Flowplayer Open Ad Streamer, `onToggleSeekerBar()` then grabs
         }
     }
 }}}
+
+There is a corresponding function that gets executed when the "companion hide" event is fired to allow the original content of the companion DIV to be restored.
 
 ===Displaying Non-Linear (Overlay) Ads===
 
