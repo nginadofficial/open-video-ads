@@ -55,7 +55,11 @@ In the case of Flowplayer, the answers are as follows:
 
 The following diagram illustrates the high level process that the Flowplayer Open Ad Streamer implements:
 
-{insert diagram here}
+<img src="http://static.bouncingminds.com/images/open-video-ads/openadstreamer-process.png" border="0" height="340">
+<br/>
+<br/>
+_*Figure 1: The Open Ad Streamer Process*_
+<br/>
 
 
 ==The Code==
