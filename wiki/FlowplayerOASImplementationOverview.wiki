@@ -548,7 +548,7 @@ When the framework constructs a `StreamSequence`, it assesses:
 
 to determine the order in which ads and show streams are to play.
 
-In our example03, the result is quite straight forward - 1 ad plays first followed by the show stream. The resulting `StreamSequence` is then quite straight forward.
+In our example03, the result is quite straight forward - one ad plays first followed by the show stream. The resulting `StreamSequence` is then quite straight forward.
 
 Consider however, a more complex example. [http://www.bouncingminds.com/plugins/flowplayer/openvideoads/openadstreamer/latest/examples/http-example05.html Example05] has a pre-roll being served before a show stream, a mid-roll ad 10 seconds into the show stream followed by a post-roll ad at the end.
 
@@ -587,6 +587,14 @@ The configuration snippet from below is from Example05:
         ]
     },
 }}}
+
+The following diagram illustrates the `AdSequence` and `ShowSequence` that result from interpreting the ad schedule and show configuration:
+
+<img src="http://static.bouncingminds.com/images/open-video-ads/adschedule-streamsequence-example05.png" border="0" height="390">
+<br/>
+<br/>
+_*Figure 4: Example05 - Ad and Stream Sequences*_
+
 
 ===Ad Tracking and Flowplayer Cuepoints===
 
