@@ -26,3 +26,13 @@ There are several key features of Flowplayer that need to be considered when fin
 All three API features influence the design and implementation of our Flowplayer Open Ad Streamer.
 
 ==Key Design Considerations==
+
+When integrating the VAST AS3 Framework to create an Ad Streamer 3 important questions must be asked:
+
+  # TRACKING TIME: How is the player going to notify the framework about changes to the stream timeline? Will it send new time updates at a certain frequency or does it prefer to have specific time based events registered so that it can notify when the time has been hit? (for example, if we need to know when the stream is half way through, does the player prefer to tell us every 1/10th of second the latest time or does it prefer to notify the framework only at the time the stream is half way through?). In the case of Flowplayer it prefers to have time based events registered via the Cuepoint API whereas JW Player notifies every 10th of a second.
+  # MANAGING THE CONTROL BAR: How does the player manage the control bar - for video advertising the seeker (timeline) needs to be disabled when video ads play - we need to know how to do that so that the appropriate code can be implemented when the framework notifies our new ad streamer when an ad starts or ends.
+  # RECOGNISING KEY USER INPUTS: How does the player recognise when fullscreen has been activated, mute, start, stop, pause etc.? When these events occur, the VAST Framework needs to be notified so that it can log the event accordingly.
+  # DISPLAYING NON-LINEAR ADVERTISING: How do you want to handle the display of overlay advertising? The VAST Framework can handle it, but it needs to be given a handle to an appropriate DisplayContainer for the player so that the overlay Sprites can be created, added and shown when required.
+  # MANAGING THE STREAM SEQUENCE: 
+
+
