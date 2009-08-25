@@ -146,4 +146,33 @@ The following diagram illustrates the high level process that the Flowplayer Ope
     }
 }}}
 
-===Load up the VAST Data from the Ad Server===
+===Processing Time Based Events - Cuepoints===
+
+{{{
+    protected function processCuepoint(clipevent:ClipEvent):void {
+        var cuepoint:Cuepoint = clipevent.info as Cuepoint;
+        var streamIndex:int = parseInt(cuepoint.callbackId.substr(3));
+        var eventCode:String = cuepoint.callbackId.substr(0,2);
+        doLog("Cuepoint triggered " + clipevent.toString() + " - id: " + cuepoint.callbackId, Debuggable.DEBUG_CUEPOINT_EVENTS);
+        _vastController.processTimeEvent(streamIndex, new TimeEvent(clipevent.info.time, 0, eventCode));            	            
+    }
+}}}
+
+
+===Disabling the Control Bar Seeker===
+
+{{{
+    private function setScrubber(turnOn:Boolean):void {
+         var controlProps:org.flowplayer.model.DisplayProperties = _player.pluginRegistry.getPlugin("controls") as org.flowplayer.model.DisplayProperties;
+         var controls:Controls = controlProps.getDisplayObject() as Controls;
+
+         if(turnOn) {
+             doLog("Turning the scrubber on", Debuggable.DEBUG_TRACKING_EVENTS);
+             controls.enable({all: true, scrubber: true});		
+         }	
+         else {
+             doLog("Turning the scrubber off", Debuggable.DEBUG_TRACKING_EVENTS);
+             controls.enable({all: true, scrubber: false});		
+         }
+    }    
+}}}
