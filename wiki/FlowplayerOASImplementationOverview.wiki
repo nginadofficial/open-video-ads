@@ -145,7 +145,7 @@ For a detailed description of all of the configuration parameters permitted by t
 ===Initialising the Framework===
 
 {{{
-    // Load up the config and configure the debugger
+    // Load up the config and configure the basic options for the VAST framework
     _vastController = new VASTController();
     _vastController.setTimeBaseline(VASTController.RELATIVE_TO_CLIP);
     _vastController.trackStreamSlices = false; 
@@ -153,6 +153,8 @@ For a detailed description of all of the configuration parameters permitted by t
     _vastController.initialise((new PropertyBinder(new Config(), null).copyProperties(_model.config) as Config));
     doLog("Flowplayer Open Video Ad Streamer constructed - build 0.1.1.1", Debuggable.DEBUG_ALL);
 }}}
+
+
 
 ===Make sure that the Streaming Providers are Loaded===
 
