@@ -797,7 +797,9 @@ The following code snippet is from the Ad Streamer and is responsible for proces
 	    for(var i:int=0; i < trackingTable.length; i++) {
 	        var trackingPoint:TrackingPoint = trackingTable.pointAt(i);
 		if(trackingPoint.isLinear()) {
-		    clip.addCuepoint(new Cuepoint(trackingPoint.milliseconds, trackingPoint.label + ":" + displayEvent.adSlotKey));
+		    clip.addCuepoint(
+                           new Cuepoint(trackingPoint.milliseconds, trackingPoint.label + ":" 
+                                    + displayEvent.adSlotKey));
 		}
 	    }
             _player.playInstream(clip);
