@@ -47,3 +47,13 @@ In the case of Flowplayer, the answers are as follows:
   # *Managing stream sequencing*: We will do that directly via the Flowplayer Playlist and instream() API
   # *Managing providers*: We will check for and load the appropriate streaming providers as required/specified by the ad streamer configuration
 
+==High Level Design==
+
+Ok, with those questions answered and out of the way, we can proceed to the detailed design of the Ad Streamer.
+
+The following diagram illustrates the high level process that the Flowplayer Open Ad Streamer implements:
+
+{insert diagram here}
+
+
+==The Code==
