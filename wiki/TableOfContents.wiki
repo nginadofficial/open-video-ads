@@ -34,7 +34,7 @@
       * [JWPlayerOASBuild How to Build]
       * [JWPlayerOASChangeLog Change Log]
   * [VASTAS3Framework VAST AS3 Framework]
-    * [VASTAS3FrameworkOverview Overview]
+    * [VASTAS3FrameworkOverview Architecture]
     * [VASTAS3FrameworkInAction Review In Action]
       * Flowplayer
       * JW Player
