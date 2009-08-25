@@ -131,3 +131,19 @@ The following diagram illustrates the high level process that the Flowplayer Ope
     _vastController.addEventListener(StreamSchedulingEvent.SCHEDULE, onStreamSchedule);
     _vastController.addEventListener(NonLinearSchedulingEvent.SCHEDULE, onNonLinearSchedule);
 }}}
+
+===Load up the VAST Data from the Ad Server===
+
+{{{
+    _vastController.load();	
+
+    ....
+
+    protected function onTemplateLoaded(event:TemplateEvent):void {
+        doLogAndTrace("NOTIFICATION: VAST data loaded - ", event.template, Debuggable.DEBUG_FATAL);
+        _player.playlist.replaceClips2(_clipList);
+        _model.dispatchOnLoad();
+    }
+}}}
+
+===Load up the VAST Data from the Ad Server===
