@@ -167,6 +167,10 @@ There are 4 separate calls made to get the framework up and into a working state
 
 ===Make sure that the Streaming Providers are Loaded===
 
+Once the VAST Framework is instantiated the next step taken is to ensure that the required "providers" are loaded. Flowplayer implements additional streaming providers (e.g. RTMP, secure RTMP, pseudo-streaming etc.) as separate provider plugins.
+
+The following code asks the `VASTController` whether or not a provider definition for "rtmp" has been specified in the config - if it has then a call is made to ensure that the RTMP plugin is loaded before going any further.
+
 {{{
     if(_vastController.hasProvider("rtmp")) {
          ensureProviderPluginLoaded("rtmp", "rtmp");
@@ -179,6 +183,16 @@ There are 4 separate calls made to get the framework up and into a working state
 
 ===Configure User Input Handlers===
 
+The next step in the initialisation process is to create all of the handlers for user input events. Users can:
+
+  * Go fullscreen
+  * Hit the mute button
+  * Change the volume controls
+
+If any of these actions are taken during an ad play, the VAST Framework needs to know that they have been taken so that the appropriate tracking call can be made.
+
+The following code sets up the handlers for Flowplayer.
+
 {{{
     // Setup the player tracking events
     _player.onFullscreen(onFullScreen);
@@ -187,6 +201,18 @@ There are 4 separate calls made to get the framework up and into a working state
     _player.onUnmute(onUnmuteEvent);
     _player.onVolume(onProcessVolumeEvent);  
 }}}
+
+If we look at the "fullscreen" handler `onFullScreen()`, we will see how the VAST framework is notified that the event has occurred.
+
+{{{
+    private function onFullScreen(playerEvent:PlayerEvent):void {
+        if(_vastController != null) _vastController.onPlayerResize(_player.playlist.currentIndex);
+    }
+}}}
+
+When the player goes "fullscreen", the `_vastController` is informed via the `onPlayerResize()` API. The current index of the stream must be passed into that call so that the VAST Controller knows which stream has been impacted by the fullscreen action.
+
+  
 
 ===Configure the Key Event Listeners===
 
