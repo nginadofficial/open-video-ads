@@ -629,21 +629,22 @@ Because Flowplayer allows mid-roll child streams (e.g. a mid-roll ad) to be dire
 
 ===Turning the Control Bar On and Off===
 
-{{{
-    private function setScrubber(turnOn:Boolean):void {
-         var controlProps:org.flowplayer.model.DisplayProperties = _player.pluginRegistry.getPlugin("controls") as org.flowplayer.model.DisplayProperties;
-         var controls:Controls = controlProps.getDisplayObject() as Controls;
+When the framework was initialised, the Flowplayer Open Ad Streamer registered a listener (`onToggleSeekerBar()`) for the `SeekerBarEvent.TOGGLE` event.
 
-         if(turnOn) {
-             doLog("Turning the scrubber on", Debuggable.DEBUG_TRACKING_EVENTS);
-             controls.enable({all: true, scrubber: true});		
-         }	
-         else {
-             doLog("Turning the scrubber off", Debuggable.DEBUG_TRACKING_EVENTS);
-             controls.enable({all: true, scrubber: false});		
-         }
-    }    
+The following code snippet is the `onToggleSeekerBar()` function:
+
+{{{
+    public function onToggleSeekerBar(event:SeekerBarEvent):void {
+        if(_vastController.disableControls) {
+            ....
+            // CODE TO TURN OFF THE SCRUBBER
+        }
+    }
 }}}
+
+When a linear ad starts to play as well as when it ends, listeners to the `SeekerBarEvent.TOGGLE` event receive notification that the event has occurred. A call to `event.turnOff()` indicates whether or not the seeker bar should be disabled.
+
+In the case of the Flowplayer Open Ad Streamer, `onToggleSeekerBar()` then grabs a handle to the control bar plugin and toggles it's enabled state accordingly.
 
 ===Displaying Companion Ads===
 
