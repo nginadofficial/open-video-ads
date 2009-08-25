@@ -15,7 +15,7 @@
       * Using the VAST Router
       * Via the AS3 Framework
   * Video Players
-    * [FlowplayerOASIntroduction Flowplayer]
+    * [http://www.flowplayer.org Flowplayer]
       * [FlowplayerOASFeatures Features]
       * [http://code.google.com/p/open-video-ads/downloads/list Download]
       * [FlowplayerOASHowItWorks Deployment]
@@ -25,7 +25,7 @@
       * [FlowplayerOASImplementationOverview Implementation]
       * [FlowplayerOASBuild How to Build]
       * [FlowplayerOASChangeLog Change Log]
-    * [JWPlayerOASIntroduction JW Player]
+    * [http://www.longtailvideo.com JW Player]
       * [JWPlayerOASFeatures Features]
       * [http://code.google.com/p/open-video-ads/downloads/list Download]
       * [JWPlayerOASHowItWorks Deployment]
