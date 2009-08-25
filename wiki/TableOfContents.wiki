@@ -27,7 +27,7 @@
       * [FlowplayerOASChangeLog Change Log]
     * [JWPlayerOASIntroduction JW Player]
       * [JWPlayerOASFeatures Features]
-      * [JWPlayerOASHowItWorks How It Works]
+      * [JWPlayerOASHowItWorks Deployment]
       * [http://code.google.com/p/open-video-ads/downloads/list Download]
       * [OASConfiguration Configuration]
       * [http://www.bouncingminds.com/plugins/longtail/jwplayer/openvideoads/ea-0.3.0/bouncingminds.openX.jwplayer.bin/examples/index.html Examples]
