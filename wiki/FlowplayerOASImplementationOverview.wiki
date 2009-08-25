@@ -685,9 +685,23 @@ There is a corresponding function that gets executed when the "companion hide" e
 
 ===Displaying Non-Linear (Overlay) Ads===
 
+One of the advantages of the VAST framework is that it can take care of the display of non-linear (overlay) advertising for the Video Player. The Flowplayer Ad Streamer makes use of this.
+
+To turn on control of the non-linear advertising, the Ad Streamer makes the following call to the `VASTController`
+
 {{{
     _vastController.enableNonLinearAdDisplay(new DisplayProperties(this, 640, 360, 25));
 }}}
+
+This call requires a` DisplayProperties` object to be passed into the `VASTController`. The `DisplayProperties` instance defines the size of the player and a reference to the player's DisplayContainer so that the overlay `Sprite` can be added to the display container and shown.
+
+[http://www.bouncingminds.com/plugins/flowplayer/openvideoads/openadstreamer/latest/examples/http-example19.html Example 19] is a good illustration of how overlays can be configured in the framework and displayed. Part of the configuration for example 19 is presented below:
+
+{{{
+
+}}}
+
+
 
 ===Supporting Non-Linear (Overlay) 'Click to play a Video Ad'===
 
