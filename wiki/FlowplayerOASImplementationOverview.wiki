@@ -57,3 +57,77 @@ The following diagram illustrates the high level process that the Flowplayer Ope
 
 
 ==The Code==
+
+
+===Initialising the Framework===
+
+{{{
+    // Load up the config and configure the debugger
+    _vastController = new VASTController();
+    _vastController.setTimeBaseline(VASTController.RELATIVE_TO_CLIP);
+    _vastController.trackStreamSlices = false; 
+    _vastController.startStreamSafetyMargin = 300; // needed because cuepoints at 0 for FLVs don't fire
+    _vastController.initialise((new PropertyBinder(new Config(), null).copyProperties(_model.config) as Config));
+    doLog("Flowplayer Open Video Ad Streamer constructed - build 0.1.1.1", Debuggable.DEBUG_ALL);
+}}}
+
+===Make sure that the Streaming Providers are Loaded===
+
+{{{
+if(_vastController.hasProvider("rtmp")) {
+    ensureProviderPluginLoaded("rtmp", "rtmp");
+}
+
+.....
+
+_player.loadPlugin(providerName, providerUrl, onProviderLoaded);
+}}}
+
+===Configure User Input Handlers===
+
+{{{
+   // Setup the player tracking events
+   _player.onFullscreen(onFullScreen);
+   _player.onFullscreenExit(onFullScreenExit);
+   _player.onMute(onMuteEvent);
+   _player.onUnmute(onUnmuteEvent);
+   _player.onVolume(onProcessVolumeEvent);  
+}}}
+
+===Configure the Key Event Listeners===
+
+{{{
+    // Setup the critical listeners for the template loading process
+    _vastController.addEventListener(TemplateEvent.LOADED, onTemplateLoaded);
+    _vastController.addEventListener(TemplateEvent.LOAD_FAILED, onTemplateLoadError);
+
+    // Setup the linear ad listeners
+    _vastController.addEventListener(LinearAdDisplayEvent.STARTED, onLinearAdStarted);
+    _vastController.addEventListener(LinearAdDisplayEvent.COMPLETE, onLinearAdComplete); 
+    _vastController.addEventListener(LinearAdDisplayEvent.CLICK_THROUGH, onLinearAdClickThrough);           
+           
+    // Setup the companion display listeners
+    _vastController.addEventListener(CompanionAdDisplayEvent.DISPLAY, onDisplayCompanionAd);
+    _vastController.addEventListener(CompanionAdDisplayEvent.HIDE, onHideCompanionAd);
+
+    // Decide how to handle overlay displays - if through the framework, turn it on, otherwise register the event callbacks
+    _vastController.enableNonLinearAdDisplay(new DisplayProperties(this, 640, 360, 25));
+    _vastController.addEventListener(OverlayAdDisplayEvent.DISPLAY, onDisplayOverlay);
+    _vastController.addEventListener(OverlayAdDisplayEvent.HIDE, onHideOverlay);
+    _vastController.addEventListener(OverlayAdDisplayEvent.DISPLAY_NON_OVERLAY, onDisplayNonOverlay);
+    _vastController.addEventListener(OverlayAdDisplayEvent.HIDE_NON_OVERLAY, onHideNonOverlay);
+    _vastController.addEventListener(OverlayAdDisplayEvent.CLICKED, onOverlayClicked);
+    _vastController.addEventListener(AdNoticeDisplayEvent.DISPLAY, onDisplayNotice);
+    _vastController.addEventListener(AdNoticeDisplayEvent.HIDE, onHideNotice);
+          
+    // Setup the hander for tracking point set events
+    _vastController.addEventListener(TrackingPointEvent.SET, onSetTrackingPoint);
+    _vastController.addEventListener(TrackingPointEvent.FIRED, onTrackingPointFired);
+            
+    // Setup the hander for display events on the seeker bar
+    _vastController.addEventListener(SeekerBarEvent.TOGGLE, onToggleSeekerBar);
+            
+    // Ok, let's load up the VAST data from our Ad Server - when the stream sequence is constructed, register for callbacks
+    _vastController.addEventListener(StreamSchedulingEvent.SCHEDULE, onStreamSchedule);
+    _vastController.addEventListener(NonLinearSchedulingEvent.SCHEDULE, onNonLinearSchedule);
+}}}
