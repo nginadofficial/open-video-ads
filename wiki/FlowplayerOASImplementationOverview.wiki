@@ -345,11 +345,22 @@ The critical events for the Flowplayer Open Ad Streamer are:
 	    var previousContent:String = ExternalInterface.call("function(){ return document.getElementById('" + companionEvent.divID + "').innerHTML; }");
             _previousDivContent.push({ divId: companionEvent.divID, content: previousContent } );
             ExternalInterface.call("function(){ document.getElementById('" + companionEvent.divID + "').innerHTML='" + StringUtils.replaceSingleWithDoubleQuotes(companionEvent.content) + "'; }");
-         }
-         else {
+        }
+        else {
              //TO IMPLEMENT isImage(), isFlash(), isText()
         }
     }
 }}}
 
 ===Supporting Non-Linear (Overlay) 'Click to play a Video Ad'===
+
+{{{
+    public function onOverlayClicked(displayEvent:OverlayAdDisplayEvent):void {
+        doLog("NOTIFICATION: Event received - overlay has been clicked!", Debuggable.DEBUG_DISPLAY_EVENTS);
+        if(displayEvent.ad.hasAccompanyingVideoAd()) {
+
+               // CODE IN HERE TO PROCESS INSTREAM VIDEO AD
+
+        }
+    }
+}}}
