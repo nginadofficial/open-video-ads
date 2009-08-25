@@ -671,9 +671,15 @@ The following code snippet is from the Flowplayer Ad Streamer - this is the code
     public function onDisplayCompanionAd(companionEvent:CompanionAdDisplayEvent):void {
         _previousDivContent = new Array();
         if(companionEvent.contentIsHTML()) {
-	    var previousContent:String = ExternalInterface.call("function(){ return document.getElementById('" + companionEvent.divID + "').innerHTML; }");
+	    var previousContent:String = ExternalInterface.call(
+                       "function(){ return document.getElementById('" + 
+                        companionEvent.divID + "').innerHTML; }");
             _previousDivContent.push({ divId: companionEvent.divID, content: previousContent } );
-            ExternalInterface.call("function(){ document.getElementById('" + companionEvent.divID + "').innerHTML='" + StringUtils.replaceSingleWithDoubleQuotes(companionEvent.content) + "'; }");
+            ExternalInterface.call(
+                       "function(){ document.getElementById('" + 
+                       companionEvent.divID + "').innerHTML='" +
+                       StringUtils.replaceSingleWithDoubleQuotes(companionEvent.content) + 
+                       "'; }");
         }
         else {
              //TO IMPLEMENT isImage(), isFlash(), isText()
