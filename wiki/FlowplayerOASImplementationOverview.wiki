@@ -159,7 +159,7 @@ The following diagram illustrates the high level process that the Flowplayer Ope
 }}}
 
 
-===Disabling the Control Bar Seeker===
+===Turning the Control Bar On and Off===
 
 {{{
     private function setScrubber(turnOn:Boolean):void {
