@@ -604,7 +604,15 @@ The `StreamSequence` ends up having 5 streams defined in it:
   # The remaining show stream from 10 seconds to the end
   # The post-roll ad slot
 
+Now you may remember when the VAST framework was initialised, there was a call made to the `VASTController` to set`trackStreamSlices` to `false`;
 
+{{{
+_vastController.trackStreamSlices = false;
+}}}
+
+That call directly impacts the way the `StreamSequence` is formulated.
+
+Because Flowplayer allows mid-roll child streams (e.g. a mid-roll ad) to be directly inserted into a parent (e.g. show) stream via the Flowplayer "instream" API. For this reason, there is no need for the framework to "slice" up show streams into pieces so that each individual pre and post stream segment can be treated as an individual clip in a playlist. JW Player on the other hand doesn't have this type of API, so a playlist that has a mid-roll ad needs to have the show streams containing the mid-roll ad "sliced" into pieces.
 
 ===Ad Tracking and Flowplayer Cuepoints===
 
