@@ -1,2 +1,2 @@
-#summary An Overview of the Flowplayer Open Ad Streamer Design/Implementation
+#summary An Overview of the Flowplayer Open Ad Streamer Design and Implementation
 #sidebar TableOfContents
