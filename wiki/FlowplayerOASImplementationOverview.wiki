@@ -698,8 +698,46 @@ This call requires a` DisplayProperties` object to be passed into the `VASTContr
 [http://www.bouncingminds.com/plugins/flowplayer/openvideoads/openadstreamer/latest/examples/http-example19.html Example 19] is a good illustration of how overlays can be configured in the framework and displayed. Part of the configuration for example 19 is presented below:
 
 {{{
-
+    "overlays": {
+        "regions": [
+            {
+                 "id": "bottom-center",
+                 "contentTypes": "html",
+                 "verticalAlign": "bottom",
+                 "horizontalAlign": "center",
+                 "backgroundColor": "#000000",
+                 "opacity": 0.8,
+                 "borderRadius": 15,
+                 "width": 300,
+                 "height": 40
+           }
+        ],
+    }
+    "ads": {
+        "server": {
+            "type": "OpenX",
+            "vastURL": "http://openx.bouncingminds.com/openx/www/delivery/fc.php",
+            "allowAdRepetition": true
+        },
+        "schedule": [
+            {   
+                  "zone": "3",
+                  "position": "bottom-center",
+                  "width": 600,
+                  "height": 40,
+                  "startTime": "00:00:02",
+                  "duration": "5"
+            }
+        ]
+    }
 }}}
+
+Overlay configuration have 2 aspects to them:
+
+  * The definition of custom "regions" on the player screen that allow non-linear advertising to be displayed. All regions are assigned a specific "id" so that they may be uniquely named in an ad schedule.
+  * The definition of the non-linear ad slots that are to be shown in a "region" identified with a specific "id"
+
+For a detailed description of how to configure regions, please refer to the [VASTAS3FrameworkConfiguration Configuration Guide].
 
 
 
