@@ -3,7 +3,9 @@
 
 This document will step through the design and implementation of the Flowplayer Open Ad Streamer.
 
-If you haven't downloaded the source code, do so now. You'll need to refer to it as we step through the implementation.
+==Download the Code==
+
+If you haven't downloaded the source code, do so [http://open-video-ads.googlecode.com/files/openvideoads.flowplayer.openadstreamer-0.2.1.tar.gz now]. We also recommend that you download the [http://open-video-ads.googlecode.com/files/openvideoads.vast.as3.tar.gz VAST AS3 Framework code] as this isn't packaged by default with the plug-in source. You'll need to refer to both as we step through the implementation.
 
 ==Check out the Examples==
 
