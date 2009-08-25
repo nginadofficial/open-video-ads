@@ -739,20 +739,67 @@ Overlay configuration have 2 aspects to them:
 
 For a detailed description of how to configure regions, please refer to the [VASTAS3FrameworkConfiguration Configuration Guide].
 
+Although it doesn't make use of then, the Flowplayer Open Ad Streamer does register listeners for overlay display and hide events.
 
+The following initialisation code illustrates how listeners for these events are registered:
+
+{{{
+    _vastController.addEventListener(OverlayAdDisplayEvent.DISPLAY, onDisplayOverlay);
+    _vastController.addEventListener(OverlayAdDisplayEvent.HIDE, onHideOverlay);
+}}}
+
+The "display" event is fired when the framework determines that the overlay is to be shown while the "hide" is fired when the overlay is to be removed. The framework fires these events regardless of whether or not it is responsible for the display and hiding of overlays on the player. 
 
 ===Supporting Non-Linear (Overlay) 'Click to play a Video Ad'===
+
+Non-linear advertising that supports the notion of "click me to start a video ad" has to be treated slightly differently by the Flowplayer Open Ad Streamer than standard display or "click through to a website" overlays.
+
+The key difference is that a non-linear overlay that allows a video to be played in essence has a linear ad attached to it. From the perspective of the Flowplayer Open Ad Streamer, when the user clicks on an overlay to fire up the video, the player must insert the Video Ad "instream" to the current show clip.
+
+As such, the Ad Streamer captures the overlay "click" event via the `OverlayAdDisplayEvent.CLICKED` event listener and processes it accordingly.
+
+The following code snippet is from the Ad Streamer and is responsible for processing the click event on the overlay.
 
 {{{
     public function onOverlayClicked(displayEvent:OverlayAdDisplayEvent):void {
         doLog("NOTIFICATION: Event received - overlay has been clicked!", Debuggable.DEBUG_DISPLAY_EVENTS);
         if(displayEvent.ad.hasAccompanyingVideoAd()) {
+            var clip:ScheduledClip = new ScheduledClip();
+	    var overlayAdSlot:AdSlot = _vastController.adSchedule.getSlot(displayEvent.adSlotKey);
+				
+	    clip.type = ClipType.fromMimeType(overlayAdSlot.mimeType);
+	    clip.autoPlay = _vastController.config.playContiguously;
+	    clip.start = 0;
+	    clip.originalDuration = overlayAdSlot.getAttachedLinearAdDurationAsInt();
+	    clip.duration = clip.originalDuration;
 
-               // CODE IN HERE TO PROCESS INSTREAM VIDEO AD
+	    if(overlayAdSlot.isRTMP()) {
+                clip.url = overlayAdSlot.streamName;
+                clip.setCustomProperty("netConnectionUrl", overlayAdSlot.baseURL);
+                clip.provider = "rtmp";          	
+            }
+            else {
+	        clip.url = overlayAdSlot.url;
+		clip.provider = "http";
+            }
 
+            // Setup the flowplayer cuepoints based on the tracking points defined for this 
+            // linear ad (including companions attached to linear ads)
+
+            clip.onCuepoint(processPopupVideoAdCuepoint);
+	    var trackingTable:TrackingTable = overlayAdSlot.getTrackingTable();
+	    for(var i:int=0; i < trackingTable.length; i++) {
+	        var trackingPoint:TrackingPoint = trackingTable.pointAt(i);
+		if(trackingPoint.isLinear()) {
+		    clip.addCuepoint(new Cuepoint(trackingPoint.milliseconds, trackingPoint.label + ":" + displayEvent.adSlotKey));
+		}
+	    }
+            _player.playInstream(clip);
         }
     }
 }}}
+
+
 
 ===Ensuring a Linear Ad plays only once===
 
