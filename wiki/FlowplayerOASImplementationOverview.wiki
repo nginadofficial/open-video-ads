@@ -19,9 +19,9 @@ The Flowplayer Open Ad Streamer relies on Flowplayer 3.1.3 or greater. The imple
 
 There are several key features of Flowplayer that need to be considered when finalising a design to integrate the VAST AS3 Framework to deliver video advertising:
 
-  # Flowplayer provides a specific API to manage 'time-based' events in the player. This API is known as the Cuepoint API. It allows a plugin to set a specifically labeled cuepoint event to occur at a nominated point in time. This API is perfectly crafted for use by the framework to help track the progress of video advertising as it is played.
-  # The second key feature of Flowplayer is it's "instream" API. This API allows "child" streams to be inserted to play at a specific point within a parent clip. This API is perfect to support the delivery of mid-roll and non-linear (overlay) 'click to play a video' advertising
-  # Finally, Flowplayer provides a good clip management API that allows a plugin to build up and management a specific playlist. This API is well suited to use by the framework to build up a sequence of advertising and show clips to play sequentially in the player.
+  # Flowplayer provides a specific API to manage 'time-based' events in the player. This API is known as the Cuepoint API. It allows a plugin to set a specifically labeled cuepoint event to occur at a nominated point in time. This API is perfectly crafted for use by the framework to help track the progress of video advertising as it is played. For more information on this API, please refer to this [http://www.flowplayer.org/documentation/api/clip.html#cuepoints flowplayer documentation].
+  # The second key feature of Flowplayer is it's "instream" API. This API allows "child" streams to be inserted to play at a specific point within a parent clip. This API is perfect to support the delivery of mid-roll and non-linear (overlay) 'click to play a video' advertising. For more information on this API, please refer to this [http://www.flowplayer.org/demos/configuration/instream-playlist.html flowplayer documentation].
+  # Finally, Flowplayer provides a good clip management API that allows a plugin to build up and management a specific playlist. This API is well suited to use by the framework to build up a sequence of advertising and show clips to play sequentially in the player. For more information on this API, please refer to this [http://www.flowplayer.org/apidoc/flowplayer documentation].
 
 All three API features influence the design and implementation of our Flowplayer Open Ad Streamer.
 
