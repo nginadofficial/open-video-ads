@@ -74,24 +74,24 @@ The following diagram illustrates the high level process that the Flowplayer Ope
 ===Make sure that the Streaming Providers are Loaded===
 
 {{{
-if(_vastController.hasProvider("rtmp")) {
-    ensureProviderPluginLoaded("rtmp", "rtmp");
-}
+    if(_vastController.hasProvider("rtmp")) {
+         ensureProviderPluginLoaded("rtmp", "rtmp");
+    }
 
-.....
+    ..... 
 
-_player.loadPlugin(providerName, providerUrl, onProviderLoaded);
+    _player.loadPlugin(providerName, providerUrl, onProviderLoaded);
 }}}
 
 ===Configure User Input Handlers===
 
 {{{
-   // Setup the player tracking events
-   _player.onFullscreen(onFullScreen);
-   _player.onFullscreenExit(onFullScreenExit);
-   _player.onMute(onMuteEvent);
-   _player.onUnmute(onUnmuteEvent);
-   _player.onVolume(onProcessVolumeEvent);  
+    // Setup the player tracking events
+    _player.onFullscreen(onFullScreen);
+    _player.onFullscreenExit(onFullScreenExit);
+    _player.onMute(onMuteEvent);
+    _player.onUnmute(onUnmuteEvent);
+    _player.onVolume(onProcessVolumeEvent);  
 }}}
 
 ===Configure the Key Event Listeners===
