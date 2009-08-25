@@ -590,10 +590,20 @@ The configuration snippet from below is from Example05:
 
 The following diagram illustrates the `AdSequence` and `ShowSequence` that result from interpreting the ad schedule and show configuration:
 
-<img src="http://static.bouncingminds.com/images/open-video-ads/adschedule-streamsequence-example05.png" border="0" height="190">
+<img src="http://static.bouncingminds.com/images/open-video-ads/adschedule-streamsequence-example05.png" border="0" height="230">
 <br/>
 <br/>
 _*Figure 4: Example05 - Ad and Stream Sequences*_
+
+
+The `StreamSequence` ends up having 5 streams defined in it:
+
+  # The pre-roll ad slot
+  # The first part of the show stream covering the first 10 seconds up to the start of the mid-roll ad
+  # The mid-roll ad slot
+  # The remaining show stream from 10 seconds to the end
+  # The post-roll ad slot
+
 
 
 ===Ad Tracking and Flowplayer Cuepoints===
