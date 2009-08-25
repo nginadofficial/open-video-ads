@@ -337,5 +337,19 @@ The critical events for the Flowplayer Open Ad Streamer are:
 
 ===Displaying Companion Ads===
 
+{{{
+    public function onDisplayCompanionAd(companionEvent:CompanionAdDisplayEvent):void {
+        doLogAndTrace("NOTIFICATION: Event received to display companion ad", companionEvent, Debuggable.DEBUG_DISPLAY_EVENTS);
+        _previousDivContent = new Array();
+        if(companionEvent.contentIsHTML()) {
+	    var previousContent:String = ExternalInterface.call("function(){ return document.getElementById('" + companionEvent.divID + "').innerHTML; }");
+            _previousDivContent.push({ divId: companionEvent.divID, content: previousContent } );
+            ExternalInterface.call("function(){ document.getElementById('" + companionEvent.divID + "').innerHTML='" + StringUtils.replaceSingleWithDoubleQuotes(companionEvent.content) + "'; }");
+         }
+         else {
+             //TO IMPLEMENT isImage(), isFlash(), isText()
+        }
+    }
+}}}
 
 ===Supporting Non-Linear (Overlay) 'Click to play a Video Ad'===
