@@ -27,7 +27,7 @@
     * [JWPlayerOASIntroduction JW Player]
       * [JWPlayerOASFeatures Features]
       * [JWPlayerOASHowItWorks How It Works]
-      * [http://code.google.com/p/openx-iab-vast/downloads/list Download]
+      * [http://code.google.com/p/open-video-ads/downloads/list Download]
       * [OASConfiguration Configuration]
       * [http://www.bouncingminds.com/plugins/longtail/jwplayer/openvideoads/ea-0.3.0/bouncingminds.openX.jwplayer.bin/examples/index.html Examples]
       * [JWPlayerOASLimitations Limitations]
