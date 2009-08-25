@@ -816,6 +816,15 @@ Reviewing the code snippet there are a few interesting things to note about the 
 
 ===Ensuring a Linear Ad plays only once===
 
+Finally, the Open Ad Streamer supports playing ads just once. This is achieved by specifying the "playOnce" config option either at an Ad Slot or general Ad level.
+
+[ Example 17] illustrates the "playOnce" functionality.
+
+The configuration for example 17 is as follows:
+
+{{{
+}}}
+
 {{{
     protected function onTrackingPointFired(event:TrackingPointEvent):void {
         _player.playlist.onFinish(
