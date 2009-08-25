@@ -20,7 +20,7 @@
       * [FlowplayerOASHowItWorks How It Works]
       * [http://code.google.com/p/openx-iab-vast/downloads/list Download]
       * [OASConfiguration Configuration]
-      * [http://www.bouncingminds.com/plugins/flowplayer/openvideoads/ea-0.1.1/bouncingminds.openX.flowplayer.http.bin/examples/index.html Examples]
+      * [http://www.bouncingminds.com/plugins/flowplayer/openvideoads/openadstreamer/latest/examples/index.html  Examples]
       * [FlowplayerOASLimitations Limitations]
       * [FlowplayerOASBuild How to Build]
       * [FlowplayerOASChangeLog Change Log]
