@@ -223,11 +223,13 @@ Once the VAST Framework makes a call to an Ad Server and receives the correspond
 Consider our example 03. When the VAST Framework is initialised, the `AdSchedule` object model exists as illustrated below:
 
 <img src="http://static.bouncingminds.com/images/open-video-ads/adschedule-model.png" border="0" height="340">
+<br/>
 _figure 2: The Basic AdSchedule_
 
 Following the load of the VAST data however, the object model expands to become:
 
 <img src="http://static.bouncingminds.com/images/open-video-ads/adschedule-model-with-ads.png" border="0" height="340">
+<br/>
 _figure 3: The Populated AdSchedule_
 
 For a detailed explanation of what happens when an Ad Server call is made and a VAST response is parsed by the framework, read the section further on in this guide entitled "Requesting a Video Ad Serving Template (VAST) from the Ad Server".
@@ -530,6 +532,7 @@ A `StreamSequence` and an `AdSchedule` share an important relationship.
 The following diagram illustrates the object model that exists for our Example03 once the `StreamSequence` has been formed. It also identifies the relationships that exist between the `StreamSequence`, the `VideoAdServingTemplate` and the `AdSchedule`.
 
 {insert diagram}
+<br/>
 _diagram 4: A StreamSequence and AdSchedule working together
 
 
