@@ -29,23 +29,21 @@ All three API features influence the design and implementation of our Flowplayer
 
 When integrating the VAST AS3 Framework to create an Ad Streamer a number of important questions must be asked:
 
-  # TRACKING TIME: How is the player going to notify the framework about changes to the stream timeline? Will it send new time updates at a certain frequency or does it prefer to have specific time based events registered so that it can notify when the time has been hit? (for example, if we need to know when the stream is half way through, does the player prefer to tell us every 1/10th of second the latest time or does it prefer to notify the framework only at the time the stream is half way through?). In the case of Flowplayer it prefers to have time based events registered via the Cuepoint API whereas JW Player notifies every 10th of a second.
-  # MANAGING THE CONTROL BAR: How does the player manage the control bar - for video advertising the seeker (timeline) needs to be disabled when video ads play - we need to know how to do that so that the appropriate code can be implemented when the framework notifies our new ad streamer when an ad starts or ends.
-  # RECOGNISING KEY USER INPUTS: How does the player recognise when fullscreen has been activated, mute, start, stop, pause etc.? When these events occur, the VAST Framework needs to be notified so that it can log the event accordingly.
-  # DISPLAYING NON-LINEAR ADVERTISING: How do you want to handle the display of overlay advertising? The VAST Framework can handle it, but it needs to be given a handle to an appropriate DisplayContainer for the player so that the overlay Sprites can be created, added and shown when required.
-  # MANAGING THE STREAM SEQUENCE: Ultimately the goal of an Ad Streamer implementation is to manage the sequencing of video ads with show streams in such a way that the Player knows how to play the sequence. How does the player prefer to handle the sequencing of such a playlist? Does it prefer to deal with the resulting sequence as a playlist of a specific format (e.g. in the case of the JW Player Ad Streamer an XSPF Playlist which can just be read directly into the player via it's playlist load API, or in Flowplayer's case, the Playlist object in the player can be directly configured via the Playlist AS API)
-  # MANAGING PROVIDERS: How are the streaming protocol providers handled by the player?. For instance, how is RTMP supported by the player? Does a separate RTMP plugin have to be loaded or is it automatically available to the player?
+  # *Tracking Time*: How is the player going to notify the framework about changes to the stream timeline and how does it track that time - relative to the clip or the playlist? Will it send new time updates at a certain frequency or does it prefer to have specific time based events registered so that it can notify when the time has been hit? (for example, if we need to know when the stream is half way through, does the player prefer to tell us every 1/10th of second the latest time or does it prefer to notify the framework only at the time the stream is half way through?). In the case of Flowplayer it prefers to have time based events registered via the Cuepoint API whereas JW Player notifies every 10th of a second. In both cases, all time is reported relative to the start of the active clip (so when a new stream starts playing, time is reset to 0)
+  # *Managing the Control Bar*: How does the player manage the control bar - for video advertising the seeker (timeline) needs to be disabled when video ads play - we need to know how to do that so that the appropriate code can be implemented when the framework notifies our new ad streamer when an ad starts or ends.
+  # *Recognising User Inputs*: How does the player recognise when fullscreen has been activated, mute, start, stop, pause etc.? When these events occur, the VAST Framework needs to be notified so that it can log the event accordingly.
+  # *Displaying Non-Linear Advertising*: How do you want to handle the display of overlay advertising? The VAST Framework can handle it, but it needs to be given a handle to an appropriate DisplayContainer for the player so that the overlay Sprites can be created, added and shown when required.
+  # *Managing the Playlist*: Ultimately the goal of an Ad Streamer implementation is to manage the sequencing of video ads with show streams in such a way that the Player knows how to play the sequence. How does the player prefer to handle the sequencing of such a playlist? Does it prefer to deal with the resulting sequence as a playlist of a specific format (e.g. in the case of the JW Player Ad Streamer an XSPF Playlist which can just be read directly into the player via it's playlist load API, or in Flowplayer's case, the Playlist object in the player can be directly configured via the Playlist AS API)
+  # *Managing the Streaming Providers*: How are the streaming protocol providers handled by the player?. For instance, how is RTMP supported by the player? Does a separate RTMP plugin have to be loaded or is it automatically available to the player?
 
 All of these questions require careful consideration before finalizing the implementation approach for the Ad Streamer.
 
-In the case of Flowplayer, we are doing the following:
+In the case of Flowplayer, the answers are as follows:
 
-  # *Tracking time*: we will use the Flowplayer Cuepoint API
+  # *Tracking time*: we will use the Flowplayer Cuepoint API and time is tracked relative to the Clip
   # *Managing the control bar*: using the plugin API to gain access to the control bar plugin
   # *Recognizing user inputs*: We are using the Flowplayer.on....() API (e.g. onMute(), onFullscreen() etc.) to identify when user input event occur
   # *Displaying Non-Linear Advertising*: We will rely on the VAST Framework to do that, and we'll provide a handle to the Flowplayer DisplayContainer and a set of DisplayProperties that inform the framework about the dimensions of the player
   # *Managing stream sequencing*: We will do that directly via the Flowplayer Playlist and instream() API
-  # *Manage providers*: We will check for and load the appropriate streaming providers as required/specified by the ad streamer configuration
-
-
+  # *Managing providers*: We will check for and load the appropriate streaming providers as required/specified by the ad streamer configuration
 
