@@ -281,7 +281,16 @@ Broadly speaking there are 5 categories of events:
 
 For a detailed description of all event types, please refer to the "[VASTAS3FrameworkEventManagement Event Management Guide]".
 
-===Load up the VAST Data from the Ad Server===
+The critical events for the Flowplayer Open Ad Streamer are:
+
+  * The data loading events (`TemplateEvent.LOADED`) so that the plugin knows when the VAST data requested from the Ad Server has been successfully returned
+  * The Ad and Stream scheduling events (`StreamSchedulingEvent.SCHEDULE` and `NonLinearSchedulingEvent.SCHEDULE`) because the plugin creates the player playlist based on notifications back from the framework that a stream is to be scheduled for playback
+  * The companion ad display events as the Flowplayer plugin then facilitates the display of those companions in the page containing the player
+  * Non-linear Ad display events (specifically `OverlayDisplayEvent.CLICKED`) so that the plugin can trigger an instream video ad to be played where required
+  * Player control events (`SeekerBarEvent.TOGGLE`) to allow the scrubber bar to be enabled/disabled when linear ads are played
+
+
+===Requesting a Video Ad Serving Template (VAST) from the Ad Server===
 
 {{{
     _vastController.load();	
@@ -295,7 +304,7 @@ For a detailed description of all event types, please refer to the "[VASTAS3Fram
     }
 }}}
 
-===Processing Time Based Events - Cuepoints===
+===Ad Tracking and Flowplayer Cuepoints===
 
 {{{
     protected function processCuepoint(clipevent:ClipEvent):void {
@@ -325,3 +334,8 @@ For a detailed description of all event types, please refer to the "[VASTAS3Fram
          }
     }    
 }}}
+
+===Displaying Companion Ads===
+
+
+===Supporting Non-Linear (Overlay) 'Click to play a Video Ad'===
