@@ -61,7 +61,7 @@ The following diagram illustrates the high level process that the Flowplayer Ope
 
 ===Example Configuration===
 
-For the code walkthrough we will use [http://www.bouncingminds.com/plugins/flowplayer/openvideoads/openadstreamer/latest/examples/http-example03.html HTTP example03] - a simple configuration that delivers a pre-roll ad before a show stream and then an overlay 5 seconds into the show stream that supports a "click to start a video ad".
+For the code walkthrough we will use [http://www.bouncingminds.com/plugins/flowplayer/openvideoads/openadstreamer/latest/examples/http-example03.html HTTP example 03] - a simple configuration that delivers a pre-roll ad before a show stream and then an overlay 5 seconds into the show stream that supports a "click to start a video ad".
 
 The configuration for example03 is as follows:
 
