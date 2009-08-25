@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Example 10 - A mixed RTMP and HTTP playlist</title>
+<script type="text/javascript" src="../dist/jquery-1.3.1.js"></script>
+<script type="text/javascript" src="../dist/flowplayer-3.1.0.min.js"></script>
+<script type="text/javascript" src="../dist/global-0.16.js"></script>
+<link rel="stylesheet" type="text/css" href="css/global.css" />
+</head>
+<body>
+
+<h2>Example 10 - A mixed RTMP and HTTP playlist</h2>
+<p class="example">
+This example illustrates how to serve up a mixture of HTTP and RTMP streams (shows and ads). Zone '20' is a zone
+that serves all types of ads (RTMP and HTTP). This example plays a pre-roll ad (could be either HTTP or RTMP)
+and then a show stream (RTMP) followed by another pre-roll ad of some type and then a HTTP version of the
+show stream (each limited to 10 seconds).
+</p>
+<a class="example"></a>
+<script type="text/javascript">
+flowplayer("a.example", "../dist/flowplayer-3.1.3-dev.swf", {
+    plugins: {
+        controls: {
+            autoHide: "always"
+        },
+
+        openAdStreamer: {
+            url: '../dist/OpenAdStreamer.swf',
+
+		    "deliveryType": "any",
+	    	"playContiguously": false,
+
+            "shows": {
+	            "streams": [
+	                 { "file":"rtmp://ne7c0nwbit.rtmphost.com/videoplayer/mp4:bbb_640x360_h264.mp4", "duration":"00:00:10" },
+	                 { "file":"http://static.bouncingminds.com/shows/bbb_640x360.mp4", "duration":"00:00:10" }
+	            ]
+            },
+
+            "ads": {
+	            "server": {
+	            	"type": "OpenX",
+		            "vastURL": "http://openx.bouncingminds.com/openx/www/delivery/fc.php"
+		        },
+
+	            "schedule": [
+	                {
+	                	"zone": "15",
+	                    "position": "pre-roll"
+	                }
+	            ]
+            },
+
+            "debug": {
+	            "levels": "all",
+    	        "debugger": "firebug"
+            }
+        }
+    }
+});
+</script>
+<br/>
+<p>
+The configuration for this example is:
+</p>
+<div class="codebox">
+<pre>
+<code>
+flowplayer("a.example", "../dist/flowplayer-3.1.3-dev.swf", {
+    plugins: {
+        controls: {
+            autoHide: "always"
+        },
+
+        openAdStreamer: {
+            url: '../dist/OpenAdStreamer.swf',
+
+		    "deliveryType": "any",
+	    	"playContiguously": false,
+
+            "shows": {
+	            "streams": [
+	                 { "file":"rtmp://ne7c0nwbit.rtmphost.com/videoplayer/mp4:bbb_640x360_h264.mp4", "duration":"00:00:10" },
+	                 { "file":"http://static.bouncingminds.com/shows/bbb_640x360.mp4", "duration":"00:00:10" }
+	            ]
+            },
+
+            "ads": {
+	            "server": {
+	            	"type": "OpenX",
+		            "vastURL": "http://openx.bouncingminds.com/openx/www/delivery/fc.php"
+		        },
+
+	            "schedule": [
+	                {
+	                	"zone": "15",
+	                    "position": "pre-roll"
+	                }
+	            ]
+            },
+
+            "debug": {
+	            "levels": "all",
+    	        "debugger": "firebug"
+            }
+        }
+    }
+});
+</code>
+</pre>
+</div>
+</body>
+</html>
