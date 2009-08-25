@@ -12,7 +12,7 @@
       * [SettingUpYourFirstOpenXCampaign Your First Campaign]
     * Ad Tech
     * Other Ad Servers
-      * The VAST Router
+      * Using the VAST Router
       * Via the AS3 Framework
   * Video Players
     * [FlowplayerOASIntroduction Flowplayer]
