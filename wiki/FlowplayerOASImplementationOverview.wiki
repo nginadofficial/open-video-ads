@@ -9,6 +9,6 @@ If you haven't downloaded the source code, do so [http://open-video-ads.googleco
 
 ==Check out the Examples==
 
-Equally, before stepping through the detailed design of the Flowplayer Open Ad Streamer it's worth taking the time to review the  [http://www.bouncingminds.com/plugins/flowplayer/openvideoads/openadstreamer/latest/examples/index.html 30 odd examples] that have been created to show how the Ad Streamer can be configured.
+Before stepping through the detailed design of the Flowplayer Open Ad Streamer it's worth taking the time to review the  [http://www.bouncingminds.com/plugins/flowplayer/openvideoads/openadstreamer/latest/examples/index.html 30 odd examples] that have been created to show how the Ad Streamer can be configured.
 
 Each of these examples explores a different area of behavior for both the Ad Streamer and the VAST AS3 Framework. 
