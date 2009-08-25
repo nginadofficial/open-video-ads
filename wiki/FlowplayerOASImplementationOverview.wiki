@@ -225,7 +225,7 @@ Consider our example 03. When the VAST Framework is initialised, the `AdSchedule
 <img src="http://static.bouncingminds.com/images/open-video-ads/adschedule-model.png" border="0" height="340">
 <br/>
 <br/>
-_*figure 2: The Basic AdSchedule*_
+_*Figure 2: The Basic AdSchedule*_
 <br/>
 
 Following the load of the VAST data however, the object model expands to become:
@@ -233,8 +233,9 @@ Following the load of the VAST data however, the object model expands to become:
 <img src="http://static.bouncingminds.com/images/open-video-ads/adschedule-model-with-ads.png" border="0" height="340">
 <br/>
 <br/>
-_*figure 3: The Populated AdSchedule*_
-<br/>
+_*Figure 3: The Populated AdSchedule*_
+
+
 For a detailed explanation of what happens when an Ad Server call is made and a VAST response is parsed by the framework, read the section further on in this guide entitled "Requesting a Video Ad Serving Template (VAST) from the Ad Server".
 
 ===Make sure that the Streaming Providers are Loaded===
