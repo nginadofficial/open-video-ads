@@ -10,10 +10,10 @@
       * [InstallingOpenXServerVideoPlugin  Enabling the Video Plugin]
       * [https://developer.openx.org/wiki/display/DOCS/OpenX+Video+Plugin+Beta+--+Documentation OpenX Documentation]
       * [SettingUpYourFirstOpenXCampaign Your First Campaign]
-   * Other Ad Servers
-      * How To Implement
-      * Configuration
-      * Coding
+    * Ad Tech
+    * Other Ad Servers
+      * The VAST Router
+      * Via the AS3 Framework
   * Video Players
     * [FlowplayerOASIntroduction Flowplayer]
       * [FlowplayerOASFeatures Features]
