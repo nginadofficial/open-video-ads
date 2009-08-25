@@ -799,7 +799,12 @@ The following code snippet is from the Ad Streamer and is responsible for proces
     }
 }}}
 
+Reviewing the code snippet there are a few interesting things to note about the way the Flowplayer Ad Streamer uses the VAST Framework:
 
+  * The model objects (in this case a `NonLinearVideoAd`) can be extracted directly from the events that are fired back to the listeners - as illustrated by the code `displayEvent.ad`. Once a model object has been obtained, calls can be made directly to the model to find out information about it. In this case the Ad Streamer needs to know if there is a Linear Video Ad attached to the Non-Linear overlay - if there is, then it needs to be played.
+  * To configure a clip to play, various pieces of information are required about - what protocol is to be used (RTMP or HTTP), what's the name of the stream and the file type - all of this information is available in the `AdSlot` corresponding to the overlay that was clicked. To get hold of the `AdSlot`, a call can be made to the `VASTController` to `getSlot()` at a specific index (identified as the `adSlotKey` attribute provided in the `OverlayAdDisplayEvent`). 
+  * The ad tracking cuepoints for overlay 'click to play video' ads aren't setup by default by the `VASTController` when the ads are original sequenced and scheduled. Before the 'click to play' overlay video ad is fired up, the tracking cuepoints must be setup. The tracking points can be obtained from the AdSlot holding the overlay ad as the tracking table for that AdSlot will understand that it has a linear ad attached to the overlay and as such, will define the cuepoints necessary to track that ad when played. To make sure that only linear video ad tracking points are set in the player as the overlay video ad plays, the condition `if(trackingPoint.isLinear())` is used when setting the Flowplayer cuepoints.
+  * Finally, the Flowplayer Ad Streamer uses the "instream" API to insert the newly formed video ad clip into the parent show stream. Once the clip has played, the original show stream resumes.
 
 ===Ensuring a Linear Ad plays only once===
 
