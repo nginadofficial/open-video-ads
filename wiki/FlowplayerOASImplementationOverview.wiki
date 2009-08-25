@@ -177,16 +177,36 @@ An AdTech class is in the works along with a more generic VAST Router class that
 The "server" configuration parameter (in the "ads" configuration grouping) identifies the type of VAST compliant Ad Server to which the framework will be communicating. In our example the "server" configuration appears as follows:
 
 {{{
-                 "server": {
-                      "type": "OpenX",
-                      "vastURL": "http://openx.bouncingminds.com/openx/www/delivery/fc.php"
-                 },
-
+    "server": {
+        "type": "OpenX",
+        "vastURL": "http://openx.bouncingminds.com/openx/www/delivery/fc.php"
+    },
 }}}
 
 ===Constructing an AdSchedule===
 
+An Ad Schedule is a central construct within the VAST AS3 Framework and the Flowplayer Open Ad Server as a result.
 
+An Ad Schedule is a series of Ad Slots that represent a single Video Ad instance to be played when the Video Player serves the streams.
+
+An Ad Schedule is declared through the "schedule" configuration parameter in the "ads" configuration grouping. The declaration below is from our example 03:
+
+{{{
+                 "schedule": [
+                      {
+                           "zone": "5",
+                           "position": "pre-roll"
+                      },
+                      {
+                           "zone": "12",
+                           "position": "bottom",
+                           "width": 600,
+                           "height": 40,
+                           "startTime": "00:00:05",
+                           "duration": "15"
+                      }
+                  ],
+}}}
 
 ===Make sure that the Streaming Providers are Loaded===
 
