@@ -170,9 +170,21 @@ Once the `VASTController` receives the configuration data and has parsed it acco
   # It constructs an `AdSchedule` based on the configuration data provided
   # It creates an instance of the appropriate Ad Server connection object so that it is ready to talk with the Ad Server when required 
 
-The current version of the framework supports an Ad Server connection class for OpenX. An AdTech class is in the works along with a more generic VAST Router class that allows non VAST compliant ad servers to be bridged. 
+The current version of the framework supports an Ad Server connection class for OpenX. 
 
-===Constructing an `AdSchedule`===
+An AdTech class is in the works along with a more generic VAST Router class that allows non VAST compliant ad servers to be bridged. 
+
+The "server" configuration parameter (in the "ads" configuration grouping) identifies the type of VAST compliant Ad Server to which the framework will be communicating. In our example the "server" configuration appears as follows:
+
+{{{
+                 "server": {
+                      "type": "OpenX",
+                      "vastURL": "http://openx.bouncingminds.com/openx/www/delivery/fc.php"
+                 },
+
+}}}
+
+===Constructing an AdSchedule===
 
 
 
