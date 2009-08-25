@@ -17,7 +17,7 @@
   * Video Players
     * [FlowplayerOASIntroduction Flowplayer]
       * [FlowplayerOASFeatures Features]
-      * [FlowplayerOASHowItWorks How It Works]
+      * [FlowplayerOASHowItWorks Deployment]
       * [http://code.google.com/p/open-video-ads/downloads/list Download]
       * [OASConfiguration Configuration]
       * [http://www.bouncingminds.com/plugins/flowplayer/openvideoads/openadstreamer/latest/examples/index.html  Examples]
