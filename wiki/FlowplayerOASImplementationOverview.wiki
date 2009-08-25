@@ -49,8 +49,6 @@ In the case of Flowplayer, the answers are as follows:
 
 ==High Level Design==
 
-Ok, with those questions answered and out of the way, we can proceed to the detailed design of the Ad Streamer.
-
 The following diagram illustrates the high level process that the Flowplayer Open Ad Streamer implements:
 
 {insert diagram here}
