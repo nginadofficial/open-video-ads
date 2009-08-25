@@ -481,6 +481,22 @@ Below is a cut-down example VAST response for our OpenX ad call - you can see ho
 
 ====The Parsing of the Ad Server Response====
 
+Upon the receipt of a VAST response from the ad server, the framework constructs an object model of the Video Ad Serving Template.
+
+You can see an example VAST response for our example03 [http://openx.bouncingminds.com/openx/www/delivery/fc.php?script=bannerTypeHtml:vastInlineBannerTypeHtml:vastInlineHtml&zones=pre-roll0-0%3D5|bottom1-0%3D12&nz=1&source=&r=3189404.425211251&block=1&format=vast&charset=UTF_8 here] (if you can't see the response correctly in your browser, copy the link and cut and paste it into Firefox to view).
+
+At a high level, the object model is constructed as follows:
+
+  * A single `VideoAdServingTemplate` is instantiated
+  * For each Ad returned in the VAST data, a `VideoAd` object is instantiated and added to the list held by the `VideoAdServingTemplate`
+  * A `VideoAd` encapsulates the definition of the entities that are to be played for a single `AdSlot` in the `AdSchedule`. These may be:
+    * A `LinearVideoAd` or
+    * A `NonLinearVideoAd` that may optionally have a `LinearVideoAd` attached to it (if it's an overlay that triggers a video ad to play)
+    * Both `LinearVideoAd` and `NonLinearVideoAd` may have `CompanionAd`s attached
+  * If a `LinearVideoAd` is created, a number of `MediaFiles` may be attached to that `LinearVideoAd` - each `MediaFile` represents a specific type of video stream that may be played (mimeType, bitrate, streaming or progressive etc.)
+
+For a detailed view of the class model associated with the framework, please review the [Framework Class Model Guide].
+
 ====The Construction of a Stream Sequence====
 
 
