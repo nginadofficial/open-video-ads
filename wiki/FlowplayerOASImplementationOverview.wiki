@@ -222,11 +222,11 @@ Following the load of the VAST data however, the object model expands to become:
 
 {INSERT DIAGRAM}
 
-
+For a detailed explanation of what happens when an Ad Server call is made and a VAST response is parsed by the framework, read the section further on in this guide entitled "Requesting a Video Ad Serving Template (VAST) from the Ad Server".
 
 ===Make sure that the Streaming Providers are Loaded===
 
-Once the VAST Framework is instantiated the next step taken is to ensure that the required "providers" are loaded. Flowplayer implements additional streaming providers (e.g. RTMP, secure RTMP, pseudo-streaming etc.) as separate provider plugins.
+Once the VAST Framework is initialised, the next step taken is to ensure that the required "providers" are loaded ready to play the streams once they are configured in the player. Flowplayer implements additional streaming providers (e.g. RTMP, secure RTMP, pseudo-streaming etc.) as separate provider plugins.
 
 The following code asks the `VASTController` whether or not a provider definition for "rtmp" has been specified in the config - if it has then a call is made to ensure that the RTMP plugin is loaded before going any further.
 
