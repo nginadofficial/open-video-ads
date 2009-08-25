@@ -6,7 +6,7 @@ The best way to understand how the VAST AS3 framework operates is to see it in a
 Two player plugins have been produced using the framework:
 
   # A Flowplayer Open Ad Streamer ([http://open-video-ads.googlecode.com/files/openvideoads.flowplayer.openadstreamer.tar.gz get the code], [http://www.bouncingminds.com/plugins/flowplayer/openvideoads/ea-0.1.1/bouncingminds.openX.flowplayer.http.bin/examples/index.html review examples], read about it)
-  # A Longtail Video JW Player Open Ad Streamer ([http://open-video-ads.googlecode.com/files/jwplayer.openadstreamer.bin.tar.gz get the code], [http://www.bouncingminds.com/plugins/longtail/jwplayer/openvideoads/ea-0.3.0/bouncingminds.openX.jwplayer.bin/examples/index.html review examples], read about it)
+  # A Longtail Video JW Player Open Ad Streamer ([http://open-video-ads.googlecode.com/files/jwplayer.openadstreamer.tar.gz get the code], [http://www.bouncingminds.com/plugins/longtail/jwplayer/openvideoads/ea-0.3.0/bouncingminds.openX.jwplayer.bin/examples/index.html review examples], read about it)
 
 Both use the framework differently and as such, both illustrate how the framework can be used in different ways to deliver VAST compliant advertising to a Video Player.
 
