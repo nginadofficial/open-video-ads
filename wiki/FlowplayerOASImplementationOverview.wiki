@@ -1,2 +1,6 @@
 #summary An Overview of the Flowplayer Open Ad Streamer Design and Implementation
 #sidebar TableOfContents
+
+Before stepping through the detailed design of the Flowplayer Open Ad Streamer it's worth taking the time to review the 30 odd  [http://www.bouncingminds.com/plugins/flowplayer/openvideoads/openadstreamer/latest/examples/index.html various examples] that have been created to show how the Ad Streamer can be configured.
+
+Each of these examples explores a different area of behavior for both the Ad Streamer and the VAST AS3 Framework. 
