@@ -380,10 +380,15 @@ The three key activities undertaken by the framework during this period are:
 
   # The formation of the ad server request
   # The parsing of the VAST response to create a `VideoAdServingTemplate`
-  # The construction of a `StreamSequence`
-  # The dispatching and processing of Ad and Stream scheduling events
+  # The mapping of the Ads in the `VideoAdServingTemplate` to the `AdSchedule`
+  # The construction of a `StreamSequence` based on the shows configuration and the streams identified in the `AdSchedule`
+  # The dispatching and processing of Ad and Stream scheduling events back to the Flowplayer Open Ad Streamer plugin
 
+====The Formation of the Ad Server Request====
 
+====The Parsing of the Ad Server Response====
+
+====The Construction of a Stream Sequence====
 
 ===Ad Tracking and Flowplayer Cuepoints===
 
