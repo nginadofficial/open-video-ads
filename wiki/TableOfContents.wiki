@@ -18,7 +18,7 @@
     * [FlowplayerOASIntroduction Flowplayer]
       * [FlowplayerOASFeatures Features]
       * [FlowplayerOASHowItWorks How It Works]
-      * [http://code.google.com/p/openx-iab-vast/downloads/list Download]
+      * [http://code.google.com/p/open-video-adst/downloads/list Download]
       * [OASConfiguration Configuration]
       * [http://www.bouncingminds.com/plugins/flowplayer/openvideoads/openadstreamer/latest/examples/index.html  Examples]
       * [FlowplayerOASLimitations Limitations]
