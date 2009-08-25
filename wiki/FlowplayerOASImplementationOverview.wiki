@@ -541,6 +541,54 @@ The following diagram illustrates the object model that exists for our Example03
 _*Figure 4: A StreamSequence and AdSchedule working together*_
 
 
+When the framework constructs a `StreamSequence`, it assesses:
+
+  * The "ad schedule" defined in the configuration data
+  * The "shows" configuration
+
+to determine the order in which ads and show streams are to play.
+
+In our example03, the result is quite straight forward - 1 ad plays first followed by the show stream. The resulting `StreamSequence` is then quite straight forward.
+
+Consider however, a more complex example. [http://www.bouncingminds.com/plugins/flowplayer/openvideoads/openadstreamer/latest/examples/http-example05.html Example05] has a pre-roll being served before a show stream, a mid-roll ad 10 seconds into the show stream followed by a post-roll ad at the end.
+
+The configuration snippet from below is from Example05:
+
+{{{
+            "shows": {
+                "baseURL": "http://static.bouncingminds.com/shows",
+              "streams": [
+                    { "file":"bbb_640x360.mp4", "duration":"00:01:00" }
+               ]
+            },
+
+            "ads": {
+              "server": {
+                "type": "OpenX",
+                "vastURL": "http://openx.bouncingminds.com/openx/www/delivery/fc.php"
+            },
+
+              "schedule": [
+               {
+                  "zone": "5",
+                  "position": "pre-roll",
+                  "playOnce": true
+               },
+               {
+                  "zone": "5",
+                  "position": "mid-roll",
+                  "startTime": "00:00:10",
+                  "playOnce": true
+               },
+               {
+                  "zone": "5",
+                  "position": "post-roll",
+                  "playOnce": true
+               }
+              ]
+            },
+}}}
+
 ===Ad Tracking and Flowplayer Cuepoints===
 
 {{{
