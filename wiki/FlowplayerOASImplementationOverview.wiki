@@ -662,6 +662,12 @@ Because Flowplayer allows mid-roll child streams (e.g. a mid-roll ad) to be dire
     }
 }}}
 
+===Displaying Non-Linear (Overlay) Ads===
+
+{{{
+    _vastController.enableNonLinearAdDisplay(new DisplayProperties(this, 640, 360, 25));
+}}}
+
 ===Supporting Non-Linear (Overlay) 'Click to play a Video Ad'===
 
 {{{
