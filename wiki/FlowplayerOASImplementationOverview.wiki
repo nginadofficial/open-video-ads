@@ -492,10 +492,10 @@ At a high level, the object model is constructed as follows:
   * A `VideoAd` encapsulates the definition of the entities that are to be played for a single `AdSlot` in the `AdSchedule`. These may be:
     * A `LinearVideoAd` or
     * A `NonLinearVideoAd` that may optionally have a `LinearVideoAd` attached to it (if it's an overlay that triggers a video ad to play)
-    * Both `LinearVideoAd` and `NonLinearVideoAd` may have `CompanionAd`s attached
+    * Both `LinearVideoAds` and `NonLinearVideoAds` may have `CompanionAds` attached
   * If a `LinearVideoAd` is created, a number of `MediaFiles` may be attached to that `LinearVideoAd` - each `MediaFile` represents a specific type of video stream that may be played (mimeType, bitrate, streaming or progressive etc.)
 
-For a detailed view of the class model associated with the framework, please review the [Framework Class Model Guide].
+For a detailed view of the class model associated with the framework, please review the [VASTAS3FrameworkClassModel Framework Class Model Guide].
 
 ====The Construction of a Stream Sequence====
 
