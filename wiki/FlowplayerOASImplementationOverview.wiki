@@ -216,7 +216,8 @@ Once the VAST Framework makes a call to an Ad Server and receives the correspond
 
 Consider our example 03. When the VAST Framework is initialised, the `AdSchedule` object model exists as illustrated below:
 
-{INSERT DIAGRAM}
+<img src="http://static.bouncingminds.com/images/open-video-ads/adschedule-model.png" border="0">
+
 
 Following the load of the VAST data however, the object model expands to become:
 
