@@ -37,7 +37,7 @@
     * [VASTAS3FrameworkOverview Overview]
     * [VASTAS3FrameworkInAction Review In Action]
     * [VASTAS3FrameworkHowItWorks How it Works]
-    * [http://openvideoads.googlecode.com/files/openvideoads.vast.as3.tar.gz Download]
+    * [http://open-video-ads.googlecode.com/files/openvideoads.vast.as3.tar.gz Download]
     * [VASTAS3FrameworkCreatePlayer Implementation]
         * [VASTAS3FrameworkConfiguration Configuration]
         * [VASTAS3FrameworkEventListeners Events]
