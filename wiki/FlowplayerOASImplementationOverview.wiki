@@ -394,6 +394,75 @@ The three key activities undertaken by the framework during this period are:
 
 ====The Formation of the Ad Server Request====
 
+A VAST request to an ad server will vary according to the ad server brand.
+
+For our example03 and OpenX, a VAST request takes the following form:
+
+{{{
+    http://openx.openvideoads.com/openx/www/delivery/fc.php
+                   ?script=bannerTypeHtml:vastInlineBannerTypeHtml:vastInlineHtml
+                   &zones=pre-roll0-0%3D5%7Cbottom1-0%3D12&nz=1
+                   &source=
+                   &r=3189404.425211251
+                   &block=1
+                   &format=vast
+                   &charset=UTF_8
+}}}
+
+There are 2 key parameters in that call:
+
+  # "zones" - identifies the number and type of ads requested
+  # "block" - identifies whether or not ads can be repeated in the matching across the returned set
+  # An optional set of ad matching criteria to allow targeted ad selection on the OpenX side
+
+The "zones" parameter is the more complex of the parameters. It has to effectively identify:
+
+  * The number of ads requested
+  * The type of each ad requested
+  * A unique identifier for each ad requested
+
+In our example the "zones" parameter value is `zones=pre-roll0-0%3D5%7Cbottom1-0%3D12`
+
+Breaking this example down into it's parts:
+
+  * There are two ads to be identified
+  * The first ad is of OpenX zone type "5" (as defined by our first Ad Slot)
+  * The second ad is of OpenX zone type "12" (as defined by our second Ad Slot)
+  * The first ad has a unique identifier 'pre-roll0-0"
+  * The second ad has a unique identifier 'bottom1-0"
+
+While the unique identifies for each ad zone are irrelevant for the OpenX server, they are very important for the Open Ad Streamer and the AS3 Framework.
+
+Because multiple ads are being requested in a single call, the framework needs to be able to uniquely identify which ad maps back to which Ad Slot when the VAST response from the Ad Server is parsed by the framework.
+
+When the framework makes a request to an ad server, it generates a unique identifier for each ad slot and requires that the identifier is passed back in the VAST response unchanged so that this mapping can be completed.
+
+Below is a cut-down example VAST response for our OpenX ad call - you can see how the unique identifiers are provided in the response:
+
+{{{
+<VideoAdServingTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast.xsd">
+    <Ad id="pre-roll0-0" >        
+        <InLine>            
+            <AdSystem>openx</AdSystem>                
+            <AdTitle>
+                   <![CDATA[HTTP - Heinz Mayo Video (30 secs)]]>
+            </AdTitle> 
+              .....             
+         </InLine>
+     </Ad>
+    <Ad id="bottom1-0" >        
+         <InLine>            
+             <AdSystem>openx</AdSystem>                
+             <AdTitle> 
+                   <![CDATA[HTTP OVERLAY - click to video]]>
+             </AdTitle>       
+              .....             
+        </InLine>
+    </Ad>
+</VideoAdServingTemplate>
+}}}
+
+
 ====The Parsing of the Ad Server Response====
 
 ====The Construction of a Stream Sequence====
