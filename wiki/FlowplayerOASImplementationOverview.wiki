@@ -183,13 +183,15 @@ The following code asks the `VASTController` whether or not a provider definitio
 
 ===Managing Player Events===
 
-The next step in the initialisation process is to create all of the handlers for user input events. Users can:
+The next step in the initialisation process is to create the handlers to deal with user related events. 
+
+When the player is playing users can:
 
   * Go fullscreen
   * Hit the mute button
   * Change the volume controls
 
-If any of these actions are taken during an ad play, the VAST Framework needs to know that they have been taken so that the appropriate tracking call can be made.
+If any of these actions are taken during an ad play, the VAST Framework needs to know that they have been occurred so that the appropriate ad tracking calls can be made.
 
 The following code sets up the handlers for Flowplayer.
 
@@ -213,6 +215,8 @@ If we look at the "fullscreen" handler `onFullScreen()`, we will see how the VAS
 When the player goes "fullscreen", the `_vastController` is informed via the `onPlayerResize()` API. The current index of the stream must be passed into that call so that the VAST Controller knows which stream has been impacted by the fullscreen action.
 
 For a complete description of the "Player Event" related `VASTController` APIs,  please refer to the [VASTAS3FrameworkPlayerEvents "Managing Player Events Guide"].
+
+For a full account of the ad tracking supported by the VAST framework, refer to the [VASTAS3FrameworkAdTracking Ad Tracking Guide].
 
 ===Configure the Key Event Listeners===
 
