@@ -13,5 +13,3 @@ Both use the framework differently and as such, both illustrate how the framewor
 Download the code for each, review it and walk through the detailed explanations provided for each plugin.
 
 As you do so you will see links off to worked examples and more definitive documentation for each key framework topic as they are covered.
-
-Enjoy ...
