@@ -223,11 +223,12 @@ Once the VAST Framework makes a call to an Ad Server and receives the correspond
 Consider our example 03. When the VAST Framework is initialised, the `AdSchedule` object model exists as illustrated below:
 
 <img src="http://static.bouncingminds.com/images/open-video-ads/adschedule-model.png" border="0" height="340">
-
+_figure 2: The Basic AdSchedule_
 
 Following the load of the VAST data however, the object model expands to become:
 
 <img src="http://static.bouncingminds.com/images/open-video-ads/adschedule-model-with-ads.png" border="0" height="340">
+_figure 3: The Populated AdSchedule_
 
 For a detailed explanation of what happens when an Ad Server call is made and a VAST response is parsed by the framework, read the section further on in this guide entitled "Requesting a Video Ad Serving Template (VAST) from the Ad Server".
 
@@ -498,6 +499,38 @@ At a high level, the object model is constructed as follows:
 For a detailed view of the class model associated with the framework, please review the [VASTAS3FrameworkClassModel Framework Class Model Guide].
 
 ====The Construction of a Stream Sequence====
+
+With a `VideoAdServingTemplate` successfully constructed, the next step the framework takes in a `VASTController.load()` is to map the object model behind the `VideoAdServingTemplate` to the `AdSchedule` object model constructed when the framework was initialised.
+
+There is a one-to-one correlation between the ads returned in the VAST response (and held in the `VideoAdServingTemplate`) and the `AdSlots` held in the `AdSchedule`.
+
+Figure 3 (above) illustrates what the AdSchedule object model looks like once it's been populated with the results of a VAST ad server request.
+
+But the mapping of VAST ads to the actual `AdSchedule` is only part of the picture.
+
+To have a complete picture of what is to be played by the player a `StreamSequence` must be constructed.
+
+A `StreamSequence` is a sequential list of `Streams` that are to be played one after each other by the Video Player.
+
+A `Stream` can be either a show `Stream` or an `AdSlot`.
+
+For example, in example03 we have 2 streams that are to be played:
+
+  # A pre-roll linear video ad followed by
+  # A show stream
+
+The `StreamSequence` would therefore contain 2 `Streams` - the first `AdSlot` and the second show `Stream`.
+
+A `StreamSequence` can be converted to a playlist. This is particularly useful if the Video Player accepts playlists of certain formats. Once the VAST response has been parsed and the `StreamSequence` formed, a simple call to the `VASTController` can return a specifically formatted playlist (e.g. an XSPF playlist for instance). For a full description of the VASTController playlist API and the various playlist formats returned, please refer to the "[VASTAS3FrameworkPlaylists Playlist Guide]".
+
+The Flowplayer Open Ad Streamer does not use playlists however. It directly constructs the internal Flowplayer playlist by parsing the `StreamSequence` object model. Each `Stream` in the sequence represents a Flowplayer `Clip` that is to be added to the Flowplayer `Playlist` object.
+
+A `StreamSequence` and an `AdSchedule` share an important relationship.
+
+The following diagram illustrates the object model that exists for our Example03 once the `StreamSequence` has been formed. It also identifies the relationships that exist between the `StreamSequence`, the `VideoAdServingTemplate` and the `AdSchedule`.
+
+{insert diagram}
+_diagram 4: A StreamSequence and AdSchedule working together
 
 
 ===Ad Tracking and Flowplayer Cuepoints===
