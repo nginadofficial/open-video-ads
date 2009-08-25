@@ -535,7 +535,7 @@ A `StreamSequence` and an `AdSchedule` share an important relationship.
 
 The following diagram illustrates the object model that exists for our Example03 once the `StreamSequence` has been formed. It also identifies the relationships that exist between the `StreamSequence`, the `VideoAdServingTemplate` and the `AdSchedule`.
 
-<img src="http://static.bouncingminds.com/images/open-video-ads/adschedule-streamsequence-model.png" border="0" height="340">
+<img src="http://static.bouncingminds.com/images/open-video-ads/adschedule-streamsequence-model.png" border="0" height="390">
 <br/>
 <br/>
 _*Figure 4: A StreamSequence and AdSchedule working together*_
