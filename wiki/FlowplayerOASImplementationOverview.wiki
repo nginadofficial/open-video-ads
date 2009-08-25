@@ -181,7 +181,7 @@ The following code asks the `VASTController` whether or not a provider definitio
     _player.loadPlugin(providerName, providerUrl, onProviderLoaded);
 }}}
 
-===Configure User Input Handlers===
+===Managing Player Events===
 
 The next step in the initialisation process is to create all of the handlers for user input events. Users can:
 
@@ -215,6 +215,12 @@ When the player goes "fullscreen", the `_vastController` is informed via the `on
 For a complete description of the "Player Event" related `VASTController` APIs,  please refer to the [VASTAS3FrameworkPlayerEvents "Managing Player Events Guide"].
 
 ===Configure the Key Event Listeners===
+
+The VAST framework notifies a player implementation of changes in the framework via the Actionscript Event dispatcher/listener mechanism.
+
+Listeners can be identified for a range of events.
+
+The following code snippet from the Flowplayer Open Ad Streamer illustrates how to register and listen for all of the events broadcast by the framework.
 
 {{{
     // Setup the critical listeners for the template loading process
@@ -251,6 +257,25 @@ For a complete description of the "Player Event" related `VASTController` APIs, 
     _vastController.addEventListener(StreamSchedulingEvent.SCHEDULE, onStreamSchedule);
     _vastController.addEventListener(NonLinearSchedulingEvent.SCHEDULE, onNonLinearSchedule);
 }}}
+
+Broadly speaking there are 5 categories of events:
+
+  # Data loading events:
+    * VAST data loading (`TemplateEvent`)
+  # Ad display events:
+    * Linear ad display events (`LinearAdDisplayEvent`)
+    * Companion Ad display events (`CompanionAdEvent`)
+    * Non-Linear Ad display events (`OverlayAdDisplayEvent`)
+    * Ad Notice display events (`AdNoticeDisplayEvent`)
+  # Ad and Stream Scheduling events
+    * Stream scheduling events (`StreamSchedulingEvent`)
+    * Non-linear ad (Overlay) scheduling events (`NonLinearSchedulingEvent')
+  # Time tracking events
+    * Tracking point events (`TrackingPointEvent`)
+  # Player control events:
+    * Control bar (seeker) action events (`SeekerBarEvent`)
+
+For a detailed description of all event types, please refer to the "[VASTAS3FrameworkEventManagement Event Management Guide]".
 
 ===Load up the VAST Data from the Ad Server===
 
