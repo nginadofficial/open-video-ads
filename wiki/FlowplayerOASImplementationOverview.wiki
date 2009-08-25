@@ -415,6 +415,22 @@ There are 2 key parameters in that call:
   # "block" - identifies whether or not ads can be repeated in the matching across the returned set
   # An optional set of ad matching criteria to allow targeted ad selection on the OpenX side
 
+If the configuration for the player/framework includes the parameter `"allowAdRepetition:true"`, then the "block" value will be set to "0" - this tells OpenX that the same ad may be returned multiple times across the response. By default it is set to "1" which means that every ad returned in the request block must be unique. If we had 3 pre-roll ads to serve in 1 go, that would be important.
+
+"Matching" or "targetting" criteria is declared in the player/framework configuration using the `"selectionCriteria:` flag. This parameter is declared as an array of "key, value" pairs. For example, if we wished to limit the ad selection to "males 25 to 30", we may declare the `selectionCriteria` in our configuration as:
+
+{{{
+    "selectionCriteria": [ { "sex": "male" }, { "age:", "25-30" } ]
+}}}
+
+When the call is made to OpenX, the following values would be added to the call:
+
+{{{
+     &sex=male&age=25-30
+}}}
+
+See [http://www.bouncingminds.com/plugins/flowplayer/openvideoads/openadstreamer/latest/examples/http-example20.html HTTP example20] for a worked example using the Flowplayer Open Ad Streamer.
+
 The "zones" parameter is the more complex of the parameters. It has to effectively identify:
 
   * The number of ads requested
