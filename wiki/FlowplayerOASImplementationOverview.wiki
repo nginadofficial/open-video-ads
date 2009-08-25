@@ -165,6 +165,17 @@ There are 4 separate calls made to get the framework up and into a working state
   # `startStreamSafetyMargin` is a call that allows the framework to treat timing events that are to occur at the start of a stream a little differently by offsetting the start time by the "milliseconds" value specified as `startStreamSafetyMargin`. For example, when an ad stream starts, the `started` tracking event is to be fired and subsequently recorded by the ad server. There are circumstances where time based events fired at a 0 point in time in the stream do not reliably fire because the player is busy starting up the stream. To be safe, those events are delayed for 300 milliseconds (in the case of the Flowplayer config above)
   # Finally then we get to the `initialise()` call - this is the call that allows the configuration data associated with the player and the framework to be read by the framework. Configuration data must always be passed to the `initialise()` call in the form of a well formed object. In the case of Flowplayer, the JSON configuration data can be placed directly into the `org.openvideoads.vast.config.Config` object (via the Flowplayer `PropertyBinder`). When the `VASTController` receives a `org.openvideoads.vast.config.Config` object it will just save it as is. If however it recieves a vanilla `Object`, it will interrogate that object to obtain the individual properties and will create a well formed `org.openvideoads.vast.config.Config` object as a result.
 
+Once the `VASTController` receives the configuration data and has parsed it accordingly, it undertakes several vital steps required to prepare itself to make VAST Ad Server calls before processing the results into a readable form by the Video Player:
+
+  # It constructs an `AdSchedule` based on the configuration data provided
+  # It creates an instance of the appropriate Ad Server connection object so that it is ready to talk with the Ad Server when required 
+
+The current version of the framework supports an Ad Server connection class for OpenX. An AdTech class is in the works along with a more generic VAST Router class that allows non VAST compliant ad servers to be bridged. 
+
+===Constructing an `AdSchedule`===
+
+
+
 ===Make sure that the Streaming Providers are Loaded===
 
 Once the VAST Framework is instantiated the next step taken is to ensure that the required "providers" are loaded. Flowplayer implements additional streaming providers (e.g. RTMP, secure RTMP, pseudo-streaming etc.) as separate provider plugins.
@@ -292,6 +303,10 @@ The critical events for the Flowplayer Open Ad Streamer are:
 
 ===Requesting a Video Ad Serving Template (VAST) from the Ad Server===
 
+Once the VAST Framework has been instantiated and configured via the `VASTController`, a request can be made to obtain the Video Ad Serving Template (VAST) data from the VAST compliant ad server.
+
+The following code snippet illustrates how that is done in the Flowplayer Open Ad Streamer:
+
 {{{
     _vastController.load();	
 
@@ -303,6 +318,23 @@ The critical events for the Flowplayer Open Ad Streamer are:
         _model.dispatchOnLoad();
     }
 }}}
+
+The call to the ad server is triggered via the `VASTController.load()` API. 
+
+When called, the VASTController constructs a request for the specified Ad Server, fires it off to the ad server, waits for a response (which should be the VAST data), processes the response, constructs an object model representing the VAST ad data before calling back the Flowplayer Open Ad Streamer call via the method listening for the `TemplateEvent.LOADED` event.
+
+A `VideoAdServingTemplate` can be obtained from the `TemplateEvent` via the `TemplateEvent.template` attribute.
+
+In between constructing the original ad server request and the dispatch of the `TemplateEvent.LOADED` event, a lot of processing occurs within the VAST framework.
+
+The three key activities undertaken by the framework during this period are:
+
+  # The formation of the ad server request
+  # The parsing of the VAST response to create a `VideoAdServingTemplate`
+  # The construction of a `StreamSequence`
+  # The dispatching and processing of Ad and Stream scheduling events
+
+
 
 ===Ad Tracking and Flowplayer Cuepoints===
 
