@@ -257,6 +257,8 @@ The following code asks the `VASTController` whether or not a provider definitio
     _player.loadPlugin(providerName, providerUrl, onProviderLoaded);
 }}}
 
+===Preserving the current Playlist===
+
 
 ===Managing Player Events===
 
