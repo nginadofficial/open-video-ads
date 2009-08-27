@@ -846,35 +846,36 @@ The "ads" grouping configuration for example 17 is as follows:
 
 In this instance the pre-roll ad will only be played once.
 
-To achieve this the Flowplayer Open Ad Streamer rebuilds the internal Flowplayer playlist once all of the clips have been played. 
-
 {{{
-    protected function onTrackingPointFired(event:TrackingPointEvent):void {
-        _player.playlist.onFinish(
-	    function(clipevent:ClipEvent):void {
-	        var currentClip:ScheduledClip = _player.currentClip as ScheduledClip;
-		if(!_playedOnce && _vastController.playOnce && !currentClip.marked) {
-                    currentClip.marked = true;
-		    // Manage the playlist so that ads are not replayed
-	 	    if(_vastController.streamSequence.streamAt(_player.playlist.currentIndex) is AdSlot) {
-                        // don't add it to the replay list
-	 	    }
-	 	    else _replayClipList.push(_player.currentClip);
-	 						
-	 	    if(_player.playlist.currentIndex == _player.playlist.length-1) {
-                        // we are at the last item to be played so reload the cliplist
-	 		_clipList = _replayClipList
-	 		_playedOnce = true;
-	 		_replayClipList = new Array();
-	 		if(_clipList.length > 0) _clipList[0].autoPlay = false; 
-	 		_player.playlist.replaceClips2(_clipList);
-                    }			        		
-               }
-           }
+    protected function registerPlayOnceHandlers():void {
+        // Before the clip plays, check if it has already been played
+        _player.playlist.onBegin(
+                function(clipevent:ClipEvent):void { 
+            	     if(_vastController.playOnce) {
+			    var currentClip:ScheduledClip = _player.currentClip as ScheduledClip;
+			    if(currentClip.marked) {
+                                doLog("Skipped clip at playlist index " 
+                                             + _player.playlist.currentIndex 
+                                             + " as it's already been played", Debuggable.DEBUG_PLAYLIST);
+				_player.next();		        			
+		         }  
+                     }
+                 } 
+       );
+
+       // Before the clip finishes, mark is as having been played
+       _player.playlist.onBeforeFinish(
+            	 function(clipevent:ClipEvent):void { 
+            	     if(_vastController.playOnce) {
+			  var currentClip:ScheduledClip = _player.currentClip as ScheduledClip;
+	 		  if(_vastController.streamSequence.streamAt(_player.playlist.currentIndex) is AdSlot) {
+			       currentClip.marked = true;
+	 		       doLog("Marking the current clip (index " 
+                                        + _player.playlist.currentIndex 
+                                        + ") - it's an ad that has been played once", Debuggable.DEBUG_PLAYLIST);
+	 		  }
+            	     }
+            	 }
        );
     }
 }}}
-
-As streams are played the first time around the `StreamSequence` held by the `VASTController` marks each played stream as having been "played". Upon completion of each clip in the player, the Ad Streamer checks to see if the stream should just be played once - if it should and it has been played then it's not added to the replay list.
-
-When all streams are played the first time around, the playlsit is reset to the "replay" list which by now only contains clips that can be replayed. 
