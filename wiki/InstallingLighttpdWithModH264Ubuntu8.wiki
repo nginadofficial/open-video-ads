@@ -24,15 +24,6 @@ make
 make install
 cd ..
 
-####### installing glib-2.9.6.tar.bz2
-wget ftp://ftp.gtk.org/pub/gtk/v2.9/glib-2.9.6.tar.bz2
-tar xjf glib-2.9.6.tar.bz2
-cd glib-2.9.6
-./configure
-make
-make install
-cd ..
-
 ####### installing pkg-config-0.21.tar.gz
 wget http://pkgconfig.freedesktop.org/releases/pkg-config-0.21.tar.gz
 tar xzf pkg-config-0.21.tar.gz
@@ -44,15 +35,14 @@ mv /usr/bin/pkg-config /usr/bin/pkg-config.bak
 cp /usr/local/bin/pkg-config /usr/bin/pkg-config
 cd ..
 
-####### NOW WE CAN INSTALL lighttpd-1.5.0-r1691.tar.gz
-wget 
-http://www.lighttpd.net/assets/2007/2/23/lighttpd-1.5.0-r1691.tar.gz
-tar xzf lighttpd-1.5.0-r1691.tar.gz
-cd lighttpd-1.5.0
-./configure --with-linux-aio
+####### installing glib-2.9.6.tar.bz2
+wget ftp://ftp.gtk.org/pub/gtk/v2.9/glib-2.9.6.tar.bz2
+tar xjf glib-2.9.6.tar.bz2
+cd glib-2.9.6
+./configure
 make
 make install
-cd ../..
+cd ..
 }}}
 
 ==Build the Lighttpd 1.5.0 Release===
