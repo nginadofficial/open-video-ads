@@ -1,8 +1,10 @@
 #summary Installation Guide for Lighttpd with mod-H.264 on Ubuntu 8 (Hardy)
 
+For the OpenVideoAds HTTP examples, we are serving the HTTP MP4 and FLV files using Lighttpd 1.4.18 on Ubuntu Hardy running on port 81.
+
 ==Resolve the dependancies==
 
-There are a set of dependancies that need to be resolved before the lighttpd 1.5.0 package can be built:
+There are a set of dependancies that need to be resolved before the lighttpd 1.4.18 package can be built:
 
 {{{
 ####### installing gettext-0.16.1.tar.gz needed for glib-2.9.6.tar.bz2
