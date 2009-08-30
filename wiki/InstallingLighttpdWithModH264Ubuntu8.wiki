@@ -69,4 +69,6 @@ h264-streaming.extensions = ( ".mp4" )
 server.port=81   
 }}}
 
+Make sure `/etc/init.d/lighttpd` is edited so that DAEMON points to `/usr/local/sbin/lighttpd`
+
 You can find more detailed instructions [http://h264.code-shop.com/trac/wiki/Mod-H264-Streaming-Lighttpd-Version2 here]
