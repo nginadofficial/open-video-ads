@@ -1,0 +1,67 @@
+#summary Installation Guide for Lighttpd with mod-H.264 on Ubuntu 8 (Hardy)
+
+==Resolve the dependancies==
+
+There are a set of dependancies that need to be resolved before the lighttpd 1.5.0 package can be built:
+
+{{{
+####### installing gettext-0.16.1.tar.gz needed for glib-2.9.6.tar.bz2
+wget ftp://ftp.gnu.org/gnu/gettext/gettext-0.16.1.tar.gz
+tar xzf gettext-0.16.1.tar.gz
+cd gettext-0.16.1
+./configure
+make
+make install
+cd ..
+
+####### installing bzip2 needed for glib-2.9.6.tar.bz2
+wget http://www.bzip.org/1.0.4/bzip2-1.0.4.tar.gz
+tar xzf bzip2-1.0.4.tar.gz
+cd bzip2-1.0.4
+vi Makefile
+change CFLAGS to include "-fPIC" (this step is very important)
+make
+make install
+cd ..
+
+####### installing glib-2.9.6.tar.bz2
+wget ftp://ftp.gtk.org/pub/gtk/v2.9/glib-2.9.6.tar.bz2
+tar xjf glib-2.9.6.tar.bz2
+cd glib-2.9.6
+./configure
+make
+make install
+cd ..
+
+####### installing pkg-config-0.21.tar.gz
+wget http://pkgconfig.freedesktop.org/releases/pkg-config-0.21.tar.gz
+tar xzf pkg-config-0.21.tar.gz
+cd pkg-config-0.21
+./configure
+make
+make install
+mv /usr/bin/pkg-config /usr/bin/pkg-config.bak
+cp /usr/local/bin/pkg-config /usr/bin/pkg-config
+cd ..
+
+####### NOW WE CAN INSTALL lighttpd-1.5.0-r1691.tar.gz
+wget 
+http://www.lighttpd.net/assets/2007/2/23/lighttpd-1.5.0-r1691.tar.gz
+tar xzf lighttpd-1.5.0-r1691.tar.gz
+cd lighttpd-1.5.0
+./configure --with-linux-aio
+make
+make install
+cd ../..
+}}}
+
+==Build the Lighttpd 1.5.0 Release===
+
+{{{
+svn export http://h264.code-shop.com/svn/h264/tags/mod_h264_streaming-2.0/lighttpd-1.5.0 lighttpd-1.5.0
+svn export --force http://h264.code-shop.com/svn/h264/tags/mod_h264_streaming-2.0/mp4split lighttpd-1.5.0/src
+cd ~/lighttpd-1.4.18
+./configure
+make
+sudo make install
+}}}
