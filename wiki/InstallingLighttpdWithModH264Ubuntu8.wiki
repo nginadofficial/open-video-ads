@@ -55,3 +55,16 @@ cd ~/lighttpd-1.4.18
 make
 sudo make install
 }}}
+
+In terms of `lighttpd.conf`, make sure the following are set:
+
+{{{
+server.modules = ( 
+  ...,
+  "mod_h264_streaming",
+  ...
+)
+h264-streaming.extensions = ( ".mp4" )
+}}}
+
+You can find more detailed instructions [http://h264.code-shop.com/trac/wiki/Mod-H264-Streaming-Lighttpd-Version2 here]
