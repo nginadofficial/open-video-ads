@@ -3,6 +3,7 @@
   * [AboutTheRelease About the latest release]
   * [AboutIABVast About IAB VAST]
   * Best Practice Ad Formats
+  * [StreamingExplained Streaming Explained]
   * [GettingStarted Getting Started]
   * [TestAds Test Ads]
   * Supported Ad Servers
