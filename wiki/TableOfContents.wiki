@@ -1,6 +1,6 @@
 #summary Table of Contents
 
-  * [AboutTheRelease About the latest release]
+  * [AboutOpenVideoAds About Open Video Ads]
   * [AboutIABVast About IAB VAST]
   * Best Practice Ad Formats
   * [StreamingExplained Streaming Explained]
