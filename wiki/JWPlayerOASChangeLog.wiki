@@ -6,3 +6,9 @@
   * The initial version - ad types supported are pre, mid, post roll linear video and companions 
   * HTTP and RTMP protocols supported
   * Overlay support being added now
+
+0.3.0 - August 27, 2009
+
+  * Config.as: "autoPlay" correctly implemented - only available at top level
+  * Config.as: "contiguous" option name changed to "allowPlaylistControl"
+  * Overlays supported
