@@ -25,7 +25,8 @@ To help you get up and running, we've placed a few test ads here for you to down
 
 ==Non Linear Video Ads (Overlays)==
 
-  * [http://static.bouncingminds.com/ads/overlays/subaru-overlay-426x40.png subaru-overlay-426x40.png] (426 x 40 pixels)
+  * [X 450x50 animated gif]
+  * [X 450x50 flash SWF]
 
 ==Companion Ads==
 
