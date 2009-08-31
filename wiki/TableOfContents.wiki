@@ -32,7 +32,7 @@
       * [http://code.google.com/p/open-video-ads/downloads/list Download]
       * [JWPlayerOASHowItWorks Deployment]
       * [OASConfiguration Configuration]
-      * [http://www.bouncingminds.com/plugins/longtail/jwplayer/openvideoads/ea-0.3.0/bouncingminds.openX.jwplayer.bin/examples/index.html Examples]
+      * [http://www.bouncingminds.com/plugins/longtail/jwplayer/openvideoads/latest/examples/index.html Examples]
       * [JWPlayerOASLimitations Limitations]
       * [JWPlayerOASImplementationOverview Implementation]
       * [JWPlayerOASBuild How to Build]
