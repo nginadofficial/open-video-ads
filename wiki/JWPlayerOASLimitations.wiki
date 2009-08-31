@@ -3,5 +3,5 @@
 
 The following limitations in functionality exist for this release:
   
-  * Requires JW Player 4.5 or higher
-  * Testing has been limited to RTMP and HTTP Download
+  * Overlay 'click to play video' not permitted if "allowPlaylistControl:true" because clips must be loaded on at a time to support that functionality
+  * JW Player does not have "autoPlay" implemented at an AdSlot level
