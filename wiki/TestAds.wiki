@@ -27,6 +27,7 @@ To help you get up and running, we've placed a few test ads here for you to down
 
   * [http://static.bouncingminds.com/ads/overlays/450x50_website_animated.gif 450x50 animated gif]
   * [http://static.bouncingminds.com/ads/overlays/450x50_flash_banner_3.swf 450x50 flash SWF]
+  * [http://static.bouncingminds.com/ads/overlays/450x350_flash_banner.swf 450x50 flash SWF]
 
 ==Companion Ads==
 
