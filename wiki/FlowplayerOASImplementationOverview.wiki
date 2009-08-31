@@ -743,14 +743,20 @@ This call requires a` DisplayProperties` object to be passed into the `VASTContr
     }
 }}}
 
-Overlay configuration have 2 aspects to them:
+An overlay configuration has 2 key elements:
 
   * The definition of custom "regions" on the player screen that allow non-linear advertising to be displayed. All regions are assigned a specific "id" so that they may be uniquely named in an ad schedule.
   * The definition of the non-linear ad slots that are to be shown in a "region" identified with a specific "id"
 
 For a detailed description of how to configure regions, please refer to the [VASTAS3FrameworkConfiguration Configuration Guide].
 
-Although it doesn't make use of then, the Flowplayer Open Ad Streamer does register listeners for overlay display and hide events.
+====Matching Overlays by Size and Type====
+
+To be completed.
+
+====Listening for Overlay Events====
+
+Although it doesn't make use of them the Flowplayer Open Ad Streamer does register listeners for overlay display and hide events.
 
 The following initialisation code illustrates how listeners for these events are registered:
 
