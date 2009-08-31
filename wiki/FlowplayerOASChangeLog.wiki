@@ -1,2 +1,20 @@
 #summary Change Log for the Flowplayer Open Ad Streamer
 #sidebar TableOfContents
+
+Change Log
+
+0.2.1 - August 24 2009
+
+* Initial release with defects/restrictions
+
+0.2.2 - August 26 2009
+
+* OpenAdStreamer.as: Fixed issue with mid-roll RTMP ad insertion - clip.start=0; added to ensure
+  mid-roll ad starts at 0
+* OpenAdStreamer.as: Example04 - "autoPlay:false" on "pre-roll" ad not working - clip now sets autoPlay
+  based on stream.autoPlay value
+* RegionView.as - fix to the framework - and now appears over "click here" textsign and over
+  text on overlays
+* RegionController.as - fix to ensure RegionViews childIndex puts them on top as they are added
+* CrossCloseButton.as - fix to ensure that close button can be clicked and region closed
+* OpenAdStreamer.as - Fixed sizing is set on the DisplayProperties - derived automatically from DisplayObject()
