@@ -4,4 +4,4 @@
 The following limitations in functionality exist for this release:
   
   * Overlay 'click to play video' not permitted if "allowPlaylistControl:true" because clips must be loaded on at a time to support that functionality
-  * JW Player does not have "autoPlay" implemented at an AdSlot level
+  * "autoPlay" is not implemented at an AdSlot level
