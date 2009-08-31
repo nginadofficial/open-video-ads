@@ -23,7 +23,7 @@ To help you get up and running, we've placed a few test ads here for you to down
     * [http://static.bouncingminds.com/ads/30secs/sexy_subaru_carwash.mp4 Sexy Subaru] (mp4: 35 secs)
     * [http://static.bouncingminds.com/ads/30secs/sharon_hunt_intro_600.mp4 H&C Sharon Hunt] (mp4: 34 secs)
 
-==Non Linear Video Ads==
+==Non Linear Video Ads (Overlays)==
 
   * [http://static.bouncingminds.com/ads/overlays/subaru-overlay-426x40.png subaru-overlay-426x40.png] (426 x 40 pixels)
 
