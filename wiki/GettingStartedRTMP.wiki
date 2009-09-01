@@ -1,9 +1,19 @@
 #summary Where to Begin With RTMP Ad Delivery
 #sidebar TableOfContents
 
-If you are using RTMP based stream deliver, to get the beta up and running, it is recommended that you systematically walk through the following steps (if you wish to use HTTP download ad delivery, please read [GettingStartedHTTP here]):
+This guide walks through how to setup a simple example streaming a "pre-roll" ad and a show stream using RTMP on a Flash Media Server (FMS) and Flowplayer or Longtail Video's JW Player.
+
+It is recommended that you systematically walk through the following steps before proceeding into the detailed documentation.
+
+If you wish to use HTTP based ad and show delivery, please read [GettingStartedHTTP here].
+
+You can mix HTTP and RTMP based ad and show delivery, but that's a story for later in the documentation.
+
+The following diagram illustrates a typical setup for RTMP based ad and show delivery:
 
 <img src="http://static.bouncingminds.com/images/openx-iab-vast/VideoAdsBlockDetail5.png" width="700" border="0" />
+
+To achieve this type of setup:
 
   # Overview
      * Familiarise yourself with the key [KeyTerminology terminology and concepts]
