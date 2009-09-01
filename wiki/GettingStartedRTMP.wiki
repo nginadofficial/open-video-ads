@@ -33,7 +33,7 @@ To implement this type of setup:
      * Familiarise yourself with the key [KeyTerminology terminology and concepts]
      * Review the material on this site - specifically the [http://www.openvideoads.org/plugins/flowplayer/openvideoads/openadstreamer/latest/examples/index.html Flowplayer examples] or the [http://www.openvideoads.org/plugins/longtail/jwplayer/openvideoads/latest/examples/index.html JW Player examples] to get a handle on all of the various configuration options available
   # Get a simple video playing 
-     * Start simple - create a test page that will request a pre-roll video ad from the Open Video Ads demo [http://openx.openvideoads.org/openx OpenX Ad Server] before playing the ad and the show streams off the same Content Delivery Network (CDN) used by the examples on this site. To complete this task follow [GettingStartedCreateTestPageFlowplayer these steps for Flowplayer], [GettingStartedCreateTestPageJWPlayer these for JW Player]
+     * Start simple - create a test page that will request a pre-roll video ad from the Open Video Ads demo [http://openx.openvideoads.org/openx OpenX Ad Server] before playing the ad and the show streams off the same Content Delivery Network (CDN) used by the examples on this site. To complete this task follow [GettingStartedCreateTestPageFlowplayer these steps for Flowplayer] or [GettingStartedCreateTestPageJWPlayer these for JW Player]
   # Make your video ads available for streaming
      * Before you proceed any further, make sure that you get a few video ads and programme streams up and running on an RTMP streaming server. You can either use:
         * a local install of an Flash Media Server (FMS), Wowsa server, or potentially a Red5 server       
