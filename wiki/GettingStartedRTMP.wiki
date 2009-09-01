@@ -31,7 +31,7 @@ To implement this type of setup:
 
   # Overview
      * Familiarise yourself with the key [KeyTerminology terminology and concepts]
-     * Review the material on this site - specifically the [FlowplayerRTMPExamples examples] to get a handle on all of the options available
+     * Review the material on this site - specifically the [http://www.openvideoads.org/plugins/flowplayer/openvideoads/openadstreamer/latest/examples/index.html Flowplayer examples] or the [http://www.openvideoads.org/plugins/longtail/jwplayer/openvideoads/latest/examples/index.html JW Player examples] to get a handle on all of the various configuration options available
   # Get a simple video playing 
      * Start simple - create a test page that will request a pre-roll video ad from the Bouncing Minds demo OpenX Ad Server before playing the ad and the show streams off the same Content Delivery Network (CDN) used by the examples on this site. To complete this task [Step1CreatePage follow these steps]
   # Make your video ads available for streaming
