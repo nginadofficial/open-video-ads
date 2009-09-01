@@ -35,8 +35,8 @@ To implement this type of setup:
   # Get a simple video playing 
      * Start simple - create a test page that will request a pre-roll video ad from the Open Video Ads demo [http://openx.openvideoads.org/openx OpenX Ad Server] before playing the ad and the show streams off the same Content Delivery Network (CDN) used by the examples on this site. To complete this task [GettingStartedCreateTestPage follow these steps]
   # Make your video ads available for streaming
-     * Before you proceed any further, make sure that you upload a few video ads and programme streams up and running on a Flash Media Server. These need to be served via RTMP - you can either use:
-        * a local install of an FMS       
+     * Before you proceed any further, make sure that you get a few video ads and programme streams up and running on an RTMP streaming server. You can either use:
+        * a local install of an Flash Media Server (FMS), Wowsa server, or potentially a Red5 server       
         * a Content Delivery Network (CDN) such as Limelight, Akamai, SimpleCDN or Influxis. 
      * If you need a few example linear video ads, you can find several [TestAds here]
   # Install the Ad platform   
