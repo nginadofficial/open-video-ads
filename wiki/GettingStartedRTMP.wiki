@@ -1,7 +1,7 @@
 #summary Where to Begin With RTMP Ad Delivery
 #sidebar TableOfContents
 
-If you are using RTMP based stream deliver, to get the beta up and running, it is recommended that you systematically walk through the following steps (if you wish to use HTTP download ad delivery, please read [GettingStartedHTTPDownload here]):
+If you are using RTMP based stream deliver, to get the beta up and running, it is recommended that you systematically walk through the following steps (if you wish to use HTTP download ad delivery, please read [GettingStartedHTTP here]):
 
 <img src="http://static.bouncingminds.com/images/openx-iab-vast/VideoAdsBlockDetail5.png" width="700" border="0" />
 
