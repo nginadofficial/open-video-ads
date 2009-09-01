@@ -14,3 +14,10 @@ The most likely cause of this either:
 
   # The ad server has not been able to identify an ad to server, so no ad is specified in the VAST response or
   # The ad stream specified in the VAST response from the ad server cannot be loaded and played. In most cases, this will just force the player to skip the stream and move to the next clip (in general that will be a show clip)
+
+
+====3. Why do I need to specify a duration====
+
+At the moment the Ad Streamer needs to work out the full playlist schedule in advance of loading the actual clips. As such, it needs to have access to the duration of a clip before it's actually loaded/played (when the duration metadata is available).
+
+It may be possible to remove the need for a duration in some ad schedule scenarios - we are looking into that to simplify things further for a future release.
