@@ -3,4 +3,4 @@
 
 ====1. Why does my player just sit/hang after a video ad plays?====
 
-Most likely it is because you've specified an incorrect length of time for the video ad. If you've specified that the video ad is 16 seconds long, but actually it's just 15 seconds, the ad streamer will keep trying to play the missing second.
+Most likely it is because you've specified an incorrect length of time for the video ad. If you've specified that the video ad is 16 seconds long, but actually it's just 15 seconds, the ad streamer will keep trying to play the missing second. Check the duration that has been specified for your ad in your ad server.
