@@ -27,6 +27,7 @@
       * [FlowplayerOASLimitations Limitations]
       * [FlowplayerOASImplementationOverview Implementation]
       * [FlowplayerOASBuild How to Build]
+      * [HowToDebug How to Debug]
       * [FlowplayerOASChangeLog Change Log]
     * [http://www.longtailvideo.com JW Player]
       * [JWPlayerOASRuntimeRequirements Requirements]
@@ -38,6 +39,7 @@
       * [JWPlayerOASLimitations Limitations]
       * [JWPlayerOASImplementationOverview Implementation]
       * [JWPlayerOASBuild How to Build]
+      * [HowToDebug How to Debug]
       * [JWPlayerOASChangeLog Change Log]
     * Adobe OMF
   * [VASTAS3Framework VAST AS3 Framework]
