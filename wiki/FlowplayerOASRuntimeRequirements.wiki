@@ -1,0 +1,14 @@
+#summary Minimum Runtime Requirements
+#sidebar TableOfContents
+
+This version of the Flowplayer Open Ad Streamer has been tested with:
+
+  * Flowplayer's 3.1.3 release (this release is currently in development)
+
+Please use this (or a later version) with the plugin.
+
+In terms of protocol support, the release has been tested with:
+
+  * HTTP progressive download using an Apache web server
+  * HTTP progressive download using a Lighttpd web server (with the H.264 streaming module also installed)
+  * RTMP using an Adobe Flash Media Server (running on an [http://www.influxis.com Influxis] account)
