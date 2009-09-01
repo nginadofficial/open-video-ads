@@ -13,6 +13,20 @@ The following diagram illustrates a typical setup for RTMP based ad and show del
 
 <img src="http://static.bouncingminds.com/images/open-video-ads/gettingstartedrtmp.png" width="700" border="0" />
 
+Within your webpage sits a Video Player (JW Player or Flowplayer). The Video Player uses a plugin known as the Open Ad Streamer to control the way advertising is displayed within the player. The specifics on which ad to play and when given a set of show streams is defined in a configuration file that is loaded by the Open Ad Streamer. The ad specification is known as an "Ad Schedule".
+
+Given an "ad schedule", the Open Ad Streamer determines which ad types are required and how they are to be sequenced against a set of show streams. Ad types may be linear video ads or non-linear (e.g. overlay ads) - each type can have companion ads attached.
+
+To obtain the appropriate ads to play the Open Ad Streamer makes an Ad Request to a VAST enabled Advertising Server - in our demonstration case, OpenX. The Ad Server returns the ads to play as a Video Ad Serving Template (VAST) - this is an XML based definition of the ads matching the ad request made by the Open Ad Streamer.
+
+The Open Ad Streamer parses the VAST XML data to sequence a list of ads and streams to play in the Video Player. The Ad Streamer loads this "playlist" into the Video Player using the playlist API provided by the Video Player.
+
+Once loaded, the Open Ad Streamer tells the Video Player to play the playlist, tracking time as each element of the playlist streams. At various points during the playback, tracking events are fired back to the Ad Server to allow ad metrics to be collated.
+
+To play the streams the Open Ad Streamer relies on the RTMP facilities of the Video Player. In Flowplayer's case, a separate RTMP plugin is loaded by the Video Player and that plugin takes to the RTMP streaming servers to stream the show and ad content. The Show and Ad content may be housed on completely different RTMP servers/addresses.
+
+For JW Player, RTMP support is built into the base player.
+
 To achieve this type of setup:
 
   # Overview
