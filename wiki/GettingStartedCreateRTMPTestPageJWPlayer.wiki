@@ -1,0 +1,5 @@
+#summary How to create your first JW Player Open Ad Streamer RTMP test page
+#sidebar TableOfContents
+
+To create a JW Player test page that pulls the VAST data from the Open Video Ads demo server while serving the
+video ads from the CDN used for all examples on this site, do the following:
