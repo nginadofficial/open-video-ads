@@ -11,7 +11,7 @@ You can mix HTTP and RTMP based ad and show delivery, but that's a story for lat
 
 The following diagram illustrates a typical setup for RTMP based ad and show delivery:
 
-<img src="http://static.bouncingminds.com/images/openx-iab-vast/VideoAdsBlockDetail5.png" width="700" border="0" />
+<img src="http://static.bouncingminds.com/images/open-video-ads/gettingstartedrtmp.png" width="700" border="0" />
 
 To achieve this type of setup:
 
