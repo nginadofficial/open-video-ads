@@ -46,6 +46,4 @@ To implement this type of setup:
   # Setup crossdomain.xml 
      * Before you can connect the Open Ad Streamer to your new OpenX instance, you need to ensure that you have an appropriate "crossdomain.xml" file configured in the doc root of the webserver on the box running the OpenX Ad Server. If you don't do this, when the OpenX Ad Streamer makes a request to the OpenX Ad Server to obtain the VAST data, a security violation will be thrown within Flash and the request will be denied. Here's an example [ExampleCrossdomainXML crossdomain.xml] file that you can use.
   # Configure your player to call the Ad platform
-     * You're almost there. Change the test page that you originally created so that it now points to your OpenX Ad Server instance and the linear video ad "zone" that you created. For:
-       * Flowplayer: Follow these [Step2ChangeTestPage instructions] to complete this task. Remember, in this example both the video ad and the main programme stream must be served from the same Flash Media Server location, so ensure that you have a programme stream loaded up on the same RTMP server that you are serving the video ads.
-       * Longtail Video's JW Player: Follow these [JWPlayerRTMPStep2ChangeTestPage instructions] to complete this task.
+     * You're almost there. Change the test page that you originally created so that it now points to your OpenX Ad Server instance and the linear video ad "zone" that you created. Follow these [GettingStartedChangeTestPage instructions] to complete this task.
