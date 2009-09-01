@@ -46,5 +46,9 @@ To modify your test page to use the data in your newly installed OpenX instance 
         ]
     }
 }}}
-  # You can check that your OpenX instance is returning the VAST response by calling the following [http://yourservername/path_to_openx_install/www/delivery/fc.php?script=bannerTypeHtml:vastInlineBannerTypeHtml:vastInlineHtml&zones=name%3DZONEID&nz=1&source=&r=14730862&block=1&format=vast&charset=UTF-8 url format]. You can see   [http://openx.bouncingminds.com/openx/www/delivery/fc.php?script=bannerTypeHtml:vastInlineBannerTypeHtml:vastInlineHtml&zones=try3%3D1&nz=1&source=&r=14730862&block=1&format=vast&charset=UTF-8 an example OpenX VAST response here]. Remember you need to change have the correct ZONEID in the url.
+  # You can check that your OpenX instance is returning the VAST response by calling the following URL:
+{{{
+http://yourservername/path_to_openx_install/www/delivery/fc.php?script=bannerTypeHtml:vastInlineBannerTypeHtml:vastInlineHtml&zones=name%3DZONEID&nz=1&source=&r=14730862&block=1&format=vast&charset=UTF-8
+}}}
+You can see [http://openx.openvideoads.org/openx/www/delivery/fc.php?script=bannerTypeHtml:vastInlineBannerTypeHtml:vastInlineHtml&zones=try3%3D1&nz=1&source=&r=14730862&block=1&format=vast&charset=UTF-8 an example OpenX VAST response here]. Remember you need to change have the correct ZONEID in the url.
   # Fire up your test page - you should now see a pre-roll ad served from your OpenX instance along with your main programme stream
