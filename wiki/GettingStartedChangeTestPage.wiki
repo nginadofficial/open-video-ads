@@ -1,6 +1,5 @@
 #summary Step 2 - Change the test page to point to your Ad Server instance
-
-= Step 2 - Change the Test Page =
+#sidebar TableOfContents
 
 To modify your test page to use the data in your newly installed OpenX instance and the zones that you defined:
 
