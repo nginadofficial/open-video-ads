@@ -4,7 +4,7 @@
 To create a Flowplayer test page that pulls the VAST data from the Open Video Ads demo server while serving the
 video ads from the CDN used for all examples on this site, do the following:
 
-  # [http://open-video-ads.googlecode.com/files/openvideoads.flowplayer.openadstreamer.bin-latest.tar.gz Download] the OpenX Flowplayer RTMP video ad binaries (SWF) and javascript files
+  # [http://open-video-ads.googlecode.com/files/openvideoads.flowplayer.openadstreamer.bin-latest.tar.gz Download] the OpenX Flowplayer Open Ad Streamer binaries (SWF)
   # Create a blank html page - the code examples below assume the blank page is created in the root directory of the downloaded plugin page (where `dist` is a subdirectory containing the swf and javascript files)
   #  Add the following lines to include the required javascript files. JQuery is used, the Flowplayer 3.1 base javascript file and a small javascript file for the OpenX plugin
 {{{
