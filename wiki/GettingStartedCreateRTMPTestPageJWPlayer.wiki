@@ -19,7 +19,7 @@ video ads from the CDN used for all examples on this site, do the following:
 {{{
 <config>
     <openadstreamer.title>
-        RTMP Example 02a - Plays non-contiguously
+        My new RTMP example
     </openadstreamer.title>
     <openadstreamer.json>
         {
@@ -53,3 +53,6 @@ video ads from the CDN used for all examples on this site, do the following:
    </openadstreamer.json>
 </config>
 }}}
+  # You are all ready to go. Fire up the page - the example should play.
+
+You can see a working example of this page [http://static.openvideoads.org/plugins/longtail/jwplayer/openvideoads/latest/examples/rtmp-example02a.html here].
