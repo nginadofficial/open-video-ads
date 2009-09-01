@@ -6,6 +6,8 @@
   * [StreamingExplained Streaming Explained]
   * [AboutOurDemoEnvironment Our Environment]
   * [GettingStarted Getting Started]
+    * [GettingStartedHTTP With HTTP]
+    * [GettingStartedRTMP With RTMP]
   * [TestAds Test Ads]
   * Supported Ad Servers
     * [http://www.openx.org OpenX]
