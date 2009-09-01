@@ -39,9 +39,9 @@ To modify your test page to use the data in your newly installed OpenX instance 
         },
         "schedule": [
              {
-                   // CHANGE HERE: The zone id must match the inline video zone id you created in your OpenX install 
-                   "zone": "1",
-                   "position": "pre-roll"
+                 // CHANGE HERE: The zone id must match the inline video zone id you created in your OpenX install 
+                 "zone": "1",
+                 "position": "pre-roll"
              }
         ]
     }
