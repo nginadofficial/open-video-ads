@@ -1,4 +1,4 @@
-#summary How to create your first test page
+#summary How to create your first Flowplayer based test page
 
 To create a test page that pulls the VAST data from the Bouncing Minds demo server while serving the
 video ads from the CDN used for all examples on this site, do the following:
