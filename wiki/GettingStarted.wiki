@@ -9,6 +9,6 @@ Two separate guides are provided to help you quickly get up and running.
 
 The [GettingStartedHTTP first] is a guide to delivering Ad and Show streams using the Open Ad Streamer with the HTTP progressive or pseudo-streaming protocols.
 
-The GettingStartedRTMP second] guide covers how to get up and running with an RTMP based streaming server.
+The [GettingStartedRTMP second] guide covers how to get up and running with an RTMP based streaming server.
 
 Of course, if you want to deliver ads and show streams using a mixture of HTTP and RTMP protocols you can, but you'll have to read the [OASConfiguration Configuration Guide] to gain insight into how to achieve that.
