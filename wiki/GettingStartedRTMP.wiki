@@ -27,7 +27,7 @@ To play the streams the Open Ad Streamer relies on the RTMP facilities of the Vi
 
 For JW Player, RTMP support is built into the base player.
 
-To achieve this type of setup:
+To implement this type of setup:
 
   # Overview
      * Familiarise yourself with the key [KeyTerminology terminology and concepts]
