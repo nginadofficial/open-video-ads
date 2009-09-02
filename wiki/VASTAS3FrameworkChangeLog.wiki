@@ -3,14 +3,24 @@
 
 0.2.1 - July 15, 2009
 
-* Initial release to support JW Player development
+  * Initial release to support JW Player development
 
 0.3.0 - August 20, 2009
 
-* Major upgrade - callbacks to the plugin on framework status are now "event" based
-* Integrated support for overlays within the framework
-* Extensions to support new ad server integrations
-* Major modifications to the config framework to support a unified JSON approach
-  across the JW and Flowplayer Open Ad Streamer plugins
-* Support for firebug debug output
-* Many bug fixes
+  * Major upgrade - callbacks to the plugin on framework status are now "event" based
+  * Integrated support for overlays within the framework 
+  * Extensions to support new ad server integrations
+  * Major modifications to the config framework to support a unified JSON approach across the JW and Flowplayer Open Ad Streamer plugins
+  * Support for firebug debug output
+  * Many bug fixes
+
+0.3.2 - September 1, 2009
+
+  * Added NetworkResource.qualifiedHTTPUrl() so that click through URLs will always be checked that they start with "http://" before they are fired off
+  * Modification of VAST parsing code for non-linear ad types - only image and swf require a "creativeType" to be defined now - text and html just need "resourceType"
+  * Fixed OverlayController.hideNonLinearOverlayAd() so that overlays are hidden based on either "position" or the "regions" Ad Slot param
+  * ISSUE 24: + (close) button turned off on the "system-message" region by default. This means that the "this is an ad message" doesn't show close by default
+  * ISSUE 26: Support added to track "unmute" events
+  * ISSUE 27: Support added to VASTController track "pause and resume" events
+  * ISSUE 18: Deprecation of "selectionCriteria" config param - replaced with "adTags"
+  * ISSUE 28: Changed "_activeStreamIndex" to "_playlist.playingTrackIndex" for use in onPlayer type events (e.g. on fullscreen etc.)
