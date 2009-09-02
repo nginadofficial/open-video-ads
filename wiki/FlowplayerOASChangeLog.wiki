@@ -18,5 +18,5 @@ Change Log
 
 0.2.3 - September 1, 2009
 
-  * ISSUE 26: Support added for tracking of "unmute, pause and resume" events
-  * ISSUE 18: Deprecation of "selectionCriteria" config param - replaced with "adTags"
+  * Issue 26: Support added for tracking of "unmute, pause and resume" events
+  * Issue 18: Deprecation of "selectionCriteria" config param - replaced with "adTags"
