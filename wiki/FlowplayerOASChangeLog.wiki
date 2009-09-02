@@ -15,3 +15,8 @@ Change Log
   * RegionController.as - fix to ensure RegionViews childIndex puts them on top as they are added
   * CrossCloseButton.as - fix to ensure that close button can be clicked and region closed
   * OpenAdStreamer.as - Fixed sizing is set on the DisplayProperties - derived automatically from DisplayObject()
+
+0.2.3 - September 1, 2009
+
+  * ISSUE 26: Support added for tracking of "unmute, pause and resume" events
+  * ISSUE 18: Deprecation of "selectionCriteria" config param - replaced with "adTags"
