@@ -21,3 +21,9 @@ The most likely cause of this either:
 At the moment the Ad Streamer needs to work out the full playlist schedule in advance of loading the actual clips. As such, it needs to have access to the duration of a clip before it's actually loaded/played (when the duration metadata is available).
 
 It may be possible to remove the need for a duration in some ad schedule scenarios - we are looking into that to simplify things further for a future release.
+
+====4. Why don't the examples in the downloaded package work?====
+
+At the moment, to run the examples in the downloaded package you need to serve the examples via a webserver. Place the examples into a path off your webserver doc root and access them via `http://localhost/....`
+
+Loading an example directly into your browser from the uncompressed package won't work. At least for now.
