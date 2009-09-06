@@ -1,7 +1,7 @@
 #summary An introduction to the Flowplayer Open Ad Streamer
 #sidebar TableOfContents
 
-The Flowplayer Open Ad Streamer is an Actionscript 3 plugin that works with Flowplayer 3.1.3 (or greater).
+The Flowplayer Open Ad Streamer is an Actionscript 3 plugin that works with [http://www.flowplayer.org Flowplayer 3.1.3] (or greater).
 
 The Open Ad Streamer (OAS) supports:
 
@@ -12,5 +12,3 @@ The Open Ad Streamer (OAS) supports:
   * VAST compliant metrics tracking of video ad performance (for linear ads start, 1st quartile, halfway, 3rd quartile and complete are all tracked)
   * A very flexible approach to ad scheduling against show streams - any combination of linear and non-linear video ads can be configured, scheduled and played back via the Open Ad Streamer
   * Playback using both HTTP Progressive and RTMP protocols
-
-
