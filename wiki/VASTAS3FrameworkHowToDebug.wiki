@@ -1,4 +1,4 @@
-#summary Debugging A Plugin or the Framework
+#summary Debugging a Plugin or the Framework
 #sidebar TableOfContents
 
 The framework can output a range of debug information as it runs.
