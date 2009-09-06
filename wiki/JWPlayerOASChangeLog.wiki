@@ -13,7 +13,7 @@
   * Config.as: "contiguous" option name changed to "allowPlaylistControl"
   * Overlays supported
 
-0.3.2 - September 2, 2009
+0.3.2 - September 6, 2009
 
   * "adTags" should have been "adParameters" - fixed
   * ISSUE 25:	Full screen positioning of "this is an ad" message is wrong - was a general problem around resizing not being done in the JW Player Open Ad Streamer
