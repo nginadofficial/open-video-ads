@@ -28,7 +28,7 @@
       * [FlowplayerOASLimitations Limitations]
       * [FlowplayerOASImplementationOverview Implementation]
       * [FlowplayerOASBuild How to Build]
-      * [HowToDebug How to Debug]
+      * [VASTAS3FrameworkHowToDebug How to Debug]
       * [FlowplayerOASChangeLog Change Log]
     * [JWPlayerOASIntroduction JW Player]
       * [JWPlayerOASRuntimeRequirements Runtime]
@@ -39,7 +39,7 @@
       * [JWPlayerOASLimitations Limitations]
       * [JWPlayerOASImplementationOverview Implementation]
       * [JWPlayerOASBuild How to Build]
-      * [HowToDebug How to Debug]
+      * [VASTAS3FrameworkHowToDebug How to Debug]
       * [JWPlayerOASChangeLog Change Log]
     * Adobe OMF
   * [VASTAS3Framework VAST AS3 Framework]
