@@ -6,4 +6,4 @@ The following limitations in functionality exist for this release:
   * Overlay 'click to play video' not permitted if "allowPlaylistControl:true" because clips must be loaded on at a time to support that functionality
   * "autoPlay" is not implemented at an AdSlot level
 
-For more information on the restrictions, planned enhancements and currently outstanding defects, please review the [http://code.google.com/p/open-video-ads Issues log]
+For more information on the restrictions, planned enhancements and currently outstanding defects, please review the [http://code.google.com/p/open-video-ads/issues/list Issues log]
