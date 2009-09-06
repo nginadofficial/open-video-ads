@@ -16,3 +16,7 @@ The Open Ad Streamer (OAS) supports:
 The documentation for the Open Ad Streamer presented on this site:
 
   * Walks through a number of [http://www.openvideoads.org/examples/openadstreamer/flowplayer/index.html example] configurations and uses of the Open Ad Streamer
+  * Explains how to [FlowplayerOASHowItWorks deploy] the Open Ad Streamer with your VAST complaint Ad Server
+  * Describes the full set of [OASConfiguration configuration] options available to you as you deploy the OAS
+  * If required, how to [http://open-video-ads.googlecode.com/files/openvideoads.flowplayer.openadstreamer.bin.tar.gz download] and [FlowplayerOASBuild build] the source code for the Open Ad Streamer
+  * Lists any [http://code.google.com/p/open-video-ads/issues/list issues] associated with the current release of the plugin
