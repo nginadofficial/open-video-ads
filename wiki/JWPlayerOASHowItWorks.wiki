@@ -5,6 +5,8 @@ Ad scheduling is a skilled task. The successful deployment of an effective video
 efficient Ad Server that manages the task of initiating, running and reporting on a video advertising campaign 
 while the video player sequences and plays back the video ads identified by the Ad Server.
 
+===The End-to-End Solution===
+
 The following diagram illustrates the end-to-end video advertising solution using the JW Player Open Ad Streamer:
 
 {insert diagram}
@@ -17,3 +19,7 @@ To deploy the solution you will need to run:
   # A streaming server to host the video ads that you are to serve. This may be either a HTTP pseudo-streaming enabled web server (such as [www.lighttpd.net Lighttpd] with the H.264 module installed) or an RTMP server such as Adobe's [http://www.adobe.com/products/flashmediaserver Flash Media Server], or [http://www.wowzamedia.com Wowsa]. You can run this server yourself or via a hosted CDN service such as [http://www.influxis.com Influxis], [http://www.simplecdn.com SimpleCDN], [http://www.akamai.com Akamai], [http://www.limelightnetworks.com Limelight] or the like.
 
 For a detailed description of the environment that we have setup to run our examples, please read this [AboutOurDemoEnvironment guide].
+
+===Getting Up and Running===
+
+X
