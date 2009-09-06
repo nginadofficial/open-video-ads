@@ -66,4 +66,3 @@
     * [VASTAS3FrameworkChangeLog Change Log]
   * [KeyTerminology Terminology]
   * [FAQ Frequently Asked Questions]
-  * [AboutOpenVideoAds About Open Video Ads]
