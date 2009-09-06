@@ -20,3 +20,5 @@ The documentation for the Open Ad Streamer presented on this site:
   * Describes the full set of [OASConfiguration configuration] options available to you as you deploy the OAS
   * If required, how to [http://open-video-ads.googlecode.com/files/openvideoads.flowplayer.openadstreamer.bin.tar.gz download] and [FlowplayerOASBuild build] the source code for the Open Ad Streamer
   * Lists any [http://code.google.com/p/open-video-ads/issues/list issues] associated with the current release of the plugin
+
+The Flowplayer Open Ad Streamer has been built using the Open Video Ads [VASTAS3Framework VAST AS3 Framework]. Read [FlowplayerOASImplementationOverview this] overview of the implementation if you are interested to understand how the framework and the plugin have been designed and built.
