@@ -1,4 +1,12 @@
 #summary An introduction to the Flowplayer Open Ad Streamer
 #sidebar TableOfContents
 
-holding page - under construction
+The Flowplayer Open Ad Streamer is an Actionscript 3 plugin that works with Flowplayer 3.1.3 (or greater).
+
+The Open Ad Streamer (OAS) supports:
+
+  * Linear video advertising - pre, mid and post roll video ads
+  * Non-Linear overlay advertising - images, flash (SWF), text or html - click to website or click to play a video ad
+  * Companion ads attached to Linear and Non-Linear video ads
+  * VAST compliant metrics tracking of video ad performance (for linear ads start, 1st quartile, halfway, 3rd quartile and complete are all tracked)
+
