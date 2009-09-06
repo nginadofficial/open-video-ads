@@ -12,7 +12,7 @@ The debug configuration is controlled through the "debug" config group. A typica
         },
 }}}
 
-This config says to report "all" debug information to the "firebug" console. It's worth noting, reporting "all" debug information will slow down the framework operation considerably.
+This config says to report "all" debug information to the "[http://www.getfirebug.com firebug]" console. It's worth noting, reporting "all" debug information will slow down the framework operation considerably.
 
 To fine tune and identify the debug information to output, a range of options can be specified in the `levels` configuration parameter.
 
