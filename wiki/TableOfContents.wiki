@@ -20,8 +20,7 @@
       * Via the AS3 Framework
   * Video Players
     * [FlowplayerOASIntroduction Flowplayer]
-      * [FlowplayerOASRuntimeRequirements Requirements]
-      * [FlowplayerOASFeatures Features]
+      * [FlowplayerOASRuntimeRequirements Runtime]
       * [http://open-video-ads.googlecode.com/files/openvideoads.flowplayer.openadstreamer.bin.tar.gz Download]
       * [FlowplayerOASHowItWorks Deployment]
       * [http://static.bouncingminds.com/examples/openadstreamer/flowplayer/index.html  Examples]
@@ -32,8 +31,7 @@
       * [HowToDebug How to Debug]
       * [FlowplayerOASChangeLog Change Log]
     * [JWPlayerOASIntroduction JW Player]
-      * [JWPlayerOASRuntimeRequirements Requirements]
-      * [JWPlayerOASFeatures Features]
+      * [JWPlayerOASRuntimeRequirements Runtime]
       * [http://open-video-ads.googlecode.com/files/openvideoads.jwplayer.openadstreamer.bin.tar.gz Download]
       * [JWPlayerOASHowItWorks Deployment]
       * [http://static.bouncingminds.com/examples/openadstreamer/jwplayer/index.html Examples]
