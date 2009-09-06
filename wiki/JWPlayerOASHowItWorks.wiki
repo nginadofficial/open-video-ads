@@ -5,9 +5,7 @@ Ad scheduling is a skilled task. The successful deployment of an effective video
 efficient Ad Server that manages the task of initiating, running and reporting on a video advertising campaign 
 while the video player sequences and plays back the video ads identified by the Ad Server.
 
-The video ad streaming technology provided by this project works with the open-source Ad Server and video player providers to deliver a completely open-source, free solution. 
-
-{insert diagram here}
+The JW Player Open Ad Streamer requires a VAST compliant Ad Server to deliver video ad definitions to it to schedule and playback via the Longtail Video JW Player.
 
 To deploy the solution you will need to run:
 
