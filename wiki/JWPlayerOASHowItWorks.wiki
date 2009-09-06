@@ -9,8 +9,8 @@ The JW Player Open Ad Streamer requires a VAST compliant Ad Server to deliver vi
 
 To deploy the solution you will need to run:
 
-  # [http://www.longtailvideo.com Longtail Video's JW Player] 4.5 (or later) (JW Player is Open Source)
-  # [http://www.openx.org OpenX] (see for [http://code.google.com/p/openx-iab-vast/wiki/InstallingOpenXServerVideoPlugin install details]) (OpenX is Open Source)
+  # A *Video Player*: [http://www.longtailvideo.com Longtail Video's JW Player] 4.5 (or later) (JW Player is Open Source)
+  # A *VAST Complaint Ad Server*: [http://www.openx.org OpenX] (see for [InstallingOpenXServerVideoPlugin install details]) (OpenX is Open Source)
   # The [InstallingOpenXServerVideoPlugin OpenX Video Advertising] *server side* plugin (This code is Open Source)
   # A *video player side* plugin to serve the Video Advertising (known as the [JWPlayerOpenXAdStreamerConfig Ad Streamer]) (This is code is Open Source)
 
