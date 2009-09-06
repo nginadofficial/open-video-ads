@@ -17,4 +17,4 @@ from the release "build" directory.
 
 We support two options - [http://www.getfirebug.com Firebug] and the [http://www.demonsterdebugger.com De MonsterDebugger] - you'll see both of these referenced in the source and the `Debuggable` declaration. If you wish to use a different debugger just replace these by modifying the `org.openvideoads.base.Debuggable` declarations for `doLog()` and `doLogAndTrace()`
 
-For more information on how to configure the debug options, refer to the section on "Debug" configuration in the [OASConfiguration Configuration guide].
+For more information on how to configure the debug options, refer to the [VASTAS3FrameworkHowToDebug Debug Guide].
