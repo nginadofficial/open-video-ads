@@ -47,4 +47,4 @@ Multiple debuggers can be used at once. To use both firebug and demonster at the
 
 === Slotting in a new Debugger===
 
- If you wish to use a different debugger just replace these by modifying the `org.openvideoads.base.Debuggable` declarations for `doLog()` and `doLogAndTrace()`
+If you wish to use a different debugger just replace these by modifying the `org.openvideoads.base.Debuggable` declarations for `doLog()` and `doLogAndTrace()`
