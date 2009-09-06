@@ -39,7 +39,7 @@ To implement this type of setup:
         * a local install of an Flash Media Server (FMS), Wowsa server, or potentially a Red5 server       
         * a Content Delivery Network (CDN) such as Limelight, Akamai, SimpleCDN or Influxis. 
      * If you need a few example linear video ads, you can find several [TestAds here]
-  # Install the Ad platform   
+  # Install the Video Ad Platform   
      * Install a VAST compliant Ad Server. In this example we are using the [http://www.openx.org OpenX Ad Platform] and the openXVideoAds plugin. Follow these [InstallingOpenXServerVideoPlugin instructions] to setup an OpenX environment.
   # Configure the Ad platform  
      * Now that you have your ad platform installed, configure some video ads on it. In our environment where OpenX is running with the Video Ads plugin, video ad banners must be setup and configured against a series of ad "zones".  Follow these [SettingUpYourFirstOpenXCampaign steps] to complete this activity or follow the documentation on the OpenX site [https://developer.openx.org/wiki/display/DOCS/OpenX+Video+Plugin+Beta+--+Documentation here].
