@@ -10,5 +10,5 @@ Please use this (or a later version) with the plugin.
 In terms of protocol support, the release has been tested with:
 
   * HTTP progressive download using an [http://www.apache.org Apache] web server
-  * HTTP progressive download using a [http://www.lighttpd.net Lighttpd] web server (with the[http://h264.code-shop.com/trac/wiki/Mod-H264-Streaming-Lighttpd-Version2 H.264 streaming module] also installed)
+  * HTTP progressive download using a [http://www.lighttpd.net Lighttpd] web server (with the [http://h264.code-shop.com/trac/wiki/Mod-H264-Streaming-Lighttpd-Version2 H.264 streaming module] also installed)
   * RTMP using an Adobe Flash Media Server (running on an [http://www.influxis.com Influxis] account)
