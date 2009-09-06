@@ -12,3 +12,7 @@ The Open Ad Streamer (OAS) supports:
   * VAST compliant metrics tracking of video ad performance (for linear ads start, 1st quartile, halfway, 3rd quartile and complete are all tracked)
   * A very flexible approach to ad scheduling against show streams - any combination of linear and non-linear video ads can be configured, scheduled and played back via the Open Ad Streamer
   * Playback using both HTTP Progressive and RTMP protocols
+
+The documentation for the Open Ad Streamer presented on this site:
+
+  * Walks through a number of [http://www.openvideoads.org/examples/openadstreamer/flowplayer/index.html example] configurations and uses of the Open Ad Streamer
