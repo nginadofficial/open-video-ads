@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Example 26 - Empty VAST Response</title>
+<script type="text/javascript" src="../dist/jquery-1.3.1.js"></script>
+<script type="text/javascript" src="../dist/flowplayer-3.1.0.min.js"></script>
+<script type="text/javascript" src="../dist/global-0.16.js"></script>
+<link rel="stylesheet" type="text/css" href="css/global.css" />
+</head>
+<body>
+<h2>Example 26 - Empty VAST Response</h2>
+<p class="example">
+This example tests what happens when an empty VAST template is returned. The ad schedule
+should be skipped and the main stream(s) played.
+</p>
+<a class="example"></a>
+<script type="text/javascript">
+flowplayer("a.example", "../dist/flowplayer-3.1.3.swf", {
+    plugins: {
+        controls: {
+            autoHide: "always"
+        },
+
+        openAdStreamer: {
+            url: '../dist/OpenAdStreamer.swf',
+//            "url": "/fp-http/OpenAdStreamer.swf",
+
+          "deliveryType": "progressive",
+
+            "debug": {
+              "debugger": "firebug",
+              "levels": "fatal"
+            },
+
+            "shows": {
+                "baseURL": "http://streaming.openvideoads.org/shows",
+              "streams": [
+                    { "file":"the-black-hole.mp4", "duration":"00:01:00" },
+                    { "file":"the-black-hole.mp4", "duration":"00:01:00" }
+               ]
+            },
+
+            "ads": {
+              "server": {
+                "type": "OpenX",
+                "vastURL": "http://streaming.openvideoads.org/tests/blank-vast-response.xml"
+            },
+
+              "schedule": [
+                  {
+                    "zone": "5",
+                      "position": "pre-roll",
+                      "applyToParts": [ 0 ]
+                  },
+                  {
+                    "zone": "5",
+                      "position": "post-roll"
+                  }
+              ]
+          }
+        }
+    }
+});
+</script>
+<br/>
+<p>
+The configuration for this example is:
+</p>
+<div class="codebox">
+<pre>
+<code class="javascript">
+flowplayer("a.example", "../dist/flowplayer-3.1.3.swf", {
+    plugins: {
+        controls: {
+            autoHide: "always"
+        },
+
+        openAdStreamer: {
+            url: '../dist/OpenAdStreamer.swf',
+
+            "deliveryType": "progressive",
+
+            "debug": {
+                "debugger": "firebug",
+                "levels": "fatal"
+            },
+
+            "shows": {
+                "baseURL": "http://streaming.openvideoads.org/shows",
+                "streams": [
+                    { "file":"the-black-hole.mp4", "duration":"00:01:00" },
+                    { "file":"the-black-hole.mp4", "duration":"00:01:00" }
+               ]
+            },
+
+            "ads": {
+                 "server": {
+                    "type": "OpenX",
+                    "vastURL": "http://streaming.openvideoads.org/tests/blank-vast-response.xml"
+                 },
+
+                 "schedule": [
+                    {
+                      "zone": "5",
+                      "position": "pre-roll",
+                      "applyToParts": [ 0 ]
+                    },
+                    {
+                      "zone": "5",
+                      "position": "post-roll"
+                    }
+                 ]
+             }
+         }
+     }
+});
+</code>
+</pre>
+</div>
+</body>
+</html>

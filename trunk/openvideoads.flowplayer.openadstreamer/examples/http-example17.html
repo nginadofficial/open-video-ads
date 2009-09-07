@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Example 17 (HTTP) - Play ads only once</title>
+<script type="text/javascript" src="../dist/jquery-1.3.1.js"></script>
+<script type="text/javascript" src="../dist/flowplayer-3.1.0.min.js"></script>
+<script type="text/javascript" src="../dist/global-0.16.js"></script>
+<link rel="stylesheet" type="text/css" href="css/global.css" />
+</head>
+<body>
+
+<h2>Example 17 (HTTP) - Play ads only once</h2>
+<p class="example">
+In this example the pre-roll ad is played only once. Once played, it is marked as "played" in the playlist so a replay
+of the stream does not result in the ad being replayed.
+</p>
+<a class="example"></a>
+
+<script type="text/javascript">
+flowplayer("a.example", "../dist/flowplayer-3.1.3.swf", {
+    plugins: {
+        controls: {
+            autoHide: "always"
+        },
+
+        openAdStreamer: {
+            url: '../dist/OpenAdStreamer.swf',
+//            "url": "/fp-http/OpenAdStreamer.swf",
+
+        "deliveryType": "progressive",
+
+            "shows": {
+                "baseURL": "http://streaming.openvideoads.org/shows",
+              "streams": [
+                    { "file":"the-black-hole.mp4", "duration":"00:00:20" }
+               ]
+            },
+
+            "ads": {
+              "deliveryType": "streaming",
+              "playOnce": true,
+
+              "server": {
+                "type": "OpenX",
+                "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
+            },
+
+              "schedule": [
+                  {
+                    "zone": "5",
+                      "position": "pre-roll"
+                  }
+              ],
+            },
+
+            "debug": {
+              "levels": "fatal",
+              "debugger": "firebug"
+            }
+        }
+    }
+});
+</script>
+<p>
+The configuration for this example is:
+</p>
+<div class="codebox">
+<pre>
+<code class="javascript">
+flowplayer("a.example", "../dist/flowplayer-3.1.3.swf", {
+    plugins: {
+        controls: {
+            autoHide: "always"
+        },
+
+        openAdStreamer: {
+            url: '../dist/OpenAdStreamer.swf',
+
+            "deliveryType": "progressive",
+
+            "shows": {
+                "baseURL": "http://streaming.openvideoads.org/shows",
+                "streams": [
+                    { "file":"the-black-hole.mp4", "duration":"00:00:20" }
+                ]
+            },
+
+            "ads": {
+                "deliveryType": "streaming",
+                "playOnce": true,
+                "server": {
+                    "type": "OpenX",
+                    "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
+                },
+                "schedule": [
+                    {
+                       "zone": "5",
+                       "position": "pre-roll"
+                    }
+                ],
+            },
+
+            "debug": {
+                "levels": "fatal",
+                "debugger": "firebug"
+            }
+        }
+    }
+});
+</code>
+</pre>
+</div>
+</body>
+</html>
