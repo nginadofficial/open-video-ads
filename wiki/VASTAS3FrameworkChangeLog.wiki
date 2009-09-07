@@ -28,7 +28,7 @@
 0.3.3 - September 6, 2009
 
   * ISSUE 18: "adTags" should have been "adParameters" - fixed
-  * Flash overlays loading - required Security.allowDomain() to be used. An additional config parameter "allowDomains" has been added to the AdConfigGroup - this parameter is used by the Security.allowDomain() call - "*" is the default.
+  * Flash overlays loading - required Security.allowDomain() to be used. An additional config parameter "allowDomains" has been added to the AdConfigGroup - this parameter is used by the Security.allowDomain() call - ""all" is the default.
   * ISSUE 5: All default overlay sizes now supported with standard region definitions
   * ISSUE 36:	Flowplayer - Ad Notice positioning on fullscreen was incorrect - placed very wide so the ad notice disappeared - fixed now
   * ISSUE 44: Have changed the logic in the region matching functions RegionController.getRegion() and RegionController.getRegionMatchingContentType() to return a DEFAULT_REGION if no match is found - this is a safety valve for the case where no sizing info is provided in the VAST template. The default template is "reserved-bottom-w100pct-h50px-transparent"
