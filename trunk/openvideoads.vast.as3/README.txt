@@ -1,0 +1,68 @@
+Change Log
+
+0.2.1 - July 15, 2009
+
+* Initial release to support JW Player development
+
+0.3.0 - August 20, 2009
+
+* Major upgrade - callbacks to the plugin on framework status are now "event" based
+* Integrated support for overlays within the framework
+* Extensions to support new ad server integrations
+* Major modifications to the config framework to support a unified JSON approach
+  across the JW and Flowplayer Open Ad Streamer plugins
+* Support for firebug debug output
+* Many bug fixes
+
+0.3.1 - August 31, 2009
+
+* "autoStart" parameter changed to "autoPlay" in configuration objects and API
+* RegionView.as: set "mouseChildren=false" so that the hand shows over the text on the overlays
+* CrossCloseButton.as: Regions can now be clicked to close (including the Ad Notice)
+* Config.as: "autoPlay" correctly implemented - only available at top level
+* Config.as: "contiguous" option name changed to "allowPlaylistControl"
+* OpenVideoAdsConfig.as: tracking configuration added and tracking URLs
+* Built in support for the various non-linear types (text, html, image and swf) in the
+  "model" and "ads.template" components
+* Templating now supported for overlays/regions (default and config based)
+
+0.3.2 - September 1, 2009
+
+* Added NetworkResource.qualifiedHTTPUrl() so that click through URLs will always be
+  checked that they start with "http://" before they are fired off
+* Modification of VAST parsing code for non-linear ad types - only image and swf
+  require a "creativeType" to be defined now - text and html just need "resourceType"
+* Fixed OverlayController.hideNonLinearOverlayAd() so that overlays are hidden based
+  on either "position" or the "regions" Ad Slot param
+* ISSUE 24: + (close) button turned off on the "system-message" region by default.
+  This means that the "this is an ad message" doesn't show close by default
+* ISSUE 26: Support added to track "unmute" events
+* ISSUE 27: Support added to VASTController track "pause and resume" events
+* ISSUE 18: Deprecation of "selectionCriteria" config param - replaced with "adTags"
+* ISSUE 28: Changed "_activeStreamIndex" to "_playlist.playingTrackIndex" for use
+  in onPlayer type events (e.g. on fullscreen etc.)
+
+0.3.3 - September 2, 2009
+
+* ISSUE 18: "adTags" should have been "adParameters" - fixed
+* Flash overlays loading - required Security.allowDomain() to be used. An additional
+  config parameter "allowDomains" has been added to the AdConfigGroup - this parameter
+  is used by the Security.allowDomain() call - "*" is the default.
+* ISSUE 5: All default overlay sizes now supported with standard region definitions
+* ISSUE 36:	Flowplayer - Ad Notice positioning on fullscreen was incorrect - placed very
+  wide so the ad notice disappeared - fixed now
+* ISSUE 44: Have changed the logic in the region matching functions RegionController.getRegion()
+  and RegionController.getRegionMatchingContentType() to return a DEFAULT_REGION if no match is
+  found - this is a safety valve for the case where no sizing info is provided in the VAST template.
+  The default template is "reserved-bottom-w100pct-h50px-transparent"
+* ISSUE 35:	'Click me call to action' region doesn't show when ad replayed - same for ad
+  notices - the show/hide ad notice event is not firing because it's marked as hit
+  and the show/hide 'click me' region is tied to start/end ad events that aren't firing.
+  Changed so that ad notice events are always refired, and click me show/hide tied to that event
+* If not "creativeType" provided for a static "resourceType" image is assumed.
+* All overlay types (text, html, image, flash) successfully tested
+* Templates added to allow overlay formats to be changed as needed
+* "playOnce" configuration wasn't being set at the top level. Missing code from
+  AbstractStreamConfig added to set it.
+* Support added to change ad notice text size from normal to small - size:smalltext|normaltext
+
