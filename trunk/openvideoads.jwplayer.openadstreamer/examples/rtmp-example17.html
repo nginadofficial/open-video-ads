@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Example 17 (RTMP) - Play ads only once</title>
+<script type="text/javascript" src="../dist/flash-firebug-fix.js"></script>
+<link rel="stylesheet" type="text/css" href="css/global.css" />
+</head>
+<body>
+
+<h2>Example 17 (RTMP) - Play ads only once</h2>
+<p class="example">
+In this example the pre-roll ad is played only once. Once played, it is marked as "played" in the playlist so a replay
+of the stream does not result in the ad being replayed.
+</p>
+<object id="ply" width="450" height="300" type="application/x-shockwave-flash" name="ply" data="../dist/4.5.swf">
+<param name="allowfullscreen" value="true"/>
+<param name="allowscriptaccess" value="always"/>
+<param name="flashvars" value="height=300&width=450&plugins=../dist/OpenAdStreamer.swf&config=config/rtmp17.xml"/>
+</object>
+<br/>
+<p>
+The configuration for this example is:
+</p>
+<div class="codebox">
+<pre>
+<code>
+&lt;object id="ply" width="450" height="300" type="application/x-shockwave-flash" name="ply" data="../dist/4.5.swf"&gt;
+  &lt;param name="allowfullscreen" value="true"/&gt;
+  &lt;param name="allowscriptaccess" value="always"/&gt;
+  &lt;param name="flashvars" value="height=300&width=450&plugins=../dist/OpenAdStreamer.swf&config=config/rtmp17.xml"/&gt;
+&lt;/object&gt;
+</code>
+</pre>
+</div>
+<p>
+"rtmp17.xml" is defined as:
+</p>
+<div class="codebox">
+<pre>
+<code class="xml">
+&lt;config&gt;
+   &lt;openadstreamer.title&gt;
+      RTMP Example 17
+   &lt;/openadstreamer.title&gt;
+   &lt;openadstreamer.json&gt;
+        {
+            "deliveryType": "streaming",
+            "allowPlaylistControl": false,
+
+            "shows": {
+            "baseURL": "rtmp://ne7c0nwbit.rtmphost.com/videoplayer",
+                 "streams": [ { "file":"the-black-hole.mp4", "duration":"00:00:10" } ]
+            },
+
+            "ads": {
+                 "deliveryType": "streaming",
+                 "playOnce": true,
+                 "notice": { "textStyle": "smalltext" },
+                 "server": {
+                    "type": "OpenX",
+                    "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
+                 },
+                 "schedule": [
+                    {
+                       "zone": "1",
+                       "position": "pre-roll"
+                    }
+                 ]
+            },
+
+            "debug": {
+                 "levels": "fatal",
+                 "debugger": "firebug"
+            }
+        }
+   &lt;/openadstreamer.json&gt;
+&lt;/config&gt;
+</code>
+</pre>
+</div>
+</body>
+</html>

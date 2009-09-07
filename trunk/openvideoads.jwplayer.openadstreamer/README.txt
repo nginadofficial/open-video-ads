@@ -1,0 +1,34 @@
+Change Log
+
+0.2.1 - June 30, 2009
+
+* The initial version - ad types supported are pre, mid, post roll linear video and companions
+* HTTP and RTMP protocols supported
+
+0.3.0 - August 27, 2009
+
+* Config.as: "autoPlay" correctly implemented - only available at top level
+* Config.as: "contiguous" option name changed to "allowPlaylistControl"
+* Overlays supported
+
+0.3.1 - September 1, 2009
+
+* ISSUE 18: Deprecation of "selectionCriteria" config param - replaced with "adTags"
+
+0.3.2 - September 6, 2009
+
+* "adTags" should have been "adParameters" - fixed
+* ISSUE 25:	Full screen positioning of "this is an ad" message is wrong - was a general problem
+  around resizing not being done in the JW Player Open Ad Streamer
+* Companion ad timing fixed
+* Moved to final 3.1.3 Flowplayer release - "providers" config depreciated because we can't get
+  the autoload of RTMP providers to work for instream clips - needs investigation. Manually
+  define the provider plugins for now (see any rtmp example with an overlay to see how to do this)
+* Examples cleaned up - example19 made a single example all-example19.html
+* Some old overlay OpenX zones removed - in general zone definitions cleaned up
+* Templates added to allow overlay formats to be changed as needed
+* Example 19 fixed so that regions are right width,height and display properly
+* ISSUE 21: overlay examples included
+* ISSUE 23: problem with skipping between clips fixed on example 04 (autoPlay configuration issue)
+* ISSUE 51: Support added to change ad notice text size from normal to small - size:smalltext|normaltext
+

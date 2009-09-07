@@ -1,0 +1,37 @@
+<config>
+   <openadstreamer.title>
+      RTMP Example 03 - Pre-Roll and Overlay
+   </openadstreamer.title>
+   <openadstreamer.json>
+        {
+            "deliveryType": "streaming",
+            "allowPlaylistControl": false,
+
+            "shows": {
+            "baseURL": "rtmp://ne7c0nwbit.rtmphost.com/videoplayer",
+                 "streams": [ { "file":"the-black-hole.mp4", "duration":"00:00:10" } ]
+            },
+
+            "ads": {
+                 "deliveryType": "streaming",
+                 "playOnce": true,
+                 "notice": { "textStyle": "smalltext" },
+                 "server": {
+                    "type": "OpenX",
+                    "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
+                 },
+                 "schedule": [
+                    {
+                       "zone": "1",
+                       "position": "pre-roll"
+                    }
+                 ]
+            },
+
+            "debug": {
+                 "levels": "fatal",
+                 "debugger": "firebug"
+            }
+        }
+   </openadstreamer.json>
+</config>

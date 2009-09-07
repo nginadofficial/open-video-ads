@@ -1,0 +1,43 @@
+<config>
+    <openadstreamer.title>
+       ALL Example 27
+    </openadstreamer.title>
+    <openadstreamer.json>
+       {
+            "deliveryType": "progressive",
+            "allowPlaylistControl": true,
+
+            "debug": {
+                "debugger": "firebug",
+                "levels": "fatal"
+            },
+
+            "shows": {
+                "baseURL": "http://streaming.openvideoads.org:81/shows",
+                "streams": [
+                    { "file":"the-black-hole.mp4", "duration":"00:01:00" },
+                    { "file":"the-black-hole.mp4", "duration":"00:01:00" }
+                ]
+            },
+
+            "ads": {
+                "server": {
+                    "type": "OpenX",
+                    "vastURL": "http://streaming.openvideoads.org/tests/bad-vast-response.xml"
+                },
+                "notice": { "textStyle": "smalltext" },
+                "schedule": [
+                    {
+                        "zone": "18",
+                        "position": "pre-roll",
+                        "applyToParts": [ 0 ]
+                    },
+                    {
+                        "zone": "18",
+                        "position": "post-roll"
+                    }
+                ]
+            }
+        }
+    </openadstreamer.json>
+</config>
