@@ -41,9 +41,6 @@ Two important "flashvars" are passed into JW Player when the player instantiates
   # A reference to the Open Ad Streamer flash SWF file (OpenAdStreamer.swf)
   # A reference to an file that contains the relevant configuration data for the Open Ad Streamer so that it knows how to configure itself for the streams to be played by JW Player ([http://static.openvideoads.org/examples/openadstreamer/jwplayer/examples/config/http02a.xml http02a.xml])
 
-
-
-
-===Getting Up and Running===
+===Instructing the Open Ad Streamer on "How To Schedule and Play"===
 
 X
