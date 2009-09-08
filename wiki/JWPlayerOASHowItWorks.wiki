@@ -26,7 +26,7 @@ For a detailed description of the environment that we have setup to run our exam
 
 [http://static.openvideoads.org/examples/openadstreamer/jwplayer/examples/http-example02a.html Example 2] plays a pre-roll ad before the main show stream.
 
-To do this, a web page is constructed that has the standard JW Player flash object code:
+To achieve this a web page is constructed that has the standard JW Player flash object code:
 
 {{{
 <object id="ply" width="450" height="300" type="application/x-shockwave-flash" name="ply" data="../dist/4.5.swf">
