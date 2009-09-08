@@ -94,3 +94,8 @@ Quickly running over the contents of this file:
     * The "ad" related configuration options
     * The "show" related configuration options
     * Debug options
+  # As the Open Ad Streamer creates a unified playlist that contains both show and ad streams, wWhen the Open Ad Streamer is configured a definition of the "shows" to be played must be provided along with the "ad schedule" to be implemented given those "show streams"
+  # The ad configuration is defined in the form of an "Ad Schedule" that contains a series of "Ad Slot" definitions. Each "Ad Slot" identifies the type of video advertising to play and where to play that video advertising given the "show" streams defined in the "shows" configuration block
+  # In our example above, 1 show stream, an MP4 with the file name "the-black-hole.mp4" is to be played
+  # Against that show stream an "Ad Schedule" with 1 "Ad Slot" is to be played. That "Ad Slot" is is defined to be a "pre-roll" ad that matches zone "18" in our OpenX instance
+  # The details for the Ad Server are defined in the "ad server" configuration block within the "ads" block. In our example, an OpenX instance is used. 
