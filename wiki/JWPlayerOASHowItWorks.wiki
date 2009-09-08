@@ -100,3 +100,7 @@ Quickly running over the contents of this file:
   # In our example above, 1 show stream, an MP4 with the file name "the-black-hole.mp4" is to be played
   # Against that show stream an "Ad Schedule" with 1 "Ad Slot" is to be played. That "Ad Slot" is is defined to be a "pre-roll" ad that matches zone "18" in our OpenX instance
   # The details for the Ad Server are defined in the "ad server" configuration block within the "ads" block. In our example, an OpenX instance is used. 
+
+===At Runtime===
+
+X
