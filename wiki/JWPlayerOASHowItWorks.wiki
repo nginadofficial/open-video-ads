@@ -9,7 +9,7 @@ while the video player sequences and plays back the video ads identified by the 
 
 The following diagram illustrates the end-to-end video advertising solution using the JW Player Open Ad Streamer:
 
-{insert diagram}
+<img src="http://static.bouncingminds.com/images/open-video-ads/jw-howit-works-figure1.png" height="400" border="0" />
 
 To deploy the solution you will need to run:
 
