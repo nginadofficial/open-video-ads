@@ -1,3 +1,110 @@
 #summary A dummy's guide to deploying the plugin
 #sidebar TableOfContents
 
+Ad scheduling is a skilled task. The successful deployment of an effective video advertising solution requires an
+efficient Ad Server that manages the task of initiating, running and reporting on a video advertising campaign 
+while the video player sequences and plays back the video ads identified by the Ad Server.
+
+===The Pieces of the Puzzle===
+
+The following diagram illustrates the end-to-end video advertising solution using the Flowplayer Open Ad Streamer:
+
+<img src="http://static.bouncingminds.com/images/open-video-ads/fp-howit-works-figure1.png" height="400" border="0" />
+
+To deploy the solution you will need to run:
+
+  # [http://www.flowplayer.org Flowplayer] 3.1.3 (or later) (Flowplayer is Open Source)
+  # A VAST Complaint Ad Server to deliver video ad definitions to it to schedule and playback via the Longtail Video JW Player. The project currently supports [http://www.openx.org OpenX] ( [InstallingOpenXServerVideoPlugin Installation instructions]). OpenX is the leading Open Source ad solution on the market today. Other Ad Servers can be used if they are VAST compliant. Support for several others is now in development.
+  # The Open Video Ads [http://open-video-ads.googlecode.com/files/openvideoads.flowplayer.openadstreamer.bin.tar.gz Open Ad Streamer] plugin for Flowplayer. This plugin is an Actionscript 3 Flash SWF that is loaded by Flowplayer at runtime to facilitate the scheduling and playback of video advertising against a set of show streams
+  # A streaming server to host the video ads that you are to serve. This may be either a HTTP based web-server (e.g. [http://www.apache.org Apache] or [http://www.lighttpd.net Lighttpd]) to serve HTTP "progressive" download or an RTMP server such as Adobe's [http://www.adobe.com/products/flashmediaserver Flash Media Server], or [http://www.wowzamedia.com Wowsa]. You can run this server yourself or via a hosted CDN service such as [http://www.influxis.com Influxis], [http://www.simplecdn.com SimpleCDN], [http://www.akamai.com Akamai], [http://www.limelightnetworks.com Limelight] or the like.
+
+For a detailed description of the environment that we have setup to run our examples, please read this [AboutOurDemoEnvironment guide].
+
+===How it all works together===
+
+[http://static.bouncingminds.com/examples/openadstreamer/flowplayer/examples/http-example02.html Example 2] is a good illustration of how the technology works.
+
+[http://static.bouncingminds.com/examples/openadstreamer/flowplayer/examples/http-example02.html Example 2] plays a pre-roll ad before the main show stream.
+
+To do this, a web page is constructed that has the standard Flowplayer javascript based insert code:
+
+{{{
+flowplayer("a.example", "../dist/flowplayer-3.1.3.swf", {
+    plugins: {
+        controls: {
+            autoHide: "always"
+        },
+
+        openAdStreamer: {
+            url: '../dist/OpenAdStreamer.swf',
+
+            "deliveryType": "progressive",
+
+            "shows": {
+                "streams": [
+                    {
+                        "file":"http://streaming.openvideoads.org/shows/the-black-hole.mp4",
+                        "duration":"00:00:30"
+                    }
+                ]
+            },
+
+            "debug": {
+                "debugger": "firebug",
+                "levels": "fatal",
+            },
+
+            "ads": {
+                "playOnce": false,
+                "server": {
+                    "type": "OpenX",
+                    "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
+                },
+                "schedule": [
+                    {
+                       "zone": "5",
+                       "position": "pre-roll"
+                    }
+                ]
+            }
+        }
+    }
+});
+}}}
+
+
+===Instructing the Open Ad Streamer on "How To Schedule and Play"===
+
+The Open Ad Streamer is configured via the JSON configuration data that is provided with the Flowplayer insert code. Quickly running over the configuration in the example above:
+
+  # There are 4 main configuration "blocks" in this example (in other examples there may be more or less). The ones here are:
+    * The general configuration options for the Open Ad Streamer
+    * The "ad" related configuration options
+    * The "show" related configuration options
+    * Debug options
+  # At a general level, in the configuration data we have stated that this instance of the Open Ad Streamer is to only play HTTP "progressive" videos. "streaming" (rtmp or http pseudo-streaming) or both (any combination of rtmp or HTTP) may also be specified.
+  # As the Open Ad Streamer creates a unified playlist that contains both show and ad streams, wWhen the Open Ad Streamer is configured a definition of the "shows" to be played must be provided along with the "ad schedule" to be implemented given those "show streams"
+  # The ad configuration is defined in the form of an "Ad Schedule" that contains a series of "Ad Slot" definitions. Each "Ad Slot" identifies the type of video advertising to play and where to play that video advertising given the "show" streams defined in the "shows" configuration block
+  # In our example above, 1 show stream, an MP4 with the file name "the-black-hole.mp4" is to be played
+  # Against that show stream an "Ad Schedule" with 1 "Ad Slot" is to be played. That "Ad Slot" is is defined to be a "pre-roll" ad that matches zone "18" in our OpenX instance
+  # The details for the Ad Server are defined in the "ad server" configuration block within the "ads" block. In our example, an OpenX instance is used. 
+
+The Open Ad Streamer supports a very wide range of configuration options. For a detailed description of each of these, please refer to the [OASConfiguration Configuration Guide].
+
+===At Runtime===
+
+At runtime when the web page loads Flowplayer and Flowplayer in turn loads up the Open Ad Streamer, the following occurs:
+
+  # The Open Ad Streamer reads in the configuration file
+  # Based on the configuration stated it constructs an "ad schedule"
+  # It then determines what type of ad server to talk with and how to exchange information with that ad server
+  # The Open Ad Streamer then constructs a VAST request to the ad server and fires of that request. In that request it informs the ad server as to the type of video advertising required and the sequence (e.g. 1 pre-roll, 2 overlays, a post-roll etc.)
+  # The Ad Server processes the request, matches the ads to be returned, formulates a VAST response and sends that back to the Open Ad Streamer. To see an example VAST response returned by our demo OpenX instance, click [http://openx.openvideoads.org/openx/www/delivery/fc.php?script=bannerTypeHtml:vastInlineBannerTypeHtml:vastInlineHtml&zones=pre-roll0-0%3D5|bottom1-0%3D12&nz=1&source=&r=3189404.425211251&block=1&format=vast&charset=UTF_8 here] (this is best viewed in Firefox)
+  # Upon receiving the VAST response, the Open Ad Streamer parses the data, matching it back against the original Ad Schedule that it constructed on start up.
+  # To work out how these "ads" are to be played back, the Open Ad Streamer then constructs a final stream sequence in the form of a playlist that contains the show streams and linear video ads spliced together in an order that matches the "ad schedule" defined in the configuration.
+  # The Open Ad Streamer then loads the playlist into the player before instructing the player to start
+  # As the streams play, the Open Ad Streamer receives notifications on their progress and in turn fires tracking event data back to the Ad Server to support the VAST metrics collection and reporting standards.
+
+To get started with Flowplayer and the Open Ad Streamer, if you wish to deliver video advertising using a RTMP based solution please refer to this [GettingStartedRTMP Getting Started With RTMP] guide. For HTTP please review the [GettingStartedHTTP Getting Started with HTTP] guide.
+
+For a detailed description of the Flowplayer Open Ad Streamer design and implementation, please review this [FlowplayerOASImplementationOverview section].
