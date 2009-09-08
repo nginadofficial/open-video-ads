@@ -105,4 +105,14 @@ The Open Ad Streamer supports a very wide range of configuration options. For a 
 
 ===At Runtime===
 
-X
+At runtime when the web page loads JW Player and JW Player in turn loads up the Open Ad Streamer, the following occurs:
+
+  # The Open Ad Streamer reads in the configuration file
+  # Based on the configuration stated it constructs an "ad schedule"
+  # It then determines what type of ad server to talk with and how to exchange information with that ad server
+  # The Open Ad Streamer then constructs a VAST request to the ad server and fires of that request. In that request it informs the ad server as to the type of video advertising required and the sequence (e.g. 1 pre-roll, 2 overlays, a post-roll etc.)
+  # The Ad Server processes the request, matches the ads to be returned, formulates a VAST response and sends that back to the Open Ad Streamer. To see an example VAST response returned by our demo OpenX instance, click [X here] (this is best viewed in Firefox)
+  # Upon receiving the VAST response, the Open Ad Streamer parses the data, matching it back against the original Ad Schedule that it constructed on start up.
+  # To work out how these "ads" are to be played back, the Open Ad Streamer then constructs a final stream sequence in the form of a playlist that contains the show streams and linear video ads spliced together in an order that matches the "ad schedule" defined in the configuration.
+  # The Open Ad Streamer then loads the playlist into the player before instructing the player to start
+  # As the streams play, the Open Ad Streamer receives notifications on their progress and in turn fires tracking event data back to the Ad Server to support the VAST metrics collection and reporting standards.
