@@ -43,4 +43,8 @@ Two important "flashvars" are passed into JW Player when the player instantiates
 
 ===Instructing the Open Ad Streamer on "How To Schedule and Play"===
 
-X
+The configuration data in `[http://static.openvideoads.org/examples/openadstreamer/jwplayer/examples/config/http02a.xml http02a.xml]` is as follows:
+
+{{{
+
+}}}
