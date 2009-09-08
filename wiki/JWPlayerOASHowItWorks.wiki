@@ -117,6 +117,6 @@ At runtime when the web page loads JW Player and JW Player in turn loads up the 
   # The Open Ad Streamer then loads the playlist into the player before instructing the player to start
   # As the streams play, the Open Ad Streamer receives notifications on their progress and in turn fires tracking event data back to the Ad Server to support the VAST metrics collection and reporting standards.
 
-To get started with JW Player and the Open Ad Streamer, if you wish to deliver video advertising using a RTMP based solution, please refer to this [GettingStartedRTMP Getting Started With RTMP] guide. For HTTP, please review the [GettingStartedHTTP Getting Started with HTTP] guide.
+To get started with JW Player and the Open Ad Streamer, if you wish to deliver video advertising using a RTMP based solution please refer to this [GettingStartedRTMP Getting Started With RTMP] guide. For HTTP please review the [GettingStartedHTTP Getting Started with HTTP] guide.
 
 For a detailed description of the JW Player Open Ad Streamer design and implementation, please review this [JWPlayerOASImplementationOverview section].
