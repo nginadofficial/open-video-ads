@@ -1,0 +1,8 @@
+#summary Known Limitations of the Flowplayer Open Ad Streamer
+#sidebar TableOfContents
+
+The following limitations in functionality exist for this release:
+  
+  * HTTP "pseudo-streaming" is not supported yet
+
+For more information on the restrictions, planned enhancements and currently outstanding defects, please review the [http://code.google.com/p/open-video-ads/issues/list Issues log]
