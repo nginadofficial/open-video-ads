@@ -89,4 +89,8 @@ The configuration data in "[http://static.openvideoads.org/examples/openadstream
 
 Quickly running over the contents of this file:
 
-  # There are 4 
+  # There are 4 main configuration "blocks" in this example (in other examples there may be more or less). The ones here are:
+    * The general configuration options for the Open Ad Streamer
+    * The "ad" related configuration options
+    * The "show" related configuration options
+    * Debug options
