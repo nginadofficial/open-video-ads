@@ -101,6 +101,8 @@ Quickly running over the contents of this file:
   # Against that show stream an "Ad Schedule" with 1 "Ad Slot" is to be played. That "Ad Slot" is is defined to be a "pre-roll" ad that matches zone "18" in our OpenX instance
   # The details for the Ad Server are defined in the "ad server" configuration block within the "ads" block. In our example, an OpenX instance is used. 
 
+The Open Ad Streamer supports a very wide range of configuration options. For a detailed description of each of these, please refer to the [OASConfiguration Configuration Guide].
+
 ===At Runtime===
 
 X
