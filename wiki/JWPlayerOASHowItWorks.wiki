@@ -22,7 +22,27 @@ For a detailed description of the environment that we have setup to run our exam
 
 ===How it all works together===
 
-X
+[http://static.openvideoads.org/examples/openadstreamer/jwplayer/examples/http-example02a.html Example 2] is a good illustration of how the technology works.
+
+[http://static.openvideoads.org/examples/openadstreamer/jwplayer/examples/http-example02a.html Example 2] plays a pre-roll ad before the main show stream.
+
+To do this, a web page is constructed that has the standard JW Player flash object code:
+
+{{{
+<object id="ply" width="450" height="300" type="application/x-shockwave-flash" name="ply" data="../dist/4.5.swf">
+  <param name="allowfullscreen" value="true"/>
+  <param name="allowscriptaccess" value="always"/>
+  <param name="flashvars" value="height=300&width=450&plugins=../dist/OpenAdStreamer.swf&config=config/http02a.xml"/>
+</object>
+}}}
+
+Two important "flashvars" are passed into JW Player when the player instantiates:
+
+  # A reference to the Open Ad Streamer flash SWF file (OpenAdStreamer.swf)
+  # A reference to an file that contains the relevant configuration data for the Open Ad Streamer so that it knows how to configure itself for the streams to be played by JW Player ([http://static.openvideoads.org/examples/openadstreamer/jwplayer/examples/conf/http02a.xml http02a.xml])
+
+
+
 
 ===Getting Up and Running===
 
