@@ -39,7 +39,7 @@ To do this, a web page is constructed that has the standard JW Player flash obje
 Two important "flashvars" are passed into JW Player when the player instantiates:
 
   # A reference to the Open Ad Streamer flash SWF file (OpenAdStreamer.swf)
-  # A reference to an file that contains the relevant configuration data for the Open Ad Streamer so that it knows how to configure itself for the streams to be played by JW Player ([http://static.openvideoads.org/examples/openadstreamer/jwplayer/examples/conf/http02a.xml http02a.xml])
+  # A reference to an file that contains the relevant configuration data for the Open Ad Streamer so that it knows how to configure itself for the streams to be played by JW Player ([http://static.openvideoads.org/examples/openadstreamer/jwplayer/examples/config/http02a.xml http02a.xml])
 
 
 
