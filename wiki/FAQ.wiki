@@ -27,3 +27,9 @@ It may be possible to remove the need for a duration in some ad schedule scenari
 At the moment, to run the examples in the downloaded package you need to serve the examples via a webserver. Place the examples into a path off your webserver `doc` directory and access them via `http://localhost/..../examples`
 
 Loading an example directly into your browser from the uncompressed package won't work. At least for now.
+
+====5. Are clicks on overlay 'click to play a video' tracked====
+
+For OpenX, Overlay Video Ads when the click opens a Video Ad clicks on the Video Ad that link to the advertiser's website will be tracked. If you want to know how many times the overlay was clicked and the Video Ad started playing, you can look at the "Started" event for this Video Ad.
+
+See the [https://developer.openx.org/wiki/display/DOCS/OpenX+Video+Plugin+Beta+--+Documentation#OpenXVideoPluginBeta--Documentation-TrackedeventsforVideoAds OpenX documentation]
