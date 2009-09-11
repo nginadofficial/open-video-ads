@@ -3,11 +3,11 @@
 
 To support the examples for [http://static.openvideoads.org/examples/openadstreamer/flowplayer/index.html Flowplayer] and [http://static.openvideoads.org/examples/openadstreamer/flowplayer/index.html JW Player], we have setup the following:
 
-  # An instance of Apache to serve the HTTP progressive streams on http://streaming.openvideoads.org:80
-  # An instance of Lighttpd to serve the HTTP pseudo-streaming streams on http://streaming.openvideoads.org:81
+  # An instance of Apache to serve the HTTP progressive examples on http://streaming.openvideoads.org:80
+  # An instance of Lighttpd to serve the HTTP pseudo-streaming examples on http://streaming.openvideoads.org:81
   # An Adobe Flash Media Server (FMS) instance through an account with [http://www.influxis.com Influxis]
   # An openX instance on http://openx.openvideoads.org/openx
 
+To support pseudo-streaming, we've installed the H.264 module for Lighttpd.
 
-
-
+You can find some installation instructions on how to set that up [InstallingLighttpdWithModH264Ubuntu8 here].
