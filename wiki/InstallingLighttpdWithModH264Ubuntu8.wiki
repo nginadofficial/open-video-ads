@@ -1,6 +1,6 @@
 #summary Installation Guide for Lighttpd with mod-H.264 on Ubuntu 8 (Hardy)
 
-For the OpenVideoAds HTTP examples, we are serving the HTTP MP4 and FLV files using Lighttpd 1.4.18 on Ubuntu Hardy running on port 81.
+For the OpenVideoAds HTTP pseudo-streaming examples, we are serving the HTTP MP4 and FLV files using Lighttpd 1.4.18 on Ubuntu Hardy running on port 81.
 
 ==Resolve the dependancies==
 
