@@ -10,3 +10,11 @@ In short, video content can be delivered via:
   * HTTP "Pseudo-Streaming" is "progressive download" with an extension that allows the user to access a random part of the stream before it's been downloaded. It does this via a server-side script that allows the player to tell the web server which part of the stream to access and download. Several technology options are available to add support for "pseudo-streaming" to a web server - two being [http://xmoov.com/xmoov-php/ XMoov] and the [http://h264.code-shop.com/trac H.264 Module for Lighttpd] 
 
   * "Streaming" in it's purest form requires specific software that implements a "streaming" protocol such as RTMP (as implemented by the Adobe Flash Media Server). You will find many Content Delivery Networks (CDNs) that offer this type of hosted service. We use [http://www.influxis.com Influxis] for our examples.
+
+Video players will offer support for the different forms of streaming in different ways.
+
+Flowplayer offers separate plugins to support the different streaming protocols. 
+
+Longtail's JW Player alternatively has support already built in for many of them.
+
+You can find more information on the different "streaming" definitions [http://www.longtailvideo.com/support/tutorials/HTTP-Video-Streaming here] and [http://flowplayer.org/plugins/streaming/rtmp.html here]
