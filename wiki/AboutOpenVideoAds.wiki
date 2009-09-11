@@ -1,0 +1,16 @@
+#summary About Open Video Ads
+#sidebar TableOfContents
+
+Open Video Ads is an open source initiative dedicated to the development and distribution of free technology that enables the implementation of IAB VAST and VPAID compliant Video Players.
+
+For video advertising to prosper, the fragmented video player market must be unified so that any video ad can be played on any player at any time.
+
+Through the adoption and implementation of the IAB VAST and VPAID standards, the Open Video Ads technology achieves this.
+
+Today, we have implementations for Flowplayer and Longtail's JW Player. We also have a base framework that allows any custom Flash player to become VAST/VPAID compliant.
+
+Work is underway on implementations for the Adobe Open Media Framework and the Kaltura players.
+
+For ads to be delivered the implementation must take with an IAB VAST compliant ad server.
+
+Today the Open Video Ads player plugins and framework has support built in for OpenX. Further support for more ad servers is  underway and will be progressively announced/released over the coming months.
