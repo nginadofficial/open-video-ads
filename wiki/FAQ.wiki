@@ -33,3 +33,7 @@ Loading an example directly into your browser from the uncompressed package won'
 For OpenX, Overlay Video Ads when the click opens a Video Ad clicks on the Video Ad that link to the advertiser's website will be tracked. If you want to know how many times the overlay was clicked and the Video Ad started playing, you can look at the "Started" event for this Video Ad.
 
 See the [https://developer.openx.org/wiki/display/DOCS/OpenX+Video+Plugin+Beta+--+Documentation#OpenXVideoPluginBeta--Documentation-TrackedeventsforVideoAds OpenX documentation]
+
+====6. Are Overlay Close button clicked events tracked====
+
+Not at this time. You can register to receive a callback notification when the close button is clicked, but those events are not automatically tracked on the ad server.
