@@ -1,3 +1,5 @@
+#summary Managing Player and Ad Events
+#sidebar TableOfContents
 
 The VAST framework notifies a player implementation of changes in the framework via the Actionscript Event dispatcher/listener mechanism.
 
