@@ -46,7 +46,7 @@
     * [VASTAS3FrameworkOverview Architecture]
     * [VASTAS3FrameworkHowItWorks 60,000ft Guide]
     * [VASTAS3FrameworkClassModel Class Model]
-    * [VASTAS3FrameworkInAction Example Plugins]
+    * [VASTAS3FrameworkInAction Code Examples]
       * [FlowplayerOASImplementationOverview Flowplayer]
       * [JWPlayerOASImplementationOverview JW Player]
     * [http://open-video-ads.googlecode.com/files/openvideoads.vast.as3.tar.gz Download]
