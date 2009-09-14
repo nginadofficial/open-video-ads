@@ -1,2 +1,249 @@
 #summary Talking to a VAST Ad Server
-#sidebar TableOfContents.
+#sidebar TableOfContents
+
+Once the VAST Framework has been instantiated and configured via the `VASTController`, a request can be made to obtain the Video Ad Serving Template (VAST) data from the VAST compliant ad server.
+
+The following code snippet illustrates how that is done in the Flowplayer Open Ad Streamer:
+
+{{{
+    _vastController.load();	
+
+    ....
+
+    protected function onTemplateLoaded(event:TemplateEvent):void {
+        doLogAndTrace("NOTIFICATION: VAST data loaded - ", event.template, Debuggable.DEBUG_FATAL);
+        _player.playlist.replaceClips2(_clipList);
+        _model.dispatchOnLoad();
+    }
+}}}
+
+The call to the ad server is triggered via the `VASTController.load()` API. 
+
+When called, the VASTController constructs a request for the specified Ad Server, fires it off to the ad server, waits for a response (which should be the VAST data), processes the response, constructs an object model representing the VAST ad data before calling back the Flowplayer Open Ad Streamer call via the method listening for the `TemplateEvent.LOADED` event.
+
+A `VideoAdServingTemplate` can be obtained from the `TemplateEvent` via the `TemplateEvent.template` attribute.
+
+In between constructing the original ad server request and the dispatch of the `TemplateEvent.LOADED` event, a lot of processing occurs within the VAST framework.
+
+The three key activities undertaken by the framework during this period are:
+
+  # The formation of the ad server request
+  # The parsing of the VAST response to create a `VideoAdServingTemplate`
+  # The mapping of the Ads in the `VideoAdServingTemplate` to the `AdSchedule`
+  # The construction of a `StreamSequence` based on the shows configuration and the streams identified in the `AdSchedule`
+  # The dispatching and processing of Ad and Stream scheduling events back to the Flowplayer Open Ad Streamer plugin
+
+====The Formation of the Ad Server Request====
+
+A VAST request to an ad server will vary according to the ad server brand.
+
+For our example03 and OpenX, a VAST request takes the following form:
+
+{{{
+    http://openx.openvideoads.com/openx/www/delivery/fc.php
+                   ?script=bannerTypeHtml:vastInlineBannerTypeHtml:vastInlineHtml
+                   &zones=pre-roll0-0%3D5%7Cbottom1-0%3D12&nz=1
+                   &source=
+                   &r=3189404.425211251
+                   &block=1
+                   &format=vast
+                   &charset=UTF_8
+}}}
+
+There are 2 key parameters in that call:
+
+  # "zones" - identifies the number and type of ads requested
+  # "block" - identifies whether or not ads can be repeated in the matching across the returned set
+  # An optional set of ad matching criteria to allow targeted ad selection on the OpenX side
+
+If the configuration for the player/framework includes the parameter `"allowAdRepetition:true"`, then the "block" value will be set to "0" - this tells OpenX that the same ad may be returned multiple times across the response. By default it is set to "1" which means that every ad returned in the request block must be unique. If we had 3 pre-roll ads to serve in 1 go, that would be important.
+
+"Matching" or "targetting" criteria is declared in the player/framework configuration using the `"selectionCriteria:` flag. This parameter is declared as an array of "key, value" pairs. For example, if we wished to limit the ad selection to "males 25 to 30", we may declare the `selectionCriteria` in our configuration as:
+
+{{{
+    "selectionCriteria": [ { "sex": "male" }, { "age:", "25-30" } ]
+}}}
+
+When the call is made to OpenX, the following values would be added to the call:
+
+{{{
+     &sex=male&age=25-30
+}}}
+
+See [http://www.bouncingminds.com/plugins/flowplayer/openvideoads/openadstreamer/latest/examples/http-example20.html HTTP example20] for a worked example using the Flowplayer Open Ad Streamer.
+
+The "zones" parameter is the more complex of the parameters. It has to effectively identify:
+
+  * The number of ads requested
+  * The type of each ad requested
+  * A unique identifier for each ad requested
+
+In our example the "zones" parameter value is `zones=pre-roll0-0%3D5%7Cbottom1-0%3D12`
+
+Breaking this example down into it's parts:
+
+  * There are two ads to be identified
+  * The first ad is of OpenX zone type "5" (as defined by our first Ad Slot)
+  * The second ad is of OpenX zone type "12" (as defined by our second Ad Slot)
+  * The first ad has a unique identifier 'pre-roll0-0"
+  * The second ad has a unique identifier 'bottom1-0"
+
+While the unique identifies for each ad zone are irrelevant for the OpenX server, they are very important for the Open Ad Streamer and the AS3 Framework.
+
+Because multiple ads are being requested in a single call, the framework needs to be able to uniquely identify which ad maps back to which Ad Slot when the VAST response from the Ad Server is parsed by the framework.
+
+When the framework makes a request to an ad server, it generates a unique identifier for each ad slot and requires that the identifier is passed back in the VAST response unchanged so that this mapping can be completed.
+
+Below is a cut-down example VAST response for our OpenX ad call - you can see how the unique identifiers are provided in the response:
+
+{{{
+<VideoAdServingTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast.xsd">
+    <Ad id="pre-roll0-0" >        
+        <InLine>            
+            <AdSystem>openx</AdSystem>                
+            <AdTitle>
+                   <![CDATA[HTTP - Heinz Mayo Video (30 secs)]]>
+            </AdTitle> 
+              .....             
+         </InLine>
+     </Ad>
+    <Ad id="bottom1-0" >        
+         <InLine>            
+             <AdSystem>openx</AdSystem>                
+             <AdTitle> 
+                   <![CDATA[HTTP OVERLAY - click to video]]>
+             </AdTitle>       
+              .....             
+        </InLine>
+    </Ad>
+</VideoAdServingTemplate>
+}}}
+
+
+====The Parsing of the Ad Server Response====
+
+Upon the receipt of a VAST response from the ad server, the framework constructs an object model of the Video Ad Serving Template.
+
+You can see an example VAST response for our example03 [http://openx.bouncingminds.com/openx/www/delivery/fc.php?script=bannerTypeHtml:vastInlineBannerTypeHtml:vastInlineHtml&zones=pre-roll0-0%3D5|bottom1-0%3D12&nz=1&source=&r=3189404.425211251&block=1&format=vast&charset=UTF_8 here] (if you can't see the response correctly in your browser, copy the link and cut and paste it into Firefox to view).
+
+At a high level, the object model is constructed as follows:
+
+  * A single `VideoAdServingTemplate` is instantiated
+  * For each Ad returned in the VAST data, a `VideoAd` object is instantiated and added to the list held by the `VideoAdServingTemplate`
+  * A `VideoAd` encapsulates the definition of the entities that are to be played for a single `AdSlot` in the `AdSchedule`. These may be:
+    * A `LinearVideoAd` or
+    * A `NonLinearVideoAd` that may optionally have a `LinearVideoAd` attached to it (if it's an overlay that triggers a video ad to play)
+    * Both `LinearVideoAds` and `NonLinearVideoAds` may have `CompanionAds` attached
+  * If a `LinearVideoAd` is created, a number of `MediaFiles` may be attached to that `LinearVideoAd` - each `MediaFile` represents a specific type of video stream that may be played (mimeType, bitrate, streaming or progressive etc.)
+
+For a detailed view of the class model associated with the framework, please review the [VASTAS3FrameworkClassModel Framework Class Model Guide].
+
+====The Construction of a Stream Sequence====
+
+With a `VideoAdServingTemplate` successfully constructed, the next step the framework takes in a `VASTController.load()` is to map the object model behind the `VideoAdServingTemplate` to the `AdSchedule` object model constructed when the framework was initialised.
+
+There is a one-to-one correlation between the ads returned in the VAST response (and held in the `VideoAdServingTemplate`) and the `AdSlots` held in the `AdSchedule`.
+
+Figure 3 (above) illustrates what the AdSchedule object model looks like once it's been populated with the results of a VAST ad server request.
+
+But the mapping of VAST ads to the actual `AdSchedule` is only part of the picture.
+
+To have a complete picture of what is to be played by the player a `StreamSequence` must be constructed.
+
+A `StreamSequence` is a sequential list of `Streams` that are to be played one after each other by the Video Player.
+
+A `Stream` can be either a show `Stream` or an `AdSlot`.
+
+For example, in example03 we have 2 streams that are to be played:
+
+  # A pre-roll linear video ad followed by
+  # A show stream
+
+The `StreamSequence` would therefore contain 2 `Streams` - the first `AdSlot` and the second show `Stream`.
+
+A `StreamSequence` can be converted to a playlist. This is particularly useful if the Video Player accepts playlists of certain formats. Once the VAST response has been parsed and the `StreamSequence` formed, a simple call to the `VASTController` can return a specifically formatted playlist (e.g. an XSPF playlist for instance). For a full description of the VASTController playlist API and the various playlist formats returned, please refer to the "[VASTAS3FrameworkPlaylists Playlist Guide]".
+
+The Flowplayer Open Ad Streamer does not use playlists however. It directly constructs the internal Flowplayer playlist by parsing the `StreamSequence` object model. Each `Stream` in the sequence represents a Flowplayer `Clip` that is to be added to the Flowplayer `Playlist` object.
+
+A `StreamSequence` and an `AdSchedule` share an important relationship.
+
+The following diagram illustrates the object model that exists for our Example03 once the `StreamSequence` has been formed. It also identifies the relationships that exist between the `StreamSequence`, the `VideoAdServingTemplate` and the `AdSchedule`.
+
+<img src="http://static.bouncingminds.com/images/open-video-ads/adschedule-streamsequence-model.png" border="0" height="390">
+<br/>
+<br/>
+_*Figure 4: A StreamSequence and AdSchedule working together*_
+
+
+When the framework constructs a `StreamSequence`, it assesses:
+
+  * The "ad schedule" defined in the configuration data
+  * The "shows" configuration
+
+to determine the order in which ads and show streams are to play.
+
+In our example03, the result is quite straight forward - one ad plays first followed by the show stream. The resulting `StreamSequence` is then quite straight forward.
+
+Consider however, a more complex example. [http://www.bouncingminds.com/plugins/flowplayer/openvideoads/openadstreamer/latest/examples/http-example05.html Example05] has a pre-roll being served before a show stream, a mid-roll ad 10 seconds into the show stream followed by a post-roll ad at the end.
+
+The configuration snippet from below is from Example05:
+
+{{{
+    "shows": {
+        "baseURL": "http://static.bouncingminds.com/shows",
+        "streams": [
+            { "file":"bbb_640x360.mp4", "duration":"00:01:00" }
+        ]
+    },
+
+    "ads": {
+        "server": {
+            "type": "OpenX",
+            "vastURL": "http://openx.bouncingminds.com/openx/www/delivery/fc.php"
+        },
+        "schedule": [
+            {
+                "zone": "5",
+                "position": "pre-roll",
+                "playOnce": true
+            },
+            {
+                "zone": "5",
+                "position": "mid-roll",
+                "startTime": "00:00:10",
+                "playOnce": true
+            },
+            {
+                "zone": "5",
+                "position": "post-roll",
+                "playOnce": true
+            }
+        ]
+    },
+}}}
+
+The following diagram illustrates the `AdSequence` and `ShowSequence` that result from interpreting the ad schedule and show configuration:
+
+<img src="http://static.bouncingminds.com/images/open-video-ads/adschedule-streamsequence-example05.png" border="0" height="230">
+<br/>
+<br/>
+_*Figure 4: Example05 - Ad and Stream Sequences*_
+
+
+The `StreamSequence` ends up having 5 streams defined in it:
+
+  # The pre-roll ad slot
+  # The first part of the show stream covering the first 10 seconds up to the start of the mid-roll ad
+  # The mid-roll ad slot
+  # The remaining show stream from 10 seconds to the end
+  # The post-roll ad slot
+
+Now you may remember when the VAST framework was initialised, there was a call made to the `VASTController` to set`trackStreamSlices` to `false`;
+
+{{{
+_vastController.trackStreamSlices = false;
+}}}
+
+That call directly impacts the way the `StreamSequence` is formulated.
+
+Because Flowplayer allows mid-roll child streams (e.g. a mid-roll ad) to be directly inserted into a parent (e.g. show) stream via the Flowplayer "instream" API. For this reason, there is no need for the framework to "slice" up show streams into pieces so that each individual pre and post stream segment can be treated as an individual clip in a playlist. JW Player on the other hand doesn't have this type of API, so a playlist that has a mid-roll ad needs to have the show streams containing the mid-roll ad "sliced" into pieces.
