@@ -1,3 +1,6 @@
+#summary Constructing an Ad Schedule
+#sidebar TableOfContents
+
 An _Ad Schedule_ is a central construct within the VAST AS3 Framework and the Flowplayer Open Ad Server as a result. It is a series of Ad Slots that represent a single Video Ad instance to be played when the Video Player serves the streams.
 
 An Ad Schedule is declared through the "schedule" configuration parameter within the "ads" configuration grouping. The declaration below is from our example 03:
