@@ -1,0 +1,59 @@
+
+The VAST framework notifies a player implementation of changes in the framework via the Actionscript Event dispatcher/listener mechanism.
+
+Listeners can be identified for a range of events.
+
+The following code snippet from the Flowplayer Open Ad Streamer illustrates how to register and listen for all of the events broadcast by the framework.
+
+{{{
+    // Setup the critical listeners for the template loading process
+    _vastController.addEventListener(TemplateEvent.LOADED, onTemplateLoaded);
+    _vastController.addEventListener(TemplateEvent.LOAD_FAILED, onTemplateLoadError);
+
+    // Setup the linear ad listeners
+    _vastController.addEventListener(LinearAdDisplayEvent.STARTED, onLinearAdStarted);
+    _vastController.addEventListener(LinearAdDisplayEvent.COMPLETE, onLinearAdComplete); 
+    _vastController.addEventListener(LinearAdDisplayEvent.CLICK_THROUGH, onLinearAdClickThrough);           
+           
+    // Setup the companion display listeners
+    _vastController.addEventListener(CompanionAdDisplayEvent.DISPLAY, onDisplayCompanionAd);
+    _vastController.addEventListener(CompanionAdDisplayEvent.HIDE, onHideCompanionAd);
+
+    // Decide how to handle overlay displays - if through the framework, turn it on, otherwise register the event callbacks
+    _vastController.enableNonLinearAdDisplay(new DisplayProperties(this, 640, 360, 25));
+    _vastController.addEventListener(OverlayAdDisplayEvent.DISPLAY, onDisplayOverlay);
+    _vastController.addEventListener(OverlayAdDisplayEvent.HIDE, onHideOverlay);
+    _vastController.addEventListener(OverlayAdDisplayEvent.DISPLAY_NON_OVERLAY, onDisplayNonOverlay);
+    _vastController.addEventListener(OverlayAdDisplayEvent.HIDE_NON_OVERLAY, onHideNonOverlay);
+    _vastController.addEventListener(OverlayAdDisplayEvent.CLICKED, onOverlayClicked);
+    _vastController.addEventListener(AdNoticeDisplayEvent.DISPLAY, onDisplayNotice);
+    _vastController.addEventListener(AdNoticeDisplayEvent.HIDE, onHideNotice);
+          
+    // Setup the hander for tracking point set events
+    _vastController.addEventListener(TrackingPointEvent.SET, onSetTrackingPoint);
+    _vastController.addEventListener(TrackingPointEvent.FIRED, onTrackingPointFired);
+            
+    // Setup the hander for display events on the seeker bar
+    _vastController.addEventListener(SeekerBarEvent.TOGGLE, onToggleSeekerBar);
+            
+    // Ok, let's load up the VAST data from our Ad Server - when the stream sequence is constructed, register for callbacks
+    _vastController.addEventListener(StreamSchedulingEvent.SCHEDULE, onStreamSchedule);
+    _vastController.addEventListener(NonLinearSchedulingEvent.SCHEDULE, onNonLinearSchedule);
+}}}
+
+Broadly speaking there are 5 categories of events:
+
+  # Data loading events:
+    * VAST data loading (`TemplateEvent`)
+  # Ad display events:
+    * Linear ad display events (`LinearAdDisplayEvent`)
+    * Companion Ad display events (`CompanionAdEvent`)
+    * Non-Linear Ad display events (`OverlayAdDisplayEvent`)
+    * Ad Notice display events (`AdNoticeDisplayEvent`)
+  # Ad and Stream Scheduling events
+    * Stream scheduling events (`StreamSchedulingEvent`)
+    * Non-linear ad (Overlay) scheduling events (`NonLinearSchedulingEvent')
+  # Time tracking events
+    * Tracking point events (`TrackingPointEvent`)
+  # Player control events:
+    * Control bar (seeker) action events (`SeekerBarEvent`)
