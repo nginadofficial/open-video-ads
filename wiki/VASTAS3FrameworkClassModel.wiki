@@ -1,6 +1,4 @@
 #summary The Class Model for the Framework
 #sidebar TableOfContents
 
-Illustrated below is the class model for the framework.
-
-<img src="http://static.bouncingminds.com/images/open-video-ads/object-model.png" width="1100" border="0" />
+You can find a single model for the entire framework [VASTAS3FrameworkFullClassModel here].
