@@ -12,7 +12,7 @@ You can mix HTTP and RTMP based ad and show delivery, but that's a story for lat
 HTTP based delivery may occur in two different forms:
 
   # As straight HTTP "progressive" download where nothing but a standard web server is required or 
-  # via HTTP "pseudo-streaming" delivery where a module is required on the web-server to allow the video player to "seek" randomly within the show stream as it is downloading.
+  # via HTTP "pseudo-streaming" delivery where a module is required on the web-server to allow the video player to "seek" randomly within the show stream as it is downloading. (please note:  I am still sorting out the correct implementation for psuedo-streaming for the Flowplayer Open Ad Streamer. The JW Player Open Ad Streamer works with Lighttpd by default, but not MOOV.php - that is being fixed now as I clean up the implementation of pseudo-streaming across both)
 
 For a more detailed definition of these two HTTP approaches, please refer [StreamingExplained here].
 
