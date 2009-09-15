@@ -1,13 +1,6 @@
-#summary One-sentence summary of this page.
+#summary The Full Class Model for the Framework
+#sidebar TableOfContents
 
-= Introduction =
+Illustrated below is the class model for the framework.
 
-Add your content here.
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+<img src="http://static.bouncingminds.com/images/open-video-ads/object-model.png" width="1100" border="0" />
