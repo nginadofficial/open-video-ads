@@ -32,13 +32,13 @@ Once loaded, the Open Ad Streamer tells the Video Player to play the playlist, t
 
 To play the streams the Open Ad Streamer relies on the HTTP playback facilities of the Video Player.
 
-By default, Flowplayer supports HTTP "progressive" based stream delivery. JW Player alternatively supports "HTTP pseudo-streaming" by default. 
+By default, Flowplayer supports HTTP "progressive" based stream delivery.  JW Player alternatively supports "HTTP pseudo-streaming" by default. 
 
 HTTP "pseudo-streaming" requires a slightly different setup as illustrated by the following diagram:
 
 INSERT DIAGRAM HERE
 
-The primary difference between "progressive" and "pseudo-streaming" environments is that "pseudo-streaming" requires a module to be added to the web-server. This module implements a protocol that allows the video player to interrupt the download stream and seek forward to a given position before the web server resumes the download from that position.
+The primary difference between "progressive" and "pseudo-streaming" environments is that "pseudo-streaming" requires a module to be added to the web-server to support random seeking in the stream timeline before the stream has been downloaded. 
 
 Several options are available to enable this functionality on a web server:
 
@@ -47,9 +47,13 @@ Several options are available to enable this functionality on a web server:
   * [http://richbellamy.com/wiki/Flash_Streaming_to_FlowPlayer_using_only_PHP richbellamy.com pseudostreaming PHP script]
   * [http://tperspective.blogspot.com/2009/02/apache-flv-streaming-done-right.html Apache FLV streaming using a native Apache module]
 
-Without our example environment, for "pseudo-streaming" we are running [www.lighttpd.net Lighttpd] with the [http://h264.code-shop.com/trac/wiki H.264 streaming module] installed. For straight "progressive" download we are using Apache. 
+Without our example environment, for "pseudo-streaming" we are running [http://www.lighttpd.net Lighttpd] with the [http://h264.code-shop.com/trac/wiki H.264 streaming module] installed. For straight "progressive" download we are using Apache. 
 
 Please refer to this [AboutOurDemoEnvironment guide] for more information on our setup.
+
+To support "pseudo-streaming" with Flowplayer, a "pseudo-streaming" provider plugin must be used. Refer to this [http://flowplayer.org/plugins/streaming/pseudostreaming.html guide] to obtain and install that plugin. We have created a specific Flowplayer example that illustrates how to configure the "pseudo-streaming" plugin for use with the Open Ad Streamer.
+
+Pseudo-streaming works "out-of-the-box" for the Open Ad Streamer with JW Player - no specific configuration is required on the player side.
 
 To implement a simple end-to-end example of a HTTP based solution:
 
