@@ -38,12 +38,14 @@ HTTP "pseudo-streaming" requires a slightly different setup as illustrated by th
 
 INSERT DIAGRAM HERE
 
-The primary different between the "progressive" and the "pseudo-streaming" environments is that "pseudo-streaming" requires a module to be added to the web-server that implements a protocol that allows the video player to interrupt the download stream and seek forward to a given position and resume the download from there.
+The primary difference between "progressive" and "pseudo-streaming" environments is that "pseudo-streaming" requires a module to be added to the web-server. This module implements a protocol that allows the video player to interrupt the download stream and seek forward to a given position before the web server resumes the download from that position.
 
-The web server side module to support that functionality is available in several ways:
+Several options are available to enable this functionality on a web server:
 
-  * 
-  * 
+  * [http://blog.lighttpd.net/articles/2006/03/09/flv-streaming-with-lighttpd Lighttpd Web server and it's FLV streaming script]
+  * [http://h264.code-shop.com/trac/wiki H.264 Streaming Module for Apache, Lighttpd and Nginx]
+  * [http://richbellamy.com/wiki/Flash_Streaming_to_FlowPlayer_using_only_PHP richbellamy.com pseudostreaming PHP script]
+  * [http://tperspective.blogspot.com/2009/02/apache-flv-streaming-done-right.html Apache FLV streaming using a native Apache module]
 
 Without our demonstration environment we are running Lighttpd with the H.264 streaming module installed. Please refer to this [AboutOurDemoEnvironment guide] for more information on our setup.
 
