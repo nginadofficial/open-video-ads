@@ -37,3 +37,15 @@ See the [https://developer.openx.org/wiki/display/DOCS/OpenX+Video+Plugin+Beta+-
 ====6. Are Overlay Close button clicked events tracked====
 
 Not at this time. You can register to receive a callback notification when the close button is clicked, but those events are not automatically tracked on the ad server.
+
+====7. Security Error - what does that mean?====
+
+I'm seeing a security error in the console output when I try to connect to my Ad Server - what does that mean?
+
+{{{
+HTTP ERROR: [SecurityErrorEvent type="securityError" bubbles=false cancelable=false eventPhase=2 text="Error #2048"]
+FAILURE loading VAST template - [SecurityErrorEvent type="securityError" bubbles=false cancelable=false eventPhase=2 text="Error #2048"]
+NOTIFICATION: FAILURE loading VAST template - [SecurityErrorEvent type="securityError" bubbles=false cancelable=false eventPhase=2 text="Error #2048"]
+}}}
+
+Before you can connect the Open Ad Streamer to your new OpenX instance, you need to ensure that you have an appropriate "crossdomain.xml" file configured in the doc root of the webserver on the box running the OpenX Ad Server. If you don't do this, when the OpenX Ad Streamer makes a request to the OpenX Ad Server to obtain the VAST data, a security violation will be thrown within Flash and the request will be denied. Here's an example [ExampleCrossdomainXML crossdomain.xml] file that you can use.
