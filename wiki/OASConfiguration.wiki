@@ -213,7 +213,7 @@ The "streams" configuration item is probably the most important property in the 
 || `removeFileExtension` || 0.1.1 || Optional || false || Forces removal of file extensions for video stream file names returned in the VAST data - particularly useful for ensuring that FLV streams play on a streaming server ||
 || `streams` || 0.1.1 ||  Required || an empty list || An array of stream definitions which identifies the main programme streams to be played by the player - ads are sequenced in accordance with the Ad Slot schedule against these streams. As the property is an array, the following format is expected `[ { stream1-name, stream1-duration }, ... { streamN-name, streamN-duration} ]`. The `stream-duration` must be declared in time stamp format `HH:MM:SS` (e.g. `01:10:15` for a duration of 1 hour 10 minutes and 15 seconds). Streams may be declared as a fully qualified filename (e.g. `"rtmp://ne7c0nwbit.rtmphost.com/videoplayer/mp4:bbb_640x360_h264.mp4` ) or as files relative to the `baseURL` declared in the shows configuration grouping.  ||
 || `streamType` || 0.3.4 || Optional || "mp4" || A specific value that identifies the type of stream to be played - can be either "mp4", "flv" or "mixed" ||
-|| `subscribe` || not available || To be used by live streams only - not currently active ||
+|| `subscribe` || not available || Optional || null || To be used by live streams only - not currently active ||
 
 == Overlays Configuration Options ==
 
