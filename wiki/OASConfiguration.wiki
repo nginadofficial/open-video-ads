@@ -331,3 +331,45 @@ A wide range of configuration options are available, allowing you to define regi
 || `startTime` || AdSpot || 0.4.5 ||  The time an ad is to start - used by mid-roll and non-linear ads to identify when an ad is to be started during the programme stream. The value must be specified in the form of a timestamp `'HH:MM:SS'` ||
 
 == Debug Configuration Options ==
+
+The debug configuration is controlled through the "debug" config group. A typical configuration is:
+
+{{{
+        "debug": {
+	    "debugger": "firebug",
+    	    "levels": "all"
+        },
+}}}
+
+This config says to report "all" debug information to the "[http://www.getfirebug.com firebug]" console. It's worth noting, reporting "all" debug information will slow down the framework operation considerably.
+
+===The Debug Levels===
+
+To fine tune and identify the debug information to output, a range of options can be specified in the `levels` configuration parameter.
+
+The following table identifies the various debug information categories that can be output:
+
+|| *parameter*  || *description* ||
+||  `all` ||  Prints all debug messages ||
+||  `vast_template` || Prints debug messages generated during requesting and parsing the VAST ad data ||
+||  `cuepoint_events` ||  Prints all debug messages fired when cuepoints are triggered ||
+||  `segment_formation` ||  Prints all debug messages generated when the stream sequence is formed ||
+||  `region_formation` ||  Prints all debug messages associated with the construction of regions ||
+||  `cuepoint_formation` ||  Prints all debug messages associated with establishing cuepoints ||
+||  `config` ||  Prints all debug messages generated as the config data is read ||
+||  `clickthrough_events` ||  Prints debug messages associated with click through events ||
+||  `http_calls` ||  Prints all debug messages generated as HTTP calls are made ||
+||  `fatal` ||  Prints all debug messages marked as fatal ||
+||  `mouse_events` ||  Prints all debug messages associated with mouse events ||
+||  `playlist` ||  Prints all debug messages generated as playlists are manipulated ||
+|| `tracking_table` || Prints all debug messages tied to the tracking table ||
+|| `display_events` || Prints all debug messages associated with non-linear ad display events ||
+|| `tracking_events` || Prints all debug messages tied to tracking events ||
+
+=== Supported Debuggers===
+
+By default, the framework supports both the [http://demonsterdebugger.com/ DeMonster] debugger and output via [http://www.getfirebug.com Firebug].
+
+To output to [http://demonsterdebugger.com/ DeMonster] specify `demonster` as the `debugger` option.
+
+Multiple debuggers can be used at once. To use both firebug and demonster at the same time, specify each comma separated (e.g. `firebug, demonster`) as the `debugger` option.
