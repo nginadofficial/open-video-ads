@@ -29,4 +29,4 @@ You can find a single model for the entire framework [VASTAS3FrameworkFullClassM
 
 ===The Ad Server Classes===
 
-<img src="http://static.openvideoads.org/images/open-video-ads/om-adservers.png" width=600 border="0" />
+<img src="http://static.openvideoads.org/images/open-video-ads/om-adservers.png" width=650 border="0" />
