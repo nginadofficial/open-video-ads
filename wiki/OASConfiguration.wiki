@@ -149,7 +149,7 @@ The providers configuration block exists primarily for players that allow separa
 
 The configuration block allows a loadable provider to be defined for the protocols supported by the Ad Streamers - http and rtmp (at this time). More protocols will be supported shortly.
 
-An example provider configuration is as follows:
+An example provider configuration for Flowplayer is as follows - you can see this example used in the Flowplayer pseudo-streaming example [http://static.openvideoads.org/examples/openadstreamer/flowplayer/examples/http-example39.html http-example39.html]:
 
 {{{
     // HTTP pseudo-streaming provider - instream instance for mid-roll and child streams
@@ -172,7 +172,7 @@ An example provider configuration is as follows:
     }
 }}}
 
-In this Flowplayer example, RTMP streams will be played by the plugin provider `flowplayer.rtmp-3.1.3-dev.swf` 
+The provider configuration options may also be specified within a "stream" or "ads" configuration block. 
 
 || *Property name* || *Since* || *Required* || *Default* || *Description* ||
 || `http` || 0.3.4 || Optional || Null || A string that can be used by the open ad streamer to identify the HTTP provider to use ||
