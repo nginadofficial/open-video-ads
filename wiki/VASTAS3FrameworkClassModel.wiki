@@ -3,6 +3,6 @@
 
 At a high level, the class model for the framework breaks down as follows:
 
-<img src="http://static.openvideoads.org/images/open-video-ads/om-components.png" width=500 border="0" />
+<img src="http://static.openvideoads.org/images/open-video-ads/om-components.png" width=600 border="0" />
 
 You can find a single model for the entire framework [VASTAS3FrameworkFullClassModel here].
