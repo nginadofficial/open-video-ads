@@ -138,6 +138,7 @@ A description of each property follows:
 
 || *Property name* || *Since* || *Description* ||
 || `autoStart` || 0.1.1 || A true or false value that identifies whether or not each stream is to automatically start playing ||
+|| `deliveryType` || 0.1.1 || The type of streams to be served - can be either "progressive", "streaming" or "any". "any" is the default setting ||
 || `allowPlaylistControl` || 0.1.1 || Player related configuration option that identifies if playlist (skip to next clip and back) are allowed during playback ||
 || `removeFileExtension` || 0.1.1 || Forces removal of file extensions for video stream file names returned in the VAST data - particularly useful for ensuring that FLV streams play on a streaming server ||
 
