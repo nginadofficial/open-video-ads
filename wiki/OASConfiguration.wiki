@@ -152,16 +152,31 @@ The configuration block allows a loadable provider to be defined for the protoco
 An example provider configuration is as follows:
 
 {{{
-    "providers": { 
-            "rtmp": "../dist/flowplayer.rtmp-3.1.3-dev.swf"
+    // HTTP pseudo-streaming provider - instream instance for mid-roll and child streams
+    pseudo: {          
+        url: "../dist/flowplayer.pseudostreaming-3.1.3.swf"
     },
+        
+    // RTMP provider - instream instance is for mid-roll and child streams
+    rtmp: {
+        url: "../dist/flowplayer.rtmp-3.1.2.swf"
+    },
+
+    openAdStreamer: {
+        ....
+        "providers": { 
+                "rtmp": "pseudo",
+                "rtmp": "rtmp"
+        },
+        ....
+    }
 }}}
 
 In this Flowplayer example, RTMP streams will be played by the plugin provider `flowplayer.rtmp-3.1.3-dev.swf` 
 
-|| *Property name* || *Since* || *Description* ||
-|| `http` || always || The path and filename of the provider to be loaded to serve HTTP streams ||
-|| `rmtp` || always || The path and filename of the provider to be loaded to serve RTMP streams ||
+|| *Property name* || *Since* || *Required* || *Default* || *Description* ||
+|| `http` || 0.3.4 || A string that can be used by the open ad streamer to identify the HTTP provider to use ||
+|| `rtmp` || 0.3.4 || A string that can be used by the open ad streamer to identify the RTMP provider to use ||
 
 == Shows Configuration Options ==
 
