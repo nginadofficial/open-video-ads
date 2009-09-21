@@ -230,7 +230,6 @@ The following examples illustrate valid show stream definitions:
 
 {{{
     "shows": {
-        "baseURL": "",
         "streams": [
             { 
                 "file":"http://streaming.openvideoads.org:81/shows/the-black-hole.mp4", 
