@@ -319,39 +319,23 @@ Here is a more example configuration:
 
 {{{
     ....
-    plugins: {
-        openXRegions: {
-            url: 'flash/OpenXVastRegions-0.4.1.swf',
-            stylesheet: 'css/region-general.css',
-            borderRadius: 1,
-            border: '0px', 
-            backgroundTransparent: true,
-            backgroundColor: 'transparent',
-            onClick: function() {},
             regions: [
-               { id: 'message',
-                 verticalAlign: 'bottom',
-                 horizontalAlign: 'right',
-                 width: '100%',
-                 height: 20,
-                 stylesheet: 'css/region-message.css',                 
-                 backgroundColor: '#ffffff',
-                 showCloseButton: true,
-                 closeButtonImage: 'images/closebutton.gif',
-                 html: '&lt;p class="warning" align="right"&gt;This is an advertisement&lt;/p&gt;',
-               }
+                  {
+                      "id": "top-center",
+                      "verticalAlign": "top",
+                      "horizontalAlign": "center",
+                      "backgroundColor": "#000000",
+                      "opacity": 0.8,
+                      "borderRadius": 15,
+                      "padding": "-10 -10 -10 -10",
+                      "width": 450,
+                      "height": 50
+                  }
             ]
-        }
      ....
 }}}
 
-The example above illustrates how options are defined at general and region specific levels. In this example, a stylesheet is attached to the plugin (`region-general.css`) - the styles defined in this stylesheet are available to be used in all regions. Several other options are defined at a general level - the border, background color and transparency, and a radius for the border. Unless these values are overridden by a specific region, they will automatically be applied at the region level.
 
-The "message" region specifically defines an additional stylesheet to pull in and an overriding background color (`#ffffff`). It also specifies that a close button is to be displayed for this region and that the attached image is to be shown when the region is visible on the player.
-
-HTML text to be displayed by the regions can be defined at a general or regions specific level. In the example above, a general warning message is configured as the standard body for the "message" region. The html definition references a style class ('warning')  that is defined in the `region-message.css` stylesheet.
-
-Javascript callbacks are also available at a general level. In the example above, the `onClick()` callback is defined - when a region is clicked, this callback will be executed allowing you to define custom behaviour to occur outside of the player when the user clicks on advertising region.
 
 === Configuration Parameters ===
 
