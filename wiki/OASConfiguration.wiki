@@ -260,7 +260,7 @@ For each show stream, a number of configuration items may be specified:
 || `baseURL` || 0.1.1 || Optional || null || The base URL from which the file is to be served. In the case of an RTMP stream, the baseURL is normally the connection address of the RTMP server ||
 || `metaData` || 0.1.1 || Optional || true || Indicates whether or not the player should wait for the metadata information in the stream to be received before starting to play  - always set to "false" if you notice a video can be heard but not seen - the value is "false" by default ||
 || `provider` || 0.3.4 || Optional || null || A string value that can be used by an Open Ad Streamer to identify the "provider" to use to stream the file - in the case of Flowplayer, this will  be a provider plugin ID ||
-|| `autoPlay` || 0.3.4 || Optional || false || A true or false value that identifies whether or not each stream is to automatically start playing ||
+|| `autoPlay` || 0.3.4 || Optional || true || A true or false value that identifies whether or not each stream is to automatically start playing ||
 || `playOnce` || 0.3.4 || Optional || false || A true or false value that identifies whether or this stream can be "replayed" ||
 
 == Overlays Configuration Options ==
