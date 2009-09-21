@@ -381,6 +381,41 @@ A wide range of configuration options are available, allowing you to define regi
 || `height` || AdSpot || 0.4.5 ||  The height of the ad spot - applicable for non-linear overlay/non-overlay ads which are bound by strict dimensions. An ad must be found in the VAST data to match this width to ensure that it is displayed. ||
 || `startTime` || AdSpot || 0.4.5 ||  The time an ad is to start - used by mid-roll and non-linear ads to identify when an ad is to be started during the programme stream. The value must be specified in the form of a timestamp `'HH:MM:SS'` ||
 
+=== Modifying the Overlay Ad Templates ===
+
+{{{
+    "ads": {
+        "schedule": [
+            {
+                "zone": "31",
+                "startTime": "00:00:05",
+                "duration": "15",
+                "templates": {
+                    "html": "<body>MY NEW TEMPLATE: _code_</body>",
+                }
+            }
+        ],
+    }
+}}}
+
+=== Mapping Ad Slots to Overlay Regions ===
+
+{{{
+     "ads": {
+     ....
+          "schedule": [
+              {
+                  "zone": "29",
+                  "startTime": "00:00:05",
+                  "duration": "15",
+                  "regions": {
+                      "text": "reserved-bottom-center-w450px-h50px-transparent"
+                  }
+              }
+          ],
+     }
+}}}
+
 == Debug Configuration Options ==
 
 The debug configuration is controlled through the "debug" config group. A typical configuration is:
