@@ -263,6 +263,58 @@ For each show stream, a number of configuration items may be specified:
 || `autoPlay` || 0.3.4 || Optional || true || A true or false value that identifies whether or not each stream is to automatically start playing ||
 || `playOnce` || 0.3.4 || Optional || false || A true or false value that identifies whether or this stream can be "replayed" ||
 
+== Ads Configuration Options ==
+
+|| *Property name* || *Level* || *Version* || *Description* ||
+|| `vastServerURL` || General || 0.4.5 ||  The url of the OpenX VAST server ||
+|| `disableControls` || Both || 0.4.5 ||  Specifies whether or not the stop/scrubber is to be disabled when ads are played. The default value is `true`. Can be overriden at the `Ad Slot` level. ||
+|| `companionDivIDs` || Both || 0.4.5 ||  Identifies the companion div blocks that are to be used to display companion ads accompanying a video ad. An array of identifiers is expected in the format of `[ { id:Z, width:X, height:Y }, ... { id:Z, width:X, height:Y } ]` allowing multiple companion div blocks to be specified across the web page. The `id` value must match the div block `id` in the web page. The `width` and `height` values are used by the plugin to identify which companion (specified in the VAST template) is to be shown in each div block. ||
+|| `adSchedule` || General || 0.4.5 ||  Allows a range of `ad spots` to be specified. Each `ad spot` is a unique definition of a particular type of video ad to be played against the programme stream. For example, if a `pre-roll`, `mid-roll` and `post-roll` video ad were to be scheduled when a stream plays, three individual ad spots would have to be defined - one for each video ad type. If a `pre-roll` and `overlay` were to be scheduled, 2 unique `Ad Spot` definitions are required. Ad Spot definitions can be limited to a particular "stream" or duration, and in the case of overlay/non-overlay video ads, can be scheduled to start at a particular time during a programme stream. Ad Spots are defined as an array with the format `[ { adspot1-options }, ... { adSpotN-options} ]`. Each `Ad Spot` definition must define at least a `zone`, `position` and `duration`. In addition, Overlay and Non-Overlay ads must also define a `width` and `height`. ||
+|| `zone` || AdSpot || 0.4.5 ||  The OpenX `zone` mapping to this ad spot. Zones are special constructs in the OpenX Ad Server. Please see the OpenX ad server documentation for more details. ||
+|| `position` || AdSpot || 0.4.5 ||  The position of this ad - can be one of the following values: for linear ads `pre-roll`, `mid-roll`, `post-roll`, for non-linear overlay and non-overlay ads, the value must be specified as a region ID. ||
+|| `duration` || AdSpot || 0.4.5 ||  The duration of the ad - mandatory in the case on time restricted non-linear overlay and non-overlay ads. The value is specified as a number of seconds or `'unlimited'` if the ad is to play for the entire duration of the programme stream. The default value is `'unlimited'`. ||
+|| `notice` || AdSpot || 0.4.5 ||  Identifies whether or not a special notice is to be displayed when a video ad plays. For example, wording such as "This advertisement runs for 30 seconds" may be displayed. Notices are declared in the format `{ show: value, region: value, message: value}` where `show` is a `true` or `false` value, `region` is the `id` of the region where the message is to be shown and `message` is a HTML text block that specifies what to show. The `message` can contain a keyword `_seconds_` to allow the duration of the ad to be placed into the text when the message is shown. Any class styling defined in the `message` must be declared as available in the associated `region` declaration. ||
+|| `selectionCriteria` || General || 0.4.5 ||  Allows the selection of an ad to be refined by a specific selection. An example is `selectionCriteria: [ { name:"age", value:"25" }, { name:"gender", value:"male" } ]` - this definition will tell OpenX to restrict ad selection based on an age and gender value (but only if these have been configured on the openX side). The format for the `selectionCriteria` field is an array of objects with each object specifying a field `name` and `value` to pass through  ||
+|| `applyToParts` || AdSpot || 0.4.5 ||  Allows an ad spot declaration to be restricted to a specific set of programme streams. The value is specified as an array of integers between 0 and the number of programme streams declared. For example if an Ad Spot is to be limited to only the first stream, a value of `[0]` would be declared. To limit a spot to the second and third streams `[2,3]` would be declared and so forth. ||
+|| `width` || AdSpot || 0.4.5 ||  The width of the ad spot - applicable for non-linear overlay/non-overlay ads which are bound by strict dimensions. An ad must be found in the VAST data to match this width to ensure that it is displayed.||
+|| `height` || AdSpot || 0.4.5 ||  The height of the ad spot - applicable for non-linear overlay/non-overlay ads which are bound by strict dimensions. An ad must be found in the VAST data to match this width to ensure that it is displayed. ||
+|| `startTime` || AdSpot || 0.4.5 ||  The time an ad is to start - used by mid-roll and non-linear ads to identify when an ad is to be started during the programme stream. The value must be specified in the form of a timestamp `'HH:MM:SS'` ||
+
+=== Modifying the Overlay Ad Templates ===
+
+{{{
+    "ads": {
+        "schedule": [
+            {
+                "zone": "31",
+                "startTime": "00:00:05",
+                "duration": "15",
+                "templates": {
+                    "html": "<body>MY NEW TEMPLATE: _code_</body>",
+                }
+            }
+        ],
+    }
+}}}
+
+=== Mapping Ad Slots to Overlay Regions ===
+
+{{{
+     "ads": {
+     ....
+          "schedule": [
+              {
+                  "zone": "29",
+                  "startTime": "00:00:05",
+                  "duration": "15",
+                  "regions": {
+                      "text": "reserved-bottom-center-w450px-h50px-transparent"
+                  }
+              }
+          ],
+     }
+}}}
+
 == Overlays Configuration Options ==
 
 The overlays configuration grouping allows multiple rectangular "regions" to be defined on the player canvas. These regions in turn can be used to display non-linear (overlay) advertising, ad notices and general messages.
@@ -363,58 +415,6 @@ A wide range of configuration options are available, allowing you to define regi
 || `showCloseButton` || X || X ||
 || `borderWidth` || X || X ||
 || `borderColor` || X || X ||
-
-== Ads Configuration Options ==
-
-|| *Property name* || *Level* || *Version* || *Description* ||
-|| `vastServerURL` || General || 0.4.5 ||  The url of the OpenX VAST server ||
-|| `disableControls` || Both || 0.4.5 ||  Specifies whether or not the stop/scrubber is to be disabled when ads are played. The default value is `true`. Can be overriden at the `Ad Slot` level. ||
-|| `companionDivIDs` || Both || 0.4.5 ||  Identifies the companion div blocks that are to be used to display companion ads accompanying a video ad. An array of identifiers is expected in the format of `[ { id:Z, width:X, height:Y }, ... { id:Z, width:X, height:Y } ]` allowing multiple companion div blocks to be specified across the web page. The `id` value must match the div block `id` in the web page. The `width` and `height` values are used by the plugin to identify which companion (specified in the VAST template) is to be shown in each div block. ||
-|| `adSchedule` || General || 0.4.5 ||  Allows a range of `ad spots` to be specified. Each `ad spot` is a unique definition of a particular type of video ad to be played against the programme stream. For example, if a `pre-roll`, `mid-roll` and `post-roll` video ad were to be scheduled when a stream plays, three individual ad spots would have to be defined - one for each video ad type. If a `pre-roll` and `overlay` were to be scheduled, 2 unique `Ad Spot` definitions are required. Ad Spot definitions can be limited to a particular "stream" or duration, and in the case of overlay/non-overlay video ads, can be scheduled to start at a particular time during a programme stream. Ad Spots are defined as an array with the format `[ { adspot1-options }, ... { adSpotN-options} ]`. Each `Ad Spot` definition must define at least a `zone`, `position` and `duration`. In addition, Overlay and Non-Overlay ads must also define a `width` and `height`. ||
-|| `zone` || AdSpot || 0.4.5 ||  The OpenX `zone` mapping to this ad spot. Zones are special constructs in the OpenX Ad Server. Please see the OpenX ad server documentation for more details. ||
-|| `position` || AdSpot || 0.4.5 ||  The position of this ad - can be one of the following values: for linear ads `pre-roll`, `mid-roll`, `post-roll`, for non-linear overlay and non-overlay ads, the value must be specified as a region ID. ||
-|| `duration` || AdSpot || 0.4.5 ||  The duration of the ad - mandatory in the case on time restricted non-linear overlay and non-overlay ads. The value is specified as a number of seconds or `'unlimited'` if the ad is to play for the entire duration of the programme stream. The default value is `'unlimited'`. ||
-|| `notice` || AdSpot || 0.4.5 ||  Identifies whether or not a special notice is to be displayed when a video ad plays. For example, wording such as "This advertisement runs for 30 seconds" may be displayed. Notices are declared in the format `{ show: value, region: value, message: value}` where `show` is a `true` or `false` value, `region` is the `id` of the region where the message is to be shown and `message` is a HTML text block that specifies what to show. The `message` can contain a keyword `_seconds_` to allow the duration of the ad to be placed into the text when the message is shown. Any class styling defined in the `message` must be declared as available in the associated `region` declaration. ||
-|| `selectionCriteria` || General || 0.4.5 ||  Allows the selection of an ad to be refined by a specific selection. An example is `selectionCriteria: [ { name:"age", value:"25" }, { name:"gender", value:"male" } ]` - this definition will tell OpenX to restrict ad selection based on an age and gender value (but only if these have been configured on the openX side). The format for the `selectionCriteria` field is an array of objects with each object specifying a field `name` and `value` to pass through  ||
-|| `applyToParts` || AdSpot || 0.4.5 ||  Allows an ad spot declaration to be restricted to a specific set of programme streams. The value is specified as an array of integers between 0 and the number of programme streams declared. For example if an Ad Spot is to be limited to only the first stream, a value of `[0]` would be declared. To limit a spot to the second and third streams `[2,3]` would be declared and so forth. ||
-|| `width` || AdSpot || 0.4.5 ||  The width of the ad spot - applicable for non-linear overlay/non-overlay ads which are bound by strict dimensions. An ad must be found in the VAST data to match this width to ensure that it is displayed.||
-|| `height` || AdSpot || 0.4.5 ||  The height of the ad spot - applicable for non-linear overlay/non-overlay ads which are bound by strict dimensions. An ad must be found in the VAST data to match this width to ensure that it is displayed. ||
-|| `startTime` || AdSpot || 0.4.5 ||  The time an ad is to start - used by mid-roll and non-linear ads to identify when an ad is to be started during the programme stream. The value must be specified in the form of a timestamp `'HH:MM:SS'` ||
-
-=== Modifying the Overlay Ad Templates ===
-
-{{{
-    "ads": {
-        "schedule": [
-            {
-                "zone": "31",
-                "startTime": "00:00:05",
-                "duration": "15",
-                "templates": {
-                    "html": "<body>MY NEW TEMPLATE: _code_</body>",
-                }
-            }
-        ],
-    }
-}}}
-
-=== Mapping Ad Slots to Overlay Regions ===
-
-{{{
-     "ads": {
-     ....
-          "schedule": [
-              {
-                  "zone": "29",
-                  "startTime": "00:00:05",
-                  "duration": "15",
-                  "regions": {
-                      "text": "reserved-bottom-center-w450px-h50px-transparent"
-                  }
-              }
-          ],
-     }
-}}}
 
 == Debug Configuration Options ==
 
