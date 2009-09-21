@@ -243,7 +243,7 @@ The following examples illustrate valid show stream definitions:
 
 || *Property name* || *Since* || *Optional* || *Default* || *Description* ||
 || `autoPlay` || 0.1.1 || Optional || false || A true or false value that identifies whether or not each stream is to automatically start playing ||
-|| `baseURL` || 0.1.1 || Optional || null || Declares the base address for the streams to be played ||
+|| `baseURL` || 0.1.1 || Optional || null || The base URL from which the file is to be served. In the case of an RTMP stream, the baseURL is normally the connection address of the RTMP server ||
 || `bitrate` || 0.1.1 || Optional || null || Identifies the acceptable bit rates for this instance of the player - acceptable values are "any" or a range such as "600-700" ||
 || `deliveryType` || 0.1.1 || Optional || "any" || The type of streams to be served - can be either "progressive", "streaming" or "any" to cover a mixed set of types ||
 || `metaData` || 0.1.1 || Optional || true || Indicates whether or not the player should wait for the metadata information in the stream to be received before starting to play  - always set to "false" if you notice a video can be heard but not seen - the value is "false" by default ||
@@ -252,6 +252,14 @@ The following examples illustrate valid show stream definitions:
 || `streams` || 0.1.1 ||  Required || an empty list || An array of stream definitions which identifies the main programme streams to be played by the player - ads are sequenced in accordance with the Ad Slot schedule against these streams. As the property is an array, the following format is expected `[ { stream1-name, stream1-duration }, ... { streamN-name, streamN-duration} ]`. The `stream-duration` must be declared in time stamp format `HH:MM:SS` (e.g. `01:10:15` for a duration of 1 hour 10 minutes and 15 seconds). Streams may be declared as a fully qualified filename (e.g. `"rtmp://ne7c0nwbit.rtmphost.com/videoplayer/mp4:bbb_640x360_h264.mp4` ) or as files relative to the `baseURL` declared in the shows configuration grouping.  ||
 || `streamType` || 0.3.4 || Optional || "mp4" || A specific value that identifies the type of stream to be played - can be either "mp4", "flv" or "mixed" ||
 || `subscribe` || not available || Optional || null || To be used by live streams only - not currently active ||
+
+For each show stream, a number of configuration items may be specified:
+
+|| *Property name* || *Since* || *Optional* || *Default* || *Description* ||
+|| `file` || 0.1.1 || Mandatory || null || The address of the file to serve. If no `baseURL` is specified, the file address must be fully qualified (e.g. "http://..." or "rtmp://...")  ||
+|| `baseURL` || 0.1.1 || Optional || null || The base URL from which the file is to be served. In the case of an RTMP stream, the baseURL is normally the connection address of the RTMP server ||
+|| `metaData` || 0.1.1 || Optional || true || Indicates whether or not the player should wait for the metadata information in the stream to be received before starting to play  - always set to "false" if you notice a video can be heard but not seen - the value is "false" by default ||
+|| `provider` || 0.3.4 || Optional || null || A string value that can be used by an Open Ad Streamer to identify the "provider" to use to stream the file - in the case of Flowplayer, this will  be a provider plugin ID ||
 
 == Overlays Configuration Options ==
 
