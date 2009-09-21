@@ -387,7 +387,22 @@ Here is a more example configuration:
      ....
 }}}
 
+=== The Default Overlay Ad Type/Region Mappings ===
 
+{{{
+    if(_width == 450) {
+        _regions.text = "reserved-bottom-w450px-h50px-000000-o50";
+        _regions.image = "reserved-bottom-w450px-h50px-transparent-0m";
+        _regions.swf = "reserved-bottom-w450px-h50px-transparent";
+        _regions.html = "reserved-bottom-w450px-h50px-000000-o50";				
+    }
+    else {
+        _regions.text = "reserved-bottom-w100pct-h78px-000000-o50";
+        _regions.image = "reserved-bottom-w100pct-h50px-transparent-0m";
+        _regions.swf = "reserved-bottom-w100pct-h50px-transparent";
+        _regions.html = "reserved-bottom-w100pct-h50px-000000-o50";
+    }
+}}}
 
 === Configuration Parameters ===
 
