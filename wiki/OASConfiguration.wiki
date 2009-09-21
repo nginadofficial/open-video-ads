@@ -319,7 +319,7 @@ Here is a more example configuration:
 
 {{{
     ....
-            regions: [
+            "regions": [
                   {
                       "id": "top-center",
                       "verticalAlign": "top",
