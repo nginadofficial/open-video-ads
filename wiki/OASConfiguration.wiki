@@ -265,11 +265,37 @@ For each show stream, a number of configuration items may be specified:
 
 == Overlays Configuration Options ==
 
-The overlays configuration grouping allows multiple HTML "regions" to be defined on the player canvas. These regions in turn can be used to display non-linear (overlay) advertising, ad notices and general messages.
+The overlays configuration grouping allows multiple rectangular "regions" to be defined on the player canvas. These regions in turn can be used to display non-linear (overlay) advertising, ad notices and general messages.
+
+Non-linear ads may be of the form:
+
+  * Text
+  * HTML
+  * Flash (SWF)
+  * Image (JPG, PNG, GIF - including animated GIF)
+
+For an illustration of the overlay configuration grouping in action, refer to [http://static.openvideoads.org/examples/openadstreamer/flowplayer/examples/all-example19.html example19.html].
 
 === Declaring Regions ===
 
-By default, 4 regions are automatically declared - a *"reserved-top"* region that occupies the width of the player 50 pixels deep, a *"reserved-bottom"* region that is also the width of the player and 50 pixels height, a region that covers the *"reserved-fullscreen"*, and a thin region (20px high) at the base of the screen to be used for general ad messaging (tagged *"reserved-system-message"*).
+By default, 14 regions have been declared for general use by non-linear ads and system messages.
+
+  # reserved-bottom-w100pct-h78px-000000-o50 - a region at the bottom of the player screen, 100% wide, 78 pixels high, with a black background at 50% opacity
+  # reserved-bottom-w100pct-h50px-000000-o50 - a region at the bottom of the player screen, 100% wide, 50 pixels high, with a black background at 50% opacity
+  # reserved-bottom-w100pct-h50px-transparent - a region at the bottom of the player screen, 100% wide, 50 pixels high with a transparent background
+  # reserved-bottom-w100pct-h50px-transparent-0m - a region at the bottom of the player screen, 100% wide, 50 pixels high with a transparent background, 0 margins all around
+  # reserved-bottom-w450px-h50px-000000-o50 - a region at the bottom of the player screen, 450 pixels wide, 50 pixels high, with a black background at 50% opacity
+  # reserved-bottom-w450px-h50px-transparent - a region at the bottom of the player screen, 450 pixels wide, 50 pixels high, with a transparent background
+  # reserved-bottom-w450px-h50px-transparent-0m - a region at the bottom of the player screen, 450 pixels wide, 50 pixels high, with a transparent background and 0 margins all around
+  # reserved-bottom-center-w450px-h50px-000000-o50 - a region at the center of the player screen, 450 pixels wide, 50 pixels high, with a black background with 50% opacity
+  # reserved-bottom-center-w450px-h50px-transparent - a region at the center of the player screen, 450 pixels wide, 50 pixels high, with a transparent background
+  # reserved-bottom-center-w450px-h50px-transparent-0m - a region at the center of the player screen, 450 pixels wide, 50 pixels high, with a transparent background, 0 margins all around
+  # reserved-bottom-center-w300px-h50px-000000-o50
+  # reserved-bottom-center-w300px-h50px-transparent
+  # reserved-bottom-center-w300px-h50px-transparent-0m
+  # reserved-system-message
+
+ - a *"reserved-top"* region that occupies the width of the player 50 pixels deep, a *"reserved-bottom"* region that is also the width of the player and 50 pixels height, a region that covers the *"reserved-fullscreen"*, and a thin region (20px high) at the base of the screen to be used for general ad messaging (tagged *"reserved-system-message"*).
 
 In addition, any number of customised regions can be declared. To illustrate how this is done, review the following Flowplayer Ad Streamer example that illustrates the options that are declared for the default "message" region:
 
