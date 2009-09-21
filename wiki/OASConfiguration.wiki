@@ -280,19 +280,19 @@ For an illustration of the overlay configuration grouping in action, refer to [h
 
 By default, 14 regions have been declared for general use by non-linear ads and system messages.
 
-  # `reserved-bottom-w100pct-h78px-000000-o50` - a region at the bottom of the player screen, 100% wide, 78 pixels high, with a black background at 50% opacity
-  # `reserved-bottom-w100pct-h50px-000000-o50` - a region at the bottom of the player screen, 100% wide, 50 pixels high, with a black background at 50% opacity
-  # `reserved-bottom-w100pct-h50px-transparent` - a region at the bottom of the player screen, 100% wide, 50 pixels high with a transparent background
-  # `reserved-bottom-w100pct-h50px-transparent-0m` - a region at the bottom of the player screen, 100% wide, 50 pixels high with a transparent background, 0 margins all around
-  # `reserved-bottom-w450px-h50px-000000-o50` - a region at the bottom of the player screen, 450 pixels wide, 50 pixels high, with a black background at 50% opacity
-  # `reserved-bottom-w450px-h50px-transparent` - a region at the bottom of the player screen, 450 pixels wide, 50 pixels high, with a transparent background
-  # `reserved-bottom-w450px-h50px-transparent-0m` - a region at the bottom of the player screen, 450 pixels wide, 50 pixels high, with a transparent background and 0 margins all around
-  # `reserved-bottom-center-w450px-h50px-000000-o50` - a region at the bottom center of the player screen, 450 pixels wide, 50 pixels high, with a black background with 50% opacity
-  # `reserved-bottom-center-w450px-h50px-transparent` - a region at the bottom center of the player screen, 450 pixels wide, 50 pixels high, with a transparent background
+  # `reserved-bottom-w100pct-h78px-000000-o50` - a region at the bottom of the player screen, 100% wide, 78 pixels high, with a black background at 50% opacity, with an active close button
+  # `reserved-bottom-w100pct-h50px-000000-o50` - a region at the bottom of the player screen, 100% wide, 50 pixels high, with a black background at 50% opacity, with an active close button
+  # `reserved-bottom-w100pct-h50px-transparent` - a region at the bottom of the player screen, 100% wide, 50 pixels high with a transparent background, with an active close button
+  # `reserved-bottom-w100pct-h50px-transparent-0m` - a region at the bottom of the player screen, 100% wide, 50 pixels high with a transparent background, 0 margins all around, with an active close button
+  # `reserved-bottom-w450px-h50px-000000-o50` - a region at the bottom of the player screen, 450 pixels wide, 50 pixels high, with a black background at 50% opacity, with an active close button
+  # `reserved-bottom-w450px-h50px-transparent` - a region at the bottom of the player screen, 450 pixels wide, 50 pixels high, with a transparent background, with an active close button
+  # `reserved-bottom-w450px-h50px-transparent-0m` - a region at the bottom of the player screen, 450 pixels wide, 50 pixels high, with a transparent background and 0 margins all around, with an active close button
+  # `reserved-bottom-center-w450px-h50px-000000-o50` - a region at the bottom center of the player screen, 450 pixels wide, 50 pixels high, with a black background with 50% opacity, with an active close button
+  # `reserved-bottom-center-w450px-h50px-transparent` - a region at the bottom center of the player screen, 450 pixels wide, 50 pixels high, with a transparent background, with an active close button
   # `reserved-bottom-center-w450px-h50px-transparent-0m` - a region at the bottom center of the player screen, 450 pixels wide, 50 pixels high, with a transparent background, 0 margins all around
-  # `reserved-bottom-center-w300px-h50px-000000-o50` - a region at the bottom center of the player screen, 300 pixels wide, 50 pixels high with a black background with 50% opacity
-  # `reserved-bottom-center-w300px-h50px-transparent`- a region at the bottom center of the player screen, 300 pixels wide, 50 pixels high with a transparent background
-  # `reserved-bottom-center-w300px-h50px-transparent-0m` - a region at the bottom center of the player screen, 300 pixels wide, 50 pixels high with a transparent background, 0 margins all around
+  # `reserved-bottom-center-w300px-h50px-000000-o50` - a region at the bottom center of the player screen, 300 pixels wide, 50 pixels high with a black background with 50% opacity, with an active close button
+  # `reserved-bottom-center-w300px-h50px-transparent`- a region at the bottom center of the player screen, 300 pixels wide, 50 pixels high with a transparent background, with an active close button
+  # `reserved-bottom-center-w300px-h50px-transparent-0m` - a region at the bottom center of the player screen, 300 pixels wide, 50 pixels high with a transparent background, 0 margins all around, with an active close button
   # `reserved-system-message` - a thin region at the base of the player screen, 100% wide, 20 pixels high, no close button, and 2 font definitions - one large sized writing 12pt (class if `normaltext`), one small sized writing 10pt (class is `smalltext`)
 
 In addition, any number of customised regions can be declared. To illustrate how this is done, review the following Flowplayer Ad Streamer example that illustrates the options that are declared for the default "message" region:
