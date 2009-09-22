@@ -265,6 +265,36 @@ For each show stream, a number of configuration items may be specified:
 
 == Ads Configuration Options ==
 
+The Ads grouping captures all ad specific configuration settings.
+
+An example configuration is as follows:
+
+{{{
+            "ads": {
+	            "server": {
+	            	    "type": "OpenX",
+		            "vastURL": "http://openx.bouncingminds.com/openx/www/delivery/fc.php"
+		     },
+
+	            "schedule": [
+	                    {
+	                	 "zone": "1",
+	                  	 "position": "pre-roll"
+	                    },
+	                    {
+	                	 "zone": "2",
+	                  	 "position": "bottom",
+	                  	 "width": 450,
+	                  	 "height": 50,
+	                  	 "startTime": "00:00:05",
+	                  	 "duration": "15"
+	                    }
+	            ],
+            },
+}}}
+
+In this example the ad server is defined to be of type "OpenX", a request URL is specified, and an ad schedule is defined as two separate ad slots - a pre-roll ad followed by a non-linear ad (overlay) placed in the region named "bottom".
+
 || *Property name* || *Level* || *Version* || *Description* ||
 || `vastServerURL` || General || 0.4.5 ||  The url of the OpenX VAST server ||
 || `disableControls` || Both || 0.4.5 ||  Specifies whether or not the stop/scrubber is to be disabled when ads are played. The default value is `true`. Can be overriden at the `Ad Slot` level. ||
