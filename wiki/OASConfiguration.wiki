@@ -270,36 +270,57 @@ The Ads grouping captures all ad specific configuration settings.
 An example configuration is as follows:
 
 {{{
-            "ads": {
-	            "server": {
-	            	    "type": "OpenX",
-		            "vastURL": "http://openx.bouncingminds.com/openx/www/delivery/fc.php"
-		     },
+    "ads": {
+        "server": {
+	    "type": "OpenX",
+	    "vastURL": "http://openx.bouncingminds.com/openx/www/delivery/fc.php"
+        },
 
-	            "schedule": [
-	                    {
-	                	 "zone": "1",
-	                  	 "position": "pre-roll"
-	                    },
-	                    {
-	                	 "zone": "2",
-	                  	 "position": "bottom",
-	                  	 "width": 450,
-	                  	 "height": 50,
-	                  	 "startTime": "00:00:05",
-	                  	 "duration": "15"
-	                    }
-	            ],
-            },
+        "schedule": [
+            {
+	        "zone": "1",
+                "position": "pre-roll"
+	    },
+	    {
+                "zone": "2",
+                "position": "bottom",
+                "width": 450,
+                "height": 50,
+                "startTime": "00:00:05",
+                "duration": "15"
+	    }
+	],
+    },
 }}}
 
 In this example the ad server is defined to be of type "OpenX", a request URL is specified, and an ad schedule is defined as two separate ad slots - a pre-roll ad followed by a non-linear ad (overlay) placed in the region named "bottom".
 
+Generally speaking, an ad configuration grouping has three sets of configuration data:
+
+{{{
+    "ads": {
+        // general level settings
+        "server": {}
+        "schedule": []
+    }
+}}}
+
+=== General Ad Configuration Settings ===
+
 || *Property name* || *Level* || *Version* || *Description* ||
-|| `vastServerURL` || General || 0.4.5 ||  The url of the OpenX VAST server ||
 || `disableControls` || Both || 0.4.5 ||  Specifies whether or not the stop/scrubber is to be disabled when ads are played. The default value is `true`. Can be overriden at the `Ad Slot` level. ||
 || `companionDivIDs` || Both || 0.4.5 ||  Identifies the companion div blocks that are to be used to display companion ads accompanying a video ad. An array of identifiers is expected in the format of `[ { id:Z, width:X, height:Y }, ... { id:Z, width:X, height:Y } ]` allowing multiple companion div blocks to be specified across the web page. The `id` value must match the div block `id` in the web page. The `width` and `height` values are used by the plugin to identify which companion (specified in the VAST template) is to be shown in each div block. ||
-|| `adSchedule` || General || 0.4.5 ||  Allows a range of `ad spots` to be specified. Each `ad spot` is a unique definition of a particular type of video ad to be played against the programme stream. For example, if a `pre-roll`, `mid-roll` and `post-roll` video ad were to be scheduled when a stream plays, three individual ad spots would have to be defined - one for each video ad type. If a `pre-roll` and `overlay` were to be scheduled, 2 unique `Ad Spot` definitions are required. Ad Spot definitions can be limited to a particular "stream" or duration, and in the case of overlay/non-overlay video ads, can be scheduled to start at a particular time during a programme stream. Ad Spots are defined as an array with the format `[ { adspot1-options }, ... { adSpotN-options} ]`. Each `Ad Spot` definition must define at least a `zone`, `position` and `duration`. In addition, Overlay and Non-Overlay ads must also define a `width` and `height`. ||
+
+=== Ad Server Configuration Settings ===
+
+|| *Property name* || *Level* || *Version* || *Description* ||
+|| `vastServerURL` || General || 0.4.5 ||  The url of the OpenX VAST server ||
+
+=== Ad Schedule Configuration Settings ===
+
+Allows a range of `ad spots` to be specified. Each `ad spot` is a unique definition of a particular type of video ad to be played against the programme stream. For example, if a `pre-roll`, `mid-roll` and `post-roll` video ad were to be scheduled when a stream plays, three individual ad spots would have to be defined - one for each video ad type. If a `pre-roll` and `overlay` were to be scheduled, 2 unique `Ad Spot` definitions are required. Ad Spot definitions can be limited to a particular "stream" or duration, and in the case of overlay/non-overlay video ads, can be scheduled to start at a particular time during a programme stream. Ad Spots are defined as an array with the format `[ { adspot1-options }, ... { adSpotN-options} ]`. Each `Ad Spot` definition must define at least a `zone`, `position` and `duration`. In addition, Overlay and Non-Overlay ads must also define a `width` and `height`.
+
+|| *Property name* || *Level* || *Version* || *Description* ||
 || `zone` || AdSpot || 0.4.5 ||  The OpenX `zone` mapping to this ad spot. Zones are special constructs in the OpenX Ad Server. Please see the OpenX ad server documentation for more details. ||
 || `position` || AdSpot || 0.4.5 ||  The position of this ad - can be one of the following values: for linear ads `pre-roll`, `mid-roll`, `post-roll`, for non-linear overlay and non-overlay ads, the value must be specified as a region ID. ||
 || `duration` || AdSpot || 0.4.5 ||  The duration of the ad - mandatory in the case on time restricted non-linear overlay and non-overlay ads. The value is specified as a number of seconds or `'unlimited'` if the ad is to play for the entire duration of the programme stream. The default value is `'unlimited'`. ||
@@ -310,7 +331,7 @@ In this example the ad server is defined to be of type "OpenX", a request URL is
 || `height` || AdSpot || 0.4.5 ||  The height of the ad spot - applicable for non-linear overlay/non-overlay ads which are bound by strict dimensions. An ad must be found in the VAST data to match this width to ensure that it is displayed. ||
 || `startTime` || AdSpot || 0.4.5 ||  The time an ad is to start - used by mid-roll and non-linear ads to identify when an ad is to be started during the programme stream. The value must be specified in the form of a timestamp `'HH:MM:SS'` ||
 
-=== Modifying the Overlay Ad Templates ===
+==== Modifying the Overlay Ad Templates ====
 
 {{{
     "ads": {
@@ -327,7 +348,7 @@ In this example the ad server is defined to be of type "OpenX", a request URL is
     }
 }}}
 
-=== Mapping Ad Slots to Overlay Regions ===
+==== Mapping Ad Slots to Overlay Regions ====
 
 {{{
      "ads": {
