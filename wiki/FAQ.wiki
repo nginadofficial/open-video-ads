@@ -57,3 +57,9 @@ A typical question here is "when i assign a video ad to a zone in openx ad serve
 OpenX has a cache setting that may impact the amount of time that you have to wait before your banner ad changes take effect.
 
 Login to OpenX as an Adminstrator, go to the "Configuration" tab and check the "Banner Delivery Cache Settings". We have our demo server cache set to 10 seconds.
+
+====8. Does the Open Ad Streamer Work with Playlists====
+
+Not really. The Open Ad Streamer ends up replacing an existing playlist with a new playlist that contains the show streams and scheduled linear and non-linear ads.
+
+It would be possible to add Open Ad Streamer shows and ads after a playlist that is already defined, but that doesn't seem to make a lot of sense. Let us know if you want that type of functionality.
