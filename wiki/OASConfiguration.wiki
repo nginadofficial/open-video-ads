@@ -315,7 +315,7 @@ Generally speaking, an ad configuration grouping has three sets of configuration
 
 || *Property name* || *Level* || *Version* || *Description* ||
 || `vastServerURL` || General || 0.4.5 ||  The url of the OpenX VAST server ||
-|| `adParameters` || General || 0.4.5 ||  Allows the selection of an ad to be refined by a specific selection. An example is `selectionCriteria: [ { name:"age", value:"25" }, { name:"gender", value:"male" } ]` - this definition will tell OpenX to restrict ad selection based on an age and gender value (but only if these have been configured on the openX side). The format for the `selectionCriteria` field is an array of objects with each object specifying a field `name` and `value` to pass through  ||
+|| `adParameters` || General || 0.4.5 ||  Allows the selection of an ad to be refined by a specific selection. An example is `adParameters: [ { name:"age", value:"25" }, { name:"gender", value:"male" } ]` - this definition will tell the ad server to restrict ad selection based on an age and gender value (but only if these have been configured on the ad server side). The format for the `adParameters` field is an array of objects with each object specifying a field `name` and `value` to pass through  ||
 || `allowAdRepetition` || General || 0.4.5 || X ||
 
 === Ad Schedule Configuration Settings ===
