@@ -312,7 +312,7 @@ Generally speaking, an ad configuration grouping has three sets of configuration
 || `companionDivIDs` || Both || 0.4.5 ||  Identifies the companion div blocks that are to be used to display companion ads accompanying a video ad. An array of identifiers is expected in the format of `[ { id:Z, width:X, height:Y }, ... { id:Z, width:X, height:Y } ]` allowing multiple companion div blocks to be specified across the web page. The `id` value must match the div block `id` in the web page. The `width` and `height` values are used by the plugin to identify which companion (specified in the VAST template) is to be shown in each div block. ||
 || `keepOverlayVisibleAfterClick` || X || 0.4.5 || Instructs the Open Ad Streamer to keep an overlay displaying on the player canvas after it's been clicked. The overlay will disappear when it's duration has expired. The default value is false ||
 || `pauseOnClickThrough` || X || 0.4.5 || Instructs the Open Ad Streamer to pause when a linear video with a "click to website setting" is clicked. The default value is true. ||
-|| `clickSign` || X || 0.4.5 || See section on "Configuring the Linear Click Through Notice"
+|| `clickSign` || X || 0.4.5 || See section on "Configuring the Linear Click Through Notice" ||
 
 === Configuring the Linear Click Through Notice ===
 
