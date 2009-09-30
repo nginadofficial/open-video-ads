@@ -63,3 +63,18 @@ Login to OpenX as an Adminstrator, go to the "Configuration" tab and check the "
 Not really. The Open Ad Streamer ends up replacing an existing playlist with a new playlist that contains the show streams and scheduled linear and non-linear ads.
 
 It would be possible to add Open Ad Streamer shows and ads after a playlist that is already defined, but that doesn't seem to make a lot of sense. Let us know if you want that type of functionality.
+
+====9. The player just goes blank - no ad is played and I don't have a show stream configured====
+
+If you just have the Open Ad Streamer configured to play an ad (no show stream) and you are trying to get everything working by the player refuses to play the ad, one reason may be that you are getting a "security violation" on the HTTP call to your ad server.
+
+Confirm that you've setup the [ExampleCrossdomainXML crossdomain.xml] file properly on your ad server instance.
+
+If you turn the debug level to "all" and look at the firebug console, you will see the "security violation" exception being thrown. For instance, the following debug output will be shown in the console:
+
+{{{
+Loading VAST data from Open X server via http://openx.openvideoads.org/openx/fc.php?script=bannerTypeHtml:vastInlineBannerTypeHtml:vastInlineHtml&zones=pre-roll0-0%3D70&nz=1&source=&r=9970496.450550854&block=1&format=vast&charset=UTF_8
+HTTP ERROR: [SecurityErrorEvent type="securityError" bubbles=false cancelable=false eventPhase=2 text="Error #2048"]
+FAILURE loading VAST template - [SecurityErrorEvent type="securityError" bubbles=false cancelable=false eventPhase=2 text="Error #2048"]
+NOTIFICATION: FAILURE loading VAST template - [SecurityErrorEvent type="securityError" bubbles=false cancelable=false eventPhase=2 text="Error #2048"]
+}}}
