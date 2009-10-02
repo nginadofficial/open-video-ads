@@ -11,6 +11,6 @@ Today, we have implementations for Flowplayer and Longtail's JW Player. We also 
 
 Work is underway on implementations for the Adobe Open Media Framework and the Kaltura players.
 
-For ads to be delivered the implementation must take with an IAB VAST compliant ad server.
+For ads to be delivered the implementation must work together with an IAB VAST compliant ad server.
 
 Today the Open Video Ads player plugins and framework has support built in for OpenX. Further support for more ad servers is  underway and will be progressively announced/released over the coming months.
