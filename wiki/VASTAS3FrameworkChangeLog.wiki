@@ -44,7 +44,7 @@
   * ISSUE 49: "adParameters" values moved to end of OpenX URL to allow "source" to be overridden
   * ISSUE 76: Event callback added for Overlay CLOSE_CLICKED
   * ISSUE 77: Config option added to allow overlays to stay visible after being clicked (only for 'click to web')
-  * ISSUE 33: Text overlay text looks washed out - now _text.blendMode = BlendMode.NORMAL;
+  * ISSUE 33: Text overlay text looks washed out - now `_text.blendMode = BlendMode.NORMAL;`
   * ISSUE 78: "deliveryType" config option set to "any" by default - meaning in most cases, this option is no longer required - removed from examples
   * ISSUE 68:	Click through mouse over sign does not show if Ad Notice turned off - fixed
   * ISSUE 78:	"deliveryType" is this really needed? No longer - need removed. Default setting is "any", but "progressive" or "streaming" can be used to limit the choice - example 10
