@@ -8,6 +8,9 @@ The October 6 2009 release has the following key changes in it:
   * Support for "providers" added which allows custom HTTP and RTMP providers to be specified. See Flowplayer http-example39.html to see how to support pseudo-streaming providers and JW Player http-example39.html to see how to support providers such as XMOOV for pseudo-streaming
   * Support added for standard playlist definitions to the Flowplayer Open Ad Streamer - see Flowplayer http-example43.html for an illustration
   * Support added for custom clip properties to be added and carried through into the Flowplayer Open Ad Streamer - see http-example44.html for an illustration
+  * Major bug fixes to the sequence generation code correcting issues around the "applyToParts" configuration
+  * Option added to allow the "click me" message on linear ads to be turned off
+  * JW Player examples fixed up so that they actually work with IE8 (`object` tag replaced with `embed`)
 
 For a detailed account of the issues resolved, please refer to:
 
