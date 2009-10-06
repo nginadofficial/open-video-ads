@@ -26,3 +26,15 @@
   * ISSUE 21: overlay examples included
   * ISSUE 23: problem with skipping between clips fixed on example 04 (autoPlay configuration issue)
   * ISSUE 51: Support added to change ad notice text size from normal to small - size:smalltext|normaltext
+
+0.3.3 - October 6, 2009
+
+  * ISSUE 67: all-example29 created
+  * ISSUE 78: "deliveryType" config option set to "any" by default - meaning in most cases, this option is no longer required - removed from examples
+  * ISSUE 81: HTTP progressive FLV example12 fixed - plays now - was an openx banner config issue
+  * ISSUE 31: JW Player examples don't work on IE8 - fixed - <embed> tags used instead of <object>
+  * ISSUE 79: Click through on overlay click to video ads not activated for JW Player - also ensure that overlay linear video ad tracking events are fired
+  * ISSUE 40 & ISSUE 80: Change "streamType" configuration to be generalised - default is now "any" all-example41 created to test/illustrate new streamType configuration
+  * ISSUE 92:	Fix up the "autoPlay" usage in the examples - example04 now illustrates turning "autoPlay":true
+  * ISSUE 17:	Support pseudo-streaming provider
+  * ISSUE 59:	Restore the 'providers' configuration option for Flowplayer
