@@ -25,3 +25,19 @@ Change Log
 
   * All HTTP examples moved to official release of Flowplayer 3.1.3 (the official release doesn't seem to work with RTMP right now as there isn't an official 3.1.3 RTMP plugin)  
   * ISSUE 36:	Flowplayer - Ad Notice positioning on fullscreen was incorrect - placed very wide so the ad notice disappeared - fixed now
+
+0.2.5 - October 6, 2009
+
+* ISSUE 78: "deliveryType" config option set to "any" by default - meaning in most cases,
+  this option is no longer required - removed from examples
+* ISSUE 40 & ISSUE 80: Change "streamType" configuration to be generalised - default is now "any"
+  all-example41 created to test/illustrate new streamType configuration
+* ISSUE 88:	Flowplayer custom clip properties not imported - "player" config grouping added
+  at general, stream, ads and ad slot levels. See example44.html
+* ISSUE 92:	Fix up the "autoPlay" usage in the examples - example04 now illustrates turning autoPlay:true
+* ISSUE 87:	Issues with "applyToParts" config - many fixes - see test cases test01-12.html
+* ISSUE 101: Flowplayer playlists can now be used to derive the "shows" configuration - this should
+  fix the issue with bandwidth checker compatibility
+* ISSUE 99:	Removed references to global.js in examples
+* ISSUE 17:	Support pseudo-streaming provider
+* ISSUE 59:	Restore the 'providers' configuration option for Flowplayer
