@@ -12,7 +12,7 @@ The October 6 2009 release has the following key changes in it:
   # Option added to allow the "click me" message on linear ads to be turned off
   # JW Player examples fixed up so that they actually work with IE8 (`object` tag replaced with `embed`)
 
-For a detailed account of the issues resolved, please refer to:
+For a detailed account of the issues resolved (the tonne of bug fixes), please refer to:
 
   * [FlowplayerOASChangeLog Flowplayer Change Log]
   * [JWPlayerOASChangeLog JW Player Change Log]
