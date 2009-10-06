@@ -38,3 +38,21 @@
   * Templates added to allow overlay formats to be changed as needed
   * "playOnce" configuration wasn't being set at the top level. Missing code from AbstractStreamConfig added to set it.
   * Support added to change ad notice text size from normal to small - size:smalltext|normaltext
+
+0.3.4 - October 6, 2009
+
+  * ISSUE 49: "adParameters" values moved to end of OpenX URL to allow "source" to be overridden
+  * ISSUE 76: Event callback added for Overlay CLOSE_CLICKED
+  * ISSUE 77: Config option added to allow overlays to stay visible after being clicked (only for 'click to web')
+  * ISSUE 33: Text overlay text looks washed out - now _text.blendMode = BlendMode.NORMAL;
+  * ISSUE 78: "deliveryType" config option set to "any" by default - meaning in most cases, this option is no longer required - removed from examples
+  * ISSUE 68:	Click through mouse over sign does not show if Ad Notice turned off - fixed
+  * ISSUE 78:	"deliveryType" is this really needed? No longer - need removed. Default setting is "any", but "progressive" or "streaming" can be used to limit the choice - example 10
+  * ISSUE 49:	OpenX targeting by "source" value in the URL - adParameters are now appended to the end of the OpenX VAST request rather than mid URL - this allows a "source" parameter to be specified in the "adParameters" - in addition a check is made to the "adParameters" value - if "source" is there, the default value is removed
+  * ISSUE 40 & ISSUE 80: Change "streamType" configuration to be generalised - default is now "any" all-example41 created to test/illustrate new streamType configuration
+  * ISSUE 88:	Flowplayer custom clip properties not imported - "player" config grouping added at general, stream, ads and ad slot levels. See FP all-example44.html
+  * ISSUE 89:	Option to turn off click me message on linear ads - "enabled" option now permitted in the "clickSign" config to turn the click through notice on/off - it is on by default
+  * ISSUE 87:	Issues with "applyToParts" config - many fixes - see FP test cases 01-12.html
+  * ISSUE 96:	Support load of MRSS format in place of "shows"
+  * ISSUE 17:	Support pseudo-streaming provider
+  * ISSUE 59:	Restore the 'providers' configuration option for Flowplayer
