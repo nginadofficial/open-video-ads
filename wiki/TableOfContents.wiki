@@ -25,6 +25,7 @@
       * [FlowplayerOASHowItWorks Deployment]
       * [http://static.bouncingminds.com/examples/openadstreamer/flowplayer/index.html  Examples]
       * [OASConfiguration Configuration]
+      * [FlowplayerOASPlaylists Using Playlists]
       * [FlowplayerOASLimitations Limitations]
       * [FlowplayerOASImplementationOverview Implementation]
       * [FlowplayerOASBuild How to Build]
