@@ -11,3 +11,66 @@ This guide explores how to use the standard Flowplayer Playlist mechanism. For a
 ===Combining Flowplayer Playlists with the Open Ad Streamer===
 
 [http://static.openvideoads.org/examples/openadstreamer/flowplayer/examples/all-example43.html Example 43] is a worked illustration of how to use Playlists with the Open Ad Streamer.
+
+This example has the following Flowplayer configuration:
+
+{{{
+flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
+    playlist: [
+       {
+           url: 'http://static.bouncingminds.com/images/open-video-ads/logo.png',
+           scaling: 'orig'
+       },
+       {
+           url: 'http://streaming.openvideoads.org/shows/the-black-hole.mp4',
+           duration: 20
+       },
+       {
+           url: 'mp4:the-black-hole.mp4',
+           provider: 'rtmp',
+           duration: 15
+       }
+    ],
+    
+    plugins: {
+        controls: {
+            autoHide: "always"
+        },
+
+        rtmp: {
+            url: "../dist/flowplayer.rtmp-3.1.3.swf",
+            netConnectionUrl: 'rtmp://ne7c0nwbit.rtmphost.com/videoplayer'
+        },
+
+        openAdStreamer: {
+            url: '../dist/OpenAdStreamer.swf',
+            
+            "autoPlay": false,
+            
+            "ads": {
+              "server": {
+                "type": "OpenX",
+                "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php",
+              },
+              "schedule": [
+                  {
+                    "zone": "5",
+                    "position": "pre-roll",
+                    "applyToParts": [1, 2]
+                  }
+              ]
+            },
+
+            "debug": {
+              "levels": "fatal",
+              "debugger": "firebug"
+            }
+        }
+    }
+});
+}}}
+
+There are two important things to note about this configuration:
+
+  # There is no "shows" configuration group defined in the Open Ad Streamer configuration block
+  # All show clips to be configured are defined in the standard Flowplayer `playlist`
