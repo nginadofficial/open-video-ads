@@ -76,3 +76,5 @@ There are two important things to note about this configuration:
   # All show clips to be configured are defined in the standard Flowplayer `playlist`
 
 When the Open Ad Streamer starts up, it looks to see if a Playlist has been pre-defined. If it has, it reads in those clip settings and treats that list as the default "shows" list that ads are to be scheduled against.
+
+For a detailed description of the Flowplayer playlist configuration process, please refer to the [http://www.flowplayer.org/documentation/configuration/playlists.html documentation on the Flowplayer site].
