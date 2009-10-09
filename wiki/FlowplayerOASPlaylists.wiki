@@ -8,4 +8,6 @@ The Flowplayer Open Ad Streamer allows "show" streams to be configured using eit
 
 This guide explores how to use the standard Flowplayer Playlist mechanism. For a detailed description of how to use the internal Open Ad Streamer "shows" configuration grouping, please refer to the [OASConfiguration OAS Configuration Guide].
 
-==Combining Flowplayer Playlists with the Open Ad Streamer==
+===Combining Flowplayer Playlists with the Open Ad Streamer===
+
+[http://static.openvideoads.org/examples/openadstreamer/flowplayer/examples/all-example43.html Example 43] is a worked illustration of how to use Playlists with the Open Ad Streamer.
