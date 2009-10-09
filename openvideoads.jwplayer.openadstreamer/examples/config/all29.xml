@@ -1,0 +1,43 @@
+<config>
+    <openadstreamer.title>
+       ALL Example 29
+    </openadstreamer.title>
+    <openadstreamer.json>
+		{
+            "debug": {
+                "debugger": "firebug",
+                "levels": "fatal"
+            },
+
+            "ads": {
+                "pauseOnClickThrough": true,
+                "clickSign": {
+                    "enabled": true,
+                    "verticalAlign": "center",
+                    "horizontalAlign": "center",
+                    "width": 150,
+                    "height": 32,
+                    "opacity": 0.5,
+                    "borderRadius": 20,
+                    "backgroundColor": "#000000",
+                    "style": ".smalltext { font-size:12; }",
+                    "html": "&lt;p class=\"smalltext\" align=\"center\"&gt;CLICK ME!&lt;/p&gt;",
+                    "scaleRate": 0.75
+                },
+                "notice": { "show": true },
+                "server": {
+                    "type": "OpenX",
+                    "adParameters": [ { "name": "category", "value": "food" } ],
+                    "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
+                },
+                "schedule": [
+                    {
+                       "zone": "1",
+                       "position": "pre-roll"
+                    }
+                ]
+            }
+        }
+    </openadstreamer.json>
+</config>
+

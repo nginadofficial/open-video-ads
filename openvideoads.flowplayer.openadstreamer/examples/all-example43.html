@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Example 43 (ALL) - Integrating with Flowplayer Playlists</title>
+<script type="text/javascript" src="../dist/jquery-1.3.1.js"></script>
+<script type="text/javascript" src="../dist/flowplayer-3.1.4.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/global.css" />
+</head>
+<body>
+
+<h2>Example 43 (ALL) - Integrating with Flowplayer Playlists</h2>
+<p class="example">
+This example illustrates how the Open Ad Streamer can be deployed with a Flowplayer
+playlist. In this example, the Open Ad Streamer plays a pre-roll ad and the show
+stream after the image in the playlist has been displayed and the user has started
+the player playing</p>
+<a class="example"></a>
+
+<script type="text/javascript">
+flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
+    playlist: [
+       {
+           url: 'http://static.bouncingminds.com/images/open-video-ads/logo.png',
+           scaling: 'orig'
+       },
+       {
+           url: 'http://streaming.openvideoads.org/shows/the-black-hole.mp4',
+           duration: 20
+       },
+       {
+           url: 'mp4:the-black-hole.mp4',
+           provider: 'rtmp',
+           duration: 15
+       }
+    ],
+    
+    plugins: {
+        controls: {
+            autoHide: "always"
+        },
+
+        rtmp: {
+            url: "../dist/flowplayer.rtmp-3.1.3.swf",
+            netConnectionUrl: 'rtmp://ne7c0nwbit.rtmphost.com/videoplayer'
+        },
+
+        openAdStreamer: {
+            url: '../dist/OpenAdStreamer.swf',
+//            "url": "/fp-http/OpenAdStreamer.swf",
+
+            "autoPlay": false,
+ 
+            "ads": {
+              "server": {
+                "type": "OpenX",
+                "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php",
+              },
+              "schedule": [
+                  {
+                    "zone": "5",
+                    "position": "pre-roll",
+                    "applyToParts": [1, 2]
+                  }
+              ]
+            },
+
+            "debug": {
+              "levels": "fatal",
+              "debugger": "firebug"
+            }
+        }
+    }
+});
+</script>
+<p>
+The configuration for this example is:
+</p>
+<div class="codebox">
+<pre>
+<code class="javascript">
+flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
+    playlist: [
+       {
+           url: 'http://static.bouncingminds.com/images/open-video-ads/logo.png',
+           scaling: 'orig'
+       },
+       {
+           url: 'http://streaming.openvideoads.org/shows/the-black-hole.mp4',
+           duration: 20
+       },
+       {
+           url: 'mp4:the-black-hole.mp4',
+           provider: 'rtmp',
+           duration: 15
+       }
+    ],
+    
+    plugins: {
+        controls: {
+            autoHide: "always"
+        },
+
+        rtmp: {
+            url: "../dist/flowplayer.rtmp-3.1.3.swf",
+            netConnectionUrl: 'rtmp://ne7c0nwbit.rtmphost.com/videoplayer'
+        },
+
+        openAdStreamer: {
+            url: '../dist/OpenAdStreamer.swf',
+            
+            "autoPlay": false,
+            
+            "ads": {
+              "server": {
+                "type": "OpenX",
+                "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php",
+              },
+              "schedule": [
+                  {
+                    "zone": "5",
+                    "position": "pre-roll",
+                    "applyToParts": [1, 2]
+                  }
+              ]
+            },
+
+            "debug": {
+              "levels": "fatal",
+              "debugger": "firebug"
+            }
+        }
+    }
+});
+</code>
+</pre>
+</div>
+</body>
+</html>
