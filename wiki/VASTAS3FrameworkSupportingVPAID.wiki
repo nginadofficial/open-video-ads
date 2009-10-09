@@ -1,0 +1,6 @@
+#summary Supporting VPAID
+#sidebar TableOfContents
+
+Work is underway now to add in support for VPAID to the framework. VPAID is essential to deliver linear and non-linear interactive video ad formats.
+
+If you are interested in this functionality and want to know more as we implement it, please email us at _enquiries@openvideoads.org_
