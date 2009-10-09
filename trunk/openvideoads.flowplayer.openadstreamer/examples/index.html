@@ -1,0 +1,125 @@
+<html>
+<title>Flowplayer Open Video Advertising - Examples</title>
+<body>
+<a href="www.openvideoads.org"><img src="images/ova-logo-final.png" border="0"/></a>
+<h2>Flowplayer Open Ad Streamer - Worked Examples</h2>
+<h3>Zone Definitions</h3>
+<p class="example">
+The worked examples assume that a series of "zones" have been defined in the OpenX server as follows.
+</p>
+<p class="example">
+The HTTP zones are configured to serve HTTP "progressive download" linear ads via our Apache install.
+</p>
+<b>Linear: Pre, Mid and Post-Roll Videos</b>
+<ul>
+<li>zone '1': RTMP MP4 Linear Video</li>
+<li>zone '4': RTMP MP4 Linear Video with Companion Ad</li>
+<li>zone '5': HTTP Progressive MP4 Linear Video</li>
+<li>zone '6': HTTP Progressive MP4 Linear Video with Companion Ad</li>
+<li>zone '19': HTTP Pseudo-Streaming MP4 Linear Video with Companion Ad</li>
+<li>zone '13': RTMP FLV Linear Video</li>
+<li>zone '16': HTTP Progressive FLV Linear Video</li>
+<li>zone '14': RTMP MP4 Linear Video with 'Click to Website'</li>
+<li>zone '17': HTTP MP4 Linear Video with 'Click to Website'</li>
+<li>zone '15': Mixed of HTTP and RTMP MP4 Linear Video</li>
+</ul>
+<b>Non-Linear: Overlays</b>
+<ul>
+<li>zone '28': Overlay - 450x50 Image 'click to website' overlays</li>
+<li>zone '33': Overlay - 450x50 Image 'click to play HTTP MP4 video'</li>
+<li>zone '37': Overlay - 450x50 Image 'click to play RTMP MP4 video'</li>
+<li>zone '41': Overlay - 450x50 Image 'click to play ANY MP4 video'</li>
+<li>zone '29': Overlay - 450x50 Text 'click to website'</li>
+<li>zone '35': Overlay - 450x50 Text 'click to play HTTP MP4 video'</li>
+<li>zone '39': Overlay - 450x50 Text 'click to play RTMP MP4 video'</li>
+<li>zone '43': Overlay - 450x50 Text 'click to play ANY MP4 video' </li>
+<li>zone '30': Overlay - 450x50 SWF 'click to website' </li>
+<li>zone '34': Overlay - 450x50 SWF 'click to play HTTP MP4 video' </li>
+<li>zone '38': Overlay - 450x50 SWF 'click to play RTMP MP4 video' </li>
+<li>zone '42': Overlay - 450x50 SWF 'click to play ANY MP4 video' </li>
+<li>zone '31': Overlay - 450x50 HTML 'click to website' overlays</li>
+<li>zone '32': Overlay - 450x50 HTML 'click to play HTTP MP4 video' </li>
+<li>zone '36': Overlay - 450x50 HTML 'click to play RTMP MP4 video' </li>
+<li>zone '40': Overlay - 450x50 HTML 'click to play ANY MP4 video' </li>
+<li>zone '44': Overlay - 450x50 Mixed (html, text, image, swf, click to web and rtmp/http video)</li>
+</ul>
+<h3>The Examples</h3>
+Example 01: A pre-roll ad only (<a href='rtmp-example01.html'>RTMP</a>, <a href='http-example01.html'>HTTP</a>)
+<br/>
+Example 02: A pre-roll ad and a show stream  (<a href='rtmp-example02.html'>RTMP</a>, <a href='http-example02.html'>HTTP</a>)
+<br/>
+Example 03: A pre-roll and a show stream with a "click to start video" overlay (<a href='rtmp-example03.html'>RTMP</a>, <a href='http-example03.html'>HTTP</a>)
+<br/>
+Example 04: A pre-roll ad, 2 show streams with a post-roll ad after each show stream (<a href='rtmp-example04.html'>RTMP</a>, <a href='http-example04.html'>HTTP</a>)
+<br/>
+Example 05: A pre-roll, mid-roll (15 seconds in) and post roll ad, 1 show stream (<a href='rtmp-example05.html'>RTMP</a>, <a href='http-example05.html'>HTTP</a>)
+<br/>
+Example 07: A pre-roll ad with a companion banner, single show stream (<a href='rtmp-example07.html'>RTMP</a>, <a href='http-example07.html'>HTTP</a>)
+<br/>
+Example 08: "This is an advert" messaging (<a href='rtmp-example08.html'>RTMP</a>, <a href='http-example08.html'>HTTP</a>)
+<br/>
+Example 10: A mixed RTMP and HTTP playlist (<a href='all-example10.html'>ALL</a>)
+<br/>
+Example 12: Stream selection based on mime-type - FLV or MP4 (<a href='rtmp-example12.html'>RTMP</a>, <a href='http-example12.html'>HTTP</a>)
+<br/>
+Example 13: Repeating ad positions (<a href='rtmp-example13.html'>RTMP</a>, <a href='http-example13.html'>HTTP</a>)
+<br/>
+Example 15: Selection of media based on bit-rate (<a href='rtmp-example15.html'>RTMP</a>, <a href='http-example15.html'>HTTP</a>)
+<br/>
+Example 16: Overlay with 'click to website' (<a href='rtmp-example16.html'>RTMP</a>, <a href='http-example16.html'>HTTP</a>)
+<br/>
+Example 17: Play ads only once (<a href='rtmp-example17.html'>RTMP</a>, <a href='http-example17.html'>HTTP</a>)
+<br/>
+Example 18: Click on a linear ad to go to the advertiser website (<a href='rtmp-example18.html'>RTMP</a>, <a href='http-example18.html'>HTTP</a>)
+<br/>
+Example 19: Illustrating overlay alignment (<a href='all-example19.html'>ALL</a>)
+<br/>
+Example 20: Targetted Ad Delivery (<a href='rtmp-example20.html'>RTMP</a>, <a href='http-example20.html'>HTTP</a>)
+<br/>
+Example 21: Leaving out the 'duration' config variable (RTMP, HTTP)
+<br/>
+Example 22: Specifying a new Flowplayer RTMP provider (<a href="rtmp-example22.html">RTMP</a>)
+<br/>
+Example 23: Enabling remote debug with openvideoads.org (ALL)
+<br/>
+Example 24: Auto-stripping file extensions (ALL)
+<br/>
+Example 25: Supporting Live Streams (RTMP)
+<br/>
+Example 26: Test for empty VAST template response (<a href="all-example26.html">ALL</a>)
+<br/>
+Example 27: Test for bad VAST Ad Server Response (<a href="all-example27.html">ALL</a>)
+<br/>
+Example 28: Turning off the ad notice (<a href="all-example28.html">ALL</a>)
+<br/>
+Example 29: Modifying the Linear Ad Clickthrough Message (<a href="all-example29.html">ALL</a>)
+<br/>
+Example 31: Delivering Text Overlay Ads (<a href="all-example31.html">ALL</a>)
+<br/>
+Example 32: Delivering Image Overlay Ads (including animated GIFs) (<a href="all-example32.html">ALL</a>)
+<br/>
+Example 33: Delivering Flash (SWF) Overlay Ads (<a href="all-example33.html">ALL</a>)
+<br/>
+Example 34: Delivering HTML Overlay Ads (<a href="all-example34.html">ALL</a>)
+<br/>
+Example 35: Delivering Mixed Overlay Ad Types (Text, Image, SWF and HTML) (<a href="all-example35.html">ALL</a>)
+<br/>
+Example 36: User Defined Overlay Ad Templates (Text, Image, SWF and HTML) (<a href="all-example36.html">ALL</a>)
+<br/>
+Example 37: User Defined Overlay Regions (<a href="all-example37.html">ALL</a>)
+<br/>
+Example 38: Keep overlay visible after click (<a href="all-example38.html">ALL</a>)
+<br/>
+Example 39: Supporting HTTP pseudo-streaming (<a href="http-example39.html">ALL</a>)
+<br/>
+Example 40: Restricting SWF ads to specific domains (ALL)
+<br/>
+Example 41: Delivering mixed file types (FLV and MP4) (<a href="all-example41.html">ALL</a>)
+<br/>
+Example 42: Selective application of ad slots (<a href="all-example42.html">ALL</a>)
+<br/>
+Example 43: Integrating with Flowplayer Playlists (<a href="all-example43.html">ALL</a>)
+<br/>
+Example 44: Supporting Flowplayer Custom Clip Properties (<a href="all-example44.html">ALL</a>)
+</body>
+</html>

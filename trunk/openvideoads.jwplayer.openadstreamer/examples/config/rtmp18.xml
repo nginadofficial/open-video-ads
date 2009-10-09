@@ -1,0 +1,30 @@
+<config>
+   <openadstreamer.title>
+        RTMP Example 18
+   </openadstreamer.title>
+   <openadstreamer.json>
+        {
+            "allowPlaylistControl": true,
+
+            "debug": {
+                "debugger": "firebug",
+                "levels": "fatal"
+            },
+
+            "ads": {
+                "pauseOnClickThrough": true,
+                "notice": { "textStyle": "smalltext" },
+                "server": {
+                    "type": "OpenX",
+                    "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
+                },
+                "schedule": [
+                    {
+                       "zone": "14",
+                       "position": "pre-roll"
+                    }
+                ]
+            }
+        }
+   </openadstreamer.json>
+</config>

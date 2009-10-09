@@ -1,0 +1,41 @@
+<config>
+   <openadstreamer.title>
+       HTTP Example 39 - Supporting an XMOOV pseudo-streaming provider
+   </openadstreamer.title>
+   <openadstreamer.json>
+       {
+          "allowPlaylistControl": false,
+          "shows": {
+              "providers" : {
+                   "http": "http://static.openvideoads.org/xmoov/xmoov.php"
+              },
+              "streams": [
+                   {
+                        "file": "dogs_600_with_metadata.flv",
+                        "duration": "00:00:19"
+                   }
+              ]
+          },
+
+          "debug": {
+              "debugger": "firebug",
+              "levels": "fatal",
+          },
+
+          "ads": {
+              "playOnce": false,
+              "notice": { "textStyle": "smalltext" },
+              "server": {
+                  "type": "OpenX",
+                  "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
+              },
+              "schedule": [
+                  {
+                     "zone": "18",
+                     "position": "pre-roll"
+                  }
+              ]
+          }
+       }
+   </openadstreamer.json>
+</config>

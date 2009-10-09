@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Example 2a - A pre-roll ad and show stream - No Playlist Control</title>
+<script type="text/javascript" src="../dist/flash-firebug-fix.js"></script>
+<link rel="stylesheet" type="text/css" href="css/global.css" />
+</head>
+<body>
+<h2>Example 2a - A pre-roll ad and show stream - No Playlist Control</h2>
+<p class="example">
+This example plays a HTTP pre-roll ad before the main show stream. The ad slot is defined as zone "18" in our OpenX instance.
+The ad is repeated every time the stream is replayed. "allowPlaylistControl" is set to false which means that one clip
+at a time is loaded into the player (removing the playlist control next/previous clip buttons). 
+Example 02c illustrates what happens if "allowPlaylistControl" is set to true.
+</p>
+<embed 
+  id="ply"
+  data="../dist/4.5.swf"
+  src="../dist/4.5.swf" 
+  width="450"
+  height="300"
+  allowscriptaccess="always"
+  allowfullscreen="true"
+  flashvars="height=300&width=450&plugins=../dist/OpenAdStreamer.swf&config=config/http02a.xml"
+/>
+<br/>
+<p>
+The configuration for this example is:
+</p>
+<div class="codebox">
+<pre>
+<code>
+&lt;embed 
+  id="ply"
+  data="../dist/4.5.swf"
+  src="../dist/4.5.swf" 
+  width="450"
+  height="300"
+  allowscriptaccess="always"
+  allowfullscreen="true"
+  flashvars="height=300&width=450&plugins=../dist/OpenAdStreamer.swf&config=config/http02a.xml"
+/&gt;
+</code>
+</pre>
+</div>
+<p>
+"http02a.xml" is defined as:
+</p>
+<div class="codebox">
+<pre>
+<code class="xml">
+&lt;config&gt;
+   &lt;openadstreamer.title&gt;
+       HTTP Example 02a - Plays non-contiguously
+   &lt;/openadstreamer.title&gt;
+   &lt;openadstreamer.json&gt;
+       {
+          "allowPlaylistControl": false,
+          "shows": {
+              "streams": [
+                   {
+                        "file":"http://streaming.openvideoads.org:81/shows/the-black-hole.mp4",
+                        "duration":"00:00:30"
+                   }
+              ]
+          },
+
+          "debug": {
+              "debugger": "firebug",
+              "levels": "fatal",
+          },
+
+          "ads": {
+              "playOnce": false,               
+              "notice": { "textStyle": "smalltext" },
+              "server": {
+                  "type": "OpenX",
+                  "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
+              },
+              "schedule": [
+                  {
+                     "zone": "18",
+                     "position": "pre-roll"
+                  }
+              ]
+          }
+       }
+   &lt;/openadstreamer.json&gt;
+&lt;/config&gt;
+</code>
+</pre>
+</div>
+</body>
+</html>

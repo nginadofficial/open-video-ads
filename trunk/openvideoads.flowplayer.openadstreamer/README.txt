@@ -1,0 +1,45 @@
+Change Log
+
+0.2.1 - August 24, 2009
+
+* Initial release with defects/restrictions
+
+0.2.2 - August 26, 2009
+
+* OpenAdStreamer.as: Fixed issue with mid-roll RTMP ad insertion - clip.start=0; added to ensure
+  mid-roll ad starts at 0
+* OpenAdStreamer.as: Example04 - "autoPlay:false" on "pre-roll" ad not working - clip now sets autoPlay
+  based on stream.autoPlay value
+* RegionView.as - fix to the framework - and now appears over "click here" textsign and over
+  text on overlays
+* RegionController.as - fix to ensure RegionViews childIndex puts them on top as they are added
+* CrossCloseButton.as - fix to ensure that close button can be clicked and region closed
+* OpenAdStreamer.as - Fixed sizing is set on the DisplayProperties - derived automatically from DisplayObject()
+
+0.2.3 - September 1, 2009
+
+* ISSUE 26: Support added for tracking of "unmute, pause and resume" events
+* ISSUE 18: Deprecation of "selectionCriteria" config param - replaced with "adTags"
+
+0.2.4 - September 6, 2009
+
+* All HTTP examples moved to official release of Flowplayer 3.1.3 (the official release doesn't
+  seem to work with RTMP right now as there isn't an official 3.1.3 RTMP plugin)
+* ISSUE 36:	Flowplayer - Ad Notice positioning on fullscreen was incorrect - placed very
+  wide so the ad notice disappeared - fixed now
+
+0.2.5 - October 6, 2009
+
+* ISSUE 78: "deliveryType" config option set to "any" by default - meaning in most cases,
+  this option is no longer required - removed from examples
+* ISSUE 40 & ISSUE 80: Change "streamType" configuration to be generalised - default is now "any"
+  all-example41 created to test/illustrate new streamType configuration
+* ISSUE 88:	Flowplayer custom clip properties not imported - "player" config grouping added
+  at general, stream, ads and ad slot levels. See example44.html
+* ISSUE 92:	Fix up the "autoPlay" usage in the examples - example04 now illustrates turning autoPlay:true
+* ISSUE 87:	Issues with "applyToParts" config - many fixes - see test cases test01-12.html
+* ISSUE 101: Flowplayer playlists can now be used to derive the "shows" configuration - this should
+  fix the issue with bandwidth checker compatibility
+* ISSUE 99:	Removed references to global.js in examples
+* ISSUE 17:	Support pseudo-streaming provider
+* ISSUE 59:	Restore the 'providers' configuration option for Flowplayer

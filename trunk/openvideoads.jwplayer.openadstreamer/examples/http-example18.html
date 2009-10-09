@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Example 18 (HTTP) - Click on a linear ad to go to the advertiser website</title>
+<script type="text/javascript" src="../dist/flash-firebug-fix.js"></script>
+<link rel="stylesheet" type="text/css" href="css/global.css" />
+</head>
+<body>
+
+<h2>Example 18 (HTTP)- Click on a linear ad to go to the advertiser website</h2>
+<p class="example">
+Mouse over the ad and then click on it to be redirected to the advertiser website.
+</p>
+<embed 
+  id="ply"
+  data="../dist/4.5.swf"
+  src="../dist/4.5.swf" 
+  width="450"
+  height="300"
+  allowscriptaccess="always"
+  allowfullscreen="true"
+  flashvars="height=300&width=450&plugins=../dist/OpenAdStreamer.swf&config=config/http18.xml"
+/>
+<br/>
+<br/>
+The configuration for this example is:
+</p>
+<div class="codebox">
+<pre>
+<code>
+&lt;embed 
+  id="ply"
+  data="../dist/4.5.swf"
+  src="../dist/4.5.swf" 
+  width="450"
+  height="300"
+  allowscriptaccess="always"
+  allowfullscreen="true"
+  flashvars="height=300&width=450&plugins=../dist/OpenAdStreamer.swf&config=config/http18.xml"
+/&gt;
+</code>
+</pre>
+</div>
+<p>
+"http18.xml" is defined as:
+</p>
+<div class="codebox">
+<pre>
+<code class="xml">
+&lt;config&gt;
+   &lt;openadstreamer.title&gt;
+        HTTP Example 18
+   &lt;/openadstreamer.title&gt;
+   &lt;openadstreamer.json&gt;
+        {
+            "allowPlaylistControl": true,
+
+            "debug": {
+                "debugger": "firebug",
+                "levels": "fatal"
+            },
+
+            "ads": {
+                "pauseOnClickThrough": true,
+                "notice": { "textStyle": "smalltext" },
+                "server": {
+                    "type": "OpenX",
+                    "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
+                },
+                "schedule": [
+                    {
+                       "zone": "21",
+                       "position": "pre-roll"
+                    }
+                ]
+            }
+        }
+   &lt;/openadstreamer.json&gt;
+&lt;/config&gt;
+</code>
+</pre>
+</div>
+</body>
+</html>

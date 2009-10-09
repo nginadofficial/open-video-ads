@@ -1,0 +1,1 @@
+var triggerFirebugConsole = window.console;
