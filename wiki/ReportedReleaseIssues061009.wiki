@@ -1,2 +1,7 @@
 #summary About Open Video Ads
 #sidebar TableOfContents
+
+The following issues have been reported with the October 9th release:
+
+  #
+  #
