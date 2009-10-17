@@ -5,10 +5,7 @@ To setup OpenX so that it is ready to serve Video Ads:
 
 == Install OpenX ==
 
-  * The necessary changes to OpenX core have been committed to the OpenX source repository and will only be available as standard in OpenX 2.8.2. OpenX 2.8.2 has not been release yet, here is a link to OpenX 2.8.2 Release Candidate (Release Candidate means its NOT the final official release of OpenX 2.8.2 - so its not for production use - just beta testing)
-
-      * [http://static.openvideoads.org/downloads/openx-2.8.2-rc22.tar.gz]
-
+  * The necessary changes to OpenX core have been committed to the OpenX source repository and will only be available as standard in OpenX 2.8.2. You can download OpenX 2.8.2 [http://www.openx.org/ad-server/download here]
 
 == Enable openXVideoAds plugin ==
 
