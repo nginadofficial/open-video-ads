@@ -1,2 +1,50 @@
 #summary Specific configuration settings to support the AdTech Ad Server
 #sidebar TableOfContents
+
+The configuration example below illustrates the most straight forward configuration to support a call to AdTech:
+
+{{{
+flowplayer("a.player614x345", "../dist/flowplayer-3.1.4.swf", {
+    plugins: {
+        openAdStreamer: {
+            url: '../dist/OpenAdStreamer.swf',
+
+            "shows": {
+                "baseURL": "http://streaming.openvideoads.org/shows",
+                "streams": [
+                    {
+                        "file":"the-black-hole.mp4",
+                        "duration":"00:00:20"
+                    }
+                ]
+            },
+
+            "ads": {
+              "displayCompanions": true,
+              "restoreCompanions": false,
+              "companions": [
+                   { "id":"companion-160x600", "width":"160", "height":"600" },
+                   { "id":"companion-300x250", "width":"300", "height":"250" }
+              ],
+              "servers": [
+                   {
+                      "type": "AdTech",
+                      "apiAddress": "http://de.at.atwola.com/?adrawdata/3.0/515.1",
+                   }
+              ],
+              "schedule": [
+                   {
+                      "zone": "2189418/0/1725", // composed of placement/page-id/size-id
+                      "position": "pre-roll"
+                   }
+              ]
+            },
+
+            "debug": {
+              "levels": "fatal",
+              "debugger": "firebug"
+            }
+        }
+    }
+});
+}}}
