@@ -153,6 +153,16 @@ flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
 });
 }}}
 
+*_in this example the URL is broken over several lines - don't break the URL over multiple lines in your actual configuration_
+
+You will notice a couple of things about this example configuration:
+
+  * The ad server type is specified as `direct`
+  * The `apiAddress` is the fully formed AdTech URL
+
+By specifying `direct` as the ad server type, the Open Ad Streamer simply uses the `apiAddress` as the URL to call - no templates or default values are applied.
+
+Another difference with this configuration over the previous example is that the ad server settings are defined at the Ad Slot level. It is possible to specify precisely what ad server to call per Ad Slot. In this case, we've instructed the OAS to call the AdTech URL directly.
 
 ===Overriding the Default Request Template===
 
