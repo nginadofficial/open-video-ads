@@ -24,7 +24,7 @@ Previously Ad Servers were configured  within the OpenAdStreamer as followed:
                     }
                 ]
             }
-{{{
+}}}
 
 In this release, the "server" configuration item has been replaced with a "servers" configuration option that appears as follows:
 
@@ -44,7 +44,7 @@ In this release, the "server" configuration item has been replaced with a "serve
                     }
                 ]
             }
-{{{
+}}}
 
 Support for the AdTech Ad Server is now included out of the box.
 
