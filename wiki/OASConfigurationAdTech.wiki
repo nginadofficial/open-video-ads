@@ -55,7 +55,7 @@ flowplayer("a.player614x345", "../dist/flowplayer-3.1.4.swf", {
 });
 }}}
 
-In this example, 1 ad slot (a pre-roll) is declared. 
+In this example, 1 ad slot is declared - a pre-roll ad. 
 
 To obtain the pre-roll ad, a single ad server is declared - one of type "AdTech".
 
