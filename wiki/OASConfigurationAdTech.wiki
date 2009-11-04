@@ -67,9 +67,9 @@ After the type declaration, the address for the server is specified as `http://d
 
 In this instance, to identify the type of ad to be served by AdTech, a `zone` is declared of components that describe:
 
-  * The ad placement position on the page
-  * The page-id 
-  * The size-id for the ad
+  * placement = 2183819 = placement ID, this is our unique identifier for an Ad placement
+  * page = 0 = this parameter is not in use at the moment, could be used by special customers
+  * size-id = 1725 = the size ID indicates our sever to delievr a banner which has the same size, this prevents from wrong size on wrong placement
 
 In our case, that `zone` is declared as `2189418/0/1725`
 
