@@ -105,3 +105,20 @@ In addition, several default values were used (because no specific ones were dec
   * `__alias__` was replaced with "" (nothing)
   * `__key__` was replaced with "key1+key2"
   * `__misc__` was replaced with a random number (`__random-number__` is a reserved word that tells the OAS to generate a random number string and place it in that position
+
+This all sounds quite complicated but it's hidden behind the scene.
+
+If you need more flexibility around the way the AdTech URL is declared in an OAS configuration, three further configuration options are available to you:
+
+  # Specifying URLs directly
+  # Overriding the default AdTech request template
+  # Overriding the standard template field values with your own
+
+===Calling AdTech Directly===
+
+
+===Overriding the Default Request Template===
+
+
+===Overriding the Default Template Field Values===
+
