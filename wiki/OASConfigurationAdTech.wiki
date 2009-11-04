@@ -57,9 +57,13 @@ flowplayer("a.player614x345", "../dist/flowplayer-3.1.4.swf", {
 
 In this example, 1 ad slot is declared - a pre-roll ad. 
 
-To obtain the pre-roll ad, a single ad server is declared - one of type "AdTech".
+To obtain the pre-roll ad, a single ad server is declared - one of type "AdTech". The `type` identifies the ad server type to the Open Ad Streamer. Several pre-defined ad server types are currently supported:
 
-The address for the server is specified as `http://de.at.atwola.com/?adrawdata/3.0/515.1`
+  * OpenX
+  * AdTech
+  * Direct
+
+After the type declaration, the address for the server is specified as `http://de.at.atwola.com/?adrawdata/3.0/515.1`
 
 In this instance, to identify the type of ad to be served by AdTech, a `zone` is declared of components that describe:
 
