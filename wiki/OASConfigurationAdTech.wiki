@@ -93,3 +93,15 @@ http://de.at.atwola.com/?adrawdata/3.0/515.1/
 2188757/0/1728/noperf=1;cc=2;header=yes;cookie=yes;
 adct=204;alias=;key=key1+key2;;=;grp=[group];misc=R0.1974387434311211
 }}}
+
+The resulting URL was constructed because:
+
+  * `__api-address__` was replaced with the "apiAddress" setting `http://de.at.atwola.com/?adrawdata/3.0/515.1`
+  * `__zone__` was replaced with the Ad Slot "zone" setting `2188757/0/1728`
+
+In addition, several default values were used (because no specific ones were declared in the example configuration)
+
+  * `__nondynamic__` was replaced with `noperf=1;cc=2;header=yes;cookie=yes;adct=204`
+  * `__alias__` was replaced with "" (nothing)
+  * `__key__` was replaced with "key1+key2"
+  * `__misc__` was replaced with a random number (`__random-number__` is a reserved word that tells the OAS to generate a random number string and place it in that position
