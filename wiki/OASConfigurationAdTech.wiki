@@ -164,6 +164,8 @@ By specifying `direct` as the ad server type, the Open Ad Streamer simply uses t
 
 Another difference with this configuration over the previous example is that the ad server settings are defined at the Ad Slot level. It is possible to specify precisely what ad server to call per Ad Slot. In this case, we've instructed the OAS to call the AdTech URL directly.
 
+In our example, you will have noticed that no "zone" is declared for the "pre-roll" ad slot. When a "direct" ad call is to be made, the "zone" definition is no longer required. 
+
 ===Overriding the Default Request Template===
 
 
