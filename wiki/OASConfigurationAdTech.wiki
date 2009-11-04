@@ -1,7 +1,7 @@
 #summary Specific configuration settings to support the AdTech Ad Server
 #sidebar TableOfContents
 
-The configuration example below illustrates the most straight forward configuration to support a call to AdTech:
+The configuration example below illustrates the most straight forward configuration to support a call to [http://www.adtech.de an AdTech Ad Server]:
 
 {{{
 flowplayer("a.player614x345", "../dist/flowplayer-3.1.4.swf", {
