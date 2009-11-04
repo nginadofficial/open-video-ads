@@ -112,7 +112,7 @@ If you need more flexibility around the way the AdTech URL is declared in an OAS
 
   # Specifying URLs directly
   # Overriding the default AdTech request template
-  # Overriding the standard template field values with your own
+  # Overriding the standard template field values with your own
 
 ===Calling AdTech Directly===
 
@@ -121,4 +121,3 @@ If you need more flexibility around the way the AdTech URL is declared in an OAS
 
 
 ===Overriding the Default Template Field Values===
-
