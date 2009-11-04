@@ -46,13 +46,13 @@ In this release, the "server" configuration item has been replaced with a "serve
             }
 }}}
 
-Support for the AdTech Ad Server is now included out of the box.
+Support for the AdTech Ad Server is now included out of the box. Worked examples have been included to illustrate how to configure the OAS to communicate with the AdTech Ad Server.
 
 Any Ad Server can now be easily integrated into the framework.
 
-The VAST XML Wrapper is also supported in this release.
+The VAST XML Wrapper is also supported in this release. Worked examples have also been included that illustrate how the XML Wrapper works to chain ad server requests until the ad requirement is fulfilled.
 
-Ad Server request can now be made per ad slot, or as a bunched set of requests. Ad Servers may be mixed and matched across the ad schedule.
+Ad Server request can now be made per ad slot, or as a bunched set of requests. Ad Servers may be mixed and matched across the ad schedule. Examples have also been included to illustrate how to do this.
 
 For a detailed account of the issues resolved (the tonne of bug fixes), please refer to:
 
