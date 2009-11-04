@@ -1,6 +1,12 @@
 #summary Specific configuration settings to support the AdTech Ad Server
 #sidebar TableOfContents
 
+The Open Ad Streamer supports a very flexible configuration approach to the definition of requests that are to be made to different types of video ad server.
+
+The OAS supports AdTech 'out of the box'. This guide walks through the different configuration approaches that may be taken to integrate an AdTech request.
+
+===The Basics===
+
 The configuration example below illustrates the most straight forward configuration to support a call to an [http://www.adtech.de AdTech Ad Server]:
 
 {{{
