@@ -116,6 +116,43 @@ If you need more flexibility around the way the AdTech URL is declared in an OAS
 
 ===Calling AdTech Directly===
 
+The following example illustrates how to cut and paste AdTech URLs directly into an OAS configuration so that they are called without being modified:
+
+{{{
+flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
+    plugins: {
+        controls: {
+            autoHide: "always"
+        },
+
+        openAdStreamer: {
+            url: '../dist/OpenAdStreamer.swf',
+
+            "debug": {
+                "debugger": "firebug",
+                "levels": "fatal"
+            },
+
+            "ads": {
+                "pauseOnClickThrough": true,
+                "schedule": [
+                    {
+                       "position": "pre-roll",
+                       "server": {
+                           "type": "direct",
+                           "apiAddress": "http://de.at.atwola.com/?adrawdata/3.0/515.1/
+                                         2188758/0/1725/noperf=1;cc=2;header=yes;alias=myalias;
+                                         cookie=yes;adct=204;key=key1+key2;grp=[group];
+                                         misc=__random-number__"
+                       }
+                    }
+                ]
+             }
+         }
+     }
+});
+}}}
+
 
 ===Overriding the Default Request Template===
 
