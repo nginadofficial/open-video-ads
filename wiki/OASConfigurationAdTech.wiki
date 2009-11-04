@@ -1,2 +1,2 @@
-#summary One-sentence summary of this page.
-
+#summary Specific configuration settings to support the AdTech Ad Server
+#sidebar TableOfContents
