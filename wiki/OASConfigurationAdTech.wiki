@@ -213,14 +213,14 @@ flowplayer("a.player614x345", "../dist/flowplayer-3.1.4.swf", {
                                           grp=__group__;misc=__random-number__",
                       "oneAdPerRequest": true,
                       "customProperties": {
-							"nondynamic": "noperf=1;cc=2;header=yes;cookie=yes;adct=204",
-							"alias": "", 
-							"aliaspostfix": "", 
-							"key": "key1+key2", 
-							"key-value": "", 
-							"cookie-name": "", 
-							"cookie-value": "", 
-							"group": "[23]" 
+                                          "nondynamic": "noperf=1;cc=2;header=yes;cookie=yes;adct=204",
+                                          "alias": "", 
+                                          "aliaspostfix": "", 
+                                          "key": "key1+key2", 
+                                          "key-value": "", 
+                                          "cookie-name": "", 
+                                          "cookie-value": "", 
+                                          "group": "23" 
                       }
                    }
               ],
@@ -236,8 +236,7 @@ flowplayer("a.player614x345", "../dist/flowplayer-3.1.4.swf", {
                       "position": "reserved-bottom-center-w450px-h50px-transparent-0m",
                       "server": {
                          "customProperties": {
-                             "ver": "515.1",
-                             "noperf": "1"
+                                  "key": "male+teenager"
                          }
                       }
                    },
