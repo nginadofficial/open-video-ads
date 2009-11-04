@@ -46,7 +46,7 @@ In this release, the "server" configuration item has been replaced with a "serve
             }
 }}}
 
-Support for the AdTech Ad Server is now included out of the box. Worked examples have been included to illustrate how to configure the OAS to communicate with the AdTech Ad Server.
+Support for the AdTech Ad Server is now included out of the box (see the [OASConfigurationAdTech OAS AdTech configuration guide]. Worked examples have been included to illustrate how to configure the OAS to communicate with the AdTech Ad Server.
 
 Any Ad Server can now be easily integrated into the framework.
 
