@@ -72,3 +72,24 @@ In this instance, to identify the type of ad to be served by AdTech, a `zone` is
   * The size-id for the ad
 
 In our case, that `zone` is declared as `2189418/0/1725`
+
+When the Open Ad Server reaches a point where it needs to make a request to an ad server to get the ad asset, it constructs the ad server request URL from a template that is pre-defined for the declared ad server `type`.
+
+For AdTech, the default request URL template appears as follows:
+
+{{{
+__api-address__/__zone__/__nondynamic__;
+alias=__alias____aliaspostfix__;key=__key__;__key-value__;
+__cookie-name__=__cookie-value__;
+grp=__group__;misc=__random-number__
+}}}
+
+A `request template` is basically a string pattern that needs to be populated by the Open Ad Streamer when making a request to an ad server. For each template, a set of default values are also specified for the ad server type so that with the minimal configuration, a successful ad server request can be made.
+
+Using this template and our example, the request to AdTech will be formulated as follows:
+
+{{{
+http://de.at.atwola.com/?adrawdata/3.0/515.1/
+2188757/0/1728/noperf=1;cc=2;header=yes;cookie=yes;
+adct=204;alias=;key=key1+key2;;=;grp=[group];misc=R0.1974387434311211
+}}}
