@@ -54,6 +54,8 @@ The VAST XML Wrapper is also supported in this release. Worked examples have als
 
 Ad Server request can now be made per ad slot, or as a bunched set of requests. Ad Servers may be mixed and matched across the ad schedule. Examples have also been included to illustrate how to do this.
 
+Finally, the codebase issued with this release has moved to an LGPL (Lesser GPL) license.
+
 For a detailed account of the issues resolved (the tonne of bug fixes), please refer to:
 
   * [FlowplayerOASChangeLog Flowplayer Change Log]
