@@ -6,7 +6,45 @@ The November 4th release includes:
   * An updated Flowplayer OpenAdStreamer (v0.3.0)
   * An updated AS3 VAST Framework (v0.4.0)
 
-The release covers a major upgrade to the way Ad Servers are configured and used by the VAST framework.
+The release includes a major upgrade to the way Ad Servers are configured and used by the VAST framework.
+
+Previously Ad Servers were configured  within the OpenAdStreamer as followed:
+
+{{{
+            "ads": {
+                "pauseOnClickThrough": true,
+                "server": {
+                    "type": "OpenX",
+                    "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
+                },
+                "schedule": [
+                    {
+                        "zone": "5",
+                        "position": "pre-roll"
+                    }
+                ]
+            }
+{{{
+
+In this release, the "server" configuration item has been replaced with a "servers" configuration option that appears as follows:
+
+{{{
+            "ads": {
+                "pauseOnClickThrough": true,
+                "servers": [
+                    {
+                      "type": "OpenX",
+                      "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
+                    }
+                ],
+                "schedule": [
+                    {
+                      "zone": "5",
+                      "position": "pre-roll"
+                    }
+                ]
+            }
+{{{
 
 Support for the AdTech Ad Server is now included out of the box.
 
