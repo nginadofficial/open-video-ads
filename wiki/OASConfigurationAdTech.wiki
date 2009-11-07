@@ -275,7 +275,11 @@ There are only two reserved patterns used at present:
   # `__apiAddress__`
   # `__zone__`
 
-All other patterns are custom fields that are specified using the second configuration option - "customProperties"
+All other patterns are custom fields that are specified using the second configuration option - "customProperties".
+
+If a field appears as `__field-name__` in the request template then it is referenced as "field-name": "value" in the "customProperties" option.
+
+
 
 
 ===Overriding the Default Template Field Values===
