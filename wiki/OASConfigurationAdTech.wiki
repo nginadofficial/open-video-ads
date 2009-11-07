@@ -261,4 +261,21 @@ flowplayer("a.player614x345", "../dist/flowplayer-3.1.4.swf", {
 
 }}}
 
+There are two important configuration options to identify in the example above. These options allow you to override the default request template used by the AdTech ad request type:
+
+  # `requestTemplate`
+  # `customProperties` 
+
+The "requestTemplate" option can be used to specify a new template.
+
+Patterns to be replaced in a template are pre and post-fixed with "__". For example, you will notice that the "apiAddress" field is described as "__apiAddress__" and the "zone" field is "__zone__"
+
+There are only two reserved patterns used at present:
+
+  # __apiAddress__
+  # __zone__
+
+All other patterns are custom fields that are specified using the second configuration option - "customProperties"
+
+
 ===Overriding the Default Template Field Values===
