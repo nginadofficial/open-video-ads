@@ -57,7 +57,7 @@ flowplayer("a.player614x345", "../dist/flowplayer-3.1.4.swf", {
 });
 }}}
 
-In this example, 1 ad slot is declared - a pre-roll ad. 
+In this example 1 ad slot is declared - a pre-roll ad. 
 
 To obtain the pre-roll ad, a single ad server is declared - one of type "AdTech". The `type` identifies the ad server type to the Open Ad Streamer. Several pre-defined ad server types are currently supported:
 
@@ -67,13 +67,13 @@ To obtain the pre-roll ad, a single ad server is declared - one of type "AdTech"
 
 After the type declaration, the address for the server is specified as `http://de.at.atwola.com/?adrawdata/3.0/515.1`
 
-In this instance, to identify the type of ad to be served by AdTech, a `zone` is declared of components that describe:
+In this instance, to identify the type of ad to be served by AdTech, a `zone` is declared. The zone is defined as a string created by appending three key AdTech concepts together. They are:
 
-  * placement = 2189418 = placement ID, this is the AdTech unique identifier for an Ad placement
-  * page = 0 = this parameter is not in use at the moment
-  * size-id = 1725 = the size ID identifies a banner of a specific size which prevents serving the wrong size on wrong placement
+  * A placement ID: For instance '2189418'  which is the AdTech unique identifier for an Ad placement
+  * A page ID: e.g. '0' - this parameter is not in use at the moment
+  * Size ID: e.g. '1725' - the size ID identifies a banner of a specific size which prevents serving the wrong size being served for a specific placement
 
-In our case, that `zone` is declared as `2189418/0/1725`
+Taking these three components in our example, we get a zone ID `2189418/0/1725`
 
 When the Open Ad Server reaches a point where it needs to make a request to an ad server to get the ad asset, it constructs the ad server request URL from a template that is pre-defined for the declared ad server `type`.
 
