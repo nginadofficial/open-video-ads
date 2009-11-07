@@ -9,7 +9,7 @@ This guide steps through the different configuration approaches that may be take
 
 ===The Basics===
 
-The configuration example below illustrates the most straight forward configuration to support a call to an [http://www.adtech.de AdTech Ad Server]:
+The configuration example below illustrates a simple AdTech request configuration:
 
 {{{
 flowplayer("a.player614x345", "../dist/flowplayer-3.1.4.swf", {
