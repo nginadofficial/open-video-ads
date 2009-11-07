@@ -333,14 +333,14 @@ The following example illustrates how to do this:
                        "type": "AdTech",
                        "apiAddress": "http://de.at.atwola.com/?adrawdata/3.0/515.1",
                        "customProperties": {
-                                          "nondynamic": "noperf=1;cc=2;header=yes;cookie=yes;adct=204",
-                                          "alias": "", 
-                                          "aliaspostfix": "", 
-                                          "key": "key1+key2", 
-                                          "key-value": "", 
-                                          "cookie-name": "", 
-                                          "cookie-value": "", 
-                                          "group": "23" 
+                                "nondynamic": "noperf=1;cc=2;header=yes;cookie=yes;adct=204",
+                                "alias": "", 
+                                "aliaspostfix": "", 
+                                "key": "key1+key2", 
+                                "key-value": "", 
+                                "cookie-name": "", 
+                                "cookie-value": "", 
+                                "group": "23" 
                        }
                   }
             ],
