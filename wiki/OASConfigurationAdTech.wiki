@@ -344,7 +344,7 @@ The following example illustrates how to do this:
                        }
                   }
             ],
-           "schedule": [
+            "schedule": [
                   {
                        "zone": "2188757/0/1728",
                        "server": {
