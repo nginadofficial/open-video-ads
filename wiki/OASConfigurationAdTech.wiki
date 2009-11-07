@@ -77,7 +77,7 @@ Taking these three components in our example, we get a zone ID `2189418/0/1725`
 
 ====Constructing an AdTech Request====
 
-When the Open Ad Server reaches a point where it needs to make a request to an ad server to get the ad asset, it constructs the ad server request URL from a template that is pre-defined for the declared ad server `type`.
+When the Open Ad Server reaches a point where it needs to make a request to an ad server to get the ad asset, it constructs the ad server request URL from a template that is pre-defined in the framework for the declared ad server `type`.
 
 For AdTech, the default request URL template appears as follows:
 
@@ -88,9 +88,9 @@ __cookie-name__=__cookie-value__;
 grp=__group__;misc=__random-number__
 }}}
 
-A `request template` is basically a string pattern that needs to be populated by the Open Ad Streamer when making a request to an ad server. For each template, a set of default values are also specified for the ad server type so that with the minimal configuration, a successful ad server request can be made.
+A `request template` is basically a string pattern that needs to be populated by the Open Ad Streamer when making a request to an ad server. For each template, a set of default values are also specified for the ad server type so that with the minimal configuration, a successful ad server request can be constructed.
 
-Using this template and our example, the request to AdTech will be formulated as follows:
+Using this template and our example, the request to AdTech results as follows:
 
 {{{
 http://de.at.atwola.com/?adrawdata/3.0/515.1/
