@@ -279,7 +279,46 @@ All other patterns are custom fields that are specified using the second configu
 
 If a field appears as `__field-name__` in the request template then it is referenced as "field-name": "value" in the "customProperties" option.
 
+For example, if we wanted to replace the default AdTech URL template with something that takes the form:
 
+       http://myadtechaddress/zone/myparam1/myparam2
 
+we would specify the following:
+
+{{{
+    "servers": [
+         {
+              "type": "AdTech",
+              "apiAddress": "http://myadtechaddress",
+              "requestTemplate": "__api-address__/__zone__/__param1__/__param2__",
+              "customProperties": {
+                   "param1": "myparam1",
+                   "param2": "myparam2"
+              }
+         }
+    ]
+}}}
 
 ===Overriding the Default Template Field Values===
+
+The default request template for AdTech has the following customProperties set as default values. If they are not overridden in the OAS config, then these values will be used to construct the default request:
+
+{{{
+    "customProperties": {
+          "nondynamic": "noperf=1;cc=2;header=yes;cookie=yes;adct=204",
+          "alias": "", 
+          "aliaspostfix": "", 
+          "key": "key1+key2", 
+          "key-value": "", 
+          "cookie-name": "", 
+          "cookie-value": "", 
+          "group": "[group]",
+          "misc": "random-number" 
+    }
+}}}
+
+You will notice that most fields have no value set.
+
+One field "misc" has a special reserved-term - "random-number"
+
+If `random-number` is used as the value in a custom property the OAS will replace the value with a randomly generated number. If the term is used in the form `__random-number__` in the request URL template, it will be directly replaced with a random number when the request is formed.
