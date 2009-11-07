@@ -3,7 +3,7 @@
 
 The Open Ad Streamer (version 0.3.0 or greater) allows any type of ad request to be easily integrated into the framework.
 
-http://www.adtech.de AdTech] Ad Server requests are supported 'out of the box'. 
+[http://www.adtech.de AdTech] Ad Server requests are supported 'out of the box'. 
 
 This guide steps through the different configuration approaches that may be taken to integrate an [http://www.adtech.de AdTech] request.
 
