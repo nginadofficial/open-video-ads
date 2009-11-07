@@ -268,7 +268,7 @@ There are two important configuration options to identify in the example above. 
 
 The "requestTemplate" option can be used to specify a new template.
 
-Patterns to be replaced in a template are pre and post-fixed with `__`. For example, you will notice that the "apiAddress" field is described as `__apiAddress__` and the "zone" field is `__zone__`
+Patterns to be replaced in a template are pre and post-fixed with `__` (double underscore). For example, you will notice that the "apiAddress" field is described as `__apiAddress__` and the "zone" field is `__zone__`
 
 There are only two reserved patterns used at present:
 
