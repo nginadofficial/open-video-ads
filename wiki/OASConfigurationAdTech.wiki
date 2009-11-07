@@ -258,7 +258,6 @@ flowplayer("a.player614x345", "../dist/flowplayer-3.1.4.swf", {
         }
     }
 });
-
 }}}
 
 There are two important configuration options to identify in the example above. These options allow you to override the default request template used by the AdTech ad request type:
@@ -322,3 +321,37 @@ You will notice that most fields have no value set.
 One field "misc" has a special reserved-term - "random-number"
 
 If `random-number` is used as the value in a custom property the OAS will replace the value with a randomly generated number. If the term is used in the form `__random-number__` in the request URL template, it will be directly replaced with a random number when the request is formed.
+
+Custom properties can be specified at either a general Ad Server level or at a specific Ad Slot level.
+
+The following example illustrates how to do this:
+
+{{{
+     "ads": {
+            "servers": [
+                  {
+                       "type": "AdTech",
+                       "apiAddress": "http://de.at.atwola.com/?adrawdata/3.0/515.1",
+                       "customProperties": {
+                                          "nondynamic": "noperf=1;cc=2;header=yes;cookie=yes;adct=204",
+                                          "alias": "", 
+                                          "aliaspostfix": "", 
+                                          "key": "key1+key2", 
+                                          "key-value": "", 
+                                          "cookie-name": "", 
+                                          "cookie-value": "", 
+                                          "group": "23" 
+                       }
+                  }
+            ],
+           "schedule": [
+                  {
+                       "zone": "2188757/0/1728",
+                       "server": {
+                           "customProperties": {
+                                  "key": "male+teenager"
+                           }
+                       }
+                  }
+           ]
+}}}
