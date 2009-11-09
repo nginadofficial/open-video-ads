@@ -5,6 +5,7 @@ The November 4th release includes:
 
   * An updated Flowplayer OpenAdStreamer (v0.3.0)
   * An updated AS3 VAST Framework (v0.4.0)
+  * An updated JW Player OpenAdStreamer (0.4.0)
 
 The release includes a major upgrade to the way Ad Servers are configured and used by the VAST framework.
 
