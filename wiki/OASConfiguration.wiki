@@ -271,11 +271,12 @@ An example configuration is as follows:
 
 {{{
     "ads": {
-        "server": {
-	    "type": "OpenX",
-	    "vastURL": "http://openx.bouncingminds.com/openx/www/delivery/fc.php"
-        },
-
+        "servers": [
+                {
+                      "type": "OpenX",
+                      "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
+                }
+        ],
         "schedule": [
             {
 	        "zone": "1",
@@ -300,7 +301,7 @@ Generally speaking, an ad configuration grouping has three sets of configuration
 {{{
     "ads": {
         // general level settings
-        "server": {}
+        "servers": []
         "schedule": []
     }
 }}}
@@ -339,8 +340,8 @@ Generally speaking, an ad configuration grouping has three sets of configuration
 === Ad Server Configuration Settings ===
 
 || *Property name* || *Level* || *Version* || *Description* ||
-|| `vastServerURL` || General || 0.4.5 ||  The url of the OpenX VAST server ||
-|| `adParameters` || General || 0.4.5 ||  Allows the selection of an ad to be refined by a specific selection. An example is `adParameters: [ { name:"age", value:"25" }, { name:"gender", value:"male" } ]` - this definition will tell the ad server to restrict ad selection based on an age and gender value (but only if these have been configured on the ad server side). The format for the `adParameters` field is an array of objects with each object specifying a field `name` and `value` to pass through  ||
+|| `type` || General || 0.4.5 ||  The type of pre-defined ad server - "OpenX", "AdTech" or "direct" ||
+|| `apiAddress` || General || 0.4.5 ||  The url of the VAST compliant Ad Server ||
 || `allowAdRepetition` || General || 0.4.5 || X ||
 
 === Ad Schedule Configuration Settings ===
