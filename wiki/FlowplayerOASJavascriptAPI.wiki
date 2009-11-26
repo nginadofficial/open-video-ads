@@ -2,17 +2,25 @@
 #sidebar TableOfContents
 
 VAST Template
+{{{
 getVastTemplateAsString():String
+}}}
 
 Region Manipulation
+{{{
 defineRegion(regionID:String, properties:Object):String
 hideRegion(regionID:String):String
 showRegion(regionID:String):String
 setRegionStyle(regionID:String, cssText:String):String
 setRegionHTML(regionID:String, html:String):String
+}}}
 
 Debug
+{{{
 setDebugLevel(level:int):void
+}}}
 
 Listening For Ad Events
+{{{
 registerAdEventListener(javascriptFunction:String):void
+}}}
