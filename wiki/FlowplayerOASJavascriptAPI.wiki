@@ -37,9 +37,9 @@ setDebugLevel(level:int):void
 Listening For Ad Events
 {{{
 onLinearAdBegin()
-onLinearAdFirstQuartile()
-onLinearAdMidPoint()
-onLinearAdThirdQuartile()
+onLinearAdFirstQuartileComplete()
+onLinearAdMidPointComplete()
+onLinearAdThirdQuartileComplete()
 onLinearAdFinish()
 onLinearAdClick()
 onNonLinearAdShow()
@@ -49,4 +49,6 @@ onCompanionAdShow()
 onCompanionAdHide()
 onAdNoticeShow()
 onAdNoticeHide()
+onRegionCloseClicked()
+onRegionClicked()
 }}}
