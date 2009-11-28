@@ -47,4 +47,6 @@ onNonLinearAdClickThrough()
 onNonLinearAdHide()
 onCompanionAdShow()
 onCompanionAdHide()
+onAdNoticeShow()
+onAdNoticeHide()
 }}}
