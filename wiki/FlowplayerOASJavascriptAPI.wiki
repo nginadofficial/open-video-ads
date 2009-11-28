@@ -6,6 +6,8 @@ IN DEVELOPMENT
 VAST Template
 {{{
 getVastTemplateAsString():String
+onVASTLoadSuccess(template:String)
+onVASTLoadFailure(error:String)
 }}}
 
 Region Manipulation
