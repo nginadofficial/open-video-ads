@@ -33,5 +33,11 @@ setDebugLevel(level:int):void
 
 Listening For Ad Events
 {{{
-registerAdEventListener(javascriptFunction:String):void
+onAdBegin()
+onAdFirstQuartile()
+onAdMidPoint()
+onAdThirdQuartile()
+onAdFinish()
+onAdImpression()
+onAdClick()
 }}}
