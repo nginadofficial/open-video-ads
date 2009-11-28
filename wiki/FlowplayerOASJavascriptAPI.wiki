@@ -17,6 +17,7 @@ setRegionStyle(regionID:String, cssText:String):String
 setRegionHTML(regionID:String, html:String):String
 setRegionHeight(regionID:String, height:String):String
 setRegionWidth(regionID:String, height:String):String
+setRegionDimensions(regionID:String, height:String, width:String):String
 setRegionVerticalAlign(regionID:String, verticalAlign:Boolean):String
 setRegionHorizontalAlign(regionID:String, horizontalAlign:Boolean):String
 setRegionBackgroundColor(regionID:String, color:String):String
