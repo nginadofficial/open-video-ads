@@ -33,11 +33,14 @@ setDebugLevel(level:int):void
 
 Listening For Ad Events
 {{{
-onAdBegin()
-onAdFirstQuartile()
-onAdMidPoint()
-onAdThirdQuartile()
-onAdFinish()
-onAdImpression()
-onAdClick()
+onLinearAdImpression()
+onLinearAdBegin()
+onLinearAdFirstQuartile()
+onLinearAdMidPoint()
+onLinearAdThirdQuartile()
+onLinearAdFinish()
+onLinearAdClick()
+onNonLinearAdImpression()
+onNonLinearAdClickThrough()
+onNonLinearAdHide()
 }}}
