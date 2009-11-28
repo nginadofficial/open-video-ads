@@ -15,6 +15,15 @@ hideRegion(regionID:String):String
 showRegion(regionID:String):String
 setRegionStyle(regionID:String, cssText:String):String
 setRegionHTML(regionID:String, html:String):String
+setRegionHeight(regionID:String, height:String):String
+setRegionWidth(regionID:String, height:String):String
+setRegionVerticalAlign(regionID:String, verticalAlign:Boolean):String
+setRegionHorizontalAlign(regionID:String, horizontalAlign:Boolean):String
+setRegionBackgroundColor(regionID:String, color:String):String
+setRegionOpacity(regionID:String, opacity:String):String
+setRegionPadding(regionID:String, height:String):String
+setRegionCloseButtonVisible(regionID:String, visible:Boolean):String
+setRegionKeepAfterClick(regionID:String, keepAfterClick:Boolean):String
 }}}
 
 Debug
