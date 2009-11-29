@@ -78,3 +78,24 @@ HTTP ERROR: [SecurityErrorEvent type="securityError" bubbles=false cancelable=fa
 FAILURE loading VAST template - [SecurityErrorEvent type="securityError" bubbles=false cancelable=false eventPhase=2 text="Error #2048"]
 NOTIFICATION: FAILURE loading VAST template - [SecurityErrorEvent type="securityError" bubbles=false cancelable=false eventPhase=2 text="Error #2048"]
 }}}
+
+====10. How do I specify multiple targeting variables for OpenX ====
+
+You can specify multiple OpenX targeting variables if you do this:
+
+{{{
+                "servers": [
+                    {
+                       "type": "OpenX",
+                       "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php",
+                       "customProperties": { 
+                            "target": "category=food&age=15&gender=female" 
+                       }
+                    }
+                ],
+}}}
+
+Basically whatever you put into the "target" variable gets appended onto the URL.
+
+You can also override the default URL template for OpenX if you need to add more "customProperties" - have a look at the AdTech examples to see how to do that.
+
