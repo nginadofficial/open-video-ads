@@ -10,6 +10,13 @@ onVASTLoadSuccess(template:String)
 onVASTLoadFailure(error:String)
 }}}
 
+Show Manipulation
+
+{{{
+setShowStreamAtIndex(showStreamIndex:int, showStreamConfig:Object):int
+replaceShowStreams(showStreamsConfig:Array):int
+}}}
+
 Region Manipulation
 {{{
 defineRegion(regionID:String, properties:Object):String
