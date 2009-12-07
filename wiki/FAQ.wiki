@@ -99,3 +99,33 @@ Basically whatever you put into the "target" variable gets appended onto the URL
 
 You can also override the default URL template for OpenX if you need to add more "customProperties" - have a look at the AdTech examples to see how to do that.
 
+====11. Help! I can't connect to the hosted OpenX Ad Server ====
+
+For some strange reason, I just can't connect to the OpenX Hosted Ad Server... what's going on?
+
+To find out what's going on, increase the logging on the Open Ad Streamer to the following:
+
+{{{
+      "debug": { 
+              "levels": "fatal, vast_template, config", 
+              "debugger": "firebug" 
+      } 
+}}}
+
+Now look at the firebug console to see what's coming out.
+
+If you see something like:
+
+{{{
+Loading VAST data from OpenX - request is http://d1.openx.org/fc.php?script=bannerTypeHtml:vastInlineBannerTypeHtml:vastInlineHtml&zones=pre-roll0-0%3D1%7Cbottom1-0%3D2&nz=1&source=&r=R0.9517627307213843&block=1&format=vast&charset=UTF_8&__target__
+Initialisation complete.
+VideoAdServingTemplate: HTTP ERROR: [SecurityErrorEvent type="securityError" bubbles=false cancelable=false eventPhase=2 text="Error #2048"]
+}}}
+
+then there is a "security error" being logged which means that there is a problem with the "crossdomain.xml" file on your ad server instance
+
+====12. Why aren't my overlays showing ====
+
+The first thing to check is that the dimensions that you've specified for your overlay ads matches the dimensions that you've requested in your ad slot.
+
+If they don't, an overlay of the right sizing won't be found and therefore can't be shown.
