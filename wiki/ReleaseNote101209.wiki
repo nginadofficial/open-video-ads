@@ -15,6 +15,6 @@ The updated OpenX Video Ads plugin (version 1.2) can be downloaded from [https:/
 
 The updated OpenX plugin includes a fix for the mime type provided in the "creativeType" attribute in the VAST response. Correct mime-types such as "image/png" are now provided.
 
-The OAS plugins and AS3 framework provided in this release work with both the new OpenX Video Ad plugin as well as previous versions of the plugin.
+The OAS plugins and AS3 framework provided in this release work with both the new OpenX Video Ad plugin version 1.2 or the previous version 1.1
 
 ==== An important change to the way ad servers are declared ====
