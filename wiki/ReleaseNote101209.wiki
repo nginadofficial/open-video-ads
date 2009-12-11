@@ -18,3 +18,25 @@ The updated OpenX plugin includes a fix for the mime type provided in the "creat
 The OAS plugins and AS3 framework provided in this release work with both the new OpenX Video Ad plugin version 1.2 or the previous version 1.1
 
 ==== An important change to the way ad servers are declared ====
+
+It is important to note that in the previous release, to accommodate new ad servers, ad server declarations were changed from:
+
+{{{
+      "server": {
+             "type": "OpenX",
+             "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
+      },
+}}}
+
+to
+
+{{{
+      "servers": [
+             {
+                   "type": "OpenX",
+                   "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
+             }
+      ],
+}}}
+
+Please update your config accordingly.
