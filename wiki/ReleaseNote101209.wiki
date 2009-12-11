@@ -7,4 +7,4 @@ The December 10th release includes:
   * An updated AS3 VAST Framework (v0.5.0)
   * An updated JW Player OpenAdStreamer (v0.4.1)
 
-==== Important change to the way ad servers are declared ====
+==== An important change to the way ad servers are declared ====
