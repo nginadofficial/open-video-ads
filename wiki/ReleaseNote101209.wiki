@@ -24,7 +24,7 @@ In addition, a tonne of bug fixes have been included:
   * ISSUE 147: Impression tracking should be fired on empty VAST ads - see all-example58.html - as per the AOL/AdTech request - new configuration option "forceImpressionServing" added to the AdServer config - set to "true" by default for AdTech, false for others.
   * ISSUE 137: Issue of "Play Again" button appearing in mid-roll config for Flowplayer playlist based configs - now fixed.
   * ISSUE 148: url tags not being processed in non linear ad VAST responses when creativeType is set as mimeType (e.g. "image/jpg" etc.). The OpenX Video Ads plugin 1.2 now produces mimeType creativeType values.
-  * ISSUE 149: overlay <code></code> tags not being correctly processed by overlay display code. Fixed now - code just inserted - templates just used for <url></url> values
+  * ISSUE 149: overlay `<code></code>` tags not being correctly processed by overlay display code. Fixed now - code just inserted - templates just used for `<url></url>` values
   * ISSUE 138: Unable to resume after pausing example 43 (Flowplayer) - fixed with rewrite of the way Flowplayer playlists are handled
   * ISSUE 111: playOnce issue with example43 (playlists) - stops after first playlist item - fixed with the change to the way Flowplayer playlists are read in/configured as show streams
   * ISSUE 133: Issues with autoPlay not working on Flowplayer playlist based streams fixed
