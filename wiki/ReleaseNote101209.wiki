@@ -1,0 +1,8 @@
+#summary December 10, 2009 Release Note
+#sidebar TableOfContents
+
+The December 10th release includes:
+
+  * An updated Flowplayer OpenAdStreamer (v0.4.0)
+  * An updated AS3 VAST Framework (v0.5.0)
+  * An updated JW Player OpenAdStreamer (v0.4.1)
