@@ -3,9 +3,9 @@
 
 The December 10th release includes:
 
-  * An updated Flowplayer OpenAdStreamer (v0.4.0)
-  * An updated AS3 VAST Framework (v0.5.0)
-  * An updated JW Player OpenAdStreamer (v0.4.1)
+  * An updated Flowplayer OpenAdStreamer ([v0.4.0 http://open-video-ads.googlecode.com/files/openvideoads.flowplayer.openadstreamer-0.4.0.bin.tar.gz])
+  * An updated AS3 VAST Framework ([v0.5.0 http://open-video-ads.googlecode.com/files/openvideoads.vast.as3-0.5.0.tar.gz])
+  * An updated JW Player OpenAdStreamer ([v0.4.1 http://open-video-ads.googlecode.com/files/openvideoads.jwplayer.openadstreamer-0.4.1.bin.tar.gz])
 
 ==== The Key Changes in this Release ====
 
