@@ -7,6 +7,14 @@ The December 10th release includes:
   * An updated AS3 VAST Framework (v0.5.0)
   * An updated JW Player OpenAdStreamer (v0.4.1)
 
+==== The Key Changes in this Release ====
+
+This release includes the following key enhancements:
+
+  * Support in the JW Player OAS for preview images - see example X
+  * Fixes around Flowplayer playlists to ensure that they work seamlessly with the OAS - see example X
+  * Fixes for impression tracking on empty VAST responses. By default, impression URLs will now be fired for AdTech ad server based requests if the VAST response is empty. An option has been included to allow this facility to be turned on for other ad servers. See example X for details
+
 ==== Related OpenX Releases ====
 
 A new version of the OpenX Video Ads plugin has been released to co-incide with this OAS release.
