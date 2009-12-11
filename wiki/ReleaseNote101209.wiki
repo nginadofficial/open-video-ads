@@ -39,4 +39,4 @@ to
       ],
 }}}
 
-Please update your config accordingly.
+Please update your config accordingly when using this release
