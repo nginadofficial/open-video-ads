@@ -7,4 +7,12 @@ The December 10th release includes:
   * An updated AS3 VAST Framework (v0.5.0)
   * An updated JW Player OpenAdStreamer (v0.4.1)
 
+==== Related OpenX Releases ====
+
+A new version of the OpenX Video Ads plugin has been released to co-incide with this OAS release.
+
+The new OpenX plugin includes a fix for the mime type provided in the "creativeType" attribute in the VAST response. Correct mime-types such as "image/png" are now provided.
+
+The OAS plugins and AS3 framework provided in this release work with both the new OpenX Video Ad plugin as well as previous versions of the plugin.
+
 ==== An important change to the way ad servers are declared ====
