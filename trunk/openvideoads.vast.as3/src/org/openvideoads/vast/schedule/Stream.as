@@ -4,7 +4,7 @@
  *    This file is part of the Open Video Ads VAST framework.
  *
  *    The VAST framework is free software: you can redistribute it 
- *    and/or modify it under the terms of the GNU General Public License 
+ *    and/or modify it under the terms of the Lesser GNU General Public License 
  *    as published by the Free Software Foundation, either version 3 of 
  *    the License, or (at your option) any later version.
  *
@@ -13,7 +13,7 @@
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *    GNU General Public License for more details.
  *
- *    You should have received a copy of the GNU General Public License
+ *    You should have received a copy of the Lesser GNU General Public License
  *    along with the framework.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openvideoads.vast.schedule {
@@ -58,6 +58,9 @@ package org.openvideoads.vast.schedule {
 		protected var _autoPlay:Boolean = true;
 		protected var _provider:String = null;
 		protected var _playerConfig:Object = new Object();
+		protected var _previewImage:String = null;
+		protected var _originatingStreamIndex:int = 0;
+		protected var _isSlice:Boolean = false;
 
 		public function Stream(parent:StreamSequence, 
 		                       vastController:VASTController, 
@@ -76,7 +79,10 @@ package org.openvideoads.vast.schedule {
 		                       metaData:Boolean=true,
 		                       autoPlay:Boolean=true,
 		                       provider:String=null,
-		                       playerConfig:Object=null) {
+		                       playerConfig:Object=null,
+		                       previewImage:String=null,
+		                       originatingStreamIndex:int=0,
+		                       isSlice:Boolean = false) {
 			_parent = parent;
 			_vastController = vastController;
 			_key = key;
@@ -97,6 +103,9 @@ package org.openvideoads.vast.schedule {
 			_autoPlay = autoPlay;
 			_provider = provider;
 			if(playerConfig != null) _playerConfig = playerConfig;
+			_previewImage = previewImage;
+			_originatingStreamIndex = originatingStreamIndex;
+			_isSlice = isSlice;
 		}
 		
 		public function set key(key:int):void {
@@ -115,6 +124,18 @@ package org.openvideoads.vast.schedule {
 			return _id;
 		}
 		
+		public function isSlice():Boolean {
+			return _isSlice;
+		}
+
+        public function set originatingStreamIndex(originatingStreamIndex:int):void {
+        	_originatingStreamIndex = originatingStreamIndex;
+        }		
+        
+		public function get originatingStreamIndex():int {
+			return _originatingStreamIndex;
+		}
+		
 		public function set provider(provider:String):void {
 			_provider = provider;
 		}
@@ -126,6 +147,15 @@ package org.openvideoads.vast.schedule {
 		public function get playerConfig():Object {
 			return _playerConfig;
 		}
+		
+		public function set previewImage(previewImage:String):void {
+			_previewImage = previewImage;
+		}
+		
+		public function get previewImage():String {
+			return _previewImage;
+		}
+		
 		/*
 		public function hasProvider():Boolean {
 			return (_provider != null);
@@ -201,6 +231,22 @@ package org.openvideoads.vast.schedule {
         	if(_streamName != null) {
         		var pattern:RegExp = new RegExp('.jpg|.png|.gif|.JPG|.PNG|.GIF');
         		return (_streamName.match(pattern) != null);
+        	}
+        	return false;
+        }
+        
+        public function isStream():Boolean {
+        	if(_streamName != null) {
+        		var pattern:RegExp = new RegExp('.jpg|.png|.gif|.swf|.JPG|.PNG|.GIF|.SWF');
+        		return (_streamName.match(pattern) == null);
+        	}
+        	return false;
+        	
+        }
+
+        public function streamIdStartsWith(pattern:String):Boolean {
+        	if(_id != null) {
+	        	return StringUtils.beginsWith(_id, pattern);    		
         	}
         	return false;
         }
@@ -537,6 +583,7 @@ package org.openvideoads.vast.schedule {
         public function toString():String {
 			return "key: " + key +
 			       ", id: " + id + 
+			       ", originatingStreamIndex: " + originatingStreamIndex + 
 			       ", baseURL: " + baseURL +
 			       ", streamName: " + streamName +
 			       ", startTime: " + startTime + 
@@ -548,7 +595,8 @@ package org.openvideoads.vast.schedule {
 			       ", mimeType: " + mimeType +
 			       ", deliveryType: " + deliveryType +
 			       ", playOnce: " + playOnce +
-			       ", metaData: " + metaData;
+			       ", metaData: " + metaData +
+			       ", previewImage: " + previewImage;
         }
 	}
 }

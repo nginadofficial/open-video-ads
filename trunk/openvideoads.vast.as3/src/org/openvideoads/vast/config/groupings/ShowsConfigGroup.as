@@ -4,7 +4,7 @@
  *    This file is part of the Open Video Ads VAST framework.
  *
  *    The VAST framework is free software: you can redistribute it 
- *    and/or modify it under the terms of the GNU General Public License 
+ *    and/or modify it under the terms of the Lesser GNU General Public License 
  *    as published by the Free Software Foundation, either version 3 of 
  *    the License, or (at your option) any later version.
  *
@@ -13,7 +13,7 @@
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *    GNU General Public License for more details.
  *
- *    You should have received a copy of the GNU General Public License
+ *    You should have received a copy of the Lesser GNU General Public License
  *    along with the framework.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openvideoads.vast.config.groupings {
@@ -24,6 +24,7 @@ package org.openvideoads.vast.config.groupings {
 	 * @author Paul Schulz
 	 */
 	public class ShowsConfigGroup extends AbstractStreamsConfig {
+		protected var _previewImage:String = null;
 		protected var _streams:Array = new Array();
 		protected var _playlist:ShowsPlaylistConfigGroup = null;
 		
@@ -40,6 +41,9 @@ package org.openvideoads.vast.config.groupings {
 			super.initialise(config);
 			
 			if(config != null) {
+				if(config.preview != undefined) {
+					_previewImage = config.preview;
+				}
 				if(config.playlist != undefined) {
 					_playlist = new ShowsPlaylistConfigGroup(config.playlist);
 					this.streams = _playlist.toShowStreamsConfigArray();
@@ -55,6 +59,14 @@ package org.openvideoads.vast.config.groupings {
 			}
 		}
 
+		public function getPreviewImage():String {
+			return _previewImage;
+		}
+		
+		public function hasPreviewImage():Boolean {
+			return (getPreviewImage() != null);
+		}
+		
 		public function getLiveStreamName():String {
 			if(_streams.length > 0) {
 				if(_streams[0].isLive()) {
@@ -68,11 +80,16 @@ package org.openvideoads.vast.config.groupings {
 			return (_streams.length > 0);
 		}
 		
+		public function prependStreams(preStreams:Array):void {
+			_streams = preStreams.concat(_streams);
+		}
+		
 		public function set streams(streams:Array):void {
 			_streams = new Array();
 			if(streams != null) {
 				for(var i:int = 0; i < streams.length; i++) {
 					_streams.push(new StreamConfig(
+					                    streams[i].file, // this is the ID
 										streams[i].file, 
 				                        ((streams[i].duration != undefined) ? streams[i].duration : '00:00:00'), 
 				                        ((streams[i].reduceLength != undefined) ? streams[i].reduceLength : false),

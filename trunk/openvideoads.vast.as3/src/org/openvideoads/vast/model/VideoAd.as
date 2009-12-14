@@ -4,7 +4,7 @@
  *    This file is part of the Open Video Ads VAST framework.
  *
  *    The VAST framework is free software: you can redistribute it 
- *    and/or modify it under the terms of the GNU General Public License 
+ *    and/or modify it under the terms of the Lesser GNU General Public License 
  *    as published by the Free Software Foundation, either version 3 of 
  *    the License, or (at your option) any later version.
  *
@@ -13,7 +13,7 @@
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *    GNU General Public License for more details.
  *
- *    You should have received a copy of the GNU General Public License
+ *    You should have received a copy of the Lesser GNU General Public License
  *    along with the framework.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openvideoads.vast.model {
@@ -21,6 +21,8 @@ package org.openvideoads.vast.model {
 	import org.openvideoads.util.NetworkResource;
 	import org.openvideoads.util.Timestamp;
 	import org.openvideoads.vast.events.VideoAdDisplayEvent;
+
+	import flash.external.ExternalInterface;
 	
 	/**
 	 * @author Paul Schulz
@@ -37,10 +39,187 @@ package org.openvideoads.vast.model {
 		protected var _linearVideoAd:LinearVideoAd = null;
 		protected var _nonLinearVideoAds:Array  = new Array();
 		protected var _companionAds:Array  = new Array();
+		protected var _forceImpressionServing:Boolean = false;
 
 		public function VideoAd() {
 		}
 		
+        public function parseImpressions(ad:XML):void {
+			doLog("Parsing impression data...", Debuggable.DEBUG_VAST_TEMPLATE);
+			if(ad.Impression != null && ad.Impression.children() != null) {
+				var impressions:XMLList = ad.Impression.children();
+				for(var i:int = 0; i < impressions.length(); i++) {
+					this.addImpression(new NetworkResource(impressions[i].id, impressions[i].text()));
+				}
+			}
+			doLog(_impressions.length + " impressions recorded", Debuggable.DEBUG_VAST_TEMPLATE);        	
+        }        
+        	
+        public function parseTrackingEvents(ad:XML):void {
+			doLog("Parsing TrackingEvent data...", Debuggable.DEBUG_VAST_TEMPLATE);
+			if(ad.TrackingEvents != null && ad.TrackingEvents.children() != null) {
+				var trackingEvents:XMLList = ad.TrackingEvents.children();
+				doLog(trackingEvents.length() + " tracking events specified", Debuggable.DEBUG_VAST_TEMPLATE);
+				for(var i:int = 0; i < trackingEvents.length(); i++) {
+					var trackingEventXML:XML = trackingEvents[i];
+					var trackingEvent:TrackingEvent = new TrackingEvent(trackingEventXML.@event);
+					var trackingEventURLs:XMLList = trackingEventXML.children();
+					for(var j:int = 0; j < trackingEventURLs.length(); j++) {
+						var trackingEventURL:XML = trackingEventURLs[j];
+						trackingEvent.addURL(new NetworkResource(trackingEventURL.@id, trackingEventURL.text()));
+					}
+					this.addTrackingEvent(trackingEvent);				
+				}
+			} 
+        }
+        	
+        public function parseLinear(ad:XML):void {
+			doLog("Parsing Video data...", Debuggable.DEBUG_VAST_TEMPLATE);
+			var linearVideoAd:LinearVideoAd = new LinearVideoAd();
+			linearVideoAd.adID = ad.Video.AdID;
+			linearVideoAd.duration = ad.Video.Duration;
+			if(ad.Video.VideoClicks != undefined) {
+				var clickList:XMLList;
+				var clickURL:XML;
+				var i:int=0;
+				if(ad.Video.VideoClicks.ClickThrough.children().length() > 0) {
+					doLog("Parsing VideoClicks ClickThrough data...", Debuggable.DEBUG_VAST_TEMPLATE);
+					clickList = ad.Video.VideoClicks.ClickThrough.children();
+					for(i = 0; i < clickList.length(); i++) {
+						clickURL = clickList[i];
+						linearVideoAd.addClickThrough(new NetworkResource(clickURL.@id, clickURL.text()));
+					}
+				}
+				if(ad.Video.VideoClicks.ClickTracking.children().length() > 0) {
+					doLog("Parsing VideoClicks ClickTracking data...", Debuggable.DEBUG_VAST_TEMPLATE);
+					clickList = ad.Video.VideoClicks.ClickTracking.children();
+					for(i = 0; i < clickList.length(); i++) {
+						clickURL = clickList[i];
+						linearVideoAd.addClickTrack(new NetworkResource(clickURL.@id, clickURL.text()));
+					}
+				}
+				if(ad.Video.VideoClicks.CustomClick.children().length() > 0) {
+					doLog("Parsing VideoClicks CustomClick...", Debuggable.DEBUG_VAST_TEMPLATE);
+					clickList = ad.Video.CustomClick.ClickTracking.children();
+					for(i = 0; i < clickList.length(); i++) {
+						clickURL = clickList[i];
+						linearVideoAd.addCustomClick(new NetworkResource(clickURL.@id, clickURL.text()));
+					}
+				}
+			}
+			if(ad.Video.MediaFiles != undefined) {
+				doLog("Parsing MediaFiles data...", Debuggable.DEBUG_VAST_TEMPLATE);
+				var mediaFiles:XMLList = ad.Video.MediaFiles.children();
+				for(i = 0; i < mediaFiles.length(); i++) {
+					var mediaFileXML:XML = mediaFiles[i];
+					var mediaFile:MediaFile = new MediaFile();
+					mediaFile.id = mediaFileXML.@id; 
+					mediaFile.bandwidth = mediaFileXML.@bandwidth; 
+					mediaFile.delivery = mediaFileXML.@delivery; 
+					mediaFile.mimeType = mediaFileXML.@type; 
+					mediaFile.bitRate = mediaFileXML.@bitrate; 
+					mediaFile.width = mediaFileXML.@width; 
+					mediaFile.height = mediaFileXML.@height; 
+					if(mediaFileXML.children().length() > 0) {
+						var mediaFileURLXML:XML = mediaFileXML.children()[0];
+						mediaFile.url = new NetworkResource(mediaFileURLXML.@id, mediaFileURLXML.text());
+					}
+					linearVideoAd.addMediaFile(mediaFile);
+				}					
+			}
+			this.linearVideoAd = linearVideoAd;
+        }	
+        
+        public function parseNonLinear(ad:XML):void {
+			doLog("Parsing NonLinearAd data...", Debuggable.DEBUG_VAST_TEMPLATE);
+			var nonLinearAds:XMLList = ad.NonLinearAds.children();
+			var i:int=0;
+			doLog(nonLinearAds.length() + " non-linear ads specified", Debuggable.DEBUG_VAST_TEMPLATE);
+			for(i = 0; i < nonLinearAds.length(); i++) {
+				var nonLinearAdXML:XML = nonLinearAds[i];
+				var nonLinearAd:NonLinearVideoAd = null;
+				switch(nonLinearAdXML.@resourceType.toUpperCase()) {
+					case "HTML":
+						nonLinearAd = new NonLinearHtmlAd();
+						break;
+					case "TEXT":
+						nonLinearAd = new NonLinearTextAd();
+						break;
+					case "STATIC":
+						if(nonLinearAdXML.@creativeType != undefined && nonLinearAdXML.@creativeType != null) {
+							switch(nonLinearAdXML.@creativeType.toUpperCase()) {
+								case "IMAGE/JPEG":
+								case "JPEG":
+								case "IMAGE/GIF":
+								case "GIF":
+								case "IMAGE/PNG":
+								case "PNG":
+									nonLinearAd = new NonLinearImageAd();
+									break;
+								case "APPLICATION/X-SHOCKWAVE-FLASH":
+								case "SWF":
+									nonLinearAd = new NonLinearFlashAd();
+									break;
+								default:
+									nonLinearAd = new NonLinearVideoAd();
+							}									
+						}
+						else nonLinearAd = new NonLinearVideoAd();
+						break;
+					default:
+						nonLinearAd = new NonLinearVideoAd();
+				}
+				nonLinearAd.id = nonLinearAdXML.@id;
+				nonLinearAd.width = nonLinearAdXML.@width;
+				nonLinearAd.height = nonLinearAdXML.@height; 
+				nonLinearAd.resourceType = nonLinearAdXML.@resourceType; 
+				nonLinearAd.creativeType = nonLinearAdXML.@creativeType; 
+				nonLinearAd.apiFramework = nonLinearAdXML.@apiFramework; 
+				if(nonLinearAdXML.URL != undefined) nonLinearAd.url = new NetworkResource(null, nonLinearAdXML.URL.text());
+				if(nonLinearAdXML.Code != undefined) {
+					nonLinearAd.codeBlock = nonLinearAdXML.Code.text();
+				}
+				if(nonLinearAdXML.NonLinearClickThrough != undefined) {
+					var nlClickList:XMLList = nonLinearAdXML.NonLinearClickThrough.children();
+					var nlClickURL:XML;
+					for(i = 0; i < nlClickList.length(); i++) {
+						nlClickURL = nlClickList[i];
+						nonLinearAd.addClickThrough(new NetworkResource(nlClickURL.@id, nlClickURL.text()));
+					}							
+				}
+				this.addNonLinearVideoAd(nonLinearAd);
+			}
+        }
+        
+        public function parseCompanions(ad:XML):void {
+			doLog("Parsing CompanionAd data...", Debuggable.DEBUG_VAST_TEMPLATE);
+			var companionAds:XMLList = ad.CompanionAds.children();
+			var i:int=0;
+			doLog(companionAds.length() + " companions specified", Debuggable.DEBUG_VAST_TEMPLATE);
+			for(i = 0; i < companionAds.length(); i++) {
+				var companionAdXML:XML = companionAds[i];
+				var companionAd:CompanionAd = new CompanionAd(this);
+				companionAd.id = companionAdXML.@id;
+				companionAd.width = companionAdXML.@width;
+				companionAd.height = companionAdXML.@height; 
+				companionAd.resourceType = companionAdXML.@resourceType; 
+				companionAd.creativeType = companionAdXML.@creativeType;
+				if(companionAdXML.URL != undefined) companionAd.url = new NetworkResource(null, companionAdXML.URL.text());
+				if(companionAdXML.Code != undefined) {
+					companionAd.codeBlock = companionAdXML.Code.text();							
+				}
+				if(companionAdXML.CompanionClickThrough != undefined) {
+					var caClickList:XMLList = companionAdXML.CompanionClickThrough.children();
+					var caClickURL:XML;
+					for(i = 0; i < caClickList.length(); i++) {
+						caClickURL = caClickList[i];
+						companionAd.addClickThrough(new NetworkResource(caClickURL.@id, caClickURL.text()));
+					}							
+				}
+				this.addCompanionAd(companionAd);						 						
+			}					
+        }
+        
 		public function set id(id:String):void {
 			_id = id;
 		}
@@ -107,6 +286,14 @@ package org.openvideoads.vast.model {
 		public function addImpression(impression:NetworkResource):void {
 			_impressions.push(impression);
 		}
+		
+		public function set forceImpressionServing(forceImpressionServing:Boolean):void {
+			_forceImpressionServing = forceImpressionServing;
+		}
+		
+		public function get forceImpressionServing():Boolean {
+			return _forceImpressionServing;
+		}		
 		
 		public function set trackingEvents(trackingEvents:Array):void {
 			_trackingEvents = trackingEvents;
@@ -188,7 +375,7 @@ package org.openvideoads.vast.model {
 			return null;
 		}
 		
-		protected function triggerTrackingEvent(eventType:String):void {
+		public function triggerTrackingEvent(eventType:String):void {
 			for(var i:int = 0; i < _trackingEvents.length; i++) {
 				var trackingEvent:TrackingEvent = _trackingEvents[i];
 				if(trackingEvent.eventType == eventType) {
@@ -197,11 +384,22 @@ package org.openvideoads.vast.model {
 			}
 		}
 		
-		protected function triggerImpressionConfirmations():void {
+		public function triggerImpressionConfirmations():void {
 			for(var i:int = 0; i < _impressions.length; i++) {
 				var impression:NetworkResource = _impressions[i];
 				impression.call();
 			}	
+		}
+
+		public function triggerForcedImpressionConfirmations():void {
+			for(var i:int = 0; i < _impressions.length; i++) {
+				var impression:NetworkResource = _impressions[i];
+				impression.call();
+			}	
+		}
+		
+		protected function makeJavascriptAPICall(jsFunction:String):void {
+			ExternalInterface.call(jsFunction);			
 		}
 		
 		public function processStartAdEvent():void {
@@ -210,6 +408,7 @@ package org.openvideoads.vast.model {
 			
 			// now call the start click tracking urls
 			triggerTrackingEvent(TrackingEvent.EVENT_START);
+			makeJavascriptAPICall("onLinearAdStart()");
 		}
 
 		public function processStopAdEvent():void {
@@ -242,18 +441,22 @@ package org.openvideoads.vast.model {
 
 		public function processHitMidpointAdEvent():void {
 			triggerTrackingEvent(TrackingEvent.EVENT_MIDPOINT);
+			makeJavascriptAPICall("onLinearAdMidPointComplete()");
 		}
 
 		public function processFirstQuartileCompleteAdEvent():void {
 			triggerTrackingEvent(TrackingEvent.EVENT_1STQUARTILE);
+			makeJavascriptAPICall("onLinearAdFirstQuartileComplete()");
 		}
 
 		public function processThirdQuartileCompleteAdEvent():void {
 			triggerTrackingEvent(TrackingEvent.EVENT_3RDQUARTILE);
+			makeJavascriptAPICall("onLinearAdThirdQuartileComplete()");
 		}
 
 		public function processAdCompleteEvent():void {
 			triggerTrackingEvent(TrackingEvent.EVENT_COMPLETE);
+			makeJavascriptAPICall("onLinearAdFinish()");
 		}
 		
 		public function processStartNonLinearOverlayAdEvent(event:VideoAdDisplayEvent):void {

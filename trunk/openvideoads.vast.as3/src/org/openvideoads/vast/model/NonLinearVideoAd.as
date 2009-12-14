@@ -4,7 +4,7 @@
  *    This file is part of the Open Video Ads VAST framework.
  *
  *    The VAST framework is free software: you can redistribute it 
- *    and/or modify it under the terms of the GNU General Public License 
+ *    and/or modify it under the terms of the Lesser GNU General Public License 
  *    as published by the Free Software Foundation, either version 3 of 
  *    the License, or (at your option) any later version.
  *
@@ -13,7 +13,7 @@
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *    GNU General Public License for more details.
  *
- *    You should have received a copy of the GNU General Public License
+ *    You should have received a copy of the Lesser GNU General Public License
  *    along with the framework.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openvideoads.vast.model {
@@ -72,6 +72,14 @@ package org.openvideoads.vast.model {
 		}
 		
 		public function get creativeType():String {
+			if(_creativeType != null) {
+				var slashPos:int = _creativeType.indexOf("/");
+				if(slashPos > -1 && (slashPos+1 < _creativeType.length)) {
+					// change a mime based type like "image/jpg" or "application/x-shockwave-flash" 
+					// to strip out the "initial" bit leaving just the basic type
+					return _creativeType.substr(slashPos + 1);	
+				}
+			}
 			return _creativeType;
 		}
 		
@@ -91,12 +99,20 @@ package org.openvideoads.vast.model {
 			return _url;
 		}
 		
+		public function hasUrl():Boolean {
+			return (_url != null);
+		}
+		
 		public function set codeBlock(codeBlock:String):void {
 			_codeBlock = codeBlock;
 		}
 		
 		public function get codeBlock():String {
 			return _codeBlock;
+		}
+		
+		public function hasCode():Boolean {
+			return _codeBlock != null;
 		}
 		
 		public function contentType():String {
@@ -112,6 +128,10 @@ package org.openvideoads.vast.model {
 		
 		public function isFlash():Boolean {
 			return isStaticResourceType() && isSWFCreativeType();
+		}
+		
+		public function isScript():Boolean {
+			return isScriptResourceType();
 		}
 		
 		public function isImage():Boolean {
@@ -135,6 +155,13 @@ package org.openvideoads.vast.model {
 			}
 			else return false;
 		}
+
+		public function isScriptResourceType():Boolean {
+			if(_resourceType != null) {
+				return (_resourceType.toUpperCase()	== "SCRIPT");		
+			}
+			else return false;
+		}
 		
 		public function isStaticResourceType():Boolean {
 			if(_resourceType != null) {
@@ -144,15 +171,15 @@ package org.openvideoads.vast.model {
 		}
 
 		public function isSWFCreativeType():Boolean {
-			if(_creativeType != null) {
-				return (_creativeType.toUpperCase() == "SWF");
+			if(creativeType != null) {
+				return (creativeType.toUpperCase() == "SWF" || creativeType.toUpperCase() == "X-SHOCKWAVE-FLASH");
 			}	
 			return false;
 		}
 
 		public function isTextCreativeType():Boolean {
-			if(_creativeType != null) {
-				return (_creativeType.toUpperCase() == "TEXT");
+			if(creativeType != null) {
+				return (creativeType.toUpperCase() == "TEXT");
 			}	
 			return false;
 		}
@@ -164,6 +191,17 @@ package org.openvideoads.vast.model {
 		public function hasAccompanyingVideoAd():Boolean {
 			if(parentAdContainer != null) {
 				return parentAdContainer.hasLinearAd();
+			}
+			return false;
+		}
+		
+		public function matchesSizeAndType(width:int, height:int, creativeType:String, resourceType:String=null):Boolean {
+			if(matchesSize(width, height)) {
+				if(creativeType != null && _creativeType != null) {
+					return ((_creativeType.toUpperCase() == creativeType.toUpperCase()) &&
+				            (_resourceType.toUpperCase() == resourceType.toUpperCase()));
+				}
+				return (_resourceType.toUpperCase() == resourceType.toUpperCase());
 			}
 			return false;
 		}

@@ -4,26 +4,24 @@
  *    This file is part of the Open Video Ads VAST framework.
  *
  *    The VAST framework is free software: you can redistribute it 
- *    and/or modify it under the terms of the GNU General Public License 
+ *    and/or modify it under the terms of the Lesser GNU General Public License 
  *    as published by the Free Software Foundation, either version 3 of 
  *    the License, or (at your option) any later version.
  *
  *    The VAST framework is distributed in the hope that it will be 
  *    useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
+ *    Lesser GNU General Public License for more details.
  *
- *    You should have received a copy of the GNU General Public License
+ *    You should have received a copy of the Lesser GNU General Public License
  *    along with the framework.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openvideoads.base {
 	import com.adobe.utils.StringUtil;
+	
 	import flash.external.ExternalInterface;
 	
-	import nl.demonsters.debugger.MonsterDebugger;
-
-	import org.osflash.thunderbolt.Logger;
-	import flash.utils.getQualifiedClassName;	
+	import nl.demonsters.debugger.MonsterDebugger;	
 	
 	/**
 	 * @author Paul Schulz
