@@ -53,6 +53,8 @@ package org.openvideoads.plugin.jwplayer.streamer {
 	    protected var _originalWidth:Number = -1;
 	    protected var _originalHeight:Number = -1;
 	    protected var _forcedStop:Boolean = false;
+	    protected var _needToDoStartPreProcessing:Boolean = true;
+	    
 
 		public var config:Object = {
 			title: "Open Ad Streamer",
@@ -60,7 +62,7 @@ package org.openvideoads.plugin.jwplayer.streamer {
 		};
                 
 		public function OpenAdStreamer():void {
-			doLog("JWPlayer Open Ad Streamer plug-in constructed - build 0.3.3.3", Debuggable.DEBUG_ALL);
+			doLog("JWPlayer Open Ad Streamer plug-in constructed - build 0.4.1.3", Debuggable.DEBUG_ALL);
 		}
 
 		public function initializePlugin(view:AbstractView):void {	
@@ -133,6 +135,11 @@ package org.openvideoads.plugin.jwplayer.streamer {
 		// Time point handler
 		
 		private function timeHandler(evt:ModelEvent):void {
+			if(_needToDoStartPreProcessing) {
+				// used to enforce impression sending where needed for empty Ad slots
+				_vastController.processImpressionsToForceFire();				
+				_needToDoStartPreProcessing = false;
+			}
 			if(!_playingOverlayLinearVideoAd) {
 				_lastTimeTick = evt.data.position;
 				_vastController.processTimeEvent(getActiveStreamIndex(), new TimeEvent(evt.data.position * 1000, evt.data.duration));		

@@ -1,0 +1,45 @@
+<config>
+    <openadstreamer.title>
+       ALL Example 58
+    </openadstreamer.title>
+    <openadstreamer.json>
+       {
+            "allowPlaylistControl": true,
+
+            "debug": {
+                "debugger": "firebug",
+                "levels": "fatal, vast_template, config, tracking_events, http_calls"
+            },
+
+            "shows": {
+                "baseURL": "http://streaming.openvideoads.org:81/shows",
+                "streams": [
+                    { "file":"the-black-hole.mp4", "duration":"00:01:00" },
+                    { "file":"the-black-hole.mp4", "duration":"00:01:00" }
+                ]
+            },
+
+            "ads": {
+                "servers": [
+                    {
+                       "type": "direct",
+                       "forceImpressionServing": true,
+                       "apiAddress": "http://de.at.atwola.com/?adrawdata/3.0/515.1/2169690/0/1725/noperf=1;cc=2;header=yes;alias=myalias;cookie=yes;adct=204;key=key1+key2;grp=[group];misc=[TIMESTAMP]"
+                    }
+                ],
+                "notice": { "textStyle": "smalltext" },
+                "schedule": [
+                    {
+                        "zone": "18",
+                        "position": "pre-roll",
+                        "applyToParts": [ 0 ]
+                    },
+                    {
+                        "zone": "18",
+                        "position": "post-roll"
+                    }
+                ]
+            }
+        }
+    </openadstreamer.json>
+</config>

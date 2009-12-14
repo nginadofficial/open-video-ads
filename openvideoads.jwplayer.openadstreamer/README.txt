@@ -48,3 +48,31 @@ Change Log
 * ISSUE 17:	Support pseudo-streaming provider
 * ISSUE 59:	Restore the 'providers' configuration option for Flowplayer
 
+0.4.0 - November 4, 2009
+
+* ISSUE 123: Moved to LGPL
+* ISSUE 114: "Out of the Box" support for AdTech requests
+* ISSUE 120: Ad servers can now be configured per ad slot
+* ISSUE 110: Load issues with the Ant build of the OAS due to control bar strongly typed references
+  in the codebase which meant that the controls plugin had to be loaded before the OAS - strong
+  references removed
+* ISSUE 104: Option to allow companions to display permanently until replaced
+* ISSUE 102: Refactor out the Ad Server to support multiple calls - single and multiple ad
+  calls now supported - see Ad Tech XML Wrapper examples
+* ISSUE 100: Factor out the OpenX references when creating Ad Server config/instances
+* ISSUE 10: XML Wrapper Support added
+* ISSUE 71: Better support for the display of companion ad types (HTML, image and straight code) added
+* New Ad Server request configuration - any ad server can now be configured
+* Check added to ensure that only one companion will be added per DIV
+* "resourceType" and "creativeType" config options added to "companions" config so that the selection
+  of a companion from the VAST response can also be based on the type (script, html, swf, image etc.)
+* "zone" identifier is no longer required for "direct" ad server requests - see example 52
+
+0.4.1 - December 4, 2009
+
+* If OpenX is used, requires OpenX server side Video plugin v1.2
+* ISSUE 141 and ISSUE 93 - Support added for preview images - see all-example57.html
+* Javascript event callback API added - see all-example56.html
+* ISSUE 147: Impression tracking should be fired on empty VAST ads - see all-example58.html - as
+  per the AOL/AdTech request - new configuration option "forceImpressionServing" added to the
+  AdServer config - set to "true" by default for AdTech, false for others.

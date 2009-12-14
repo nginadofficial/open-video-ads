@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Example 42 (ALL) - Selective application of ad slots</title>
+<script type="text/javascript" src="../dist/flash-firebug-fix.js"></script>
+<link rel="stylesheet" type="text/css" href="css/global.css" />
+</head>
+<body>
+
+<h2>Example 42 (ALL) - Selective application of ad slots</h2>
+<p class="example">
+This example illustrates how to selectively apply ad slots to a series of show streams.
+In this example we have 6 show streams each playing for 10 seconds - a pre-roll ad is applied
+to the first, third and 6th shows. The zone used to fill the ad slots has a single ad in
+it so we've set the allowAdRepetition flag to ensure that the same ad can be repeated across
+the 3 ad slots to be filled.
+</p>
+<embed 
+  id="ply"
+  data="../dist/4.5.swf"
+  src="../dist/4.5.swf" 
+  width="450"
+  height="300"
+  allowscriptaccess="always"
+  allowfullscreen="true"
+  flashvars="height=300&width=450&plugins=../dist/OpenAdStreamer.swf&config=config/all42.xml"
+/>
+<br/>
+<p>
+The configuration for this example is:
+</p>
+<div class="codebox">
+<pre>
+<code>
+&lt;embed 
+  id="ply"
+  data="../dist/4.5.swf"
+  src="../dist/4.5.swf" 
+  width="450"
+  height="300"
+  allowscriptaccess="always"
+  allowfullscreen="true"
+  flashvars="height=300&width=450&plugins=../dist/OpenAdStreamer.swf&config=config/all42.xml"
+/&gt;
+</code>
+</pre>
+</div>
+<p>
+"all42.xml" is defined as:
+</p>
+<div class="codebox">
+<pre>
+<code class="xml">
+&lt;config&gt;
+    &lt;openadstreamer.title&gt;
+       ALL Example 42
+    &lt;/openadstreamer.title&gt;
+    &lt;openadstreamer.json&gt;
+        {
+            "shows": {
+                "baseURL": "http://streaming.openvideoads.org/shows",
+                "streams": [
+                    { "file":"the-black-hole.mp4", "duration":"00:00:10" },
+                    { "file":"the-black-hole.mp4", "duration":"00:00:11" },
+                    { "file":"the-black-hole.mp4", "duration":"00:00:12" },
+                    { "file":"the-black-hole.mp4", "duration":"00:00:13" },
+                    { "file":"the-black-hole.mp4", "duration":"00:00:14" },
+                    { "file":"the-black-hole.mp4", "duration":"00:00:15" }
+                ]
+            },
+
+            "ads": {
+                "servers": [
+                    {
+                        "type": "OpenX",
+                        "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php",
+                        "allowAdRepetition": true
+                    }
+                ],
+                "schedule": [
+                    {
+                      "zone": "19",
+                      "position": "pre-roll",
+                      "applyToParts": [0, 2, 5]
+                    }
+                ]
+            },
+
+            "debug": {
+               "levels": "fatal",
+               "debugger": "firebug"
+            }
+        }
+    &lt;/openadstreamer.json&gt;
+&lt;/config&gt;
+</code>
+</pre>
+</div>
+<script type="text/javascript" src="js/tracking.js">
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-10158120-3");
+if(TRACKING_TURNED_ON) {
+	pageTracker._trackPageview();
+}
+} catch(err) {}
+</script>
+</body>
+</html>

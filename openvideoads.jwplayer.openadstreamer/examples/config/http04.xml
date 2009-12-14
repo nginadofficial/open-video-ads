@@ -4,7 +4,7 @@
    </openadstreamer.title>
    <openadstreamer.json>
        {
-          "allowPlaylistControl": false,
+          "allowPlaylistControl": true,
           "playOnce": true,
           "autoPlay": true,
 
@@ -17,10 +17,12 @@
            },
 
            "ads": {
-               "server": {
-                    "type": "OpenX",
-                    "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
-               },
+               "servers": [
+                    {
+                        "type": "OpenX",
+                        "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
+                    }
+               ],
                "notice": { "textStyle": "smalltext" },
                "schedule": [
                     {
@@ -36,7 +38,7 @@
             },
 
             "debug": {
-               "levels": "fatal",
+               "levels": "fatal, playlist",
                "debugger": "firebug"
             }
         }

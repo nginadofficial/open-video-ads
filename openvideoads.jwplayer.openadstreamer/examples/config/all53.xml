@@ -1,0 +1,70 @@
+<config>
+    <openadstreamer.title>
+       ALL Example 53
+    </openadstreamer.title>
+    <openadstreamer.json>
+        {
+            "shows": {
+                "baseURL": "http://streaming.openvideoads.org/shows",
+                "streams": [
+                    {
+                        "file":"the-black-hole.mp4",
+                        "duration":"00:00:20"
+                    }
+                ]
+            },
+
+            "ads": {
+              "displayCompanions": true,
+              "restoreCompanions": false,
+              "companions": [
+                   { "id":"companion-160x600", "width":"160", "height":"600" },
+                   { "id":"companion-300x250", "width":"300", "height":"250" }
+              ],
+              "servers": [
+                   {
+                      "type": "AdTech",
+                      "apiAddress": "http://de.at.atwola.com/?adrawdata/3.0/515.1",
+                      "requestTemplate": "__api-address__/__zone__/__nondynamic__;alias=__alias____aliaspostfix__;key=__key__;__key-value__;__cookie-name__=__cookie-value__;grp=__group__;misc=__random-number__",
+                      "oneAdPerRequest": true,
+                      "customProperties": {
+                            "nondynamic": "noperf=1;cc=2;header=yes;cookie=yes;adct=204",
+                            "alias": "",
+                            "aliaspostfix": "",
+                            "key": "key1+key2",
+                            "key-value": "",
+                            "cookie-name": "",
+                            "cookie-value": "",
+                            "group": "[group]"
+                      }
+                   }
+              ],
+              "schedule": [
+                   {
+                      "zone": "2189418/0/1725",
+                      "position": "pre-roll"
+                   },
+                   {
+                      "zone": "2188757/0/1728",
+                      "startTime": "00:00:03",
+                      "duration": "10",
+                      "position": "reserved-bottom-center-w450px-h50px-transparent-0m",
+                      "server": {
+                         "customProperties": {
+                         }
+                      }
+                   },
+                   {
+                     "zone": "2189418/0/1725",
+                     "position": "post-roll"
+                   }
+              ]
+            },
+
+            "debug": {
+              "levels": "fatal",
+              "debugger": "firebug"
+            }
+        }
+    </openadstreamer.json>
+</config>

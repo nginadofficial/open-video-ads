@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Example 53 (ALL) - Integrating an AdTech Ad Server - Overriding the Request Template</title>
+<script type="text/javascript" src="../dist/flash-firebug-fix.js"></script>
+<link rel="stylesheet" type="text/css" href="css/global.css" />
+</head>
+<body>
+
+<h2>Example 53 (ALL) - Integrating an AdTech Ad Server - Overriding the Request Template</h2>
+<p class="example">
+This example illustrates pre and post roll ads delivered from an AdTech Ad Server along
+with an overlay ad and companions for both ad types. The configuration demonstrates how to
+define the AdTech Ad Server VAST request using custom properties and how those properties
+may be declared at the "general" or "ad slot" specific levels.
+</p>
+<div id="container">
+  <div id="player_row">
+     <div id="player-left-619">
+		<embed 
+		  id="ply"
+		  data="../dist/4.5.swf"
+		  src="../dist/4.5.swf" 
+		  width="614"
+		  height="345"
+		  allowscriptaccess="always"
+		  allowfullscreen="true"
+		  flashvars="height=345&width=614&plugins=../dist/OpenAdStreamer.swf&config=config/all53.xml"
+		/>	    
+        <div id="container-614x280">
+		    <div id="companion-300x250">
+		       A COMPANION ADVERTISEMENT<br/>(300x250)<br/>WILL APPEAR IN HERE
+	   	 	</div>
+	   	 	<div id="filler-310x254">
+	   	 	   FILLER SPACE
+	   	 	</div>
+	   	</div>
+   	 </div>
+     <div id="player-right-600">
+        <div id="companion-160x600">
+          A COMPANION ADVERTISEMENT<br/>(160x600)<br/> WILL APPEAR IN HERE
+        </div>
+     </div>
+  </div>
+</div>
+<br/>
+<p>
+The configuration for this example is:
+</p>
+<div class="codebox">
+<pre>
+<code>
+&lt;embed 
+  id="ply"
+  data="../dist/4.5.swf"
+  src="../dist/4.5.swf" 
+  width="450"
+  height="300"
+  allowscriptaccess="always"
+  allowfullscreen="true"
+  flashvars="height=300&width=450&plugins=../dist/OpenAdStreamer.swf&config=config/all53.xml"
+/&gt;
+</code>
+</pre>
+</div>
+<p>
+"all10.xml" is defined as:
+</p>
+<div class="codebox">
+<pre>
+<code class="xml">
+&lt;config&gt;
+    &lt;openadstreamer.title&gt;
+       ALL Example 53
+    &lt;/openadstreamer.title&gt;
+    &lt;openadstreamer.json&gt;
+        {
+            "shows": {
+                "baseURL": "http://streaming.openvideoads.org/shows",
+                "streams": [
+                    {
+                        "file":"the-black-hole.mp4",
+                        "duration":"00:00:20"
+                    }
+                ]
+            },
+
+            "ads": {
+              "displayCompanions": true,
+              "restoreCompanions": false,
+              "companions": [
+                   { "id":"companion-160x600", "width":"160", "height":"600" },
+                   { "id":"companion-300x250", "width":"300", "height":"250" }
+              ],
+              "servers": [
+                   {
+                      "type": "AdTech",
+                      "apiAddress": "http://de.at.atwola.com/?adrawdata/3.0/515.1",
+                      "requestTemplate": "__api-address__/__zone__/__nondynamic__;
+                                          alias=__alias____aliaspostfix__;key=__key__;
+                                          __key-value__;__cookie-name__=__cookie-value__;
+                                          grp=__group__;misc=__random-number__",
+                      "oneAdPerRequest": true,
+                      "customProperties": {
+                            "nondynamic": "noperf=1;cc=2;header=yes;cookie=yes;adct=204",
+                            "alias": "",
+                            "aliaspostfix": "",
+                            "key": "key1+key2",
+                            "key-value": "",
+                            "cookie-name": "",
+                            "cookie-value": "",
+                            "group": "[group]"
+                      }
+                   }
+              ],
+              "schedule": [
+                   {
+                      "zone": "2189418/0/1725",
+                      "position": "pre-roll"
+                   },
+                   {
+                      "zone": "2188757/0/1728",
+                      "startTime": "00:00:03",
+                      "duration": "10",
+                      "position": "reserved-bottom-center-w450px-h50px-transparent-0m",
+                      "server": {
+                         "customProperties": {
+                              // override the server custom properties here
+                         }
+                      }
+                   },
+                   {
+                     "zone": "2189418/0/1725",
+                     "position": "post-roll"
+                   }
+              ]
+            },
+
+            "debug": {
+              "levels": "fatal",
+              "debugger": "firebug"
+            }
+        }
+    &lt;/openadstreamer.json&gt;
+&lt;/config&gt;
+</code>
+</pre>
+</div>
+<script type="text/javascript" src="js/tracking.js">
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-10158120-3");
+if(TRACKING_TURNED_ON) {
+	pageTracker._trackPageview();
+}
+} catch(err) {}
+</script>
+</body>
+</html>

@@ -75,10 +75,12 @@ The configuration for this example is:
             },
 
             "ads": {
-               "server": {
-                    "type": "OpenX",
-                    "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
-               },
+               "servers": [
+                   {
+                       "type": "OpenX",
+                       "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
+                   }
+               ],
                "notice": { "textStyle": "smalltext" },
                "displayCompanions": true,
                "companions": [
@@ -114,5 +116,18 @@ The configuration for this example is:
 </code>
 </pre>
 </div>
+<script type="text/javascript" src="js/tracking.js">
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-10158120-3");
+if(TRACKING_TURNED_ON) {
+	pageTracker._trackPageview();
+}
+} catch(err) {}
+</script>
 </body>
 </html>

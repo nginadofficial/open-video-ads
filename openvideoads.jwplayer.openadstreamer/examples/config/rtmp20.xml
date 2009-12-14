@@ -14,11 +14,15 @@
             "ads": {
                 "pauseOnClickThrough": true,
                 "notice": { "textStyle": "smalltext" },
-                "server": {
-                    "type": "OpenX",
-                    "adParameters": [ { "name": "category", "value": "food" } ],
-                    "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
-                },
+                "servers": [
+                    {
+                       "type": "OpenX",
+                       "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php",
+                       "customProperties": {
+                           "target": "category=food"
+                       }
+                    }
+                ],
                 "schedule": [
                     {
                        "zone": "1",

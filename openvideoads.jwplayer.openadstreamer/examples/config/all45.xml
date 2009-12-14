@@ -1,0 +1,53 @@
+<config>
+    <openadstreamer.title>
+       ALL Example 45
+    </openadstreamer.title>
+    <openadstreamer.json>
+        {
+            "shows": {
+                "baseURL": "http://streaming.openvideoads.org/shows",
+                "streams": [
+                    {
+                        "file":"the-black-hole.mp4",
+                        "duration":"00:00:20"
+                    }
+                ]
+            },
+
+            "ads": {
+               "servers": [
+                   {
+                      "type": "direct",
+                      "apiAddress": "http://static.openvideoads.org/tests/vast-wrapper-test.xml",
+                   }
+               ],
+               "displayCompanions": true,
+               "restoreCompanions": false,
+               "companions": [
+                  { "id":"companion-160x600", "width":"160", "height":"600" },
+                  { "id":"companion-300x250", "width":"300", "height":"250" }
+               ],
+               "schedule": [
+                  {
+                    "zone": "46",
+                    "position": "pre-roll"
+                  },
+                  {
+                    "zone": "33",
+                    "startTime": "00:00:03",
+                    "duration": "00:00:15"
+                  },
+                  {
+                    "zone": "46",
+                    "position": "post-roll"
+                  }
+               ]
+            },
+
+            "debug": {
+              "levels": "fatal",
+              "debugger": "firebug"
+            }
+        }
+    </openadstreamer.json>
+</config>

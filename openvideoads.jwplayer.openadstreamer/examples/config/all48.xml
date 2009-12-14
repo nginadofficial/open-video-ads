@@ -1,0 +1,64 @@
+<config>
+    <openadstreamer.title>
+       ALL Example 48
+    </openadstreamer.title>
+    <openadstreamer.json>
+        {
+            "shows": {
+                "baseURL": "http://streaming.openvideoads.org/shows",
+                "streams": [
+                    {
+                        "file":"the-black-hole.mp4",
+                        "duration":"00:00:20"
+                    }
+                ]
+            },
+
+            "ads": {
+                "servers": [
+                    {
+                       "id": "AdTech",
+                       "type": "AdTech",
+                       "apiAddress": "http://de.at.atwola.com/?adrawdata/3.0/515.1"
+                   }
+                ],
+                "displayCompanions": true,
+                "restoreCompanions": false,
+                "companions": [
+                   { "id":"companion-160x600", "width":"160", "height":"600" },
+                   { "id":"companion-300x250", "width":"300", "height":"250" }
+                ],
+                "schedule": [
+                   {
+                       "zone": "5",
+                       "position": "pre-roll",
+                       "server": {
+                           "type": "OpenX",
+                           "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php",
+                           "customProperties" : {
+                               "target": "category=food"
+                           }
+                       }
+                   },
+                   {
+                       "zone": "2188757/0/1728",
+                       "startTime": "00:00:03",
+                       "duration": "10",
+                       "server": {
+                           "id": "AdTech"
+                       }
+                   },
+                   {
+                       "zone": "2189418/0/1725",
+                       "position": "post-roll"
+                   }
+                ]
+            },
+
+            "debug": {
+                "levels": "fatal",
+                "debugger": "firebug"
+            }
+        }
+    </openadstreamer.json>
+</config>

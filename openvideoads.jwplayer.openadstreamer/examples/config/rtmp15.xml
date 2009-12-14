@@ -16,10 +16,12 @@
             "ads": {
                 "bitrate": "500-700",
                 "notice": { "textStyle": "smalltext" },
-                "server": {
-                    "type": "OpenX",
-                    "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
-                },
+                "servers": [
+                    {
+                       "type": "OpenX",
+                       "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
+                    }
+                ],
                 "schedule": [
                     {
                        "zone": "1",

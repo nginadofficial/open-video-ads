@@ -15,11 +15,13 @@
 
             "ads": {
                  "notice": { "textStyle": "smalltext" },
-                 "server": {
-                     "type": "OpenX",
-                     "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php",
-                     "allowAdRepetition": true
-                 },
+                 "servers": [
+                     {
+                        "type": "OpenX",
+                        "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php",
+                        "allowAdRepetition": true
+                     }
+                 ],
                  "schedule": [
                      {
                         "zone": "1",

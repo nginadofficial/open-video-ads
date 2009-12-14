@@ -1,0 +1,26 @@
+<config>
+    <openadstreamer.title>
+       ALL Example 52
+    </openadstreamer.title>
+    <openadstreamer.json>
+        {
+            "debug": {
+                "debugger": "firebug",
+                "levels": "fatal"
+            },
+
+            "ads": {
+                "pauseOnClickThrough": true,
+                "schedule": [
+                    {
+                       "position": "pre-roll",
+                       "server": {
+                           "type": "direct",
+                           "apiAddress": "http://de.at.atwola.com/?adrawdata/3.0/515.1/2188758/0/1725/noperf=1;cc=2;header=yes;alias=myalias;cookie=yes;adct=204;key=key1+key2;grp=[group];misc=__random-number__"
+                       }
+                    }
+                ]
+             }
+         }
+    </openadstreamer.json>
+</config>
