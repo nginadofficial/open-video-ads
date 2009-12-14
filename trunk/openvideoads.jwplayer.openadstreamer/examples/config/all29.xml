@@ -25,11 +25,15 @@
                     "scaleRate": 0.75
                 },
                 "notice": { "show": true },
-                "server": {
-                    "type": "OpenX",
-                    "adParameters": [ { "name": "category", "value": "food" } ],
-                    "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
-                },
+                "servers": [
+                    {
+                       "type": "OpenX",
+                       "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php",
+                       "customProperties": {
+                            "target": "category=food"
+                       }
+                    }
+                ],
                 "schedule": [
                     {
                        "zone": "1",

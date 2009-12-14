@@ -12,27 +12,27 @@
 This example illustrates how to deliver a mixture of overlay types. 3 random overlays will be
 selected and delivered - each running for 5 seconds. Leaving out width and height dimensions
 on an Ad Slot definition defaults it to -1 and -1 which means that any non-linear sizing
-will be matched. 
+will be matched.
 </p>
 <div id="container">
   <div id="player_row">
-  	 <div id="player_left">
-		<embed 
-		  id="ply"
-		  data="../dist/4.5.swf"
-		  src="../dist/4.5.swf" 
-		  width="450"
-		  height="300"
-		  allowscriptaccess="always"
-		  allowfullscreen="true"
-		  flashvars="height=300&width=450&plugins=../dist/OpenAdStreamer.swf&config=config/all35.xml"
-		/>
-	 </div>
-	 <div id="player_right">
-		<div id="companion">
-			A COMPANION ADVERTISEMENT WILL APPEAR IN HERE
-		</div>
-	 </div>
+     <div id="player_left">
+    <embed
+      id="ply"
+      data="../dist/4.5.swf"
+      src="../dist/4.5.swf"
+      width="450"
+      height="300"
+      allowscriptaccess="always"
+      allowfullscreen="true"
+      flashvars="height=300&width=450&plugins=../dist/OpenAdStreamer.swf&config=config/all35.xml"
+    />
+   </div>
+   <div id="player_right">
+    <div id="companion">
+      A COMPANION ADVERTISEMENT WILL APPEAR IN HERE
+    </div>
+   </div>
   </div>
 </div>
 <br/>
@@ -42,10 +42,10 @@ The configuration for this example is:
 <div class="codebox">
 <pre>
 <code>
-&lt;embed 
+&lt;embed
   id="ply"
   data="../dist/4.5.swf"
-  src="../dist/4.5.swf" 
+  src="../dist/4.5.swf"
   width="450"
   height="300"
   allowscriptaccess="always"
@@ -66,7 +66,7 @@ The configuration for this example is:
        ALL Example 35
     &lt;/openadstreamer.title&gt;
     &lt;openadstreamer.json&gt;
-		{
+    {
             "shows": {
                 "streams": [
                    {
@@ -77,14 +77,16 @@ The configuration for this example is:
             },
 
             "ads": {
-                "server": {
-                    "type": "OpenX",
-                    "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
-                },
-	            "displayCompanions": true,
-	            "companions": [
-	                { "id":"companion", "width":"150", "height":"360" }
-	            ],
+                "servers": [
+                    {
+                       "type": "OpenX",
+                       "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
+                    }
+                ],
+                "displayCompanions": true,
+                "companions": [
+                    { "id":"companion", "width":"150", "height":"360" }
+                ],
                 "schedule": [
                     {
                         "zone": "44",
@@ -114,5 +116,18 @@ The configuration for this example is:
 </code>
 </pre>
 </div>
+<script type="text/javascript" src="js/tracking.js">
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-10158120-3");
+if(TRACKING_TURNED_ON) {
+  pageTracker._trackPageview();
+}
+} catch(err) {}
+</script>
 </body>
 </html>

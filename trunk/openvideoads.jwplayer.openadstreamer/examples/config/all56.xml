@@ -1,0 +1,44 @@
+<config>
+   <openadstreamer.title>
+       Example 56 (ALL) - Process Ad Events with Javascript
+   </openadstreamer.title>
+   <openadstreamer.json>
+       {
+            "shows": {
+                 "streams": [
+                      {
+                          "file":"http://streaming.openvideoads.org/shows/the-black-hole.mp4",
+                          "duration":"00:00:30"
+                      }
+                 ]
+            },
+
+            "ads": {
+                 "servers": [
+                     {
+                          "type": "OpenX",
+                          "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php",
+                     }
+                 ],
+                 "schedule": [
+                      {
+                          "zone": "5",
+                          "position": "pre-roll"
+                      },
+                      {
+                          "zone": "33",
+                          "width": 450,
+                          "height": 50,
+                          "startTime": "00:00:05",
+                          "duration": "15"
+                      }
+                 ],
+            },
+
+            "debug": {
+                 "levels": "fatal",
+                 "debugger": "firebug"
+            }
+       }
+   </openadstreamer.json>
+</config>

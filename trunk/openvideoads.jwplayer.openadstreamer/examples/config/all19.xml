@@ -90,11 +90,13 @@
             },
 
             "ads": {
-                "server": {
-                    "type": "OpenX",
-                    "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php",
-                    "allowAdRepetition": true
-                },
+                "servers": [
+                    {
+                       "type": "OpenX",
+                       "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php",
+                       "allowAdRepetition": true
+                    }
+                ],
                 "notice": { "textStyle": "smalltext" },
                 "schedule": [
                     {

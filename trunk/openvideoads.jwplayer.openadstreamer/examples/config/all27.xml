@@ -20,10 +20,12 @@
             },
 
             "ads": {
-                "server": {
-                    "type": "OpenX",
-                    "vastURL": "http://streaming.openvideoads.org/tests/bad-vast-response.xml"
-                },
+                "servers": [
+                    {
+                       "type": "OpenX",
+                       "apiAddress": "http://streaming.openvideoads.org/tests/bad-vast-response.xml"
+                    }
+                ],
                 "notice": { "textStyle": "smalltext" },
                 "schedule": [
                     {

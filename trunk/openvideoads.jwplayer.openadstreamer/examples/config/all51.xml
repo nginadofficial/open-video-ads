@@ -1,0 +1,29 @@
+<config>
+    <openadstreamer.title>
+       ALL Example 51
+    </openadstreamer.title>
+    <openadstreamer.json>
+        {
+            "debug": {
+                "debugger": "firebug",
+                "levels": "fatal"
+            },
+
+            "ads": {
+                "pauseOnClickThrough": true,
+                "servers": [
+                    {
+                        "type": "AdTech",
+                        "apiAddress": "http://de.at.atwola.com/?adrawdata/3.0/515.1"
+                    }
+                ],
+                "schedule": [
+                    {
+                       "zone": "2189418/0/1725",
+                       "position": "pre-roll"
+                    }
+                 ]
+             }
+         }
+    </openadstreamer.json>
+</config>
