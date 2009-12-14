@@ -4,7 +4,7 @@
  *    This file is part of the Open Video Ads VAST framework.
  *
  *    The VAST framework is free software: you can redistribute it 
- *    and/or modify it under the terms of the GNU General Public License 
+ *    and/or modify it under the terms of the Lesser GNU General Public License 
  *    as published by the Free Software Foundation, either version 3 of 
  *    the License, or (at your option) any later version.
  *
@@ -13,10 +13,11 @@
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *    GNU General Public License for more details.
  *
- *    You should have received a copy of the GNU General Public License
+ *    You should have received a copy of the Lesser GNU General Public License
  *    along with the framework.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openvideoads.vast.config.groupings {
+	import org.openvideoads.base.Debuggable;
 	import org.openvideoads.util.ArrayUtils;
 	import org.openvideoads.vast.server.AdServerConfig;
 	import org.openvideoads.vast.server.AdServerConfigFactory;
@@ -26,10 +27,12 @@ package org.openvideoads.vast.config.groupings {
 	 */
 	public class AdsConfigGroup extends AbstractStreamsConfig {
 		private var _adServerConfig:AdServerConfig = null;
+		private var _adServers:Array = null;
 		private var _schedule:Array = new Array();
 		private var _disableControls:Boolean = true;
 		private var _companionDivIDs:Array = new Array(); 
 		private var _displayCompanions:Boolean = true;
+		private var _restoreCompanions:Boolean = true;
 		private var _visuallyCueLinearAdClickThrough:Boolean = true;
 		private var _pauseOnClickThrough:Boolean = true;
         private var _noticeConfig:AdNoticeConfig = new AdNoticeConfig();
@@ -61,6 +64,12 @@ package org.openvideoads.vast.config.groupings {
 					}
 					else this.displayCompanions = config.displayCompanions;
 				}
+				if(config.restoreCompanions != undefined) {
+					if(config.restoreCompanions is String) {
+						this.restoreCompanions = (config.restoreCompanions.toUpperCase() == "TRUE");
+					}
+					else this.restoreCompanions = config.restoreCompanions;
+				}				
 				if(config.disableControls != undefined) {
 					if(config.disableControls is String) {
 						this.disableControls = ((config.disableControls.toUpperCase() == "TRUE") ? true : false);											
@@ -113,10 +122,43 @@ package org.openvideoads.vast.config.groupings {
 						this.adServerConfig = AdServerConfigFactory.getAdServerConfig(config.server.type);
 						this.adServerConfig.initialise(config.server);
 					}
+				}				
+				if(config.servers != undefined) {
+					this.adServers = config.servers;
 				}
+				
+				assignAdServersToIndividualAdSlots();
 			}
 		}
 		
+		protected function assignAdServersToIndividualAdSlots():void {	
+			if(_schedule != null) {
+				doLog("Configuring the ad server requests across each ad slot...", Debuggable.DEBUG_CONFIG);
+				var originalAdServerConfig:Object;
+				for(var i:int=0; i < _schedule.length; i++) {
+					if(_schedule[i].server == undefined) {
+						// use the default ad server which is the first one defined
+						_schedule[i].server = getDefaultAdServerCopy();
+					}
+					else {
+						originalAdServerConfig = _schedule[i].server;
+						if(_schedule[i].server.id == undefined) {
+							if(_schedule[i].server.type != undefined) {
+								_schedule[i].server = AdServerConfigFactory.getAdServerConfig(_schedule[i].server.type);								
+							}
+							else _schedule[i].server = getDefaultAdServerCopy();						
+						}
+						else _schedule[i].server = getAdServerById(_schedule[i].server.id);
+
+						// now override any settings
+						if(originalAdServerConfig != null) _schedule[i].server.initialise(originalAdServerConfig);
+					}
+					doLog("AdSlot: " + i + " - ad server type is " + _schedule[i].server.serverType + " on address " + _schedule[i].server.apiServerAddress, Debuggable.DEBUG_CONFIG);
+				}
+			}
+			else doLog("No ad servers configured - no ad schedule defined", Debuggable.DEBUG_CONFIG);
+		}
+
 		public function get clickSignEnabled():Boolean {
 			if(_clickSignConfig != null) {
 				return _clickSignConfig.enabled;
@@ -129,7 +171,59 @@ package org.openvideoads.vast.config.groupings {
 		}
 		
 		public function get adServerConfig():AdServerConfig {
+			if(_adServerConfig == null) {
+				if(_adServers != null) return _adServers[0];
+			}
 			return _adServerConfig;
+		}
+		
+		public function set adServers(servers:Array):void {
+			_adServers = new Array();
+			doLog("Configuring " + servers.length + " ad servers", Debuggable.DEBUG_CONFIG);
+			for(var i:int=0; i < servers.length; i++) {
+				if(servers[i].type != undefined) {
+					var adServerConfig:AdServerConfig = AdServerConfigFactory.getAdServerConfig(servers[i].type);
+					adServerConfig.initialise(servers[i]);
+					_adServers.push(adServerConfig);		
+				}
+				else doLog("Ad server configuration at position " + i + " skipped - no 'type' provided", Debuggable.DEBUG_CONFIG);
+			}
+		}
+		
+		public function get adServers():Array {
+			return _adServers;
+		}
+		
+		public function getDefaultAdServerCopy():AdServerConfig {
+			if(_adServers != null) {
+				if(_adServers.length > 0) {
+					for(var i:int=0; i < _adServers.length; i++) {
+						if(_adServers[i].defaultAdServer) {
+							var x:AdServerConfig = _adServers[i].clone();
+							return _adServers[i].clone();
+						}
+					}
+				}
+			}
+			return getFirstAdServerCopy();
+		}
+		
+		public function getFirstAdServerCopy():AdServerConfig {
+			if(_adServers != null) {
+				if(_adServers.length > 0) {
+					return _adServers[0].clone();
+				}					
+			}
+			return new AdServerConfig();
+		}
+		
+		public function getAdServerById(id:String):AdServerConfig {
+			if(_adServers != null) {
+				for(var i:int = 0; i < _adServers.length; i++) {
+					if(_adServers[i].matchesId(id)) return _adServers[i];
+				}				
+			}
+			return new AdServerConfig();
 		}
 		
 		public function set pauseOnClickThrough(pauseOnClickThrough:Boolean):void {
@@ -174,6 +268,14 @@ package org.openvideoads.vast.config.groupings {
 		
 		public function get displayCompanions():Boolean {
 			return _displayCompanions;
+		}
+
+		public function set restoreCompanions(restoreCompanions:Boolean):void {
+			_restoreCompanions = restoreCompanions;
+		}
+		
+		public function get restoreCompanions():Boolean {
+			return _restoreCompanions;
 		}
 
         public function showNotice():Boolean {

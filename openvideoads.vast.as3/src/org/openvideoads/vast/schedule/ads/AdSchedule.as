@@ -4,7 +4,7 @@
  *    This file is part of the Open Video Ads VAST framework.
  *
  *    The VAST framework is free software: you can redistribute it 
- *    and/or modify it under the terms of the GNU General Public License 
+ *    and/or modify it under the terms of the Lesser GNU General Public License 
  *    as published by the Free Software Foundation, either version 3 of 
  *    the License, or (at your option) any later version.
  *
@@ -13,31 +13,48 @@
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *    GNU General Public License for more details.
  *
- *    You should have received a copy of the GNU General Public License
+ *    You should have received a copy of the Lesser GNU General Public License
  *    along with the framework.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openvideoads.vast.schedule.ads {
+	import flash.events.Event;
+	
 	import org.openvideoads.base.Debuggable;
 	import org.openvideoads.vast.VASTController;
 	import org.openvideoads.vast.config.Config;
+	import org.openvideoads.vast.model.TemplateLoadListener;
 	import org.openvideoads.vast.model.VideoAdServingTemplate;
+	import org.openvideoads.vast.schedule.StreamConfig;
 	import org.openvideoads.vast.schedule.StreamSequence;
+	import org.openvideoads.vast.server.AdServerRequestProcessor;
 	import org.openvideoads.vast.tracking.TimeEvent;
 	
 	/**
 	 * @author Paul Schulz
 	 */
-	public class AdSchedule extends Debuggable {
+	public class AdSchedule extends Debuggable implements TemplateLoadListener {
 		protected var _adSlots:Array = new Array(); 
 		protected var _vastController:VASTController = null;
 		protected var _lastTrackedStreamIndex:int = -1;
+		protected var _adServerRequestProcessor:AdServerRequestProcessor = null;
+		protected var _templateLoadListener:TemplateLoadListener = null;
 		
 		public function AdSchedule(vastController:VASTController, relatedStreamSequence:StreamSequence, config:Config=null, vastData:VideoAdServingTemplate=null) {
 			_vastController = vastController;
 			if(config != null) {
-				build(config, relatedStreamSequence, -1, config.streams.length, true);
+//				build(config, relatedStreamSequence, -1, calculateShowStreamCount(config.streams), true);
+				build(config, relatedStreamSequence, -1, true);
 				if(vastData) mapVASTDataToAdSlots(vastData);
 			}
+		}
+		
+		protected function calculateShowStreamCount(streams:Array):int {
+			// exclude everything that isn't a stream
+			var count:int = 0;
+			for(var i:int=0; i < streams.length; i++) {
+				if(streams[i].isStream()) ++count;
+			}
+			return count;
 		}
 		
 		public function get adSlots():Array {
@@ -117,7 +134,22 @@ package org.openvideoads.vast.schedule.ads {
 			return false;
 		}
 		
-		private function checkApplicability(adSpot:Object, currentPart:int, excludePopupPosition:Boolean=false, streamCount:int=1):Boolean {
+		// Forced Impression Firing for blank VAST Ad Responses
+		public function processImpressionsToForceFire():void {
+			if(haveAdSlotsToSchedule()) {
+				for(var i:int = 0; i < _adSlots.length; i++) {
+					if(_adSlots[i].isEmpty()) {
+						_adSlots[i].processForcedImpression();
+					}
+				}
+			}	
+		}	
+
+		
+		private function checkApplicability(adSpot:Object, currentPart:int, excludePopupPosition:Boolean=false, streamCount:int=1, relatedStream:StreamConfig=null):Boolean {
+			if(relatedStream != null) {
+				if(!relatedStream.isStream()) return false;
+			}
 			if(adSpot.applyToParts != undefined) {
 				if(adSpot.applyToParts is String) {
 					if(adSpot.applyToParts.toUpperCase() == "LAST") {
@@ -130,23 +162,50 @@ package org.openvideoads.vast.schedule.ads {
 				}
 				else return false;
 			}
-			else return true; 
+			else return true;
 		}
 		
 		public function createAdSpotID(overridingID:String, position:String, uniqueTag:int):String {
 			if(overridingID != null) {
 				return overridingID;
 			}	
-			else return position + uniqueTag;
+			else {
+				if(position == null) {
+					return "overlay" + uniqueTag;					
+				}
+				return position + uniqueTag;
+			}
 		}
 		
-		public function build(config:Config, relatedStreamSequence:StreamSequence, maxSpots:int=-1, repeats:int=1, excludePopupPosition:Boolean=false):void {
+		//-----------------------------------------------------------------------------------------------------------------
+		
+		public function loadAdsFromAdServers(templateLoadListener:TemplateLoadListener):void {
+			_templateLoadListener = templateLoadListener;
+			_adServerRequestProcessor = new AdServerRequestProcessor(this, _adSlots);
+			_adServerRequestProcessor.start();			
+		}
+		
+		public function onTemplateLoaded(template:VideoAdServingTemplate):void {
+			doLog("AdSchedule: notified that template has been loaded", Debuggable.DEBUG_VAST_TEMPLATE)
+			if(_templateLoadListener) _templateLoadListener.onTemplateLoaded(template);
+		}
+		
+		public function onTemplateLoadError(event:Event):void {
+			doLog("AdSchedule: FAILURE loading VAST template - " + event.toString(), Debuggable.DEBUG_FATAL);
+			if(_templateLoadListener) _templateLoadListener.onTemplateLoadError(event);
+		}
+		
+		//-----------------------------------------------------------------------------------------------------------------
+				
+		public function build(config:Config, relatedStreamSequence:StreamSequence, maxSpots:int=-1, excludePopupPosition:Boolean=false):void {
 			if(config.adSchedule) {
-				if(repeats == 0) repeats = 1; // we need to ensure that we cover the ad spots if there are no streams
-				for(var j:int = 0; j < repeats; j++) {
+				var numberOfStreams:int = ((config.streams.length == 0) ? 1 : config.streams.length);
+				doLog("Building the ad schedule - " + config.adSchedule.length + " ad slots defined, stream count is " + config.streams.length + ", maxspots " + maxSpots, Debuggable.DEBUG_CONFIG);
+				for(var j:int = 0; j < numberOfStreams; j++) {
 					if(maxSpots == -1) maxSpots = config.adSchedule.length;
 					for(var i:int = 0; i < config.adSchedule.length && i <= maxSpots; i++) {
-						if(checkApplicability(config.adSchedule[i], j, excludePopupPosition, repeats)) {
+						var relatedStream:StreamConfig = ((j < config.streams.length) ? config.streams[j] : null);
+						if(checkApplicability(config.adSchedule[i], j, excludePopupPosition, numberOfStreams, relatedStream)) {
 							var adSpot:Object = config.adSchedule[i];
 							var originalAdSlot:AdSlot;
 							if(adSpot.zone && adSpot.zone.toUpperCase() == "STATIC") {
@@ -173,6 +232,7 @@ package org.openvideoads.vast.schedule.ads {
 											  	 		 ((adSpot.html == undefined) ? null : adSpot.html));
 							}
 							else {
+								doLog("Creating new ad slot: " + createAdSpotID(adSpot.id, adSpot.position, i) + " tied to stream index " + j, Debuggable.DEBUG_CONFIG);
 								originalAdSlot = new AdSlot(relatedStreamSequence,
 								                     this,
 								                     _vastController,
@@ -202,7 +262,8 @@ package org.openvideoads.vast.schedule.ads {
 										  	 		 ((adSpot.regions != undefined) ? adSpot.regions : null),
 										  	 		 ((adSpot.templates != undefined) ? adSpot.templates : null),
 										  	 		 ((adSpot.player != undefined) ? adSpot.player : config.adsConfig.player),
-										  	 		 config.clickSignEnabled);
+										  	 		 config.clickSignEnabled,
+										  	 		 ((adSpot.server != undefined) ? adSpot.server : null));
 							}
 							var repeatCount:int = ((adSpot.repeat == undefined) ? 1 : adSpot.repeat);
 							if(repeatCount > 1) {
@@ -217,6 +278,7 @@ package org.openvideoads.vast.schedule.ads {
 						}
 					}		
 				}
+				doLog("Ad schedule constructed - " + _adSlots.length + " ad positions created and slotted", Debuggable.DEBUG_CONFIG);
 			}
 		}
 
@@ -237,6 +299,16 @@ package org.openvideoads.vast.schedule.ads {
 					}
 				}
 			}
+		}
+		
+		public function getAdIds():Array {
+			var result:Array = new Array();
+			for(var i:int = 0; i < _adSlots.length; i++) {
+				if(_adSlots[i].id && _adSlots[i].id != "popup") {
+					result.push(_adSlots[i].id + "-" + _adSlots[i].associatedStreamIndex);
+				}
+			}
+			return result;
 		}
 		
 		public function get zones():Array {

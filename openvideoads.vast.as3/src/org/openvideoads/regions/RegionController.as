@@ -4,16 +4,16 @@
  *    This file is part of the Open Video Ads VAST framework.
  *
  *    The VAST framework is free software: you can redistribute it 
- *    and/or modify it under the terms of the GNU General Public License 
+ *    and/or modify it under the terms of the Lesser GNU General Public License 
  *    as published by the Free Software Foundation, either version 3 of 
  *    the License, or (at your option) any later version.
  *
  *    The VAST framework is distributed in the hope that it will be 
  *    useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
+ *    Lesser GNU General Public License for more details.
  *
- *    You should have received a copy of the GNU General Public License
+ *    You should have received a copy of the Lesser GNU General Public License
  *    along with the framework.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openvideoads.regions {
@@ -106,6 +106,15 @@ package org.openvideoads.regions {
 				_regionViews[i].resize(resizedProperties);
 			}
 		}		
+		
+		public function setRegionStyle(regionID:String, cssText:String):String {
+			var region:RegionView = getRegion(regionID);
+			if(region != null) {
+				region.parseCSS(cssText);
+				return "1, successfully passed to region to process";
+			}
+			else return "-2, No region found for id: " + regionID;
+		}
 		
 		// DEBUG
 		

@@ -4,7 +4,7 @@
  *    This file is part of the Open Video Ads VAST framework.
  *
  *    The VAST framework is free software: you can redistribute it 
- *    and/or modify it under the terms of the GNU General Public License 
+ *    and/or modify it under the terms of the Lesser GNU General Public License 
  *    as published by the Free Software Foundation, either version 3 of 
  *    the License, or (at your option) any later version.
  *
@@ -13,7 +13,7 @@
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *    GNU General Public License for more details.
  *
- *    You should have received a copy of the GNU General Public License
+ *    You should have received a copy of the Lesser GNU General Public License
  *    along with the framework.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openvideoads.vast.schedule {
@@ -21,6 +21,7 @@ package org.openvideoads.vast.schedule {
 	import org.openvideoads.util.Timestamp;
 	import org.openvideoads.vast.VASTController;
 	import org.openvideoads.vast.schedule.ads.AdSchedule;
+	import org.openvideoads.vast.schedule.ads.AdSlot;
 	import org.openvideoads.vast.tracking.TimeEvent;
 
 	/**
@@ -36,14 +37,14 @@ package org.openvideoads.vast.schedule {
 		protected var _timerFactor:int = 1;
 		protected var _lastTrackedStreamIndex:int = -1;
 		
-		public function StreamSequence(vastController:VASTController=null, streams:Array=null, adSequence:AdSchedule=null, bitrate:String=null, baseURL:String=null, timerFactor:int=1):void {
+		public function StreamSequence(vastController:VASTController=null, streams:Array=null, adSequence:AdSchedule=null, bitrate:String=null, baseURL:String=null, timerFactor:int=1, previewImage:String=null):void {
 			if(streams != null) {
 				initialise(vastController, streams, adSequence, bitrate, baseURL, timerFactor);
 			}
 			else _vastController = vastController;
 		}
 
-		public function initialise(vastController:VASTController, streams:Array=null, adSequence:AdSchedule=null, bitrate:String=null, baseURL:String=null, timerFactor:int=1):void {
+		public function initialise(vastController:VASTController, streams:Array=null, adSequence:AdSchedule=null, bitrate:String=null, baseURL:String=null, timerFactor:int=1, previewImage:String=null):void {
 			_vastController = vastController;
 			_timerFactor = timerFactor;
 						
@@ -54,7 +55,7 @@ package org.openvideoads.vast.schedule {
 				_baseURL = baseURL;
 			}
 			if(streams != null && adSequence != null) {
-				_totalDuration = build(streams, adSequence);			
+				_totalDuration = build(streams, adSequence, previewImage);			
 			}
 		}
 
@@ -102,6 +103,27 @@ package org.openvideoads.vast.schedule {
 			_lastPauseTime = -1;
 		}
 		
+		public function getStartingStreamIndex():int {
+			for(var i:int=0; i < _sequence.length; i++) {
+				if(_sequence[i].isStream()) return i;
+			}	
+			return 0;
+		}
+		
+		public function getStreamSequenceIndexGivenOriginatingIndex(originalIndex:int, excludeSlices:Boolean=false, excludeMidRolls:Boolean=false):int {
+			var excludeCounter:int = 0;
+			for(var i:int=0; i < _sequence.length; i++) {
+				if(!(_sequence[i] is AdSlot)) {
+					if(_sequence[i].originatingStreamIndex == originalIndex) {
+						return i-excludeCounter;
+					}
+					else if(_sequence[i].isSlice() && excludeSlices) ++excludeCounter;
+				}
+				else if(_sequence[i].isMidRoll() && excludeMidRolls) ++excludeCounter;
+			}	
+			return -1;
+		}		
+		
 		private function createNewMetricsTracker():Object {
 			var currentMetrics:Object = new Object();
 			currentMetrics.usedAdDuration = 0;		
@@ -124,7 +146,7 @@ package org.openvideoads.vast.schedule {
 			                     _vastController,
 			                     _sequence.length,
 			                     label + streamMetrics.associatedStreamIndex + "-" + _sequence.length,
-			                     streams[streamMetrics.associatedStreamIndex].filename,
+			                     streams[streamMetrics.associatedStreamIndex].id, //filename,
 							     Timestamp.secondsToTimestamp(streamMetrics.usedActiveShowDuration),
 							     new String(streamMetrics.remainingActiveShowDuration),
 							     new String(streamMetrics.totalActiveShowDuration),
@@ -137,14 +159,17 @@ package org.openvideoads.vast.schedule {
 								 streams[streamMetrics.associatedStreamIndex].metaData,
 						 		 streams[streamMetrics.associatedStreamIndex].autoPlay,
 								 streams[streamMetrics.associatedStreamIndex].provider,
-								 streams[streamMetrics.associatedStreamIndex].player)); 
+								 streams[streamMetrics.associatedStreamIndex].player,
+						 		 null,
+								 streamMetrics.associatedStreamIndex,
+								 true)); 
 			streamMetrics.usedActiveShowDuration += streamMetrics.remainingActiveShowDuration;
 			var newDuration:int = totalDuration + streamMetrics.remainingActiveShowDuration;
 			doLog("Total play duration is now " + newDuration, Debuggable.DEBUG_SEGMENT_FORMATION);			
 			return newDuration;
 		}
 
-		public function build(streams:Array, adSequence:AdSchedule):int {
+		public function build(streams:Array, adSequence:AdSchedule, previewImage:String=null):int {
 			doLogAndTrace("*** BUILDING THE STREAM SEQUENCE FROM " + streams.length + " SHOW STREAMS AND " + adSequence.length + " AD SLOTS", adSequence, Debuggable.DEBUG_SEGMENT_FORMATION);
 			var adSlots:Array = adSequence.adSlots;
 			var trackingInfo:Array = new Array();
@@ -167,6 +192,7 @@ package org.openvideoads.vast.schedule {
 					}
 					if(!adSlots[i].isLinear() && adSlots[i].isActive()) {
 						// deal with it as an overlay that goes over the current stream
+//						adSlots[i].originatingAssociatedStreamIndex = adSlots[i].associatedStreamIndex;
 						adSlots[i].associatedStreamIndex = _sequence.length;
 					}
 					else if(adSlots[i].isLinear() && adSlots[i].isActive()) {
@@ -189,7 +215,7 @@ package org.openvideoads.vast.schedule {
 										                     _vastController, 
 										                     m, 
 										                     "show-b-" + m + "-" + _sequence.length, 
-										                     streams[m].filename, 
+										                     streams[m].id, //filename, 
 										                     "00:00:00", 
 										                     Timestamp.timestampToSecondsString(streams[m].duration), 
 										                     Timestamp.timestampToSecondsString(streams[m].duration), 
@@ -202,7 +228,9 @@ package org.openvideoads.vast.schedule {
 													 		 streams[m].metaData,
 													 		 streams[m].autoPlay,
 													 		 streams[m].provider,
-													 		 streams[m].player)); 
+													 		 streams[m].player,
+													 		 null,
+													 		 m)); 
 										totalDuration += Timestamp.timestampToSeconds(streams[m].duration);
 										previousMetrics.associatedStreamIndex = m;
 										doLog("Total play duration is now " + totalDuration, Debuggable.DEBUG_SEGMENT_FORMATION);
@@ -229,7 +257,7 @@ package org.openvideoads.vast.schedule {
 										                     _vastController, 
 										                     n, 
 										                     "show-cf-" + n + "-" + _sequence.length, 
-										                     streams[n].filename, 
+										                     streams[n].id, //filename, 
 										                     "00:00:00", 
 										                     Timestamp.timestampToSecondsString(streams[n].duration), 
 										                     Timestamp.timestampToSecondsString(streams[n].duration), 
@@ -242,7 +270,9 @@ package org.openvideoads.vast.schedule {
 													 		 streams[n].metaData,
 													 		 streams[n].autoPlay,
 													 		 streams[n].provider,
-													 		 streams[n].player)); 
+													 		 streams[n].player,
+													 		 null,
+													 		 n)); 
 										totalDuration += Timestamp.timestampToSeconds(streams[n].duration);
 										previousMetrics.associatedStreamIndex = n;
 										doLog("Total play duration is now " + totalDuration, Debuggable.DEBUG_SEGMENT_FORMATION);
@@ -255,7 +285,7 @@ package org.openvideoads.vast.schedule {
 									                     _vastController,
 									                     _sequence.length,
 									                     "show-d-" + adSlots[i].associatedStreamIndex + "-" + _sequence.length,
-									                     streams[adSlots[i].associatedStreamIndex].filename, 
+									                     streams[adSlots[i].associatedStreamIndex].id, //filename, 
 													     Timestamp.secondsToTimestamp(currentMetrics.usedActiveShowDuration),
 														 new String(showSliceDuration),
 													     new String(currentMetrics.totalActiveShowDuration),
@@ -268,7 +298,9 @@ package org.openvideoads.vast.schedule {
 														 streams[adSlots[i].associatedStreamIndex].metaData,
 												 		 streams[adSlots[i].associatedStreamIndex].autoPlay,
 														 streams[adSlots[i].associatedStreamIndex].provider,
-														 streams[adSlots[i].associatedStreamIndex].player)); 
+														 streams[adSlots[i].associatedStreamIndex].player,
+												 		 null,
+														 adSlots[i].associatedStreamIndex)); 
 									currentMetrics.usedActiveShowDuration += showSliceDuration;
 									totalDuration += showSliceDuration;
 									doLog("Total play duration is now " + totalDuration, Debuggable.DEBUG_SEGMENT_FORMATION);
@@ -295,7 +327,7 @@ package org.openvideoads.vast.schedule {
 											                     _vastController, 
 											                     o, 
 											                     "show-hf-" + o + "-" + _sequence.length, 
-											                     streams[o].filename, 
+											                     streams[o].id, //filename, 
 											                     "00:00:00", 
 											                     Timestamp.timestampToSecondsString(streams[o].duration), 
 											                     Timestamp.timestampToSecondsString(streams[o].duration), 
@@ -308,7 +340,9 @@ package org.openvideoads.vast.schedule {
 														 		 streams[o].metaData,
 														 		 streams[o].autoPlay,
 														 		 streams[o].provider,
-														 		 streams[o].player)); 
+														 		 streams[o].player,
+														 		 null,
+														 		 o)); 
 											totalDuration += Timestamp.timestampToSeconds(streams[o].duration);
 											previousMetrics.associatedStreamIndex = o;
 											doLog("Total play duration is now " + totalDuration, Debuggable.DEBUG_SEGMENT_FORMATION);
@@ -323,7 +357,6 @@ package org.openvideoads.vast.schedule {
 										if(i+1 < adSlots.length) {
 											currentMetrics.associatedStreamIndex = currentMetrics.associatedStreamIndex + 1;
 										}
-
 									}
 								}
 							}		
@@ -358,7 +391,7 @@ package org.openvideoads.vast.schedule {
 						                     _vastController, 
 						                     x, 
 						                     "show-g-" + x, 
-						                     streams[x].filename, 
+						                     streams[x].id, //filename, 
 						                     "00:00:00", 
 						                     Timestamp.timestampToSecondsString(streams[x].duration), 
 						                     Timestamp.timestampToSecondsString(streams[x].duration), 
@@ -371,7 +404,9 @@ package org.openvideoads.vast.schedule {
 									 		 streams[previousMetrics.associatedStreamIndex].metaData,
 									 		 streams[previousMetrics.associatedStreamIndex].autoPlay,
 									 		 streams[previousMetrics.associatedStreamIndex].provider,
-									 		 streams[previousMetrics.associatedStreamIndex].player)); 
+									 		 streams[previousMetrics.associatedStreamIndex].player,
+									 		 null,
+									 		 previousMetrics.associatedStreamIndex)); 
 						totalDuration += Timestamp.timestampToSeconds(streams[x].duration);
 						doLog("Total play duration is now " + totalDuration, Debuggable.DEBUG_SEGMENT_FORMATION);
 					}
@@ -386,7 +421,7 @@ package org.openvideoads.vast.schedule {
 					                     _vastController, 
 					                     j, 
 					                     "show-h-" + j, 
-					                     streams[j].filename, 
+					                     streams[j].id, //filename, 
 					                     "00:00:00", 
 					                     Timestamp.timestampToSecondsString(streams[j].duration), 
 					                     Timestamp.timestampToSecondsString(streams[j].duration), 
@@ -399,10 +434,18 @@ package org.openvideoads.vast.schedule {
 								 		 streams[previousMetrics.associatedStreamIndex].metaData,
 								 		 streams[previousMetrics.associatedStreamIndex].autoPlay,
 								 		 streams[previousMetrics.associatedStreamIndex].provider,
-								 		 streams[previousMetrics.associatedStreamIndex].player)); 
+								 		 streams[previousMetrics.associatedStreamIndex].player,
+								 		 null,
+								 		 previousMetrics.associatedStreamIndex)); 
 					totalDuration += Timestamp.timestampToSeconds(streams[j].duration);
 				}
 			}
+            
+            if(previewImage != null && _sequence.length > 0) {
+            	// add the preview image property to the first stream in the sequence
+            	_sequence[0].previewImage = previewImage;
+            	doLog("Have set preview image on first stream - image is: " + previewImage, Debuggable.DEBUG_SEGMENT_FORMATION);
+            }
             
 			doLog("Total (Final) stream duration is  " + totalDuration, Debuggable.DEBUG_SEGMENT_FORMATION);
 			doLogAndTrace("*** STREAM SEQUENCE BUILT - " + _sequence.length + " STREAMS INDEXED ", _sequence, Debuggable.DEBUG_SEGMENT_FORMATION);

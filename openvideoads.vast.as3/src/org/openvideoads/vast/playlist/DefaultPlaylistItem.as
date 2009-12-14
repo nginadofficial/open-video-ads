@@ -4,7 +4,7 @@
  *    This file is part of the Open Video Ads VAST framework.
  *
  *    The VAST framework is free software: you can redistribute it 
- *    and/or modify it under the terms of the GNU General Public License 
+ *    and/or modify it under the terms of the Lesser GNU General Public License 
  *    as published by the Free Software Foundation, either version 3 of 
  *    the License, or (at your option) any later version.
  *
@@ -13,7 +13,7 @@
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *    GNU General Public License for more details.
  *
- *    You should have received a copy of the GNU General Public License
+ *    You should have received a copy of the Lesser GNU General Public License
  *    along with the framework.  If not, see <http://www.gnu.org/licenses/>.
  */
  package org.openvideoads.vast.playlist {
@@ -27,7 +27,7 @@
 	 * @author Paul Schulz
 	 */
 	public class DefaultPlaylistItem extends Debuggable implements PlaylistItem {
-		protected var _stream:Stream;
+		protected var _stream:Stream = null;
 		protected var _played:Boolean = false;
 		protected var _overrideStartTimeSeconds:int = -1;	
         protected var _provider:String = "http";
@@ -67,6 +67,17 @@
 		
 		public function get publishDate():String {
 			return _publishDate;
+		}
+		
+		public function getPreviewImage():String {
+			if(_stream != null) {
+				return _stream.previewImage;
+			}
+			return null;
+		}
+		
+		public function hasPreviewImage():Boolean {
+			return (getPreviewImage() != null);
 		}
 		
 		public function reset():void {

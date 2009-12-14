@@ -92,4 +92,42 @@ Change Log
 * ISSUE 17:	Support pseudo-streaming provider
 * ISSUE 59:	Restore the 'providers' configuration option for Flowplayer
 
+0.4.0 - November 4, 2009
 
+* ISSUE 123: Moved to LGPL
+* ISSUE 114: "Out of the Box" support for AdTech requests
+* ISSUE 120: Ad servers can now be configured per ad slot
+* ISSUE 110: Load issues with the Ant build of the OAS due to control bar strongly typed references
+  in the codebase which meant that the controls plugin had to be loaded before the OAS - strong
+  references removed
+* ISSUE 104: Option to allow companions to display permanently until replaced
+* ISSUE 102: Refactor out the Ad Server to support multiple calls - single and multiple ad
+  calls now supported - see Ad Tech XML Wrapper examples
+* ISSUE 100: Factor out the OpenX references when creating Ad Server config/instances
+* ISSUE 10: XML Wrapper Support added
+* ISSUE 71: Better support for the display of companion ad types (HTML, image and straight code) added
+* New Ad Server request configuration - any ad server can now be configured
+* Check added to ensure that only one companion will be added per DIV
+* "resourceType" and "creativeType" config options added to "companions" config so that the selection
+  of a companion from the VAST response can also be based on the type (script, html, swf, image etc.)
+
+0.5.0 - December 4, 2009
+
+* If OpenX is used, requires OpenX server side Video plugin v1.2
+* ISSUE 129 - Restore JS Event API - see Javascript API doc on google code site for details - support
+  for events and region styling added - see all-example56.html
+* ISSUE 140: Ampersand in OpenX "targeting" parameters breaks JSON parser - customProperties can
+  now be specified either as a single param (e.g. "gender=male") or as an array
+  (e.g. ["gender=male", "age=20-30"]) - Arrays will be converted to ampersand delimited parameter
+  strings (e.g. gender=male&age=20-30
+* ISSUE 141 - Support added for JW Player preview images - see all-example57.html
+* ISSUE 146: Add support for creativeType="image/jpg" etc. - changed NonLinearVideoAd.as to
+  strip out any prefixes like "image/" etc.
+* ISSUE 147: Impression tracking should be fired on empty VAST ads - see all-example58.html - as
+  per the AOL/AdTech request - new configuration option "forceImpressionServing" added to the
+  AdServer config - set to "true" by default for AdTech, false for others.
+* ISSUE 148: url tags not being processed in non linear ad VAST responses when creativeType
+  is set as mimeType (e.g. "image/jpg" etc.). The OpenX Video Ads plugin 1.2 now produces
+  mimeType creativeType values.
+* ISSUE 149: overlay <code></code> tags not being correctly processed by overlay display
+  code. Fixed now - code just inserted - templates just used for <url></url> values

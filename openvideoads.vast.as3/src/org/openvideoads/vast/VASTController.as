@@ -4,7 +4,7 @@
  *    This file is part of the Open Video Ads VAST framework.
  *
  *    The VAST framework is free software: you can redistribute it 
- *    and/or modify it under the terms of the GNU General Public License 
+ *    and/or modify it under the terms of the Lesser GNU General Public License 
  *    as published by the Free Software Foundation, either version 3 of 
  *    the License, or (at your option) any later version.
  *
@@ -13,13 +13,14 @@
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *    GNU General Public License for more details.
  *
- *    You should have received a copy of the GNU General Public License
+ *    You should have received a copy of the Lesser GNU General Public License
  *    along with the framework.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openvideoads.vast {
 	import flash.display.DisplayObjectContainer;
 	import flash.events.ContextMenuEvent;
 	import flash.events.Event;
+	import flash.external.ExternalInterface;
 	import flash.net.URLRequest;
 	import flash.net.navigateToURL;
 	import flash.ui.ContextMenu;
@@ -55,8 +56,6 @@ package org.openvideoads.vast {
 	import org.openvideoads.vast.schedule.StreamSequence;
 	import org.openvideoads.vast.schedule.ads.AdSchedule;
 	import org.openvideoads.vast.schedule.ads.AdSlot;
-	import org.openvideoads.vast.server.AdServerFactory;
-	import org.openvideoads.vast.server.openx.OpenXAdServer;
 	import org.openvideoads.vast.tracking.TimeEvent;
 	import org.openvideoads.vast.tracking.TrackingPoint;
 	import org.openvideoads.vast.tracking.TrackingTable;
@@ -74,7 +73,7 @@ package org.openvideoads.vast {
 		protected var _template:VideoAdServingTemplate = null;
 		protected var _overlayController:OverlayController = null;
 		protected var _config:Config = new Config();
-		protected var _openXAdServer:OpenXAdServer = null;
+//		protected var _openXAdServer:OpenXAdServer = null;
 		protected var _timeBaseline:String = VASTController.RELATIVE_TO_CLIP;
 		protected var _trackStreamSlices:Boolean = true;
 		protected var _visuallyCueingLinearAdClickthroughs:Boolean = true;
@@ -166,9 +165,16 @@ package org.openvideoads.vast {
 			return (_timeBaseline == VASTController.RELATIVE_TO_CLIP);
 		}
 		
+		public function getStreamSequenceIndexGivenOriginatingIndex(originalIndex:int, excludeSlices:Boolean=false, excludeMidRolls:Boolean=false):int {
+			if(_streamSequence != null) {
+				return _streamSequence.getStreamSequenceIndexGivenOriginatingIndex(originalIndex, excludeSlices, excludeMidRolls);
+			}
+			return -1;
+		}
 		public function load():void {
 			this.config.ensureProvidersAreSet();
-            _openXAdServer.loadVideoAdData(this, _adSchedule);			
+			_adSchedule.loadAdsFromAdServers(this);
+//            _openXAdServer.loadVideoAdData(this, _adSchedule);			
 		}
 		
 		public function set config(config:Config):void {
@@ -180,11 +186,10 @@ package org.openvideoads.vast {
    			if(_config.debuggersSpecified()) Debuggable.getInstance().activeDebuggers = _config.debugger;
 
             // Now formulate the ad schedule
-			_adSchedule = new AdSchedule(this, _streamSequence, _config);  
-
+			_adSchedule = new AdSchedule(this, _streamSequence, _config);
    			// Fire up the ad server and load up the template data
-            _openXAdServer = AdServerFactory.getAdServer(AdServerFactory.AD_SERVER_OPENX) as OpenXAdServer;
-            _openXAdServer.initialise(_config);
+//            _openXAdServer = AdServerRequestFactory.getAdServer(AdServerRequestFactory.AD_SERVER_OPENX) as OpenXAdServer;
+//            _openXAdServer.initialise(_config);
 		}
 		
 		public function get config():Config {
@@ -301,7 +306,22 @@ package org.openvideoads.vast {
 			if(_streamSequence != null && streamIndex > -1) {
 				_streamSequence.resetRepeatableTrackingPoints(streamIndex);
 			}
-		}		
+		}	
+		
+		// Javascript API support
+		
+		protected function makeJavascriptAPICall(jsFunction:String):void {
+			ExternalInterface.call(jsFunction);			
+		}
+		
+		// Regions API support
+		
+		public function setRegionStyle(regionID:String, cssText:String):String {
+			if(_overlayController != null) {
+				return _overlayController.setRegionStyle(regionID, cssText);
+			}
+			else return "-1, Overlay Controller is not active";
+		}	
 
 		// Stream scheduling callback
 		
@@ -350,19 +370,20 @@ package org.openvideoads.vast {
 		// TemplateLoadListener callbacks
 		
 		public function onTemplateLoaded(template:VideoAdServingTemplate):void {
+			doLog("VASTController: notified that template has been fully loaded", Debuggable.DEBUG_VAST_TEMPLATE)
 			_template = template;
-			
 			_adSchedule.mapVASTDataToAdSlots(template);
-			_streamSequence.initialise(this, _config.streams, _adSchedule, _config.bitrate, _config.baseURL, 100);
+			_streamSequence.initialise(this, _config.streams, _adSchedule, _config.bitrate, _config.baseURL, 100, _config.previewImage);
 			_adSchedule.addNonLinearAdTrackingPoints(timeRelativeToClip(), true);
 			_adSchedule.fireNonLinearSchedulingEvents();
-			
 			dispatchEvent(new TemplateEvent(TemplateEvent.LOADED, _template));
+			makeJavascriptAPICall("onVASTLoadComplete()");
 		}
 		
 		public function onTemplateLoadError(event:Event):void {
-			doLog("FAILURE loading VAST template - " + event.toString(), Debuggable.DEBUG_FATAL);
+			doLog("VASTController: FAILURE loading VAST template - " + event.toString(), Debuggable.DEBUG_FATAL);
 			dispatchEvent(new TemplateEvent(TemplateEvent.LOAD_FAILED, event));
+			makeJavascriptAPICall("onVASTLoadFailure()");
 		}
 		
 		// Player tracking control API
@@ -457,32 +478,38 @@ package org.openvideoads.vast {
 			// Now handle the display of the overlay
 			if(handlingNonLinearAdDisplay()) _overlayController.displayNonLinearOverlayAd(overlayAdDisplayEvent);
 			dispatchEvent(overlayAdDisplayEvent);
+			makeJavascriptAPICall("onNonLinearAdShow()");
 		}
 		
 		public function onHideNonLinearOverlayAd(overlayAdDisplayEvent:OverlayAdDisplayEvent):void {
 			_overlayLinearVideoAdSlot = null;
 			if(handlingNonLinearAdDisplay()) _overlayController.hideNonLinearOverlayAd(overlayAdDisplayEvent);
 			dispatchEvent(overlayAdDisplayEvent);			
+			makeJavascriptAPICall("onNonLinearAdHide()");
 		}
 		
 		public function onDisplayNonLinearNonOverlayAd(overlayAdDisplayEvent:OverlayAdDisplayEvent):void {
 			if(handlingNonLinearAdDisplay()) _overlayController.displayNonLinearNonOverlayAd(overlayAdDisplayEvent);
 			dispatchEvent(overlayAdDisplayEvent);			
+			makeJavascriptAPICall("onNonLinearAdShow()");
 		}
 		
 		public function onHideNonLinearNonOverlayAd(overlayAdDisplayEvent:OverlayAdDisplayEvent):void {
 			if(handlingNonLinearAdDisplay()) _overlayController.hideNonLinearNonOverlayAd(overlayAdDisplayEvent);
 			dispatchEvent(overlayAdDisplayEvent);			
+			makeJavascriptAPICall("onNonLinearAdHide()");
 		}
 		
 		public function onShowAdNotice(adNoticeDisplayEvent:AdNoticeDisplayEvent):void {
 			if(handlingNonLinearAdDisplay()) _overlayController.showAdNotice(adNoticeDisplayEvent);
-			dispatchEvent(adNoticeDisplayEvent);			
+			dispatchEvent(adNoticeDisplayEvent);				
+			makeJavascriptAPICall("onAdNoticeShow()");		
 		}
 		
 		public function onHideAdNotice(adNoticeDisplayEvent:AdNoticeDisplayEvent):void {
 			if(handlingNonLinearAdDisplay()) _overlayController.hideAdNotice(adNoticeDisplayEvent);
 			dispatchEvent(adNoticeDisplayEvent);			
+			makeJavascriptAPICall("onAdNoticeHide()");
 		}
 
 		public function onOverlayCloseClicked(overlayView:OverlayView):void {
@@ -498,6 +525,7 @@ package org.openvideoads.vast {
 									overlayView);									
 				dispatchEvent(event);					
 			}
+			makeJavascriptAPICall("onRegionCloseClicked()");
 		}
 		
 		public function onOverlayClicked(overlayView:OverlayView):void {
@@ -522,6 +550,7 @@ package org.openvideoads.vast {
 					dispatchEvent(event);
 				}			
 			}
+			makeJavascriptAPICall("onRegionClicked()");
 		}
 		
 		public function onLinearAdClickThroughCallToActionViewClicked(adSlotKey:int):void {
@@ -533,8 +562,16 @@ package org.openvideoads.vast {
 									_adSchedule.getSlot(adSlotKey))
 				);
 			}			
+			makeJavascriptAPICall("onLinearAdClick()");
 		}
 		
+		// Forced Impression Firing for blank VAST Ad Responses
+		public function processImpressionsToForceFire():void {
+			if(_adSchedule != null) {
+				_adSchedule.processImpressionsToForceFire();
+			}
+		}	
+			
 		// CompanionDisplayController APIs
 
 		public function displayingCompanions():Boolean {
@@ -545,30 +582,54 @@ package org.openvideoads.vast {
            doLogAndTrace("Request received to display companion ad", companionEvent, Debuggable.DEBUG_DISPLAY_EVENTS);
            
 			var companionAd:CompanionAd = companionEvent.ad as CompanionAd;
-			if(_config.hasCompanionDivs()) {
-				var companionDivIDs:Array = _config.companionDivIDs;
-				doLog("Event trigger received by companion Ad with ID " + companionAd.id + " - looking for a div to match the sizing (" + companionAd.width + "," + companionAd.height + ")", Debuggable.DEBUG_CUEPOINT_EVENTS);
-				var matchFound:Boolean = false;
-				for(var i:int=0; i < companionDivIDs.length; i++) {
-					if(companionAd.matchesSize(companionDivIDs[i].width, companionDivIDs[i].height)) {
-						matchFound = true;
-						doLog("Found a match for that size - id of matching DIV is " + companionDivIDs[i].id, Debuggable.DEBUG_CUEPOINT_EVENTS);
-						var newHtml:String = companionAd.getMarkup();
-						if(newHtml != null) {
-							var cde:CompanionAdDisplayEvent = new CompanionAdDisplayEvent(CompanionAdDisplayEvent.DISPLAY, companionAd);
-							cde.divID = companionDivIDs[i].id;
-							cde.content = newHtml;
-							dispatchEvent(cde);
+			if(companionAd.isScriptResourceType() && companionAd.hasUrl()) {
+				doLog("Skipping script based companion ads - not supported at present", Debuggable.DEBUG_CUEPOINT_EVENTS);
+			}
+			else {
+				if(_config.hasCompanionDivs()) {
+					var companionDivIDs:Array = _config.companionDivIDs;
+					doLog("Event trigger received by companion Ad with ID " + companionAd.id + " - looking for a div to match the sizing (" + companionAd.width + "," + companionAd.height + ")", Debuggable.DEBUG_CUEPOINT_EVENTS);
+					var matchFound:Boolean = false;
+					var matched:Boolean = false;
+					for(var i:int=0; i < companionDivIDs.length; i++) {
+						matched = false;
+						if(companionDivIDs[i].activeAdID != undefined && companionDivIDs[i].activeAdID == companionAd.parentAdContainer.id) {
+							doLog("Skipping display of matched companion with ID " + companionAd.id + " - DIV is already full with another companion", Debuggable.DEBUG_CUEPOINT_EVENTS);
+						}
+						else {
+							if(companionDivIDs[i].resourceType != undefined) {
+								doLog("Refining companion matching to creativeType: " + companionDivIDs[i].creativeType + " resourceType:" + companionDivIDs[i].resourceType);
+								matched = companionAd.matchesSizeAndType(companionDivIDs[i].width, companionDivIDs[i].height, companionDivIDs[i].creativeType, companionDivIDs[i].resourceType);						
+							}
+							else {
+								matched = companionAd.matchesSize(companionDivIDs[i].width, companionDivIDs[i].height);
+							}
+						}
+						if(matched) {
+							matchFound = true;
+							doLog("Found a match for " + companionDivIDs[i].width + "," + companionDivIDs[i].height + " - id of matching DIV is " + companionDivIDs[i].id, Debuggable.DEBUG_CUEPOINT_EVENTS);
+							var newHtml:String = companionAd.getMarkup();
+							if(newHtml != null) {
+								var cde:CompanionAdDisplayEvent = new CompanionAdDisplayEvent(CompanionAdDisplayEvent.DISPLAY, companionAd);
+								cde.divID = companionDivIDs[i].id;
+								cde.content = newHtml;
+								companionDivIDs[i].activeAdID = companionAd.parentAdContainer.id;
+								dispatchEvent(cde);
+								makeJavascriptAPICall("onCompanionAdShow()");
+							}
 						}
 					}
+					if(!matchFound) doLog("No DIV match found for sizing (" + companionAd.width + "," + companionAd.height + ")", Debuggable.DEBUG_CUEPOINT_EVENTS);				
 				}
-				if(!matchFound) doLog("No DIV match found for sizing (" + companionAd.width + "," + companionAd.height + ")!", Debuggable.DEBUG_CUEPOINT_EVENTS);				
+				else doLog("No DIVS specified for companion ads to be displayed", Debuggable.DEBUG_CUEPOINT_EVENTS);           				
 			}
-			else doLog("No DIVS specified for companion ads to be displayed", Debuggable.DEBUG_CUEPOINT_EVENTS);           
 		}
 		
 		public function onHideCompanionAd(companionEvent:CompanionAdDisplayEvent):void {
-			dispatchEvent(new CompanionAdDisplayEvent(CompanionAdDisplayEvent.HIDE, companionEvent.ad as CompanionAd));
+			if(_config.restoreCompanions) {
+				dispatchEvent(new CompanionAdDisplayEvent(CompanionAdDisplayEvent.HIDE, companionEvent.ad as CompanionAd));				
+  				makeJavascriptAPICall("onCompanionAdHide()");
+			}
 		}
 		
 		// Event registration - region based events must be registered with the overlay(region) controller

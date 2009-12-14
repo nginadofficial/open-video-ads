@@ -4,7 +4,7 @@
  *    This file is part of the Open Video Ads VAST framework.
  *
  *    The VAST framework is free software: you can redistribute it 
- *    and/or modify it under the terms of the GNU General Public License 
+ *    and/or modify it under the terms of the Lesser GNU General Public License 
  *    as published by the Free Software Foundation, either version 3 of 
  *    the License, or (at your option) any later version.
  *
@@ -13,7 +13,7 @@
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *    GNU General Public License for more details.
  *
- *    You should have received a copy of the GNU General Public License
+ *    You should have received a copy of the Lesser GNU General Public License
  *    along with the framework.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openvideoads.vast.schedule.ads {
@@ -28,6 +28,7 @@ package org.openvideoads.vast.schedule.ads {
 	import org.openvideoads.vast.schedule.Stream;
 	import org.openvideoads.vast.schedule.StreamSequence;
 	import org.openvideoads.vast.schedule.ads.templates.*;
+	import org.openvideoads.vast.server.AdServerConfig;
 	import org.openvideoads.vast.tracking.TimeEvent;
 	import org.openvideoads.vast.tracking.TrackingPoint;
 	
@@ -44,11 +45,13 @@ package org.openvideoads.vast.schedule.ads {
 		protected var _applyToParts:Object = null;
 		protected var _width:int = -1;
 		protected var _height:int = -1;
+		protected var _originatingAssociatedStreamIndex:int = 0;
 		protected var _associatedStreamIndex:int = 0;
 		protected var _associatedStreamStartTime:int = 0;
 		protected var _originalAdSlot:AdSlot = null;
 		protected var _owner:AdSchedule = null;
 		protected var _clickSignEnabled:Boolean = true;
+		protected var _adServerConfig:AdServerConfig = null;
 
 		protected var _regions:Object = { 
 			text: "reserved-bottom-w450px-h78px-000000-o50",
@@ -89,7 +92,7 @@ package org.openvideoads.vast.schedule.ads {
 		                       height:int=-1, 
 		                       defaultLinearRegions:Array=null, 
 		                       companionDivIDs:Array=null, 
-		                       streamType:String="any", //mp4
+		                       streamType:String="any",
 		                       deliveryType:String="streaming", 
 		                       bitrate:String="any", 
 		                       playOnce:Boolean=false,
@@ -98,10 +101,13 @@ package org.openvideoads.vast.schedule.ads {
 		                       regions:Object=null,
 		                       templates:Object=null,
 		                       playerConfig:Object=null,
-		                       clickSignEnabled:Boolean=true) {
-			super(parent, vastController, key, id, null, startTime, duration, originalDuration, false, null, streamType, deliveryType, bitrate, playOnce, metaData, autoPlay, null, playerConfig);
+		                       clickSignEnabled:Boolean=true,
+		                       adServerConfig:AdServerConfig=null,
+		                       previewImage:String = null) {
+			super(parent, vastController, key, id, null, startTime, duration, originalDuration, false, null, streamType, deliveryType, bitrate, playOnce, metaData, autoPlay, null, playerConfig, previewImage);
             _owner = owner;
 			_associatedStreamIndex = associatedStreamIndex;
+			_originatingAssociatedStreamIndex = associatedStreamIndex;
 			_zone = zone;
 			_position = position;
 			_applyToParts = applyToParts;
@@ -114,6 +120,7 @@ package org.openvideoads.vast.schedule.ads {
 			if(regions != null) this.regions = regions;
 			if(templates != null) this.templates = templates;
 			_clickSignEnabled = clickSignEnabled;
+			if(adServerConfig != null) _adServerConfig = adServerConfig;
 		}
 		
 		protected function configureDefaultRegions():void {
@@ -147,6 +154,10 @@ package org.openvideoads.vast.schedule.ads {
 		
 		public override function get streamID():String {
 			return _id;
+		}
+		
+		public function get adSlotID():String {
+			return id + "-" + associatedStreamIndex;
 		}
 
 		public function hasPositionDefined():Boolean {
@@ -204,6 +215,21 @@ package org.openvideoads.vast.schedule.ads {
 		
 		public function get zone():String {
 			return _zone;
+		}
+		
+		public function set adServerConfig(adServerConfig:AdServerConfig):void {
+			_adServerConfig = adServerConfig;
+		}
+		
+		public function get adServerConfig():AdServerConfig {
+			return _adServerConfig;
+		}
+		
+		public function hasAdServerConfigured():Boolean {
+			if(_adServerConfig != null) {
+				return (_adServerConfig.serverType != null);	
+			}
+			return false;
 		}
 		
 		public function set position(position:String):void {
@@ -297,6 +323,14 @@ package org.openvideoads.vast.schedule.ads {
 		public function get associatedStreamIndex():int {
 			return _associatedStreamIndex;
 		}
+
+		public function set originatingAssociatedStreamIndex(originatingAssociatedStreamIndex:int):void {
+			_originatingAssociatedStreamIndex = originatingAssociatedStreamIndex;
+		}
+		
+		public function get originatingAssociatedStreamIndex():int {
+			return _originatingAssociatedStreamIndex;
+		}
 		
 		public function set applyToParts(applyToParts:Object):void {
 			_applyToParts = applyToParts;
@@ -331,6 +365,10 @@ package org.openvideoads.vast.schedule.ads {
 		
 		public function isActive():Boolean {
 			return (_videoAd != null);
+		}
+		
+		public function isEmpty():Boolean {
+			return !hasNonLinearAds() && !hasLinearAd();	
 		}
 		
 		public function hasNonLinearAds():Boolean {
@@ -500,6 +538,12 @@ package org.openvideoads.vast.schedule.ads {
 			}
 		}
 
+        public function processForcedImpression():void {
+			if(_videoAd != null) {
+				_videoAd.triggerForcedImpressionConfirmations();
+			}        	
+        }
+        
 		public override function processStartStream():void {
 			if(_videoAd != null) {
 				_videoAd.processStartAdEvent();
@@ -758,6 +802,13 @@ package org.openvideoads.vast.schedule.ads {
         	}
 	 	}
 
+        public function get clonedAdServerConfig():AdServerConfig {
+        	if(_adServerConfig != null) {
+	        	return _adServerConfig; //.clone();    		
+        	}
+        	return null;
+        }
+        
 		public function markAsCopy(originalAdSlot:AdSlot):void {
 			_originalAdSlot = originalAdSlot;
 		}
@@ -793,17 +844,23 @@ package org.openvideoads.vast.schedule.ads {
 		                         			_metaData,
 		                         			_autoPlay,
 		                         			_regions,
-		                         			_templates
+		                         			_templates,
+		                         			_playerConfig,
+		                         			_clickSignEnabled,
+		                         			clonedAdServerConfig,
+		                         			_previewImage
 		                      		  );
+		    clonedAdSlot.originatingAssociatedStreamIndex = _originatingAssociatedStreamIndex;
 		    clonedAdSlot.markAsCopy(this);
 		    return clonedAdSlot;
 		}
-		
+
 		public override function toString():String {
 			return super.toString() +
 			   ", width: " + _width +
 			   ", height: " + _height + 
 			   ", position: " + _position + 
+			   ", originatingAssociatedStreamIndex: " + _originatingAssociatedStreamIndex +
 			   ", associatedStreamIndex: " + _associatedStreamIndex +
 			   ", associatedStreamStartTime: " + _associatedStreamStartTime +
 			   ", showNotice: " + noticeToBeShown() +

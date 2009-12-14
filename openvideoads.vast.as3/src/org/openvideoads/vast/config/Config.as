@@ -4,7 +4,7 @@
  *    This file is part of the Open Video Ads VAST framework.
  *
  *    The VAST framework is free software: you can redistribute it 
- *    and/or modify it under the terms of the GNU General Public License 
+ *    and/or modify it under the terms of the Lesser GNU General Public License 
  *    as published by the Free Software Foundation, either version 3 of 
  *    the License, or (at your option) any later version.
  *
@@ -13,7 +13,7 @@
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *    GNU General Public License for more details.
  *
- *    You should have received a copy of the GNU General Public License
+ *    You should have received a copy of the Lesser GNU General Public License
  *    along with the framework.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openvideoads.vast.config {
@@ -39,6 +39,7 @@ package org.openvideoads.vast.config {
 		protected var _openVideoAdsConfig:RemoteConfigGroup = new RemoteConfigGroup();
 				
 		public function Config(rawConfig:Object=null) {
+			setDefaultProviders();
 			if(rawConfig != null) {
 				initialise(rawConfig);
 			}
@@ -108,12 +109,27 @@ package org.openvideoads.vast.config {
 		
 		// INTERFACES
 		
+		public function hasStreams():Boolean {
+			return _showsConfig.hasShowStreamsDefined();
+		}
+		
 		public function set streams(streams:Array):void {
 			_showsConfig.streams = streams;
 		}
 		
 		public function get streams():Array {
 			return _showsConfig.streams;
+		}
+		
+		public function prependStreams(streams:Array):void {
+			_showsConfig.prependStreams(streams);
+		}
+		
+		public function get previewImage():String {
+			if(_showsConfig != null) {
+				return _showsConfig.getPreviewImage();
+			}
+			else return null;
 		}
 		
 		public function hasCompanionDivs():Boolean {
@@ -126,6 +142,10 @@ package org.openvideoads.vast.config {
 		
 		public function get displayCompanions():Boolean {
 			return _adsConfig.displayCompanions;
+		}
+		
+		public function get restoreCompanions():Boolean {
+			return _adsConfig.restoreCompanions;
 		}
 		
 		public function get notice():Object {
