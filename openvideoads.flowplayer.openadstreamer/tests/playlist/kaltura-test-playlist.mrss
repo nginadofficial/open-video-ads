@@ -1,0 +1,63 @@
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:kaltura="http://kaltura.com/playlist/1.0" >
+	<channel>
+		<description>Kaltura's mRss</description>
+		<title>Kaltura's mRss</title>
+		<link>/index.php/partnerservices2/executeplaylist?uid=&amp;partner_id=34962&amp;ks=ZjE1MGUxZDJmNDZhZGM1NjFlMmNlODNmMDcxYzhlYWVmZTkxNTJkYnwzNDk2MjszNDk2MjsxMjU0NTU3NTgxOzA7MTI1NDQ3MTE4MS45NzgxOzA7dmlldzoq&amp;playlist_id=i8iwu4wdy4&amp;subp_id=3496200&amp;format=8</link>
+		<item>
+			<description>Kaltura Item</description>
+			<guid isPermaLink="false">34962|arhzhssxws</guid>
+			<link></link>
+			<pubDate>2009-08-03 13:05:02</pubDate>
+			<media:content url="http://cdn.kaltura.com/p/34962/sp/3496200/flvclipper/entry_id/arhzhssxws/version/100000" fileSize="1136041" type="video/x-flv" medium="video" duration="20" lang="en"/>
+			<media:title type="plain">dogs_600.mp4</media:title>
+			<media:description></media:description>
+			<media:keywords>  dogs 600 mp4 dog video ad </media:keywords>
+			<media:thumbnail url="http://cdn.kaltura.com/p/34962/sp/3496200/thumbnail/entry_id/arhzhssxws/version/100001"/>
+			<media:credit role="kaltura partner">34962</media:credit>
+			<kaltura:entryId>arhzhssxws</kaltura:entryId>
+			<kaltura:views>11</kaltura:views>
+			<kaltura:plays>4</kaltura:plays>
+			<kaltura:userScreenName></kaltura:userScreenName>
+			<kaltura:puserId>__ADMIN__34632</kaltura:puserId>
+			<kaltura:userLandingPage></kaltura:userLandingPage>
+			<kaltura:partnerLandingPage></kaltura:partnerLandingPage>
+			<kaltura:tags>dog video,ad</kaltura:tags>
+			<kaltura:adminTags></kaltura:adminTags>
+			<kaltura:votes>0</kaltura:votes>
+			<kaltura:rank>0</kaltura:rank>
+			<kaltura:createdAt>2009-08-03 13:05:02</kaltura:createdAt>
+			<kaltura:createdAtInt>1249319102</kaltura:createdAtInt>
+			<kaltura:sourceLink></kaltura:sourceLink>
+			<kaltura:credit></kaltura:credit>
+		</item>
+		<item>
+			<description>Kaltura Item</description>
+			<guid isPermaLink="false">34962|82ie9yxeg4</guid>
+			<link></link>
+			<pubDate>2009-08-03 12:58:25</pubDate>
+			<media:content url="http://cdn.kaltura.com/p/34962/sp/3496200/flvclipper/entry_id/82ie9yxeg4/version/100000" fileSize="369153" type="video/x-flv" medium="video" duration="5" lang="en"/>
+			<media:title type="plain">baileys_5sec.mp4</media:title>
+			<media:description></media:description>
+			<media:keywords>  baileys 5sec mp4 ad </media:keywords>
+			<media:thumbnail url="http://cdn.kaltura.com/p/34962/sp/3496200/thumbnail/entry_id/82ie9yxeg4/version/100001"/>
+			<media:credit role="kaltura partner">34962</media:credit>
+			<kaltura:entryId>82ie9yxeg4</kaltura:entryId>
+			<kaltura:views>1</kaltura:views>
+			<kaltura:plays>1</kaltura:plays>
+			<kaltura:userScreenName></kaltura:userScreenName>
+			<kaltura:puserId>__ADMIN__34632</kaltura:puserId>
+			<kaltura:userLandingPage></kaltura:userLandingPage>
+			<kaltura:partnerLandingPage></kaltura:partnerLandingPage>
+			<kaltura:tags>ad</kaltura:tags>
+			<kaltura:adminTags></kaltura:adminTags>
+			<kaltura:votes>0</kaltura:votes>
+			<kaltura:rank>0</kaltura:rank>
+			<kaltura:createdAt>2009-08-03 12:58:25</kaltura:createdAt>
+			<kaltura:createdAtInt>1249318705</kaltura:createdAtInt>
+			<kaltura:sourceLink></kaltura:sourceLink>
+			<kaltura:credit></kaltura:credit>
+		</item>
+	</channel>
+</rss>
+
+

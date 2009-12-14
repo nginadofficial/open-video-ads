@@ -4,7 +4,7 @@
  *    This file is part of the Open Video Ads Flowplayer Open Ad Streamer.
  *
  *    The Open Ad Streamer is free software: you can redistribute it 
- *    and/or modify it under the terms of the GNU General Public License 
+ *    and/or modify it under the terms of the Lesser GNU General Public License 
  *    as published by the Free Software Foundation, either version 3 of 
  *    the License, or (at your option) any later version.
  *
@@ -13,7 +13,7 @@
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *    GNU General Public License for more details.
  *
- *    You should have received a copy of the GNU General Public License
+ *    You should have received a copy of the Lesser GNU General Public License
  *    along with the framework.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openvideoads.plugin.flowplayer.streamer
@@ -52,12 +52,47 @@ package org.openvideoads.plugin.flowplayer.streamer
 				Debuggable.getInstance().doLog("Custom Clip Config: Setting metaData to " + config.metaData, Debuggable.DEBUG_CONFIG);
 			}
 			if(config.scaling != undefined) {
-				clip.scaling = MediaSize.forName(config.scaling);
+				clip.scaling = ((config.scaling is String) ? MediaSize.forName(config.scaling) : config.scaling);
 				Debuggable.getInstance().doLog("Custom Clip Config: Setting scaling to " + config.scaling, Debuggable.DEBUG_CONFIG);
 			}
 			if(config.seekableOnBegin != undefined) {
 				clip.seekableOnBegin = config.seekableOnBegin;
 				Debuggable.getInstance().doLog("Custom Clip Config: Setting seekableOnBegin to " + config.seekableOnBegin, Debuggable.DEBUG_CONFIG);
+			}
+			if(config.autoPlay != undefined) {
+				clip.autoPlay = config.autoPlay; 				
+				Debuggable.getInstance().doLog("Custom Clip Config: Setting autoPlay to " + config.autoPlay, Debuggable.DEBUG_CONFIG);
+			}
+			if(config.type != undefined) {
+				clip.type = config.type; 				
+				Debuggable.getInstance().doLog("Custom Clip Config: Setting type to " + config.type, Debuggable.DEBUG_CONFIG);
+			}
+			if(config.customProperties != undefined) {
+				clip.customProperties = config.customProperties; 				
+				Debuggable.getInstance().doLog("Custom Clip Config: Setting custom properties to " + config.customProperties, Debuggable.DEBUG_CONFIG);
+			}
+			if(config.image != undefined) {
+				clip.image = config.image; 				
+				Debuggable.getInstance().doLog("Custom Clip Config: Setting image to " + config.image, Debuggable.DEBUG_CONFIG);
+			}
+			if(config.linkUrl != undefined) {
+				clip.linkUrl = config.linkUrl; 				
+				Debuggable.getInstance().doLog("Custom Clip Config: Setting linkUrl to " + config.linkUrl, Debuggable.DEBUG_CONFIG);
+			}
+			if(config.linkWindow != undefined) {
+				clip.linkWindow = config.linkWindow; 				
+				Debuggable.getInstance().doLog("Custom Clip Config: Setting linkWindow to " + config.linkWindow, Debuggable.DEBUG_CONFIG);
+			}
+			if(config.live != undefined) {
+				clip.live = config.live; 				
+				Debuggable.getInstance().doLog("Custom Clip Config: Setting live to " + config.live, Debuggable.DEBUG_CONFIG);
+			}
+			if(config.position != undefined) {
+				clip.position = config.position; 				
+				Debuggable.getInstance().doLog("Custom Clip Config: Setting position to " + config.position, Debuggable.DEBUG_CONFIG);
+			}
+			if(config.linkWindow != undefined) {
+				clip.provider = config.provider; 				
 			}
 		}
 	}

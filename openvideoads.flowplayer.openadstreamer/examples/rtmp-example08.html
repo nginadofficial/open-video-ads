@@ -17,7 +17,7 @@ text changed. For this example, the text has been set to "My New Ad Notice - _se
 <a class="example"></a>
 
 <script type="text/javascript">
-flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
+flowplayer("a.example", "../dist/flowplayer-3.1.5.swf", {
     plugins: {
         rtmp: {
             url: "../dist/flowplayer.rtmp-3.1.3.swf"
@@ -29,9 +29,6 @@ flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
         openAdStreamer: {
             url: '../dist/OpenAdStreamer.swf',
 //            "url": "/fp-http/OpenAdStreamer.swf",
-
-//        "deliveryType": "streaming",
-//            "providers": { "rtmp": "../dist/flowplayer.rtmp-3.1.3-dev.swf" },
 
             "overlays": {
               "regions": [
@@ -48,10 +45,12 @@ flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
             },
 
             "ads": {
-              "server": {
-                "type": "OpenX",
-                "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
-            },
+                "servers": [
+                    {
+                       "type": "OpenX",
+                       "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
+                    }
+                ],
 
               "schedule": [
                   {
@@ -80,7 +79,7 @@ The configuration for this example is:
 <div class="codebox">
 <pre>
 <code class="javascript">
-flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
+flowplayer("a.example", "../dist/flowplayer-3.1.5.swf", {
     plugins: {
         rtmp: {
             url: "../dist/flowplayer.rtmp-3.1.3.swf"
@@ -107,10 +106,12 @@ flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
             },
 
             "ads": {
-               "server": {
-                  "type": "OpenX",
-                  "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
-               },
+               "servers": [
+                   {
+                     "type": "OpenX",
+                     "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
+                   }
+               ],
               "schedule": [
                   {
                      "zone": "1",
@@ -135,5 +136,18 @@ flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
 </code>
 </pre>
 </div>
+<script type="text/javascript" src="js/tracking.js">
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-10158120-3");
+if(TRACKING_TURNED_ON) {
+	pageTracker._trackPageview();
+}
+} catch(err) {}
+</script>
 </body>
 </html>
