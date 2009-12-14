@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VideoAdServingTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast.xsd">
+<Ad id="pre-roll">
+<Wrapper>
+<AdSystem>Adtech</AdSystem>
+
+<VASTAdTagURL><URL><![CDATA[http://de.at.atwola.com/?adrawdata/3.0/515.1/2129823/0/1725/noperf=1;cc=2;header=yes;alias=myalias;cookie=yes;adct=204;misc=21480195]]></URL></VASTAdTagURL>
+
+<Error><URL></URL></Error>
+
+<Impression><URL id="myadserver"><![CDATA[http://adserver.adtech.de/utrack|3.0|59|0|0|0|BeaconId=3730;rettype=img;subnid=0;Section=VID_START]]></URL>
+<URL id="2ndadserver"><![CDATA[http://adserver.adtech.de/adcount/3.0/59/1934412/0/509/AdId=2684400;BnId=1;ct=2630264548;st=1220;adcid=1;itime=21480195;reqtype=25]]></URL></Impression>
+
+<TrackingEvents>
+<Tracking event="firstQuartile">
+		<URL id="myadserver"><![CDATA[http://adserver.adtech.de/utrack|3.0|59|0|0|0|BeaconId=3730;rettype=img;subnid=0;Section=VID_25]]></URL>
+</Tracking>
+	<Tracking event="midpoint">
+		<URL id="myadserver"><![CDATA[http://adserver.adtech.de/utrack|3.0|59|0|0|0|BeaconId=3730;rettype=img;subnid=0;Section=VID_MID]]></URL>
+</Tracking>
+<Tracking event="thirdQuartile">
+		<URL id="myadserver"><![CDATA[http://adserver.adtech.de/utrack|3.0|59|0|0|0|BeaconId=3730;rettype=img;subnid=0;Section=VID_75]]></URL>
+</Tracking>
+<Tracking event="complete">
+		<URL id="myadserver"><![CDATA[http://adserver.adtech.de/utrack|3.0|59|0|0|0|BeaconId=3730;rettype=img;subnid=0;Section=VID_END]]></URL>
+</Tracking>
+<Tracking event="mute">
+		<URL id="myadserver"><![CDATA[http://adserver.adtech.de/utrack|3.0|59|0|0|0|BeaconId=3730;rettype=img;subnid=0;Section=VID_MUTE]]></URL>
+</Tracking>
+<Tracking event="pause">
+		<URL id="myadserver"><![CDATA[http://adserver.adtech.de/utrack|3.0|59|0|0|0|BeaconId=3730;rettype=img;subnid=0;Section=VID_PAUSE]]></URL>
+</Tracking>
+<Tracking event="replay">
+	<URL id="myadserver"><![CDATA[http://adserver.adtech.de/utrack|3.0|59|0|0|0|BeaconId=3730;rettype=img;subnid=0;Section=VID_REPLAY]]></URL>
+</Tracking>
+<Tracking event="fullscreen">
+	<URL id="myadserver"><![CDATA[http://adserver.adtech.de/utrack|3.0|59|0|0|0|BeaconId=3730;rettype=img;subnid=0;Section=VID_FULLSCREEN]]></URL>
+</Tracking>
+</TrackingEvents>
+
+
+<VideoClicks>
+<ClickTracking>
+<URL id="anotheradserver"><![CDATA[http://adserver.adtech.de/adlink/59/1934412/0/509/AdId=2684400;BnId=1;itime=21480195;key=key1+key2;nodecode=yes;link=]]></URL>
+<URL id="athirdadserver"></URL>
+</ClickTracking>
+</VideoClicks>
+
+
+<Extensions>
+<Extension type="adWrapperCompanion">
+<TemplateVersion>1.0</TemplateVersion>
+
+<AdServingData>
+<DeliveryData>
+<WrapperCompanionAds>
+</WrapperCompanionAds>
+</DeliveryData>
+</AdServingData>
+</Extension>
+</Extensions>
+</Wrapper>
+</Ad>
+</VideoAdServingTemplate>

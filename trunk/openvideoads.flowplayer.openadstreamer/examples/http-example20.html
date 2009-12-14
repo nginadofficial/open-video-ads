@@ -17,7 +17,7 @@ with a "site variable" called "category" and a value of "food" is assigned.
 <a class="example"></a>
 
 <script type="text/javascript">
-flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
+flowplayer("a.example", "../dist/flowplayer-3.1.5.swf", {
     plugins: {
         controls: {
             autoHide: "always"
@@ -27,8 +27,6 @@ flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
             url: '../dist/OpenAdStreamer.swf',
 //            "url": "/fp-http/OpenAdStreamer.swf",
 
-//          "deliveryType": "progressive",
-
             "debug": {
               "debugger": "firebug",
               "levels": "fatal"
@@ -36,11 +34,16 @@ flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
 
             "ads": {
                 "pauseOnClickThrough": true,
-              "server": {
-                  "type": "OpenX",
-                   "adParameters": [ { "name": "category", "value": "food" } ],
-                "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
-              },
+              "servers": [
+                   {
+                      "type": "OpenX",
+                      "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php",
+                      "customProperties": {
+                            "target": [ "category=food", "gender=male" ] 
+//                            "target": "category=food" 
+                      }
+                   }
+              ],
               "schedule": [
                   {
                     "zone": "5",
@@ -58,7 +61,7 @@ The configuration for this example is:
 <div class="codebox">
 <pre>
 <code class="javascript">
-flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
+flowplayer("a.example", "../dist/flowplayer-3.1.5.swf", {
     plugins: {
         controls: {
             autoHide: "always"
@@ -74,11 +77,17 @@ flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
 
             "ads": {
                 "pauseOnClickThrough": true,
-                "server": {
-                    "type": "OpenX",
-                    "adParameters": [ { "name": "category", "value": "food" } ],
-                    "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
-                },
+                "servers": [
+                    {
+                       "type": "OpenX",
+                       "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php",
+                       "customProperties": { 
+                            "target": [ "category=food", "gender=male" ] 
+                            // This is also possible for a single param: 
+                            //     "target": "category=food" 
+                       }
+                    }
+                ],
                 "schedule": [
                     {
                       "zone": "5",
@@ -92,5 +101,18 @@ flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
 </code>
 </pre>
 </div>
+<script type="text/javascript" src="js/tracking.js">
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-10158120-3");
+if(TRACKING_TURNED_ON) {
+	pageTracker._trackPageview();
+}
+} catch(err) {}
+</script>
 </body>
 </html>

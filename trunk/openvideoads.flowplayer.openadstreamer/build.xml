@@ -2,7 +2,7 @@
     <property file="build.properties" />
 	<property name="devkit-dir" value="../flowplayer.devkit" />
 	<property file="${devkit-dir}/plugin-build.properties" />
-	<property name="plugin-libs" value="lib/ova-vast-0.3.4.swc" />
+	<property name="plugin-libs" value="lib/ova-vast-0.5.0.swc" />
     <property name="plugin-runtime-lib-swc1" value="lib/flowplayer.controls.swc" />
 
 	<import file="${devkit-dir}/plugin-build.xml"/>

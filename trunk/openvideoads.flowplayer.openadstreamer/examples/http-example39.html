@@ -30,7 +30,7 @@ a companion banner attached. An overlay ad (click to video) is played
 </div>
 
 <script type="text/javascript">
-flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
+flowplayer("a.example", "../dist/flowplayer-3.1.5.swf", {
     plugins: {
         controls: {
             autoHide: "always"
@@ -68,18 +68,25 @@ flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
                       "file":"the-black-hole.mp4",
                       "duration":"00:01:00",
                       "metaData": false
+                    },
+                    {
+                      "file":"the-black-hole.mp4",
+                      "duration":"00:01:00",
+                      "metaData": false
                     }
                 ]
             },
 
             "ads": {
-                "server": {
-                    "type": "OpenX",
-                    "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
-                },
+              "servers": [
+                   {
+                      "type": "OpenX",
+                      "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php",
+		              "allowAdRepetition": true,
+                   }
+              ],
                 "disableControls": false,
                 "displayCompanions": true,
-                "allowAdRepetition": true,
                 "companions": [
                     { "id":"companion", "width":"150", "height":"360" }
                 ],
@@ -98,6 +105,7 @@ flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
                     {
                        "zone": "34",
                        "startTime": "00:00:15",
+                       "duration": "10",
                        "width": 450,
                        "height": 50
                     },
@@ -122,7 +130,7 @@ The configuration for this example is:
 <div class="codebox">
 <pre>
 <code class="javascript">
-flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
+flowplayer("a.example", "../dist/flowplayer-3.1.5.swf", {
     plugins: {
         controls: {
             autoHide: "always"
@@ -164,13 +172,15 @@ flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
             },
 
             "ads": {
-                "server": {
-                    "type": "OpenX",
-                    "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
-                },
+                "servers": [
+                    {
+                       "type": "OpenX",
+                       "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php",
+                       "allowAdRepetition": true
+                    }
+                ],
                 "disableControls": false,
                 "displayCompanions": true,
-                "allowAdRepetition": true,
                 "companions": [
                     { "id":"companion", "width":"150", "height":"360" }
                 ],
@@ -189,6 +199,7 @@ flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
                     {
                        "zone": "34",
                        "startTime": "00:00:15",
+                       "duration": "10",
                        "width": 450,
                        "height": 50
                     },
@@ -200,7 +211,7 @@ flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
             },
 
             "debug": {
-                "levels": "fatal, segment_formation, config",
+                "levels": "fatal",
                 "debugger": "firebug"
             }
         }
@@ -209,5 +220,18 @@ flowplayer("a.example", "../dist/flowplayer-3.1.4.swf", {
 </code>
 </pre>
 </div>
+<script type="text/javascript" src="js/tracking.js">
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-10158120-3");
+if(TRACKING_TURNED_ON) {
+	pageTracker._trackPageview();
+}
+} catch(err) {}
+</script>
 </body>
 </html>
