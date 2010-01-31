@@ -1,7 +1,11 @@
 #summary The Flowplayer Javascript API
 #sidebar TableOfContents
 
-IN DEVELOPMENT
+EVENTS
+
+onStreamScheduled(streamIndex, baseURL, streamName, startTime, duration)
+
+OAS API
 
 VAST Template
 {{{
