@@ -3,7 +3,9 @@
 
 EVENTS
 
+{{{
 onStreamScheduled(streamIndex, baseURL, streamName, startTime, duration)
+}}}
 
 OAS API
 
