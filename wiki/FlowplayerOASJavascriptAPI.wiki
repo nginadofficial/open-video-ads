@@ -4,7 +4,8 @@
 EVENTS
 
 {{{
-onStreamScheduled(streamIndex, baseURL, streamName, startTime, duration)
+onLinearScheduled(streamIndex, baseURL, streamName, startTime, duration)
+onNonLinearScheduled(adSlotIndex, mediaURL, startTime, duration)
 onLinearAdStart()
 onLinearAdFirstQuartileComplete()
 onLinearAdMidPointComplete()
