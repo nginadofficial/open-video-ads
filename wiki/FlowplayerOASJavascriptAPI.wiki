@@ -5,7 +5,7 @@ EVENTS
 
 {{{
 onLinearScheduled(streamIndex, baseURL, streamName, startTime, duration)
-onNonLinearScheduled(adSlotIndex, mediaURL, startTime, duration)
+onNonLinearScheduled(associatedStreamIndex, startTime, duration)
 onLinearAdStart()
 onLinearAdFirstQuartileComplete()
 onLinearAdMidPointComplete()
