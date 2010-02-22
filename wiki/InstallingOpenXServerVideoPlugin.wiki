@@ -3,4 +3,4 @@
 
 The Video Ads plugin is now packaged with OpenX (any OpenX version 2.8.4 or higher)
 
-You just need to install that version of OpenX and you are ready to go.
+You just need to [http://www.openx.org/en/download download] and install that version of [http://www.openx.org OpenX] and you are ready to go.
