@@ -4,3 +4,16 @@
 The Video Ads plugin is now packaged with the download and hosted versions of OpenX (version 2.8.4 or higher)
 
 For non-hosted solutions you just need to [http://www.openx.org/en/download download] and install that version of [http://www.openx.org OpenX] and you are ready to go.
+
+== Running OpenX 2.8.2 ==
+
+If you are running OpenX 2.8.2 and wish to install the Video Ads plugin, please follow these instructions:
+ 
+   * Download the video ads plugin [https://svn.openx.org/openx/trunk/etc/plugins/openXVideoAds.zip]
+
+<img src="http://static.bouncingminds.com/images/openx-iab-vast/plugin_install.png" width="700" border="0" />
+  # While logged into OpenX Admin Console, use the "Working as" link in the top right hand corner to switch to "Administrator" role and click on the "plugins" tab
+  # You will see an option at the top of the tab to "Plugins"
+  # Use that option to install the file that you downloaded (openXVideoAds.zip)
+  # When successfully installed, you will see openXVideoAds appear in the list of installed plugins
+  # If necessary click the Enable button to enable the plugin
