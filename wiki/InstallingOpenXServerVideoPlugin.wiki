@@ -1,13 +1,13 @@
 #summary Installing the OpenX server side Video Ad Plugin
 #sidebar TableOfContents
 
-== Running OpenX 2.8.4 or Higher ==
+=== Running OpenX 2.8.4 or Higher ===
 
 The Video Ads plugin is now packaged with the download and hosted versions of OpenX (version 2.8.4 or higher)
 
 For non-hosted solutions you just need to [http://www.openx.org/en/download download] and install that version of [http://www.openx.org OpenX] and you are ready to go.
 
-== Running OpenX 2.8.3 ==
+=== Running OpenX 2.8.3 ===
 
 Please note, we have not tested the OpenX Video Ads plugin with OpenX 2.8.3. We recommend you either run 2.8.4 (where the plugin is packaged by default) or 2.8.2 where you need to separately install the plugin (see below). We have had reports of issues running 2.8.3 - specifically the following error has been reported:
 
@@ -15,7 +15,7 @@ Please note, we have not tested the OpenX Video Ads plugin with OpenX 2.8.3. We 
 Fatal error:  Call to undefined function OX_Delivery_logMessage() in /var/www/openx-2.8.3/plugins/bannerTypeHtml/vastInlineBannerTypeHtml/vastInlineHtml.delivery.php on line 77
 }}}
 
-== Running OpenX 2.8.2 ==
+=== Running OpenX 2.8.2 ===
 
 If you are running OpenX 2.8.2 and wish to install the Video Ads plugin, please follow these instructions:
  
