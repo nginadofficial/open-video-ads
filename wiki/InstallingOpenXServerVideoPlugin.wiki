@@ -1,7 +1,7 @@
 #summary Installing the OpenX server side Video Ad Plugin
 #sidebar TableOfContents
 
-=== Running OpenX 2.8.4 or Higher ===
+=== Running OpenX 2.8.4 or higher ===
 
 The Video Ads plugin is now packaged with the download and hosted versions of OpenX (version 2.8.4 or higher)
 
