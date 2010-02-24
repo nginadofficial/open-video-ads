@@ -1,7 +1,7 @@
 #summary Specific configuration settings to support the 24/7 Smart Media Ad Server
 #sidebar TableOfContents
 
-These are specific configuration settings to support the 24/7 Smart Media Open AdStream ad management platform. Open AdStream requests are supported 'out of the box'.
+These are specific configuration settings to support the [http://www.247smartmedia.com 24/7 Smart Media Open AdStream ad management platform]. Open AdStream requests are supported 'out of the box'.
 
 This guide steps through the different configuration approaches that may be taken to integrate an Open AdStream request.
 
@@ -85,6 +85,7 @@ In addition, several default values were used (because no specific ones were dec
 
 In order to use keyword targeting, the following configuration can be used:
 
+{{{
 flowplayer('a.example', '../dist/flowplayer-3.1.5.swf', {
     plugins: {	    
         controls: {
@@ -120,11 +121,13 @@ flowplayer('a.example', '../dist/flowplayer-3.1.5.swf', {
         }
     }
 });
+}}}
 
 In this example, we're setting the __target__ value of the above template to a & delimited list with the values of the "target" setting. 
+
 The call to Open AdStream would then be:
 
-http://oasc16.247realmedia.com/RealMedia/ads/adstream_sx.ads/openvideoads.org/vast@x01?carmake=bmw&logged=yes
+http://oasc16.247realmedia.com/RealMedia/ads/adstream_sx.ads/openvideoads.org/vast@x01carmake=bmw&logged=yes
 
 ==Setting the Random Number==
 
