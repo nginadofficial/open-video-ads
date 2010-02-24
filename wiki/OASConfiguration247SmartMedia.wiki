@@ -1,7 +1,7 @@
-#summary Specific configuration settings to support the 24/7 Smart Media Ad Server
+#summary Specific configuration settings to support the 24/7 Real Media Ad Server
 #sidebar TableOfContents
 
-These are specific configuration settings to support the [http://www.247smartmedia.com 24/7 Smart Media Open AdStream ad management platform]. Open AdStream requests are supported 'out of the box'.
+These are specific configuration settings to support the [http://www.247realmedia.com 24/7 Real Media Open AdStream ad management platform]. Open AdStream requests are supported 'out of the box'.
 
 This guide steps through the different configuration approaches that may be taken to integrate an Open AdStream request.
 
