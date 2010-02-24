@@ -1,1 +1,176 @@
-24/7 Smart Media ad server configuration
+=OASConfigurationOpenAdStream=
+
+These are specific configuration settings to support the Open AdStream ad management platform. Open AdStream requests are supported 'out of the box'.
+
+This guide steps through the different configuration approaches that may be taken to integrate an Open AdStream request.
+
+=The Basics=
+
+The configuration example below illustrates a simple Open AdStream request configuration:
+
+flowplayer('a.example', '../dist/flowplayer-3.1.5.swf', {
+    plugins: {	    
+        controls: {
+            autoHide: 'always'
+        },
+
+        openAdStreamer: {
+            url: '../dist/OpenAdStreamer.swf',
+            
+            'debug': {
+                'debugger': 'firebug',
+                'levels': 'config'
+            },
+
+            'ads': {
+                'pauseOnClickThrough': true,
+                'servers': [
+                    {
+                      'type': 'OAS',
+                      'apiAddress': 'http://oasc16.247realmedia.com/RealMedia/ads/adstream_sx.ads'
+                    }
+                ],
+                'schedule': [
+                    {
+                      'zone': 'openvideoads.org/vast@x01',
+                      'position': 'pre-roll'
+                    }
+                ]
+            }
+        }
+    }
+});
+
+In this example 1 ad slot is declared - a pre-roll ad. To obtain the pre-roll ad, a single ad server is declared - one of type "OAS". This type corresponds to the Open AdStream ad management platform.
+
+After the type declaration, the address for the server is specified as http://oasc16.247realmedia.com/RealMedia/ads/adstream_sx.ads
+
+In this instance, to identify the type of ad to be served by Open AdStream, a zone is declared. The zone is defined as a string created by appending two key Open AdStream concepts together. They are:
+
+    * A sitepage : e.g. 'openvideoads.org/vast' which is the sitepage to where the campaign is targeted to
+    * A position: e.g. 'x01' which is the position to which a creative has been assigned to
+
+Taking these two components in our example, we get a zone ID as openvideoads.org/vast@x01
+
+
+
+=Constructing an Open AdStream Request=
+
+When the OpenAdStreamer reaches a point where it needs to make a request to an ad server to get the ad asset, it constructs the ad server request URL from a template that is pre-defined in the VAST framework for the declared ad server type.
+
+For Open AdStream, the default request URL template appears as follows:
+
+__api-address__/__sitepage__/__random-number__@__listpos__?__target__
+
+A request template is basically a string pattern that needs to be populated by the OpenAdStreamer when making a request to an ad server. For each template, a set of default values are also specified for the ad server type so that with the minimal configuration, a successful ad server request can be constructed. The only default value for Open AdStream's template is the query string (__target__) which is set to an empty string.
+
+Using this template and our example, the request to Open AdStream results as follows:
+
+http://oasc16.247realmedia.com/RealMedia/ads/adstream_sx.ads/openvideoads.org/vast@x01?
+
+The resulting URL was constructed because:
+
+    * __api-address__ was replaced with the "apiAddress" setting http://oasc16.247realmedia.com/RealMedia/ads/adstream_sx.ads
+    * The "zone" setting was split into an array of strings by dividing it where the @ character occurs
+    * __sitepage__ was replaced by the first value of the above array, i.e. openvideoads.org/vast
+    * __listpos__ was replaced by the second value of the above array, i.e. x01
+
+In addition, several default values were used (because no specific ones were declared in the example configuration)
+
+    * __target__ was replaced with an empty string
+    * __random-number__ was replaced with a random number (__random-number__ is a reserved word that tells the OpenAdStreamer to generate a random number string and place it in that position)
+
+
+
+==Keyword Targeting==
+
+In order to use keyword targeting, the following configuration can be used:
+
+flowplayer('a.example', '../dist/flowplayer-3.1.5.swf', {
+    plugins: {	    
+        controls: {
+            autoHide: 'always'
+        },
+
+        openAdStreamer: {
+            url: '../dist/OpenAdStreamer.swf',
+            
+            'debug': {
+                'debugger': 'firebug',
+                'levels': 'config'
+            },
+
+            'ads': {
+                'pauseOnClickThrough': true,
+                'servers': [
+                    {
+                      'type': 'OAS',
+                      'apiAddress': 'http://oasc16.247realmedia.com/RealMedia/ads/adstream_sx.ads',
+                      'customProperties': {
+                        'target': [ 'carmake=bmw', 'logged=yes' ]
+                      }
+                    }
+                ],
+                'schedule': [
+                    {
+                      'zone': 'openvideoads.org/vast@x01',
+                      'position': 'pre-roll'
+                    }
+                ]
+            }
+        }
+    }
+});
+
+In this example, we're setting the __target__ value of the above template to a & delimited list with the values of the "target" setting. 
+The call to Open AdStream would then be:
+
+http://oasc16.247realmedia.com/RealMedia/ads/adstream_sx.ads/openvideoads.org/vast@x01?carmake=bmw&logged=yes
+
+
+==Setting the Random Number==
+
+Here's an example on how to set-up the random number externally to the OpenAdStreamer configuration:
+
+OAS_rn = new String (Math.random()); OAS_rns = OAS_rn.substring (2, 11);
+
+flowplayer('a.example', '../dist/flowplayer-3.1.5.swf', {
+    plugins: {	    
+        controls: {
+            autoHide: 'always'
+        },
+
+        openAdStreamer: {
+            url: '../dist/OpenAdStreamer.swf',
+            
+            'debug': {
+                'debugger': 'firebug',
+                'levels': 'config'
+            },
+
+            'ads': {
+                'pauseOnClickThrough': true,
+                'servers': [
+                    {
+                      'type': 'OAS',
+                      'apiAddress': 'http://oasc16.247realmedia.com/RealMedia/ads/adstream_sx.ads'
+                    }
+                ],
+                'schedule': [
+                    {
+                      'zone': 'openvideoads.org/vast@x01',
+                      'position': 'pre-roll',
+                      'server': {
+                          'customProperties': {
+                            'random-number': OAS_rns
+                          }
+                      }
+                    }
+                ]
+            }
+        }
+    }
+});
+
+
+This way one is able to use the same random number across all requests to Open AdStream coming from the same HTML page.
