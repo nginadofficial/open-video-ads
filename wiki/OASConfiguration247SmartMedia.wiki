@@ -129,7 +129,7 @@ The call to Open AdStream would then be:
 
 http://oasc16.247realmedia.com/RealMedia/ads/adstream_sx.ads/openvideoads.org/vast@x01carmake=bmw&logged=yes
 
-==Setting the Random Number==
+====Setting the Random Number====
 
 Here's an example on how to set-up the random number externally to the OpenAdStreamer configuration:
 
