@@ -6,8 +6,8 @@ OAS API
 AD AND SHOW STREAM SCHEDULING
 
 {{{
-onLinearScheduled(streamIndex, baseURL, streamName, startTime, duration)
-onNonLinearScheduled(associatedStreamIndex, startTime, duration)
+onLinearAdScheduled(streamIndex, baseURL, streamName, startTime, duration)
+onNonLinearAdScheduled(associatedStreamIndex, startTime, duration)
 }}}
 
 AD RUNTIME RELATED EVENTS
