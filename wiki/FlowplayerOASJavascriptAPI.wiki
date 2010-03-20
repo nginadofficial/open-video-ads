@@ -1,16 +1,16 @@
 #summary The Flowplayer Javascript API
 #sidebar TableOfContents
 
-===CALLBACK EVENTS===
+===1. CALLBACK EVENTS===
 
-====AD AND SHOW STREAM SCHEDULING====
+====1.1 AD AND SHOW STREAM SCHEDULING====
 
 {{{
 onLinearAdScheduled(streamIndex, baseURL, streamName, startTime, duration)
 onNonLinearAdScheduled(associatedStreamIndex, startTime, duration)
 }}}
 
-====AD RUNTIME RELATED EVENTS====
+====1.2 AD RUNTIME RELATED EVENTS====
 {{{
 onLinearAdStart()
 onLinearAdFirstQuartileComplete()
@@ -29,7 +29,7 @@ onRegionCloseClicked()
 onRegionClicked()
 }}}
 
-====SHOW STREAM RUNTIME EVENTS====
+====1.3 SHOW STREAM RUNTIME EVENTS====
 
 {{{
 onShowStart(streamName, streamIndex)
@@ -42,7 +42,7 @@ onShowUnmute(streamName, streamIndex)
 onShowFullscreen(streamName, streamIndex)
 }}}
 
-====VAST Response====
+====1.4 VAST Response====
 {{{
 onVASTLoadSuccess(template:String)
 onVASTLoadFailure(error:String)
@@ -51,23 +51,17 @@ onVASTLoadFailure(error:String)
 
 ===2. OAS API===
 
-====VAST Response====
+====2.1 VAST Response====
 {{{
 getVastTemplateAsString():String
 }}}
 
-====Debug====
+====2.2 Debug====
 {{{
 setDebugLevel(level:int):void
 }}}
 
-====Show Manipulation====
-{{{
-setShowStreamAtIndex(showStreamIndex:int, showStreamConfig:Object):int
-replaceShowStreams(showStreamsConfig:Array):int
-}}}
-
-====Region Manipulation====
+====2.3 Region Manipulation====
 {{{
 defineRegion(regionID:String, properties:Object):String
 hideRegion(regionID:String):String
