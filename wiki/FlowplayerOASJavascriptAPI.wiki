@@ -1,4 +1,4 @@
-#summary The Flowplayer Javascript API
+#summary The Open Ad Streamer Javascript API
 #sidebar TableOfContents
 
 ----
