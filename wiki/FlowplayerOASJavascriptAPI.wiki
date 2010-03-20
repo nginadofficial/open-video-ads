@@ -1,7 +1,7 @@
 #summary The Flowplayer Javascript API
 #sidebar TableOfContents
 
----
+----
 ===1. CALLBACK EVENTS===
 
 ====1.1 AD AND SHOW STREAM SCHEDULING====
@@ -49,7 +49,7 @@ onVASTLoadSuccess(template:String)
 onVASTLoadFailure(error:String)
 }}}
 
----
+----
 ===2. OAS API===
 
 ====2.1 VAST Response====
