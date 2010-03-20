@@ -1,7 +1,7 @@
 #summary The Flowplayer Javascript API
 #sidebar TableOfContents
 
-OAS API
+CALLBACK EVENTS
 
 AD AND SHOW STREAM SCHEDULING
 
@@ -44,13 +44,19 @@ onShowFullscreen(streamName, streamIndex)
 
 VAST Template
 {{{
-OAS::getVastTemplateAsString():String
 onVASTLoadSuccess(template:String)
 onVASTLoadFailure(error:String)
 }}}
 
-Show Manipulation
 
+OAS API
+
+VAST Template
+{{{
+OAS::getVastTemplateAsString():String
+}}}
+
+Show Manipulation
 {{{
 setShowStreamAtIndex(showStreamIndex:int, showStreamConfig:Object):int
 replaceShowStreams(showStreamsConfig:Array):int
