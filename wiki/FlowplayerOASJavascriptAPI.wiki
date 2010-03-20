@@ -1,16 +1,16 @@
 #summary The Flowplayer Javascript API
 #sidebar TableOfContents
 
-CALLBACK EVENTS
+===CALLBACK EVENTS===
 
-AD AND SHOW STREAM SCHEDULING
+====AD AND SHOW STREAM SCHEDULING====
 
 {{{
 onLinearAdScheduled(streamIndex, baseURL, streamName, startTime, duration)
 onNonLinearAdScheduled(associatedStreamIndex, startTime, duration)
 }}}
 
-AD RUNTIME RELATED EVENTS
+====AD RUNTIME RELATED EVENTS====
 {{{
 onLinearAdStart()
 onLinearAdFirstQuartileComplete()
@@ -29,7 +29,7 @@ onRegionCloseClicked()
 onRegionClicked()
 }}}
 
-SHOW STREAM RUNTIME EVENTS
+====SHOW STREAM RUNTIME EVENTS====
 
 {{{
 onShowStart(streamName, streamIndex)
@@ -42,32 +42,32 @@ onShowUnmute(streamName, streamIndex)
 onShowFullscreen(streamName, streamIndex)
 }}}
 
-VAST Template
+====VAST Response====
 {{{
 onVASTLoadSuccess(template:String)
 onVASTLoadFailure(error:String)
 }}}
 
 
-OAS API
+===2. OAS API===
 
-VAST Template
+====VAST Response====
 {{{
 getVastTemplateAsString():String
 }}}
 
-Debug
+====Debug====
 {{{
 setDebugLevel(level:int):void
 }}}
 
-Show Manipulation
+====Show Manipulation====
 {{{
 setShowStreamAtIndex(showStreamIndex:int, showStreamConfig:Object):int
 replaceShowStreams(showStreamsConfig:Array):int
 }}}
 
-Region Manipulation
+====Region Manipulation====
 {{{
 defineRegion(regionID:String, properties:Object):String
 hideRegion(regionID:String):String
