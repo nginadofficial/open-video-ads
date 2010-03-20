@@ -44,7 +44,7 @@ onShowFullscreen(streamName, streamIndex)
 
 VAST Template
 {{{
-getVastTemplateAsString():String
+OAS::getVastTemplateAsString():String
 onVASTLoadSuccess(template:String)
 onVASTLoadFailure(error:String)
 }}}
