@@ -62,7 +62,7 @@ getVASTResponseAsString():String
 setDebugLevel(level:int):void
 }}}
 
-====2.3 Region Manipulation====
+====2.3 Region Manipulation (in development - not released as yet)====
 {{{
 defineRegion(regionID:String, properties:Object):String
 hideRegion(regionID:String):String
