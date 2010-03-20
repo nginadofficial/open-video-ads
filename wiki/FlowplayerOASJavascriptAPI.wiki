@@ -56,6 +56,11 @@ VAST Template
 getVastTemplateAsString():String
 }}}
 
+Debug
+{{{
+setDebugLevel(level:int):void
+}}}
+
 Show Manipulation
 {{{
 setShowStreamAtIndex(showStreamIndex:int, showStreamConfig:Object):int
@@ -79,9 +84,4 @@ setRegionOpacity(regionID:String, opacity:String):String
 setRegionPadding(regionID:String, height:String):String
 setRegionCloseButtonVisible(regionID:String, visible:Boolean):String
 setRegionKeepAfterClick(regionID:String, keepAfterClick:Boolean):String
-}}}
-
-Debug
-{{{
-setDebugLevel(level:int):void
 }}}
