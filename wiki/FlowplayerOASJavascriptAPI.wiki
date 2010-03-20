@@ -54,7 +54,7 @@ onVASTLoadFailure(error:String)
 
 ====2.1 VAST Response====
 {{{
-getVastTemplateAsString():String
+getVastResponseAsString():String
 }}}
 
 ====2.2 Debug====
