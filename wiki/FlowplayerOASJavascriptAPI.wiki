@@ -1,7 +1,9 @@
 #summary The Flowplayer Javascript API
 #sidebar TableOfContents
 
-EVENTS
+OAS API
+
+AD RELATED EVENTS
 
 {{{
 onLinearScheduled(streamIndex, baseURL, streamName, startTime, duration)
@@ -23,7 +25,18 @@ onRegionCloseClicked()
 onRegionClicked()
 }}}
 
-OAS API
+SHOW STREAM EVENTS
+
+{{{
+onShowStart(streamName, streamIndex)
+onShowComplete(streamName, streamIndex)
+onShowStopped(streamName, streamIndex)
+onShowPaused(streamName, streamIndex)
+onShowResumed(streamName, streamIndex)
+onShowMute(streamName, streamIndex)
+onShowUnmute(streamName, streamIndex)
+onShowFullscreen(streamName, streamIndex)
+}}}
 
 VAST Template
 {{{
