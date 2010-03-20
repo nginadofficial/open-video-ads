@@ -53,7 +53,7 @@ OAS API
 
 VAST Template
 {{{
-OAS::getVastTemplateAsString():String
+getVastTemplateAsString():String
 }}}
 
 Show Manipulation
