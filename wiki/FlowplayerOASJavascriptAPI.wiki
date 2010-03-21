@@ -8,6 +8,7 @@
 
 {{{
 onLinearAdScheduled(streamIndex, baseURL, streamName, startTime, duration)
+onShowStreamScheduled(streamIndex, baseURL, streamName, startTime, duration)
 onNonLinearAdScheduled(associatedStreamIndex, startTime, duration)
 }}}
 
