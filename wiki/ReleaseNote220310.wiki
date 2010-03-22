@@ -13,6 +13,15 @@ The Longtail JW4.x and 5.x release candidates have been excluded from this relea
 RC1 includes a number of key additions to both the Ad Streamer and the core AS3 framework:
 
   # Support for VAST2.0 (Linear ads only at this time plus companions)
+  # The need for a duration to be specified for show streams has been removed. If a show stream is provided without a duration the OAS will go into "duration-less" mode and determine the duration from the stream metadata. In addition, when an ad is played the stream metadata is compared to the value in the VAST response. If configured to do so, the OAS will then "auto-correct" any incorrectly specified ad durations, re-timing the tracking events accordingly.
   # "Out of the Box" support for DoubleClick DART - both VAST 1.0 and 2.0
+  # "Out of the Box" support for RealMedia 24/7 - VAST 1.0
   # Improved ad server URL reference via a "tag" property that has been added to the "Ad Slot" configuration
   # The ability to be able to exclude OAS configured "ads" from the Flowplayer JS playlist plugin - a slightly modified version of the plugin has been included to provide this functionality
+  # An improved version of the OAS Javascript API. It is now possible to be notified when a show stream starts/ends and obtain the VAST response from the OAS via a Javascript API
+  # Support for serving pre and post roll ads for live streams. We are working on mid-roll now. Overlays should also work.
+  # Support for Linear Interactive Ads (SWFs that can be served as pre, mid or post-roll ads).
+  # Implementation of the aspect ratio and scaling VAST properties for Linear ads
+  # Support for the repositioning of the "ad notice" if Flowplayer 3.1.6 or greater is in use
+  # Support for an "ad notice" that counts down as the ad plays
+  # Built in support for SMIL and RSS based playlists
