@@ -10,12 +10,14 @@ The release candidate id is "RC1"
 
 The Longtail JW4.x and 5.x release candidates have been excluded from this release - there are still a number of critical bugs to resolve before they can be released. We hope to release a full release candidate later this week that includes the JW releases.
 
+===The Key Changes in this Release===
+
 RC1 includes a number of key additions to both the Ad Streamer and the core AS3 framework:
 
   # Support for VAST2.0 (Linear ads only at this time plus companions)
   # The need for a duration to be specified for show streams has been removed. If a show stream is provided without a duration the OAS will go into "duration-less" mode and determine the duration from the stream metadata. In addition, when an ad is played the stream metadata is compared to the value in the VAST response. If configured to do so, the OAS will then "auto-correct" any incorrectly specified ad durations, re-timing the tracking events accordingly.
   # "Out of the Box" support for DoubleClick DART - both VAST 1.0 and 2.0
-  # "Out of the Box" support for RealMedia 24/7 - VAST 1.0
+  # "Out of the Box" support for RealMedia 24/7 - VAST 1.0 ( thanks to Pedro Faustino for the contributed code)
   # Improved ad server URL reference via a "tag" property that has been added to the "Ad Slot" configuration
   # The ability to be able to exclude OAS configured "ads" from the Flowplayer JS playlist plugin - a slightly modified version of the plugin has been included to provide this functionality
   # An improved version of the OAS Javascript API. It is now possible to be notified when a show stream starts/ends and obtain the VAST response from the OAS via a Javascript API
@@ -25,3 +27,34 @@ RC1 includes a number of key additions to both the Ad Streamer and the core AS3 
   # Support for the repositioning of the "ad notice" if Flowplayer 3.1.6 or greater is in use
   # Support for an "ad notice" that counts down as the ad plays
   # Built in support for SMIL and RSS based playlists
+
+====The Flowplayer OAS 0.5.0 Change Log====
+
+  * Linear Interactive ads now supported:
+    * all-example59,65,66 added - illustrates the delivery of a linear interactive ad
+    * Set the end safety margin on cuepoint firing to 300 (e.g. _vastController.endStreamSafetyMargin = 300;) because SWF Linear Interactive ads don't permit the end ad cuepoints to fire if they occur in the last 300 milliseconds of the ad finishing. All ad completion events now fire 300 milliseconds before the end of the ad stream
+    * Support for "maintainAspectRatio=true|false" specified on the MediaFile VAST tag (see examples 59,65,66)
+    * Support for "scale=true|false" specified on the MediaFile VAST tag (see examples 59,65,66)
+  * Support for Flowplayer RSS Playlists verified - see all-example62.html for the configuration options
+  * Support has been added for SMIL files to be used to specify the show streams. See all-example73.html for an example of how to configure SMIL files in the "shows" config block
+  * Added the ability to have an ad notice that includes a dynamic countdown of the remaining ad duration in seconds (see all-example68.html)
+  * Ad related custom properties set on the clip object - "title" is set as "advertisement - [title]", "ovaAd", "ovaSlotId", "ovaPosition", "ovaZone" and "ovaAssociatedStreamId"". A "description" has also been added - see all-example69.html
+  * Fixed the bug that meant that show streams were ignored if there wasn't an ad provided for the stream (given that an ad slot was defined for the stream) - extra condition added to StreamSequence.build()
+  * Fixed repositioning of "this is an ad" notice and overlays when control bar disappears - see all-example74.html - needs the latest Flowplayer trunk build - 3.1.6-dev - as that code has the fix for ensuring notifications for control bar "onShowed" etc. are registered with the FP model.
+  * Changed region creation logic so that defaults are always created and then the specific config specified regions can override
+  * Fixed an issue where a playlist formed from both a flowplayer playlist definition and a shows stream definition caused the player to not play the first stream (because the clip URL was set with an "marker-clip" value
+  * 24/7 Real Media OAS (ad server) support added (www.247realmedia.com) - thanks to Pedro Faustino for the code. See org.openadstreamer.vast.server.oas for the codebase. Also see example-XXX
+  * ISSUE 171 - ad durations returned in the template in non-timestamp format are coverted and and option has been added to allow ad duration values to be forcibly ignored. See example 06 in the "custom ad delivery" examples.  
+  * Resolved an issue where forced impressions (where the ad is empty in the VAST template) were being fired multiple times. A safety condition has been added to VideoAd to make sure they can't be forced multiple times (unless explicity requested).
+  * ISSUE 180: Impressions not being fired if a linear ad has an empty non-linear VAST tag set. Changed NonLinearVideo ad to include isEmpty() test which checks to see if the URL or CODE values are 0 in size (or null) - if they are, the ad is deemed empty and ignored in the impression testing condition (resulting in the impressions for the linear ad being fired)
+  * ISSUE 185: Support disabling of playlist forward/back in Flowplayer - fixed - added support to the OAS enable/disable control bar code to turn on/off the "playlist" controls.
+  * ISSUE 187: Add support for direct entry of ad tag in ad server definition - see example ad-servers/example02.html for a worked example (Google DART VAST 2.0)
+  * Moved the cuepoint offset for events to 1000 (up from 300 milliseconds) to account for the time it takes to resync the timing table if the VAST ad duration differs from the meta data.
+  * ISSUE 190: Support SWF object embed code added for companions (see Google VAST 2 example)
+  * Ad configuration options added to support selection of ad media file based on 'bestWidth' 'bestHeight' and/or 'bestBitrate' - see the Google VAST 2 example for an illustration of this working in action. Combining width/height selection with bitrate does not always yield the best result - these options should only be used if bandwidth detection is not active
+  * Introduced the notion of an ad 'tag' configuration option at ad slot level - see double click VAST 2.0 example. This option can be used to configure a specific ad server URL to be fired at the ad slot level
+  * Fixed a defect where restoration of multiple companions failed. Previous DIV state is now held in the active companion object.
+  * ISSUE 194: If an empty URL is provided on a click-through, it's still showing on the linear ad. This has been fixed now - empty URL click-throughs (and other items) are excluded when parsed.
+  * Javascript API provided to allow show stream start/stop/complete/mute/unmute/resume - see Javascript API example 4 for an illustration of the API in action
+
+====The VAST AS3 Framework 0.5.1 Change Log====
