@@ -28,7 +28,7 @@ RC1 includes a number of key additions to both the Ad Streamer and the core AS3 
   # Support for an "ad notice" that counts down as the ad plays
   # Built in support for SMIL and RSS based playlists
 
-====The Flowplayer OAS 0.5.0 Change Log====
+====The Flowplayer OAS 0.5.0 and VAST AS3 Framework 0.5.1 Change Log====
 
   * Linear Interactive ads now supported:
     * all-example59,65,66 added - illustrates the delivery of a linear interactive ad
@@ -56,5 +56,3 @@ RC1 includes a number of key additions to both the Ad Streamer and the core AS3 
   * Fixed a defect where restoration of multiple companions failed. Previous DIV state is now held in the active companion object.
   * ISSUE 194: If an empty URL is provided on a click-through, it's still showing on the linear ad. This has been fixed now - empty URL click-throughs (and other items) are excluded when parsed.
   * Javascript API provided to allow show stream start/stop/complete/mute/unmute/resume - see Javascript API example 4 for an illustration of the API in action
-
-====The VAST AS3 Framework 0.5.1 Change Log====
