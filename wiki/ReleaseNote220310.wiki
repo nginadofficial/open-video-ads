@@ -10,6 +10,12 @@ The release candidate id is "RC1". Tread carefully, another week of testing is n
 
 The Longtail JW4.x and 5.x release candidates have been excluded from this release - there are still a number of critical bugs to resolve before they can be released. We hope to release a full release candidate later this week that includes the JW releases.
 
+===The Examples===
+
+The examples accompanying RC1 can be found here:
+
+[http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc1 http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc1]
+
 ===The Key Changes in this Release===
 
 RC1 includes a number of key additions to both the Ad Streamer and the core AS3 framework:
