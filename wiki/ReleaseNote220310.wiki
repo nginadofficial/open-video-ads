@@ -32,7 +32,7 @@ RC1 includes a number of key additions to both the Ad Streamer and the core AS3 
 
   * Linear Interactive ads now supported:
     * all-example59,65,66 added - illustrates the delivery of a linear interactive ad
-    * Set the end safety margin on cuepoint firing to 300 (e.g. _vastController.endStreamSafetyMargin = 300;) because SWF Linear Interactive ads don't permit the end ad cuepoints to fire if they occur in the last 300 milliseconds of the ad finishing. All ad completion events now fire 300 milliseconds before the end of the ad stream
+    * Set the end safety margin on cuepoint firing to 300 (e.g. vastController.endStreamSafetyMargin = 300;) because SWF Linear Interactive ads don't permit the end ad cuepoints to fire if they occur in the last 300 milliseconds of the ad finishing. All ad completion events now fire 300 milliseconds before the end of the ad stream
     * Support for "maintainAspectRatio=true|false" specified on the MediaFile VAST tag (see examples 59,65,66)
     * Support for "scale=true|false" specified on the MediaFile VAST tag (see examples 59,65,66)
   * Support for Flowplayer RSS Playlists verified - see all-example62.html for the configuration options
