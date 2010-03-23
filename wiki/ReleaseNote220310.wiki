@@ -20,7 +20,7 @@ The examples accompanying RC1 can be found here:
 
 RC1 includes a number of key additions to both the Ad Streamer and the core AS3 framework. An example is referenced with each new enhancement - check them out for more details on the configuration options that have been introduced in this release:
 
-  # Support for VAST 2.0 (Linear ads only at this time plus companions) - ([http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc1/examples/ad-servers/doubleclick/example02.html example])
+  # Support for VAST 2.0 (Linear ads only at this time plus companions) - [[http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc1/examples/ad-servers/doubleclick/example02.html example]]
   # The need for a duration to be specified for show streams has been removed. If a show stream is provided without a duration the OAS will go into "duration-less" mode and determine the duration from the stream metadata. In addition, when an ad is played the stream metadata is compared to the value in the VAST response. If configured to do so, the OAS will then "auto-correct" any incorrectly specified ad durations, re-timing the tracking events accordingly.
   # "Out of the Box" support for DoubleClick DART - both VAST 1.0 and 2.0
   # "Out of the Box" support for RealMedia 24/7 - VAST 1.0 ( thanks to Pedro Faustino for the contributed code)
