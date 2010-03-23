@@ -20,19 +20,19 @@ The examples accompanying RC1 can be found here:
 
 RC1 includes a number of key additions to both the Ad Streamer and the core AS3 framework. An example is referenced with each new enhancement - check them out for more details on the configuration options that have been introduced in this release:
 
-  # Support for VAST 2.0 (Linear ads only at this time plus companions) - [[http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc1/examples/ad-servers/doubleclick/example02.html example]]
-  # The need for a duration to be specified for show streams has been removed. If a show stream is provided without a duration the OAS will go into "duration-less" mode and determine the duration from the stream metadata. In addition, when an ad is played the stream metadata is compared to the value in the VAST response. If configured to do so, the OAS will then "auto-correct" any incorrectly specified ad durations, re-timing the tracking events accordingly.
-  # "Out of the Box" support for DoubleClick DART - both VAST 1.0 and 2.0
-  # "Out of the Box" support for RealMedia 24/7 - VAST 1.0 ( thanks to Pedro Faustino for the contributed code)
-  # Improved ad server URL reference via a "tag" property that has been added to the "Ad Slot" configuration
-  # The ability to be able to exclude OAS configured "ads" from the Flowplayer JS playlist plugin - a slightly modified version of the plugin has been included to provide this functionality
-  # An improved version of the OAS Javascript API. It is now possible to be notified when a show stream starts/ends and obtain the VAST response from the OAS via a Javascript API
-  # Support for serving pre and post roll ads for live streams. We are working on mid-roll now. Overlays should also work.
-  # Support for Linear Interactive Ads (SWFs that can be served as pre, mid or post-roll ads).
-  # Implementation of the aspect ratio and scaling VAST properties for Linear ads
-  # Support for the repositioning of the "ad notice" if Flowplayer 3.1.6 or greater is in use
-  # Support for an "ad notice" that counts down as the ad plays
-  # Built in support for SMIL and RSS based playlists
+  # Support for VAST 2.0 - Linear ads only at this time plus companions - ([http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc1/examples/ad-servers/doubleclick/example02.html example])
+  # The need for a duration to be specified for show streams has been removed. If a show stream is provided without a duration the OAS will go into "duration-less" mode and determine the duration from the stream metadata. In addition, when an ad is played the stream metadata is compared to the value in the VAST response. If configured to do so, the OAS will then "auto-correct" any incorrectly specified ad durations, re-timing the tracking events accordingly ([http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc1/examples/no-duration/index.html example])
+  # "Out of the Box" support for DoubleClick DART - both VAST 1.0 and 2.0 ([http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc1/examples/ad-servers/index.html examples])
+  # "Out of the Box" support for RealMedia 24/7 - VAST 1.0 - thanks to Pedro Faustino for the contributed code - ([http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc1/examples/ad-servers/index.html examples])
+  # Improved ad server URL reference via a "tag" property that has been added to the "Ad Slot" configuration ([http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc1/examples/ad-servers/doubleclick/example02.html example])
+  # The ability to be able to exclude OAS configured "ads" from the Flowplayer JS playlist plugin - a slightly modified version of the plugin has been included to provide this functionality ([http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc1/examples/flowplayer-specific/example08.html example])
+  # An improved version of the OAS Javascript API. It is now possible to be notified when a show stream starts/ends and obtain the VAST response from the OAS via a Javascript API ([http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc1/examples/javascript/example04.html example])
+  # Support for serving pre and post roll ads for live streams. We are working on mid-roll now. Overlays should also work ([http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc1/examples/live-streaming/example01.html example])
+  # Support for Linear Interactive Ads - SWFs that can be served as pre, mid or post-roll ads - ([http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc1/examples/ad-formats/example13.html example])
+  # Implementation of the aspect ratio and scaling VAST properties for Linear ads ([http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc1/examples/ad-formats/index.html examples])
+  # Support for the repositioning of the "ad notice" if Flowplayer 3.1.6 or greater is in use ([http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc1/examples/ad-notice/example05.html example])
+  # Support for an "ad notice" that counts down as the ad plays ([http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc1/examples/ad-notice/example02.html example])
+  # Built in support for SMIL and RSS based playlists ([http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc1/examples/flowplayer-specific/example05.html example])
 
 ====The Flowplayer OAS 0.5.0 and VAST AS3 Framework 0.5.1 Change Log====
 
