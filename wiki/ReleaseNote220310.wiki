@@ -4,7 +4,7 @@
 The March 22 2010 release is an early release candidate of the following:
 
   * v0.5.1 of the VAST AS3 Framework ([http://open-video-ads.googlecode.com/files/openvideoads.flowplayer.openadstreamer-0.5.0-rc1.tar.gz openvideoads.vast.as3.-0.5.1-rc1.tar.gz])
-  * v0.5.0 of the Flowplayer Open Ad Streamer ([http://open-video-ads.googlecode.com/files/openvideoads.vast.as3-0.5.1-rc1.tar.gz openvideoads.flowplayer.openadstreamer.rc1.tar.gz])
+  * v0.5.0 of the Flowplayer Open Ad Streamer Binaries ([http://open-video-ads.googlecode.com/files/openvideoads.flowplayer.openadstreamer-0.5.0-rc1.bin.tar.gz openvideoads.flowplayer.openadstreamer-0.5.0-rc1.bin.tar.gz])
 
 The release candidate id is "RC1". Tread carefully, another week of testing is needed to ensure this release is fully stable. Please report any defects to _enquiries@openvideoads.org_
 
