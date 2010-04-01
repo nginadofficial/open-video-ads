@@ -66,3 +66,4 @@ RC1 includes a number of key additions to both the Ad Streamer and the core AS3 
   * ISSUE 58: Support added for multiple companions being laid over the top of each other
   * ISSUE 146: Javascript FP playlist plugin modified to work effectively with playlists that include OVA ads
   * ISSUE 130: Add support for script based companions
+  * ISSUE 173: Add support for DoubleClick DART
