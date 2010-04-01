@@ -36,7 +36,7 @@ RC1 includes a number of key additions to both the Ad Streamer and the core AS3 
 
 ====The Flowplayer OAS 0.5.0 and VAST AS3 Framework 0.5.1 Change Log====
 
-  * Linear Interactive ads now supported:
+  * ISSUE 139: Linear Interactive ads now supported:
     * Examples added to illustrate the delivery of a linear interactive ad (e.g. [http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc1/examples/ad-formats/example13.html example])
     * Set the end safety margin on cuepoint firing to 300 (e.g. vastController.endStreamSafetyMargin = 300;) because SWF Linear Interactive ads don't permit the end ad cuepoints to fire if they occur in the last 300 milliseconds of the ad finishing. All ad completion events now fire 300 milliseconds before the end of the ad stream
     * Support for "maintainAspectRatio=true|false" specified on the MediaFile VAST tag (see [http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc1/examples/ad-formats/example13.html example])
