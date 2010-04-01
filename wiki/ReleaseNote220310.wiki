@@ -63,4 +63,5 @@ RC1 includes a number of key additions to both the Ad Streamer and the core AS3 
   * Fixed a defect where restoration of multiple companions failed. Previous DIV state is now held in the active companion object.
   * ISSUE 194: If an empty URL is provided on a click-through, it's still showing on the linear ad. This has been fixed now - empty URL click-throughs (and other items) are excluded when parsed.
   * Javascript API provided to allow show stream start/stop/complete/mute/unmute/resume - see this [http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc1/examples/javascript/example04.html example] for an illustration of the API in action
-* ISSUE 58: Support added for multiple companions being laid over the top of each other
+  * ISSUE 58: Support added for multiple companions being laid over the top of each other
+  * ISSUE 146: Javascript FP playlist plugin modified to work effectively with playlists that include OVA ads
