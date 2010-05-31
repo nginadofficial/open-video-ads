@@ -14,6 +14,35 @@ The Flowplayer examples accompanying RC2 can be found here:
 
 [http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc2 http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc2]
 
+===Framework Release Notes===
+
+* Added condition to stop tracking points being created if ad stream duration is 0
+* ISSUE 191: Add support for VAST2 companion ad parameters - done - see FP scaling examples
+* Fixed exception thrown when bad VAST response (non XML or null) is returned
+
 ===Flowplayer Release Notes===
 
-TO BE COMPLETED
+  * Added example 3 to the ad durations section to illustrate how to stop the OAS from taking the stream metadata duration as the default setting (via the "setDurationFromMetaData": false option) 
+  * ISSUE 197: Added code to clean up overlays if stream is skipped through or skipped over
+  * ISSUE 151: Compatibility with Google Analytics (GATracker) - test case created, confirmation that tracking works as expected
+  * Added variable for Flowplayer player SWF on examples to allow Flowplayer player version to be easily switched
+  * ISSUE 204: Flowplayer playlist RTMP clips not working when netConnectionURL specified in the RTMP plugin settings. Fixed.
+  * ISSUE 159: Overlay Ads doesn't support Playlist. Verified as fixed.
+  * ISSUE 157: Overlays wont show when using FlowPlayer Playlists AND the overlay if the ONLY spot to display. Verified as fixed.
+  * ISSUE 160: Playlist items ignored if no ads to play. Verified as fixed.
+  * Added improved support for "image/jpeg|png|gif" and "application/swf" mime types on companions and also added a check for "image/jpg" just in case that's specified instead of "image/jpeg"
+  * ISSUE 168: applyToParts seems to be forcing clips to be dropped from the playlist - fixed.
+  * ISSUE 176: Add option to allow VAST "duration" to be ignored - sorted
+  * ISSUE 153: FlowPlayer looses navigation after add plays. Fixed with duration correction code
+  * ISSUE 38: Overlays not replaying - sorted - seeking through timeline will redisplay overlays if the "replayNonLinearAds:false" isn't set - see example
+  * ISSUE 211: Make sure debug defaults are set - defaults are now "firebug" and "fatal"
+  * ISSUE 203: Remove the use of the DeMonster debugger - removed
+  * ISSUE 182: Linear ads can also be scaled now if VAST values set and "enforceLinearVideoScaling" set to true. "enforceLinearInteractiveScaling:true" option added to turn on scaling for SWFs
+  * ISSUE 196: BaseURL can now be specified in the Flowplayer Common Clip and applied across a Flowplayer playlist
+  * ISSUE 50:	Turn off "click me" sign on linear ads when in fullscreen mode - now the sign hides after 3 seconds if there is no mouse activity
+  * ISSUE 215: Ampersands in the ad server URL cause JSON parsing problems for Flowplayer - fixed ampersands must now be replaced with __amp__ in the ad server URL string
+  * ISSUE 186: Click Me region shows if playlist controls used to skip ad - all overlays hidden at the start of a new stream
+  * ISSUE 88: RC1 messed up the scaling - tested and ensured "clip" scaling is correctly implemented. See Flowplayer examples 14 for an illustration of it working.
+  * Added support for "loop:false" on the modified JS Playlist Plugin so that a single clip with ads can be played
+  * Fixed exception thrown when bad VAST response (non XML or null) is returned
+  * "stagePaddingBottomWithControls" option added - see BOTR example
