@@ -5,15 +5,19 @@ The May 20 2010 release is an early release candidate (RC2) of the following:
 
   * v0.5.2 of the VAST AS3 Framework ([http://open-video-ads.googlecode.com/files/openvideoads.vast.as3-0.5.2-rc2.tar.gz openvideoads.vast.as3-0.5.2-rc2.tar.gz])
   * v0.5.0 of the Flowplayer Open Ad Streamer ([http://open-video-ads.googlecode.com/files/openvideoads.flowplayer.openadstreamer-0.5.0-rc2.tar.gz openvideoads.flowplayer.openadstreamer-0.5.0-rc2.tar.gz])
-  * v0.4.2 of the JW 4.6 Open Ad Streamer ([http://open-video-ads.googlecode.com/files/openvideoads.jwplayer.4x.openadstreamer-0.4.2-rc2.tar.gz openvideoads.jwplayer.4x.openadstreamer-0.4.2-rc2.tar.gz])
+  * v0.4.2 of the JW Player 4.6 Open Ad Streamer ([http://open-video-ads.googlecode.com/files/openvideoads.jwplayer.4x.openadstreamer-0.4.2-rc2.tar.gz openvideoads.jwplayer.4x.openadstreamer-0.4.2-rc2.tar.gz])
 
 The release candidate id is "RC2". Tread carefully, the release remains under testing before issuing the final release of this version. Please report any defects to _enquiries@openvideoads.org_
 
 ===The Examples===
 
-The Flowplayer examples accompanying RC2 can be found here:
+The Flowplayer OAS RC2 examples can be found here:
 
 [http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc2 http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc2]
+
+The JW Player 4.6 OAS RC2 examples can be found here:
+
+[http://static.openvideoads.org/examples/openadstreamer/jwplayer.4x-0.4.2-rc2 http://static.openvideoads.org/examples/openadstreamer/jwplayer.4x-0.4.2-rc2]
 
 ===Framework Release Notes===
 
