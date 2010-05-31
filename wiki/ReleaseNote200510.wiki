@@ -16,9 +16,9 @@ The Flowplayer examples accompanying RC2 can be found here:
 
 ===Framework Release Notes===
 
-* Added condition to stop tracking points being created if ad stream duration is 0
-* ISSUE 191: Add support for VAST2 companion ad parameters - done - see FP scaling examples
-* Fixed exception thrown when bad VAST response (non XML or null) is returned
+  * Added condition to stop tracking points being created if ad stream duration is 0
+  * ISSUE 191: Add support for VAST2 companion ad parameters - done - see FP scaling examples
+  * Fixed exception thrown when bad VAST response (non XML or null) is returned
 
 ===Flowplayer Release Notes===
 
