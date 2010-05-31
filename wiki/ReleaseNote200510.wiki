@@ -51,3 +51,23 @@ The JW Player 4.6 OAS RC2 examples can be found here:
   * Added support for "loop:false" on the modified JS Playlist Plugin so that a single clip with ads can be played
   * Fixed exception thrown when bad VAST response (non XML or null) is returned
   * "stagePaddingBottomWithControls" option added - see BOTR example
+
+===JW Player 4.6 Release Notes===
+
+  * "file" flashvar supported to specify show stream (duration based and duration-less) - see examples jw-example80 and jw-example81
+  * Fixed an issue where default "show" providers were being set stopping the right default http provider (lighttpd) being set by the plugin
+  * Support for duration-less streams (file flashvar and show stream config)
+  * Modified XSPFPlaylistItem so that "retainPrefix" can be set for rtmp streams. JW4x didnt want the prefix, but JW5x does
+  * ISSUE 167: Ensure JW 4.6 and 5.x playlists run - fixed - the "type" meta tag is now needed to specify the providers. The XSPF playlist class has been modified to ensure that the "type" meta tag is set.
+  * ISSUE 107: Allow a show stream to be specified in the JW Player URL - sorted 
+  * ISSUE 176: Add option to allow VAST "duration" to be ignored - sorted
+  * ISSUE 155: Click through not working on mid and post rolls with JW OAS - tested - now works
+  * ISSUE 184: Enable bitrate switching for JW 4.6 - BOTR and standard JW playlist levels supported now
+  * ISSUE 142: JW Player autoPlay doesn't work properly - fixed
+  * ISSUE 174: Split the ad delivery part from the video delivery part - standard JW flashvar "file" config can now be used
+  * Improved support for linear ads with live streaming using standard JW flashvar file config and live examples added
+  * ISSUE 48:	Positioning of Ad Notice wrong sometimes, particularly in fullscreen mode - fixed
+  * Fixed exception thrown when bad VAST response (non XML or null) is returned
+  * 4.x version only - "blockUntilOriginalPlaylistLoaded" option added - see BOTR example
+  * "stagePaddingBottomWithControls" option added - see BOTR example
+  * 24/7 Real Media OAS (ad server) support added (www.247realmedia.com) - thanks to Pedro Faustino for the code. See org.openadstreamer.vast.server.oas for the codebase
