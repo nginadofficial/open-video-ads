@@ -10,7 +10,7 @@ The release candidate id is "RC2". Tread carefully, the release remains under te
 
 ===The Examples===
 
-The examples accompanying RC2 can be found here:
+The Flowplayer examples accompanying RC2 can be found here:
 
 [http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc2 http://static.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc2]
 
