@@ -11,13 +11,9 @@ The release candidate id is "RC2". Tread carefully, the release remains under te
 
 ===The Examples===
 
-The Flowplayer OAS RC2 examples can be found here:
+The Flowplayer OAS RC2 examples can be found [here http://www.longtailvideo.com/support/open-video-ads/ova-for-flowplayer/examples]
 
-[http://www.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc2 http://www.openvideoads.org/examples/openadstreamer/flowplayer-0.5.0-rc2]
-
-The JW Player 4.6 OAS RC2 examples can be found here:
-
-[http://www.openvideoads.org/examples/openadstreamer/jwplayer.4x-0.4.2-rc2 http://www.openvideoads.org/examples/openadstreamer/jwplayer.4x-0.4.2-rc2]
+The JW Player 4.6 OAS RC2 examples can be found [here http://www.longtailvideo.com/support/open-video-ads/ova-for-jw-player-4/examples]:
 
 ===Framework Release Notes===
 
