@@ -1,83 +1,15 @@
-#summary The Open Ad Streamer Javascript API
-#sidebar TableOfContents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-----
-===1. CALLBACK EVENTS===
+*IMPORTANT:*
 
-====1.1 AD AND SHOW STREAM SCHEDULING====
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-{{{
-onLinearAdScheduled(streamIndex, baseURL, streamName, startTime, duration)
-onShowStreamScheduled(streamIndex, baseURL, streamName, startTime, duration)
-onNonLinearAdScheduled(associatedStreamIndex, startTime, duration)
-}}}
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
 
-====1.2 AD RUNTIME RELATED EVENTS====
-{{{
-onLinearAdStart()
-onLinearAdFirstQuartileComplete()
-onLinearAdMidPointComplete()
-onLinearAdThirdQuartileComplete()
-onLinearAdFinish()
-onLinearAdClick()
-onNonLinearAdShow()
-onNonLinearAdClickThrough()
-onNonLinearAdHide()
-onCompanionAdShow()
-onCompanionAdHide()
-onAdNoticeShow()
-onAdNoticeHide()
-onRegionCloseClicked()
-onRegionClicked()
-}}}
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
 
-====1.3 SHOW STREAM RUNTIME EVENTS====
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
 
-{{{
-onShowStart(streamName, streamIndex)
-onShowComplete(streamName, streamIndex)
-onShowStopped(streamName, streamIndex)
-onShowPaused(streamName, streamIndex)
-onShowResumed(streamName, streamIndex)
-onShowMute(streamName, streamIndex)
-onShowUnmute(streamName, streamIndex)
-onShowFullscreen(streamName, streamIndex)
-}}}
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
 
-====1.4 VAST Response====
-{{{
-onVASTLoadSuccess(template:String)
-onVASTLoadFailure(error:String)
-}}}
-
-----
-===2. OAS API===
-
-====2.1 VAST Response====
-{{{
-getVASTResponseAsString():String
-}}}
-
-====2.2 Debug====
-{{{
-setDebugLevel(level:int):void
-}}}
-
-====2.3 Region Manipulation (in development - not released as yet)====
-{{{
-defineRegion(regionID:String, properties:Object):String
-hideRegion(regionID:String):String
-showRegion(regionID:String):String
-setRegionStyle(regionID:String, cssText:String):String
-setRegionHTML(regionID:String, html:String):String
-setRegionHeight(regionID:String, height:String):String
-setRegionWidth(regionID:String, height:String):String
-setRegionDimensions(regionID:String, height:String, width:String):String
-setRegionVerticalAlign(regionID:String, verticalAlign:Boolean):String
-setRegionHorizontalAlign(regionID:String, horizontalAlign:Boolean):String
-setRegionBackgroundColor(regionID:String, color:String):String
-setRegionOpacity(regionID:String, opacity:String):String
-setRegionPadding(regionID:String, height:String):String
-setRegionCloseButtonVisible(regionID:String, visible:Boolean):String
-setRegionKeepAfterClick(regionID:String, keepAfterClick:Boolean):String
-}}}
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
