@@ -1,4 +1,4 @@
-#== Free Open Source Standards Based Video Ad Delivery (BETA) ==
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
 *IMPORTANT:*
 
