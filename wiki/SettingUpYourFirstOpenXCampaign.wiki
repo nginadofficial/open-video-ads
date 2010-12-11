@@ -1,80 +1,15 @@
-#summary Setting up your first openX campaign
-#sidebar TableOfContents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-The following instructions assume you have a basic understanding of the OpenX processes and admin console. For a detailed introduction to OpenX, please read [http://www.openx.org here].
+*IMPORTANT:*
 
-Once you are ready to go:
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-  * Log into openX as a manager
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
 
-  * Make sure that you have a website created - if not, create one
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
 
-     <br/>
-     <a href="http://static.bouncingminds.com/images/openx-iab-vast/step-create-website.png">
-     <img src="http://static.bouncingminds.com/images/openx-iab-vast/step-create-website.png" width="400" border="0" />
-     </a>
-     <br/>
-     <br/>
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
 
-  * Create the various video "zones" that you want to have advertising on your website:
-    * When you create a new video zone, if you want pre/mid/post roll adverting, add a zone of type "Inline Video Ad"
-    * If you want an overlay video ad, create a zone of type "Overlay video ad"
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
 
-     <br/>
-     <a href="http://static.bouncingminds.com/images/openx-iab-vast/step-create-zones.png">
-     <img src="http://static.bouncingminds.com/images/openx-iab-vast/step-create-zones.png" width="700" border="0" />
-     </a>
-     <br/>
-     <br/>
-
-  * Now that you have your website and zones recorded, create an advertiser
-
-     <br/>
-     <a href="http://static.bouncingminds.com/images/openx-iab-vast/step-create-advertiser.png">
-     <img src="http://static.bouncingminds.com/images/openx-iab-vast/step-create-advertiser.png" width="400" border="0" />
-     </a>
-     <br/>
-     <br/>
-
-
-  * Add a campaign for your advertiser
-
-     <br/>
-     <a href="http://static.bouncingminds.com/images/openx-iab-vast/step-create-campaign.png">
-     <img src="http://static.bouncingminds.com/images/openx-iab-vast/step-create-campaign.png" width="700"  border="0" />
-     </a>
-     <br/>
-     <br/>
-
-
-  * Now the fun starts. Create a new video ad banner for that campaign:
-    * Two types of banner may be created (a) "OpenX VAST Inline Video Banner (pre/mid/post-roll)" and (b) "OpenX VAST Video Overlay Banner"  - if you want to create a pre, mid or post-roll ad use type (a). Overlay banners are type (b)
-    * When creating an Inline Video Banner:
-      * Enter a name for the banner
-      * Enter a internal ID that you want to use to represent the banner (it can be anything that makes sense to you)
-      * Specify the outgoing stream URL for the video ad. For example, `rtmp://ne7c0nwbit.rtmphost.com/videoplayer/mp4:ads/30secs/country_life_butter.mp4`
-      * Enter the duration for the video ad - it is very important to get the number of seconds correct
-    * Save the new banner ad
-    * Next time you go back into that banner, the video ad will play - check it out
-
-
-     <br/>
-     <a href="http://static.bouncingminds.com/images/openx-iab-vast/step-create-banner-detail.png">
-     <img src="http://static.bouncingminds.com/images/openx-iab-vast/step-create-banner-detail.png" width="700" border="0" />
-     </a>
-     <br/>
-     <br/>
-
-
-  * One final step is required to activate the banner - you need to link the new banner back to the "zones" that you created initially. To do this go into the banner, click on "Linked Zones" and then make sure the appropriate "zone" is ticked at the bottom of the page. When you configure the player, you must specify the corresponding zone ID (in the table at the bottom of the "linked zones") as the "zone ID"
-
-
-     <br/>
-     <a href="http://static.bouncingminds.com/images/openx-iab-vast/step-link-zones.png">
-     <img src="http://static.bouncingminds.com/images/openx-iab-vast/step-link-zones.png" width="700" border="0" />
-     </a>
-     <br/>
-     <br/>
-
-
-Now you're done - the ad is set to be served
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
