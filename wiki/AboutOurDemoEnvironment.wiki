@@ -1,13 +1,15 @@
-#summary About our Demo Environment
-#sidebar TableOfContents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-To support the examples for [http://static.openvideoads.org/examples/openadstreamer/flowplayer/index.html Flowplayer] and [http://static.openvideoads.org/examples/openadstreamer/flowplayer/index.html JW Player], we have setup the following:
+*IMPORTANT:*
 
-  # An instance of Apache to serve the HTTP "[StreamingExplained progressive]" examples on http://streaming.openvideoads.org:80
-  # An instance of Lighttpd to serve the HTTP "[StreamingExplained pseudo-streaming]" examples on http://streaming.openvideoads.org:81
-  # An Adobe Flash Media Server (FMS) instance through an account with [http://www.influxis.com Influxis] to support our "[StreamingExplained RTMP]" based examples
-  # An openX instance on http://openx.openvideoads.org/openx
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-To support pseudo-streaming, we've installed the H.264 module for Lighttpd.
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
 
-You can find some installation instructions on how to set that up [InstallingLighttpdWithModH264Ubuntu8 here].
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
+
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
+
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
+
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
