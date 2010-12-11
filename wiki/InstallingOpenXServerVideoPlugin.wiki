@@ -1,30 +1,15 @@
-#summary Installing the OpenX server side Video Ad Plugin
-#sidebar TableOfContents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-=== Running OpenX 2.8.4 or higher ===
+*IMPORTANT:*
 
-The Video Ads plugin is now packaged with the download and hosted versions of OpenX (version 2.8.4 or higher)
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-For non-hosted solutions you just need to [http://www.openx.org/en/download download] and install that version of [http://www.openx.org OpenX] and you are ready to go.
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
 
-=== Running OpenX 2.8.3 ===
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
 
-Please note, we have not tested the OpenX Video Ads plugin with OpenX 2.8.3. We recommend you either run 2.8.4 (where the plugin is packaged by default) or 2.8.2 where you need to separately install the plugin (see below). We have had reports of issues running 2.8.3 - specifically the following error has been reported:
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
 
-{{{
-Fatal error:  Call to undefined function OX_Delivery_logMessage() in 
-/var/www/openx-2.8.3/plugins/bannerTypeHtml/vastInlineBannerTypeHtml/vastInlineHtml.delivery.php on line 77
-}}}
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
 
-=== Running OpenX 2.8.2 ===
-
-If you are running OpenX 2.8.2 and wish to install the Video Ads plugin, please follow these instructions:
- 
-   * Download the video ads plugin [https://svn.openx.org/openx/trunk/etc/plugins/openXVideoAds.zip]
-
-<img src="http://static.bouncingminds.com/images/openx-iab-vast/plugin_install.png" width="700" border="0" />
-  # While logged into OpenX Admin Console, use the "Working as" link in the top right hand corner to switch to "Administrator" role and click on the "plugins" tab
-  # You will see an option at the top of the tab to "Plugins"
-  # Use that option to install the file that you downloaded (openXVideoAds.zip)
-  # When successfully installed, you will see openXVideoAds appear in the list of installed plugins
-  # If necessary click the Enable button to enable the plugin
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
