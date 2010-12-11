@@ -1,75 +1,15 @@
-#summary Where to Begin With HTTP Ad Delivery
-#sidebar TableOfContents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-This guide walks through how to setup a simple example "pre-roll" ad and show stream using HTTP based delivery (via Apache or Lighttpd), ad serving via [http://www.openx.org OpenX] and video play using [http://www.flowplayer.org Flowplayer] or Longtail Video's [http://www.longtailvideo.com JW Player].
+*IMPORTANT:*
 
-It is recommended that you systematically walk through the following steps before proceeding into the detailed documentation.
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-If you wish to use RTMP based ad and show delivery, please read [GettingStartedRTMP here].
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
 
-You can mix HTTP and RTMP based ad and show delivery, but that's a story for later in the documentation.
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
 
-HTTP based delivery may occur in two different forms:
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
 
-  # As straight HTTP "progressive" download where nothing but a standard web server is required or 
-  # via HTTP "pseudo-streaming" delivery where a module is required on the web-server to allow the video player to "seek" randomly within the show stream as it is downloading. (please note:  I am still sorting out the correct implementation for psuedo-streaming for the Flowplayer Open Ad Streamer. The JW Player Open Ad Streamer works with Lighttpd by default, but not MOOV.php - that is being fixed now as I clean up the implementation of pseudo-streaming across both)
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
 
-For a more detailed definition of these two HTTP approaches, please refer [StreamingExplained here].
-
-The following diagram illustrates a typical setup for HTTP "progressive" ad and show delivery:
-
-INSERT DIAGRAM HERE
-
-Within your webpage sits a Video Player (JW Player or Flowplayer). The Video Player uses a plugin known as the Open Ad Streamer to control the way advertising is displayed within the player. The specifics on which ad to play and when given a set of show streams is defined in a configuration file that is loaded by the Open Ad Streamer. The ad specification is known as an "Ad Schedule".
-
-Given an "ad schedule", the Open Ad Streamer determines which ad types are required and how they are to be sequenced against a set of show streams. Ad types may be linear video ads or non-linear (e.g. overlay ads) - each type can have companion ads attached.
-
-To obtain the appropriate ads to play the Open Ad Streamer makes an Ad Request to a VAST enabled Advertising Server - in our demonstration case, OpenX. The Ad Server returns the ads to play as a Video Ad Serving Template (VAST) - this is an XML based definition of the ads matching the ad request made by the Open Ad Streamer.
-
-The Open Ad Streamer parses the VAST XML data to sequence a list of ads and streams to play in the Video Player. The Ad Streamer loads this "playlist" into the Video Player using the playlist API provided by the Video Player.
-
-Once loaded, the Open Ad Streamer tells the Video Player to play the playlist, tracking time as each element of the playlist streams. At various points during the playback, tracking events are fired back to the Ad Server to allow ad metrics to be collated.
-
-To play the streams the Open Ad Streamer relies on the HTTP playback facilities of the Video Player.
-
-By default, Flowplayer supports HTTP "progressive" based stream delivery.  JW Player alternatively supports "HTTP pseudo-streaming" by default. 
-
-HTTP "pseudo-streaming" requires a slightly different setup as illustrated by the following diagram:
-
-INSERT DIAGRAM HERE
-
-The primary difference between "progressive" and "pseudo-streaming" environments is that "pseudo-streaming" requires a module to be added to the web-server to support random seeking in the stream timeline before the stream has been downloaded. 
-
-Several options are available to enable this functionality on a web server:
-
-  * [http://blog.lighttpd.net/articles/2006/03/09/flv-streaming-with-lighttpd Lighttpd Web server and it's FLV streaming script]
-  * [http://h264.code-shop.com/trac/wiki H.264 Streaming Module for Apache, Lighttpd and Nginx]
-  * [http://richbellamy.com/wiki/Flash_Streaming_to_FlowPlayer_using_only_PHP richbellamy.com pseudostreaming PHP script]
-  * [http://tperspective.blogspot.com/2009/02/apache-flv-streaming-done-right.html Apache FLV streaming using a native Apache module]
-
-Without our example environment, for "pseudo-streaming" we are running [http://www.lighttpd.net Lighttpd] with the [http://h264.code-shop.com/trac/wiki H.264 streaming module] installed. For straight "progressive" download we are using Apache. 
-
-Please refer to this [AboutOurDemoEnvironment guide] for more information on our setup.
-
-To support "pseudo-streaming" with Flowplayer, a "pseudo-streaming" provider plugin must be used. Refer to this [http://flowplayer.org/plugins/streaming/pseudostreaming.html guide] to obtain and install that plugin. We have created a specific Flowplayer example that illustrates how to configure the "pseudo-streaming" plugin for use with the Open Ad Streamer.
-
-Pseudo-streaming works "out-of-the-box" for the Open Ad Streamer with JW Player - no specific configuration is required on the player side.
-
-To implement a simple end-to-end example of a HTTP based solution:
-
-  # Overview
-     * Familiarise yourself with the key [KeyTerminology terminology and concepts]
-     * Review the material on this site - specifically the [http://www.openvideoads.org/plugins/flowplayer/openvideoads/openadstreamer/latest/examples/index.html Flowplayer examples] or the [http://www.openvideoads.org/plugins/longtail/jwplayer/openvideoads/latest/examples/index.html JW Player examples] to get a handle on all of the various configuration options available
-  # Get a simple video playing 
-     * Start simple - create a test page that will request a pre-roll video ad from the Open Video Ads demo [http://openx.openvideoads.org/openx OpenX Ad Server] before playing the ad and the show streams off the same Content Delivery Network (CDN) used by the examples on this site. To complete this task follow [GettingStartedCreateHTTPTestPageFlowplayer these steps for Flowplayer] or [GettingStartedCreateHTTPTestPageJWPlayer these for JW Player]
-  # Make your video ads available for streaming
-     * Before you proceed any further, make sure that you get a few video ads and programme streams up and running on a web server. Don't forget to enable the web server for "pseudo-streaming" if you wish to use that facility:
-     * If you need a few example linear video ads, you can find several [TestAds here]
-  # Install the Video Ad Platform   
-     * Install a VAST compliant Ad Server. In this example we are using the [http://www.openx.org OpenX Ad Platform] and the openXVideoAds plugin. Follow these [InstallingOpenXServerVideoPlugin instructions] to setup an OpenX environment.
-  # Configure the Ad platform  
-     * Now that you have your ad platform installed, configure some video ads on it. In our environment where OpenX is running with the Video Ads plugin, video ad banners must be setup and configured against a series of ad "zones".  Follow these [SettingUpYourFirstOpenXCampaign steps] to complete this activity or follow the documentation on the OpenX site [https://developer.openx.org/wiki/display/DOCS/OpenX+Video+Plugin+Beta+--+Documentation here].
-  # Setup crossdomain.xml 
-     * Before you can connect the Open Ad Streamer to your new OpenX instance, you need to ensure that you have an appropriate "crossdomain.xml" file configured in the doc root of the webserver on the box running the OpenX Ad Server. If you don't do this, when the OpenX Ad Streamer makes a request to the OpenX Ad Server to obtain the VAST data, a security violation will be thrown within Flash and the request will be denied. Here's an example [ExampleCrossdomainXML crossdomain.xml] file that you can use.
-  # Configure your player to call the Ad platform
-     * You're almost there. Change the test page that you originally created so that it now points to your OpenX Ad Server instance and the linear video ad "zone" that you created. Follow these [GettingStartedChangeTestPage instructions] to complete this task.
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
