@@ -1,131 +1,15 @@
-#summary Frequently Asked Questions
-#sidebar TableOfContents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-====1. Why does my player just sit/hang after a video ad plays?====
+*IMPORTANT:*
 
-Most likely it is because you've specified an incorrect length of time for the video ad. If you've specified that the video ad is 16 seconds long, but actually it's just 15 seconds, the ad streamer will keep trying to play the missing second. Check the duration that has been specified for your ad in your ad server.
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-There is a second possible reason for this behavior - check the "deliveryType" configuration option that you've specified - if you've specified "progressive" but are trying to actually serve RTMP streams, the player will get confused. Alternatively a "deliveryType" of "streaming" will force the player to try to play RTMP streams only. If in doubt, set the "deliveryType" to "any".
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
 
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
 
-====2. My video ad isn't playing - it's just going straight to the show stream====
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
 
-The most likely cause of this either:
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
 
-  # The ad server has not been able to identify an ad to server, so no ad is specified in the VAST response or
-  # The ad stream specified in the VAST response from the ad server cannot be loaded and played. In most cases, this will just force the player to skip the stream and move to the next clip (in general that will be a show clip)
-
-
-====3. Why do I need to specify a duration====
-
-At the moment the Ad Streamer needs to work out the full playlist schedule in advance of loading the actual clips. As such, it needs to have access to the duration of a clip before it's actually loaded/played (when the duration metadata is available).
-
-It may be possible to remove the need for a duration in some ad schedule scenarios - we are looking into that to simplify things further for a future release.
-
-====4. Why don't the examples in the downloaded package work?====
-
-At the moment, to run the examples in the downloaded package you need to serve the examples via a webserver. Place the examples into a path off your webserver `doc` directory and access them via `http://localhost/..../examples`
-
-Loading an example directly into your browser from the uncompressed package won't work. At least for now.
-
-====5. Are clicks on overlay 'click to play a video' tracked====
-
-For OpenX, Overlay Video Ads when the click opens a Video Ad clicks on the Video Ad that link to the advertiser's website will be tracked. If you want to know how many times the overlay was clicked and the Video Ad started playing, you can look at the "Started" event for this Video Ad.
-
-See the [https://developer.openx.org/wiki/display/DOCS/OpenX+Video+Plugin+Beta+--+Documentation#OpenXVideoPluginBeta--Documentation-TrackedeventsforVideoAds OpenX documentation]
-
-====6. Are Overlay Close button clicked events tracked====
-
-Not at this time. You can register to receive a callback notification when the close button is clicked, but those events are not automatically tracked on the ad server.
-
-====7. Security Error - what does that mean?====
-
-I'm seeing a security error in the console output when I try to connect to my Ad Server - what does that mean?
-
-{{{
-HTTP ERROR: [SecurityErrorEvent type="securityError" bubbles=false cancelable=false eventPhase=2 text="Error #2048"]
-FAILURE loading VAST template - [SecurityErrorEvent type="securityError" bubbles=false cancelable=false eventPhase=2 text="Error #2048"]
-NOTIFICATION: FAILURE loading VAST template - [SecurityErrorEvent type="securityError" bubbles=false cancelable=false eventPhase=2 text="Error #2048"]
-}}}
-
-Before you can connect the Open Ad Streamer to your new OpenX instance, you need to ensure that you have an appropriate "crossdomain.xml" file configured in the doc root of the webserver on the box running the OpenX Ad Server. If you don't do this, when the OpenX Ad Streamer makes a request to the OpenX Ad Server to obtain the VAST data, a security violation will be thrown within Flash and the request will be denied. Here's an example [ExampleCrossdomainXML crossdomain.xml] file that you can use.
-
-====7. Why does it take time for my OpenX changes to take effect?====
-
-A typical question here is "when i assign a video ad to a zone in openx ad server that ad is not delivered immediately. After waiting for around 15-20 mins the ad is delivered. Why is that happening?"
-
-OpenX has a cache setting that may impact the amount of time that you have to wait before your banner ad changes take effect.
-
-Login to OpenX as an Adminstrator, go to the "Configuration" tab and check the "Banner Delivery Cache Settings". We have our demo server cache set to 10 seconds.
-
-====8. Does the Open Ad Streamer Work with Playlists====
-
-Not really. The Open Ad Streamer ends up replacing an existing playlist with a new playlist that contains the show streams and scheduled linear and non-linear ads.
-
-It would be possible to add Open Ad Streamer shows and ads after a playlist that is already defined, but that doesn't seem to make a lot of sense. Let us know if you want that type of functionality.
-
-====9. The player just goes blank - no ad is played and I don't have a show stream configured====
-
-If you just have the Open Ad Streamer configured to play an ad (no show stream) and you are trying to get everything working by the player refuses to play the ad, one reason may be that you are getting a "security violation" on the HTTP call to your ad server.
-
-Confirm that you've setup the [ExampleCrossdomainXML crossdomain.xml] file properly on your ad server instance.
-
-If you turn the debug level to "all" and look at the firebug console, you will see the "security violation" exception being thrown. For instance, the following debug output will be shown in the console:
-
-{{{
-Loading VAST data from Open X server via http://openx.openvideoads.org/openx/fc.php?script=bannerTypeHtml:vastInlineBannerTypeHtml:vastInlineHtml&zones=pre-roll0-0%3D70&nz=1&source=&r=9970496.450550854&block=1&format=vast&charset=UTF_8
-HTTP ERROR: [SecurityErrorEvent type="securityError" bubbles=false cancelable=false eventPhase=2 text="Error #2048"]
-FAILURE loading VAST template - [SecurityErrorEvent type="securityError" bubbles=false cancelable=false eventPhase=2 text="Error #2048"]
-NOTIFICATION: FAILURE loading VAST template - [SecurityErrorEvent type="securityError" bubbles=false cancelable=false eventPhase=2 text="Error #2048"]
-}}}
-
-====10. How do I specify multiple targeting variables for OpenX ====
-
-You can specify multiple OpenX targeting variables if you do this:
-
-{{{
-                "servers": [
-                    {
-                       "type": "OpenX",
-                       "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php",
-                       "customProperties": { 
-                            "target": "category=food&age=15&gender=female" 
-                       }
-                    }
-                ],
-}}}
-
-Basically whatever you put into the "target" variable gets appended onto the URL.
-
-You can also override the default URL template for OpenX if you need to add more "customProperties" - have a look at the AdTech examples to see how to do that.
-
-====11. Help! I can't connect to the hosted OpenX Ad Server ====
-
-For some strange reason, I just can't connect to the OpenX Hosted Ad Server... what's going on?
-
-To find out what's going on, increase the logging on the Open Ad Streamer to the following:
-
-{{{
-      "debug": { 
-              "levels": "fatal, vast_template, config", 
-              "debugger": "firebug" 
-      } 
-}}}
-
-Now look at the firebug console to see what's coming out.
-
-If you see something like:
-
-{{{
-Loading VAST data from OpenX - request is http://d1.openx.org/fc.php?script=bannerTypeHtml:vastInlineBannerTypeHtml:vastInlineHtml&zones=pre-roll0-0%3D1%7Cbottom1-0%3D2&nz=1&source=&r=R0.9517627307213843&block=1&format=vast&charset=UTF_8&__target__
-Initialisation complete.
-VideoAdServingTemplate: HTTP ERROR: [SecurityErrorEvent type="securityError" bubbles=false cancelable=false eventPhase=2 text="Error #2048"]
-}}}
-
-then there is a "security error" being logged which means that there is a problem with the "crossdomain.xml" file on your ad server instance
-
-====12. Why aren't my overlays showing ====
-
-The first thing to check is that the dimensions that you've specified for your overlay ads matches the dimensions that you've requested in your ad slot.
-
-If they don't, an overlay of the right sizing won't be found and therefore can't be shown.
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
