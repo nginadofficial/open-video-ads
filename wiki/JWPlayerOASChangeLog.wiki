@@ -1,40 +1,15 @@
-#summary Change Log for the JW Player Ad Streamer
-#sidebar TableOfContents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-0.2.1 - June 30, 2009
+*IMPORTANT:*
 
-  * The initial version - ad types supported are pre, mid, post roll linear video and companions 
-  * HTTP and RTMP protocols supported
-  * Overlay support being added now
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-0.3.0 - August 27, 2009
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
 
-  * Config.as: "autoPlay" correctly implemented - only available at top level
-  * Config.as: "contiguous" option name changed to "allowPlaylistControl"
-  * Overlays supported
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
 
-0.3.2 - September 6, 2009
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
 
-  * "adTags" should have been "adParameters" - fixed
-  * ISSUE 25:	Full screen positioning of "this is an ad" message is wrong - was a general problem around resizing not being done in the JW Player Open Ad Streamer
-  * Companion ad timing fixed
-  * Moved to final 3.1.3 Flowplayer release - "providers" config depreciated because we can't get the autoload of RTMP providers to work for instream clips - needs investigation. Manually define the provider plugins for now (see any rtmp example with an overlay to see how to do this)
-  * Examples cleaned up - example19 made a single example all-example19.html
-  * Some old overlay OpenX zones removed - in general zone definitions cleaned up
-  * Templates added to allow overlay formats to be changed as needed
-  * Example 19 fixed so that regions are right width,height and display properly
-  * ISSUE 21: overlay examples included
-  * ISSUE 23: problem with skipping between clips fixed on example 04 (autoPlay configuration issue)
-  * ISSUE 51: Support added to change ad notice text size from normal to small - size:smalltext|normaltext
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
 
-0.3.3 - October 6, 2009
-
-  * ISSUE 67: all-example29 created
-  * ISSUE 78: "deliveryType" config option set to "any" by default - meaning in most cases, this option is no longer required - removed from examples
-  * ISSUE 81: HTTP progressive FLV example12 fixed - plays now - was an openx banner config issue
-  * ISSUE 31: JW Player examples don't work on IE8 - fixed - `<embed>` tags used instead of `<object>`
-  * ISSUE 79: Click through on overlay click to video ads not activated for JW Player - also ensure that overlay linear video ad tracking events are fired
-  * ISSUE 40 & ISSUE 80: Change "streamType" configuration to be generalised - default is now "any" all-example41 created to test/illustrate new streamType configuration
-  * ISSUE 92:	Fix up the "autoPlay" usage in the examples - example04 now illustrates turning "autoPlay":true
-  * ISSUE 17:	Support pseudo-streaming provider
-  * ISSUE 59:	Restore the 'providers' configuration option for Flowplayer
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
