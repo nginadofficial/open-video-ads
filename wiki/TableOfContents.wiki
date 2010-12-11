@@ -1,71 +1,15 @@
-#summary Table of Contents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-  * [AboutOpenVideoAds About Open Video Ads]
-  * [AboutIABVast About IAB VAST]
-  * Best Practice Ad Formats
-  * [StreamingExplained Streaming Explained]
-  * [AboutOurDemoEnvironment Our Environment]
-  * [GettingStarted Getting Started]
-    * [GettingStartedHTTP With HTTP]
-    * [GettingStartedRTMP With RTMP]
-  * [TestAds Test Ads]
-  * Supported Ad Servers
-    * [http://www.openx.org OpenX]
-      * [InstallingOpenXServerVideoPlugin  Enabling the Video Plugin]
-      * [https://developer.openx.org/wiki/display/DOCS/OpenX+Video+Plugin+Beta+--+Documentation OpenX Documentation]
-      * [SettingUpYourFirstOpenXCampaign Your First Campaign]
-    * Ad Tech
-    * Other Ad Servers
-      * Using the VAST Router
-      * Via the AS3 Framework
-  * Video Players
-    * [FlowplayerOASIntroduction Flowplayer]
-      * [FlowplayerOASRuntimeRequirements Runtime]
-      * [http://open-video-ads.googlecode.com/files/openvideoads.flowplayer.openadstreamer.bin.tar.gz Download]
-      * [FlowplayerOASHowItWorks Deployment]
-      * [http://static.bouncingminds.com/examples/openadstreamer/flowplayer/index.html  Examples]
-      * [OASConfiguration Configuration]
-      * [FlowplayerOASPlaylists Using Playlists]
-      * [FlowplayerOASLimitations Limitations]
-      * [FlowplayerOASImplementationOverview Implementation]
-      * [FlowplayerOASBuild How to Build]
-      * [VASTAS3FrameworkHowToDebug How to Debug]
-      * [FlowplayerOASChangeLog Change Log]
-    * [JWPlayerOASIntroduction JW Player]
-      * [JWPlayerOASRuntimeRequirements Runtime]
-      * [http://open-video-ads.googlecode.com/files/openvideoads.jwplayer.openadstreamer.bin.tar.gz Download]
-      * [JWPlayerOASHowItWorks Deployment]
-      * [http://static.bouncingminds.com/examples/openadstreamer/jwplayer/index.html Examples]
-      * [OASConfiguration Configuration]
-      * [JWPlayerOASLimitations Limitations]
-      * [JWPlayerOASImplementationOverview Implementation]
-      * [JWPlayerOASBuild How to Build]
-      * [VASTAS3FrameworkHowToDebug How to Debug]
-      * [JWPlayerOASChangeLog Change Log]
-    * Adobe OMF
-  * [VASTAS3Framework VAST AS3 Framework]
-    * [VASTAS3FrameworkOverview Architecture]
-    * [VASTAS3FrameworkHowItWorks 60,000ft Guide]
-    * [VASTAS3FrameworkClassModel Class Model]
-    * [VASTAS3FrameworkInAction Code Examples]
-      * [FlowplayerOASImplementationOverview Flowplayer]
-      * [JWPlayerOASImplementationOverview JW Player]
-    * [http://open-video-ads.googlecode.com/files/openvideoads.vast.as3.tar.gz Download]
-    * [VASTAS3FrameworkInitialisation Initialisation]
-    * [VASTAS3FrameworkConfiguration Configuration Guide]
-    * [VASTAS3FrameworkAdIDNamingScheme AD ID Algorithm]
-    * [VASTAS3FrameworkAdServing Ad Servers]
-    * [VASTAS3FrameworkAdTracking Ad Tracking]
-    * [VASTAS3FrameworkEvents Events]
-    * [VASTAS3FrameworkPlaylists Playlists]
-    * [VASTAS3FrameworkDirectAPI AdSlots & Streams]
-    * [VASTAS3FrameworkDisplayingOverlays Overlays]
-    * [VASTAS3FrameworkDisplayingNonOverlays Non-Overlays]
-    * [VASTAS3FrameworkSupportingCompanions Companions]
-    * [VASTAS3FrameworkControlBar Control Bar]
-    * [VASTAS3FrameworkHowToDebug Debugging]
-    * [VASTAS3FrameworkBuild How to Build]
-    * [VASTAS3FrameworkLimitations Known Limitations]
-    * [VASTAS3FrameworkChangeLog Change Log]
-  * [KeyTerminology Terminology]
-  * [FAQ Frequently Asked Questions]
+*IMPORTANT:*
+
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
+
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
+
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
+
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
+
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
+
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
