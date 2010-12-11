@@ -1,65 +1,15 @@
-#summary December 10, 2009 Release Note
-#sidebar TableOfContents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-The December 10th release includes:
+*IMPORTANT:*
 
-  * An updated Flowplayer OpenAdStreamer ([http://open-video-ads.googlecode.com/files/openvideoads.flowplayer.openadstreamer-0.4.0.bin.tar.gz v0.4.0])
-  * An updated AS3 VAST Framework ([http://open-video-ads.googlecode.com/files/openvideoads.vast.as3-0.5.0.tar.gz v0.5.0])
-  * An updated JW Player OpenAdStreamer ([http://open-video-ads.googlecode.com/files/openvideoads.jwplayer.openadstreamer-0.4.1.bin.tar.gz v0.4.1])
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-==== The Key Changes in this Release ====
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
 
-This release includes the following key enhancements:
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
 
-  * Support in the JW Player OAS for preview images - see [http://static.bouncingminds.com/examples/openadstreamer/jwplayer/examples/all-example57.html example 57]
-  * Fixes around Flowplayer playlists to ensure that they work seamlessly with the OAS - see [http://static.bouncingminds.com/examples/openadstreamer/flowplayer/examples/all-example43.html example 43]
-  * Fixes for impression tracking on empty VAST responses. By default, impression URLs will now be fired for AdTech ad server based requests if the VAST response is empty. An option has been included to allow this facility to be turned on for other ad servers. See [http://static.bouncingminds.com/examples/openadstreamer/flowplayer/examples/all-example58.html example 58] for details
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
 
-In addition, a tonne of bug fixes have been included:
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
 
-  * Moved the Flowplayer examples to Flowplayer 3.1.5
-  * ISSUE 129 - Restore JS Event API - see Javascript API doc on google code site for details - support for events and region styling added - see all-example56.html
-  * ISSUE 140: Ampersand in OpenX "targeting" parameters breaks JSON parser - customProperties can now be specified either as a single param (e.g. "gender=male") or as an array (e.g. ["gender=male", "age=20-30"]) - Arrays will be converted to ampersand delimited parameter strings (e.g. gender=male&age=20-30
-  * ISSUE 146: Add support for creativeType="image/jpg" etc. - changed NonLinearVideoAd.as to strip out any prefixes like "image/" etc.
-  * ISSUE 147: Impression tracking should be fired on empty VAST ads - see all-example58.html - as per the AOL/AdTech request - new configuration option "forceImpressionServing" added to the AdServer config - set to "true" by default for AdTech, false for others.
-  * ISSUE 137: Issue of "Play Again" button appearing in mid-roll config for Flowplayer playlist based configs - now fixed.
-  * ISSUE 148: url tags not being processed in non linear ad VAST responses when creativeType is set as mimeType (e.g. "image/jpg" etc.). The OpenX Video Ads plugin 1.2 now produces mimeType creativeType values.
-  * ISSUE 149: overlay `<code></code>` tags not being correctly processed by overlay display code. Fixed now - code just inserted - templates just used for `<url></url>` values
-  * ISSUE 138: Unable to resume after pausing example 43 (Flowplayer) - fixed with rewrite of the way Flowplayer playlists are handled
-  * ISSUE 111: playOnce issue with example43 (playlists) - stops after first playlist item - fixed with the change to the way Flowplayer playlists are read in/configured as show streams
-  * ISSUE 133: Issues with autoPlay not working on Flowplayer playlist based streams fixed
-  * ISSUE 129: Example 39 - overlay does not show after mid-roll - resolved
-
-==== Related OpenX Releases ====
-
-A new version of the OpenX Video Ads plugin has been released to co-incide with this OAS release.
-
-The updated OpenX Video Ads plugin (version 1.2) can be downloaded from [https://svn.openx.org/openx/trunk/etc/plugins/openXVideoAds.zip here].
-
-The updated OpenX plugin includes a fix for the mime type provided in the "creativeType" attribute in the VAST response. Correct mime-types such as "image/png" are now provided.
-
-The OAS plugins and AS3 framework provided in this release work with both the new OpenX Video Ad plugin version 1.2 or the previous version 1.1
-
-==== An important change to the way ad servers are declared ====
-
-It is important to note that in the previous release, to accommodate new ad servers, ad server declarations were changed from:
-
-{{{
-      "server": {
-             "type": "OpenX",
-             "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
-      },
-}}}
-
-to
-
-{{{
-      "servers": [
-             {
-                   "type": "OpenX",
-                   "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
-             }
-      ],
-}}}
-
-Please update your config accordingly when using this release
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
