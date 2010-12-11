@@ -1,13 +1,15 @@
-#summary Minimum Runtime Requirements
-#sidebar TableOfContents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-This version of the JW Player Open Ad Streamer has been tested with:
+*IMPORTANT:*
 
-  * Longtail Video's [http://www.longtailvideo.com/players/jw-flv-player/ JW Player FLV Player 4.5] 
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-Please use this (or a later version) with the plugin.
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
 
-In terms of protocol support, the release has been tested with:
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
 
-  * HTTP pseudo-streaming MP4/FLV using [http://www.lighttpd.net Lighttpd] with the [http://h264.code-shop.com/trac/wiki/Mod-H264-Streaming-Lighttpd-Version2 H.264 streaming module]
-  * RTMP using an Adobe Flash Media Server (running on an [http://www.influxis.com Influxis] account)
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
+
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
+
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
