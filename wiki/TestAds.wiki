@@ -1,33 +1,15 @@
-#summary Some test video ads and companions to get you going
-#sidebar TableOfContents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-To help you get up and running, we've placed a few test ads here for you to download. 
+*IMPORTANT:*
 
-==Linear Video Ads==
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-  * 5 sec spots:
-    * [http://static.bouncingminds.com/ads/5secs/baileys_5sec.mp4 Baileys] (mp4: 5 secs)
-    * [http://static.bouncingminds.com/ads/5secs/dodson_5sec.mp4 Dodson & Horrell] (mp4: 5 secs)
-  * 15 sec spots:
-    * [http://static.bouncingminds.com/ads/15secs/dogs_600.mp4 H&C dogs] (mp4: 15 secs)
-    * [http://static.bouncingminds.com/ads/15secs/dogs_600.flv H&C dogs] (flv: 15 secs)
-    * [http://static.bouncingminds.com/ads/15secs/horse_how_to_600.mp4 H&C Horse How-To] (mp4: 19 secs)
-    * [http://static.bouncingminds.com/ads/15secs/horse_sport_howto_600.mp4 H&C Sport How-To] (mp4: 19 secs)
-  * 30 sec spots:
-    * [http://static.bouncingminds.com/ads/30secs/bigger_badminton_600.mp4 H&C Bigger Badminton]  (mp4: 29 secs)
-    * [http://static.bouncingminds.com/ads/30secs/country_life_butter.mp4 Country Life Butter] (mp4: 30 secs)
-    * [http://static.bouncingminds.com/ads/30secs/heinz_deli_mayo.mp4 Heinz Deli Mayo] (mp4: 30 secs)
-    * [http://static.bouncingminds.com/ads/30secs/howard_kirby_intro_600.mp4 H&C Howard Kirby] (mp4: 29 secs)
-    * [http://static.bouncingminds.com/ads/30secs/john_bailey_intro_600.mp4 H&C John Bailey] (mp4: 29 secs)
-    * [http://static.bouncingminds.com/ads/30secs/schwepps_bull.mp4 Schwepps Bull] (mp4: 31 secs)
-    * [http://static.bouncingminds.com/ads/30secs/sexy_subaru_carwash.mp4 Sexy Subaru] (mp4: 35 secs)
-    * [http://static.bouncingminds.com/ads/30secs/sharon_hunt_intro_600.mp4 H&C Sharon Hunt] (mp4: 34 secs)
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
 
-==Non Linear Video Ads (Overlays)==
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
 
-  * [http://static.bouncingminds.com/ads/overlays/450x50_website_animated.gif 450x50 animated gif]
-  * [http://static.bouncingminds.com/ads/overlays/450x50_flash_banner_3.swf 450x50 flash SWF]
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
 
-==Companion Ads==
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
 
-  * [http://static.bouncingminds.com/ads/companions/companion_150_360.png companion_150_360.png] (150 x 360 pixels)
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
