@@ -1,16 +1,15 @@
-#summary About Open Video Ads
-#sidebar TableOfContents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-Open Video Ads is an open source initiative dedicated to the development and distribution of free technology that enables the implementation of IAB VAST and VPAID compliant Video Players.
+*IMPORTANT:*
 
-For video advertising to prosper, the fragmented video player market must be unified so that any video ad can be played on any player at any time.
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-Through the adoption and implementation of the IAB VAST and VPAID standards, the Open Video Ads technology achieves this.
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
 
-Today, we have implementations for Flowplayer and Longtail's JW Player. We also have a base framework that allows any custom Flash player to become VAST/VPAID compliant.
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
 
-Work is underway on implementations for the Adobe Open Media Framework and the Kaltura players.
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
 
-For ads to be delivered the implementation must work together with an IAB VAST compliant ad server.
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
 
-Today the Open Video Ads player plugins and framework has support built in for OpenX. Further support for more ad servers is  underway and will be progressively announced/released over the coming months.
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
