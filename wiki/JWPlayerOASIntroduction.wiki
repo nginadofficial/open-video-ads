@@ -1,24 +1,15 @@
-#summary An introduction to the JW Player Open Ad Streamer
-#sidebar TableOfContents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-The JW Player Open Ad Streamer is an Actionscript 3 plugin that works with [http://www.longtailvideo.com Longtail Video's JW Player]
+*IMPORTANT:*
 
-The Open Ad Streamer (OAS) supports:
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-  * The Video Advertising Standard Template (VAST) for Ad Server communication
-  * Linear video advertising - pre, mid and post roll video ads
-  * Non-Linear overlay advertising - images, flash (SWF), text or html - click to website or click to play a video ad
-  * Companion ads attached to Linear and Non-Linear video ads
-  * VAST compliant metrics tracking of video ad performance (for linear ads start, 1st quartile, halfway, 3rd quartile and complete are all tracked)
-  * A very flexible approach to ad scheduling against show streams - any combination of linear and non-linear video ads can be configured, scheduled and played back via the Open Ad Streamer
-  * Playback using both HTTP Pseudo-streaming and RTMP protocols
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
 
-The documentation for the Open Ad Streamer presented on this site:
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
 
-  * Walks through a number of [http://www.openvideoads.org/examples/openadstreamer/jwplayer/index.html example] configurations and uses of the Open Ad Streamer
-  * Explains how to [JWPlayerOASHowItWorks deploy] the Open Ad Streamer with your VAST complaint Ad Server
-  * Describes the full set of [OASConfiguration configuration] options available to you as you deploy the OAS
-  * If required, how to [http://open-video-ads.googlecode.com/files/openvideoads.jwplayer.openadstreamer.tar.gz download] and [JWPlayerOASBuild build] the source code for the Open Ad Streamer
-  * Lists any [http://code.google.com/p/open-video-ads/issues/list issues] associated with the current release of the plugin
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
 
-The JW Player Open Ad Streamer has been built using the Open Video Ads [VASTAS3Framework VAST AS3 Framework]. Read [JWPlayerOASImplementationOverview this] overview of the implementation if you are interested to understand how the framework and the plugin have been designed and built.
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
+
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
