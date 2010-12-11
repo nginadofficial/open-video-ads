@@ -1,9 +1,13 @@
-#summary Known Limitations of the Flowplayer Open Ad Streamer
-#sidebar TableOfContents
+IMPORTANT:
 
-The following limitations in functionality exist for this release:
-  
-  * The Open Ad Streamer is not compatible with the Flowplayer Subtitles Plugin
-  * A modified version of the Flowplayer playlist plugin is required to hide OVA "ad" streams from the playlist
+Open Video Ads has a new home at Longtail Video (www.openvideoads.org).
 
-For more information on the restrictions, planned enhancements and currently outstanding defects, please review the [http://code.google.com/p/open-video-ads/issues/list Issues log]
+You can find all of the new documentation @ http://www.openvideoads.org/community and product information @ www.openvideoads.org.
+
+We also have a number of forums open @ www.openvideoads.org/forums - if you have a question to ask, that's the place to do it.
+
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ developer.longtailvideo.com/ova
+
+The latest releases are no longer available on this site. Please go to the new OVA developer site to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
+
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at developer.longtailvideo.com/ova
