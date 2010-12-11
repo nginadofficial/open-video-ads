@@ -1,19 +1,15 @@
-#summary October 6, 2009 Release Note
-#sidebar TableOfContents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-The October 6 2009 release has the following key changes in it:
- 
-  # No need to specify the "deliveryType: streaming|progressive" flag anymore - "any" is the default "deliveryType" setting now that allows both streaming and progressive streams to be mixed and delivered together
-  # No need to specify the "streamType: mp4|flv" flag anymore - "any" is the default "streamType" which means that mp4 and flv can be mixed and delivered together
-  # Support for "providers" added which allows custom HTTP and RTMP providers to be specified. See Flowplayer http-example39.html to see how to support pseudo-streaming providers and JW Player http-example39.html to see how to support providers such as XMOOV for pseudo-streaming
-  # Support added for standard playlist definitions to the Flowplayer Open Ad Streamer - see Flowplayer http-example43.html for an illustration
-  # Support added for custom clip properties to be added and carried through into the Flowplayer Open Ad Streamer - see http-example44.html for an illustration
-  # Major bug fixes to the sequence generation code correcting issues around the "applyToParts" configuration
-  # Option added to allow the "click me" message on linear ads to be turned off
-  # JW Player examples fixed up so that they actually work with IE8 (`object` tag replaced with `embed`)
+*IMPORTANT:*
 
-For a detailed account of the issues resolved (the tonne of bug fixes), please refer to:
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-  * [FlowplayerOASChangeLog Flowplayer Change Log]
-  * [JWPlayerOASChangeLog JW Player Change Log]
-  * [VASTAS3FrameworkChangeLog AS3 Framework Change Log]
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
+
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
+
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
+
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
+
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
