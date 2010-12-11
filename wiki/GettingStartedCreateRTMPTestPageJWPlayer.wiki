@@ -1,58 +1,15 @@
-#summary How to create your first JW Player Open Ad Streamer RTMP test page
-#sidebar TableOfContents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-To create a JW Player test page that pulls the VAST data from the Open Video Ads demo server while serving the
-video ads from the CDN used for all examples on this site, do the following:
+*IMPORTANT:*
 
-  # [http://open-video-ads.googlecode.com/files/openvideoads.jwplayer.openadstreamer.bin.tar.gz Download] the JW Player Open Ad Streamer binaries (SWF)
-  # Create a blank html page - the code examples below assume the blank page is created in the root directory of the downloaded plugin page (where `dist` is a subdirectory containing the swf files)
-  # Add the following lines in the body of your HTML page. These lines create an instance of JW Player instructing it to load the Open Ad Streamer plugin and a configuration file (example.xml) that contains the config required by the Open Ad Streamer
-{{{
-<object id="ply" width="400" height="260" type="application/x-shockwave-flash" name="ply" data="../dist/4.5.swf">
-<param name="allowfullscreen" value="true"/>
-<param name="allowscriptaccess" value="always"/>
-<param name="flashvars" value="height=260&width=400&plugins=../dist/OpenAdStreamer.swf&config=example.xml"/>
-</object>
-}}}
-  # Now create the configuration file "example.xml" (this example assumes you are creating that file in the same directory as your test page.
-  # Place the following configuration data into "example.xml"
-{{{
-<config>
-    <openadstreamer.title>
-        My new RTMP example
-    </openadstreamer.title>
-    <openadstreamer.json>
-        {
-            "deliveryType": "streaming",
-            "allowPlaylistControl": false,
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-            "shows": {
-                "baseURL": "rtmp://ne7c0nwbit.rtmphost.com/videoplayer",
-                "streams": [ { "file":"the-black-hole.mp4", "duration":"00:00:10" } ]
-            },
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
 
-            "debug": {
-                "debugger": "firebug",
-                "levels": "fatal",
-            },
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
 
-            "ads": {
-                "playOnce": false,
-                "server": {
-                    "type": "OpenX",
-                    "vastURL": "http://openx.bouncingminds.com/openx/www/delivery/fc.php",
-                },
-                "schedule": [
-                    {
-                        "zone": "1",
-                        "position": "pre-roll"
-                    }
-                ]
-            }
-       }
-   </openadstreamer.json>
-</config>
-}}}
-  # You are all ready to go. Fire up the page - the example should play.
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
 
-You can see a working example of this page [http://static.openvideoads.org/plugins/longtail/jwplayer/openvideoads/latest/examples/rtmp-example02a.html here].
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
+
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
