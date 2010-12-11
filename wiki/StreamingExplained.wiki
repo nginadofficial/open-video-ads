@@ -1,20 +1,15 @@
-#summary Streaming Explained
-#sidebar TableOfContents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-When delivering video content to a video player, the term "streaming" is often used. Many times this term has loaded meaning.
+*IMPORTANT:*
 
-In short, video content can be delivered via:
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-  * HTTP "Progressive Download" which does not require any specific software over and above a standard web server (such as Apache or Lighttpd) to deliver the stream. HTTP streams that are downloaded via a standard web server in a "progressive" way do not allow the user to skip forward to a random part of the stream before the entire stream has been downloaded.
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
 
-  * HTTP "Pseudo-Streaming" is "progressive download" with an extension that allows the user to access a random part of the stream before it's been downloaded. It does this via a server-side script that allows the player to tell the web server which part of the stream to access and download. Several technology options are available to add support for "pseudo-streaming" to a web server - two being [http://xmoov.com/xmoov-php/ XMoov] and the [http://h264.code-shop.com/trac H.264 Module for Lighttpd] 
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
 
-  * "Streaming" in it's purest form requires specific software that implements a "streaming" protocol such as RTMP (as implemented by the Adobe Flash Media Server). You will find many Content Delivery Networks (CDNs) that offer this type of hosted service. We use [http://www.influxis.com Influxis] for our examples.
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
 
-Video players will offer support for the different forms of streaming in different ways.
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
 
-Flowplayer offers separate plugins to support the different streaming protocols. 
-
-Longtail's JW Player alternatively has support already built in for many of them.
-
-You can find more information on the different "streaming" definitions [http://www.longtailvideo.com/support/tutorials/HTTP-Video-Streaming here] and [http://flowplayer.org/plugins/streaming/rtmp.html here]
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
