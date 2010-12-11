@@ -1,15 +1,15 @@
-#summary Learning from Experience
-#sidebar TableOfContents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-The best way to understand how the VAST AS3 framework operates is to see it in action.
+*IMPORTANT:*
 
-Two player plugins have been produced using the framework:
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-  # A Flowplayer Open Ad Streamer ([http://open-video-ads.googlecode.com/files/openvideoads.flowplayer.openadstreamer.tar.gz get the code], [http://www.bouncingminds.com/plugins/flowplayer/openvideoads/ea-0.1.1/bouncingminds.openX.flowplayer.http.bin/examples/index.html review examples], [http://code.google.com/p/open-video-ads/wiki/FlowplayerOASImplementationOverview read about it])
-  # A Longtail Video JW Player Open Ad Streamer ([http://open-video-ads.googlecode.com/files/openvideoads.jwplayer.openadstreamer.tar.gz get the code], [http://www.bouncingminds.com/plugins/longtail/jwplayer/openvideoads/ea-0.3.0/bouncingminds.openX.jwplayer.bin/examples/index.html review examples], read about it)
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
 
-Both use the framework differently and as such, both illustrate how the framework can be used in different ways to deliver VAST compliant advertising to a Video Player.
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
 
-Download the code for each, review it and walk through the detailed explanations provided for each plugin.
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
 
-As you do so you will see links off to worked examples and more definitive documentation for each key framework topic as they are covered.
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
+
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
