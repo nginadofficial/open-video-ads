@@ -1,138 +1,15 @@
-#summary Introducing The Framework
-#sidebar TableOfContents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-The VAST framework is a set of Actionscript 3 classes that:
+*IMPORTANT:*
 
-  * Control calls to a VAST compliant ad server to request and retrieve any number of VAST compliant video ads
-  * Manage the process of tracking timing events as ads play, triggering the appropriate action at the required time
-  * Translation of a VAST ad request into an appropriate playlist format that can be loaded into a player and played
-  * Facilitate the display and processing of overlay, non-overlay, companion ads and ad notices
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-The framework is housed under the package:
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
 
-     `org.openvideoads.vast.*`
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
 
-The following diagram illustrates the package structure of the framework:
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
 
-<img src="http://static.bouncingminds.com/images/open-video-ads/vast-framework-architecture.png" height="550" border="0">
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
 
-There are 8 key packages that work together to request, parse and manipulate a VAST response from a VAST complaint ad server:
-
-  # *Configuration*
-  # *Events*  
-  # The VAST *model*
-  # Ad & Stream *Scheduling*
-  # Ad *Tracking*
-  # *Playlist* management
-  # Ad *Server* control
-  # *Overlay* management
-
-These packages in turn rely on a number of support packages that provide more generic functionality:
-
-  # A set of *base* classes
-  # A set of *utility* classes
-  # The *Regions* framework (used by the overlay classes)
-
-In general access to the framework is controlled through a centralised class known as the 'VASTController'.
-----
-===1. Configuration===
-
-The Configuration package (`org.openvideoads.vast.config`) contains a series of classes that define the way configuration information is passed around the framework.
-
-There is 1 core class in the package `org.openvideoads.vast.config.Config` through which all elements of the framework configuration are controlled. Broadly speaking, the configuration information is broken into 4 key groupings:
-
-  # Ad specific configuration information
-  # Show oriented configuration
-  # Debug configuration
-  # Overlay configuration
-
-Ad notices and the click through sign shown when a user mouses over a linear video ad with a click through defined can also be configured via this package.
-
-For a detailed guide on the configuration parameters permitted by the framework, read "[X Configuring an Ad Streamer]"
-----
-===2. Events===
-
-A custom player implementation receives notifications of state changes in the framework via the Actionscript Events model. The VAST events package (`org.openvideoads.vast.events`) implements the different types of `events` that a custom player may listen for and process. These include:
-
-  * Linear ad play events
-  * Non-linear scheduling and display related events
-  * Ad Tracking events
-  * Ad notice events
-  * Stream scheduling events
-  * Control bar events
-  * VAST data load events
-  * Companion events
-
-The bulk of the activity required when integrating the VAST framework with a custom player centers around the definition of the appropriate event listeners.
-----
-===3. The VAST Model Package===
-
-The Model (`org.openvideoads.vast.model`) package contains a series of classes that define the VAST data model. The VAST data returned by the VAST complaint ad server is parsed and a traversable model of the ad(s) is formed. This package forms the heart of the VAST framework: 
-
-  * `VideoAdServingTemplate` - the controller class that coordinates calls to and parsing of responses back from VAST compliant ad servers
-  * `VideoAd` - The high level grouping object that represents one video ad to play at some point within a stream. The grouping may contain a linear video ad and an associated companion ad(s), or a non-linear ad (e.g. overlay), optional associated linear ad (triggered when the overlay is clicked) and associated companion ad(s)
-    * `TrackedVideoAd` - an individual video ad element that is to be tracked as it plays - there are three types of tracked video ad:
-      * `LinearVideoAd` - represents the notion of a linear video ad (which is a `TrackedVideoAd`)
-        * `MediaFile` - encapsulates the definition of the "media file" that is to be played as the linear video ad
-      * `CompanionAd` - defines an associated display ad that is to be shown outside of the player (on the web page) as a linear or non-linear ad is played
-      * `NonLinearVideoAd` - encapsulates the notion of an overlay style (non-linear) video ad (that is also of type `TrackedVideoAd`)
-    * `TemplateLoadListener` - the interface that must be implemented by a player to be notified when the VAST data has been loaded or a failure to load has occurred
-
-In general a custom player implementation will not have to explicitly access and manipulate this model. Instead most of the work centers around the manipulation of Ad Slots and Streams that are scheduled as a result of parsing this model and the definition of the show streams that the player is to play.
-----
-===4. The Ad & Stream Schedule Package===
-
-When an ad schedule is declared it results in a sequence of ad slots being defined and sequenced. That sequence of ad slots is then spliced together with a sequence of show streams to play to form a list of streams (shows and ads) that are to be played. The schedule package (`org.openvideoads.vast.schedule`) provides the classes to manage streams, ad slots and sequences of both:
-
-  * `StreamConfig` - The configuration controller for a stream. Covers the storage and manipulation of the stream filename, location and where appropriate, the netconnection URL. Also covers properties such as the duration of the stream, the start time and whether or not it is only to be played once
-  * `StreamSequence` - a sequence of streams that are to run in order from position 0 to the last position. May hold either standard show streams or ad slots
-  * `Stream` - The base class that encapulates a video stream that is to be played
-  * Ad specific stream classes:
-    * `AdSlot` - a specific type of stream that holds a VAST compliant video ad
-    * `AdSequence` - a sequence of ad slots that are to be played in the order stored. Equates to the "ad schedule" that is declared in the player configuration
-----
-===5. The Ad Tracking Package===
-
-The play progress of a VAST ad is tracked via the tracking package (`org.openvideoads.vast.tracking`). The tracking data is reported to the VAST compliant ad server according to the tracking URLs that it provides.
-
-The following events are tracked by the framework:
-
-  * The start and end of a linear video ad
-  * Progression part the 1st, midpoint and third quartile of a linear video ad
-  * Impressions are served for linear and non-linear video ads
-  * User controlled actions such as mute, fullscreen and pause
-
-The tracking package provides a series of classes that help manage the way these events are identified and tracked as the streams are played by the player.
-
-  * The `TrackingTable` holds a series of registered `TrackingPoint`(s) which are scheduled to occur as the stream plays
-  * A `TrackingPoint` is a particular point in time that is held in the tracking table to identify a specific type of event which is expected to occur at that time (e.g. the time at which a video passes the 1st quartile point)
-  * The `TrackingPointListener` is the interface to be implemented by the player where the player supports a mechanism to record tracking points and fire them at specific times (e.g. the cuepoint API in Flowplayer)
-  * A `TimeEvent` occurs at a specific point in time and is passed into the TrackingTable to determine if there is a TrackingEvent scheduled to occur at that point in time
-----
-===6. The Playlist Management Package===
-
-Ultimately the framework attempts to convert a VAST ad response into a viable playlist that can be loaded into the player.
-
-The Playlist Management Package (`org.openvideoads.vast.playlist`) provides a series of classes that control the construction and manipulation of playlists. These classes include:
-
-  * `Playlist` - the interface for all Playlist type instances. The framework generates the following playlist types:
-    * `MediaRSSPlaylist`
-    * `XSPFPlaylist`
-    * `RSSPlaylist`
-    * ` SMILPlaylist`
-    * `XMLPlaylist`
-  * `PlaylistController` - the key controller class that manages the process of constructing a playlist of a specified type given a `StreamSequence`
-----
-===7. The Ad Server Control Package===
-
-The Server Control Package  (`org.openvideoads.vast.server`) provides the classes needed to make requests to the OpenX Ad Server.
-
-A factory class `AdServerFactory` is provided to facilitate the construction of an `OpenXAdServer` instance. Eventually other VAST compliant ad servers will be supported by the framework.
-
-The `OpenXAdServer` requires an instance of the `OpenXConfig` class when initialising to ensure that the appropriate URLs and settings can be applied when the calls are made to the OpenX ad server.
-----
-===8. The Overlay Management Package===
-
-The framework supports the triggering and display of overlay (non-linear) advertising while a show stream is in play. The Overlay Management package (`org.openvideoads.vast.overlay`) provides the classes necessary to monitor stream progress to display and hide overlays as required.
-
-The overlay classes make use of the generic Regions framework (`org.openvideoads.regions`) to display the overlay content on the player stage.
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
