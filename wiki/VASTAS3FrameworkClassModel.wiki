@@ -1,32 +1,15 @@
-#summary The Class Model for the Framework
-#sidebar TableOfContents
+#== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-At a high level, the class model for the framework breaks down as follows:
+*IMPORTANT:*
 
-<img src="http://static.openvideoads.org/images/open-video-ads/om-components.png" width=600 border="0" />
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-You can find a single model for the entire framework [VASTAS3FrameworkFullClassModel here].
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
 
-===The Configuration Classes===
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
 
-<img src="http://static.openvideoads.org/images/open-video-ads/om-config.png" width=600 border="0" />
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
 
-===The VAST Classes===
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
 
-<img src="http://static.openvideoads.org/images/open-video-ads/om-vast.png" width=800 border="0" />
-
-===The Stream Classes===
-
-<img src="http://static.openvideoads.org/images/open-video-ads/om-streams.png" width=600 border="0" />
-
-===The Ad Classes===
-
-<img src="http://static.openvideoads.org/images/open-video-ads/om-ads.png" width=600 border="0" />
-
-===The Playlist Classes===
-
-<img src="http://static.openvideoads.org/images/open-video-ads/om-playlist.png" width=600 border="0" />
-
-===The Ad Server Classes===
-
-<img src="http://static.openvideoads.org/images/open-video-ads/om-adservers.png" width=650 border="0" />
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
