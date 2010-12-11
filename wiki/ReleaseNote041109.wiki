@@ -1,63 +1,15 @@
-#summary November 4, 2009 Release Note
-#sidebar TableOfContents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-The November 4th release includes:
+*IMPORTANT:*
 
-  * An updated Flowplayer OpenAdStreamer (v0.3.0)
-  * An updated AS3 VAST Framework (v0.4.0)
-  * An updated JW Player OpenAdStreamer (0.4.0)
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-The release includes a major upgrade to the way Ad Servers are configured and used by the VAST framework.
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
 
-Previously Ad Servers were configured  within the OpenAdStreamer as followed:
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
 
-{{{
-            "ads": {
-                "pauseOnClickThrough": true,
-                "server": {
-                    "type": "OpenX",
-                    "vastURL": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
-                },
-                "schedule": [
-                    {
-                        "zone": "5",
-                        "position": "pre-roll"
-                    }
-                ]
-            }
-}}}
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
 
-In this release, the "server" configuration item has been replaced with a "servers" configuration option that appears as follows:
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
 
-{{{
-            "ads": {
-                "pauseOnClickThrough": true,
-                "servers": [
-                    {
-                      "type": "OpenX",
-                      "apiAddress": "http://openx.openvideoads.org/openx/www/delivery/fc.php"
-                    }
-                ],
-                "schedule": [
-                    {
-                      "zone": "5",
-                      "position": "pre-roll"
-                    }
-                ]
-            }
-}}}
-
-Support for the AdTech Ad Server is now included out of the box (see the [OASConfigurationAdTech OAS AdTech configuration guide]) for details. Worked examples have been included to illustrate how to configure the OAS to communicate with the AdTech Ad Server.
-
-Any Ad Server can now be easily integrated into the framework.
-
-The VAST XML Wrapper is also supported in this release. Worked examples have also been included that illustrate how the XML Wrapper works to chain ad server requests until the ad requirement is fulfilled.
-
-Ad Server request can now be made per ad slot, or as a bunched set of requests. Ad Servers may be mixed and matched across the ad schedule. Examples have also been included to illustrate how to do this.
-
-Finally, the codebase issued with this release has moved to an LGPL (Lesser GPL) license.
-
-For a detailed account of the issues resolved (the tonne of bug fixes), please refer to:
-
-  * [FlowplayerOASChangeLog Flowplayer Change Log]
-  * [VASTAS3FrameworkChangeLog AS3 Framework Change Log]
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
