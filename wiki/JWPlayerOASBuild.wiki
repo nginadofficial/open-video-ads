@@ -1,20 +1,15 @@
-#summary How to Compile the JW Player Ad Streamer
-#sidebar TableOfContents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-= The build.sh script =
+*IMPORTANT:*
 
-A simple build script (build.sh) is provided in the build directory to compile the release.
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-Before using the build script, make sure that the FLEXPATH variable is set so that it correctly points to the location of your flex 3 sdk install.
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
 
-To build the release:
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
 
-     `./build.sh`
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
 
-from the release "build" directory.
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
 
-== A Note on Debugging ==
-
-We support two options - [http://www.getfirebug.com Firebug] and the [http://www.demonsterdebugger.com De MonsterDebugger] - you'll see both of these referenced in the source and the `Debuggable` declaration. If you wish to use a different debugger just replace these by modifying the `org.openvideoads.base.Debuggable` declarations for `doLog()` and `doLogAndTrace()`
-
-For more information on how to configure the debug options, refer to the [VASTAS3FrameworkHowToDebug Debug Guide].
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
