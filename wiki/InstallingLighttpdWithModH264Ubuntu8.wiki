@@ -1,76 +1,15 @@
-#summary Installation Guide for Lighttpd with mod-H.264 on Ubuntu 8 (Hardy)
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-For the OpenVideoAds HTTP pseudo-streaming examples, we are serving the HTTP MP4 and FLV files using Lighttpd 1.4.18 on Ubuntu Hardy running on port 81.
+*IMPORTANT:*
 
-==Resolve the dependancies==
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-There are a set of dependancies that need to be resolved before the lighttpd 1.4.18 package can be built:
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
 
-{{{
-####### installing gettext-0.16.1.tar.gz needed for glib-2.9.6.tar.bz2
-wget ftp://ftp.gnu.org/gnu/gettext/gettext-0.16.1.tar.gz
-tar xzf gettext-0.16.1.tar.gz
-cd gettext-0.16.1
-./configure
-make
-make install
-cd ..
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
 
-####### installing bzip2 needed for glib-2.9.6.tar.bz2
-wget http://www.bzip.org/1.0.4/bzip2-1.0.4.tar.gz
-tar xzf bzip2-1.0.4.tar.gz
-cd bzip2-1.0.4
-vi Makefile
-change CFLAGS to include "-fPIC" (this step is very important)
-make
-make install
-cd ..
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
 
-####### installing pkg-config-0.21.tar.gz
-wget http://pkgconfig.freedesktop.org/releases/pkg-config-0.21.tar.gz
-tar xzf pkg-config-0.21.tar.gz
-cd pkg-config-0.21
-./configure
-make
-make install
-mv /usr/bin/pkg-config /usr/bin/pkg-config.bak
-cp /usr/local/bin/pkg-config /usr/bin/pkg-config
-cd ..
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
 
-####### installing glib-2.9.6.tar.bz2
-wget ftp://ftp.gtk.org/pub/gtk/v2.9/glib-2.9.6.tar.bz2
-tar xjf glib-2.9.6.tar.bz2
-cd glib-2.9.6
-./configure
-make
-make install
-cd ..
-}}}
-
-==Build the Lighttpd 1.4.18 Release===
-
-{{{
-svn export http://h264.code-shop.com/svn/h264/tags/mod_h264_streaming-2.0/lighttpd-1.4.18 lighttpd-1.4.18
-svn export --force http://h264.code-shop.com/svn/h264/tags/mod_h264_streaming-2.0/mp4split lighttpd-1.4.18/src
-cd ~/lighttpd-1.4.18
-./configure
-make
-sudo make install
-}}}
-
-In terms of `lighttpd.conf`, make sure the following are set (or http streaming examples run off port 81 on this machine as apache is also serving standard web content):
-
-{{{
-server.modules = ( 
-  ...,
-  "mod_h264_streaming",
-  ...
-)
-h264-streaming.extensions = ( ".mp4" )
-...
-server.port=81   
-}}}
-
-Make sure `/etc/init.d/lighttpd` is edited so that DAEMON points to `/usr/local/sbin/lighttpd`
-
-You can find more detailed instructions [http://h264.code-shop.com/trac/wiki/Mod-H264-Streaming-Lighttpd-Version2 here]
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
