@@ -1,74 +1,15 @@
-#summary How to create your first Flowplayer Open Ad Streamer RTMP test page
-#sidebar TableOfContents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-To create a Flowplayer test page that pulls the VAST data from the Open Video Ads demo server while serving the
-video ads from the CDN used for all examples on this site, do the following:
+*IMPORTANT:*
 
-  # [http://open-video-ads.googlecode.com/files/openvideoads.flowplayer.openadstreamer.bin.tar.gz Download] the Flowplayer Open Ad Streamer binaries (SWF)
-  # Create a blank html page - the code examples below assume the blank page is created in the "examples" directory of the downloaded plugin page (where `dist` is a subdirectory containing the swf and javascript files)
-  #  Add the following lines to include the required javascript files. JQuery is used along with the Flowplayer 3.1 base javascript file
-{{{
-<script type="text/javascript" src="../dist/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="../dist/flowplayer-3.1.0.min.js"></script>
-}}}
-  #  Add the following style definition - this will be used to style the container for the flowplayer instance
-{{{
-<style type="text/css">
-a.example {
-	display:block;
-	width:640px;
-	height:360px;
-	text-align:center;
-}
-</style>
-}}}
-  # Add in the anchor that is the container for the flowplayer instance
-{{{
-<a class="example"></a>
-}}}
-  # Finally add in the javascript to configure the Open Ad Streamer plugin and Flowplayer
-{{{
-<script type="text/javascript">
-flowplayer("a.example", "../dist/flowplayer-3.1.3-dev.swf", {
-    plugins: {
-        controls: {
-            autoHide: "always"
-        },
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-        openAdStreamer: {
-            url: '../dist/OpenAdStreamer.swf',
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
 
-            "deliveryType": "streaming",
-            "providers": { "rtmp": "../dist/flowplayer.rtmp-3.1.3-dev.swf" },
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
 
-            "shows": {
-                "baseURL": "rtmp://ne7c0nwbit.rtmphost.com/videoplayer",
-                "streams": [ { "file":"mp4:the-black-hole.mp4", "duration":"00:00:10" } ]
-            },
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
 
-            "debug": {
-                "debugger": "firebug",
-                "levels": "fatal",
-            },
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
 
-            "ads": {
-                "playOnce": false,
-                "server": {
-                    "type": "OpenX",
-                    "vastURL": "http://openx.openvideoads.com/openx/www/delivery/fc.php",
-                },
-                "schedule": [
-                    {
-                       "zone": "1",
-                       "position": "pre-roll"
-                    }
-                ]
-            }
-        }
-    }
-});
-</script>
-}}}
-  # You are all ready to go. Fire up the page - the example should play.
-
-You can see a working example of this page [http://static.openvideoads.org/plugins/flowplayer/openvideoads/openadstreamer/latest/examples/rtmp-example02.html here].
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
