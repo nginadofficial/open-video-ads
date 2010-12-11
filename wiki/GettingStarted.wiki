@@ -1,14 +1,15 @@
-#summary Getting Started
-#sidebar TableOfContents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-The Open Ad Streamer is quite a complex plugin. It has a myriad of configuration options that allow ads to be configured and played in a multitude of ways.
+*IMPORTANT:*
 
-However to get going it is quite a simple process.
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
 
-Two separate guides are provided to help you quickly get up and running.
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
 
-The [GettingStartedHTTP first] is a guide to delivering Ad and Show streams using the Open Ad Streamer with the HTTP progressive or pseudo-streaming protocols.
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
 
-The [GettingStartedRTMP second] guide covers how to get up and running with an RTMP based streaming server.
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
 
-Of course, if you want to deliver ads and show streams using a mixture of HTTP and RTMP protocols you can, but you'll have to read the [OASConfiguration Configuration Guide] to gain insight into how to achieve that.
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
+
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
