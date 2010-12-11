@@ -1,10 +1,15 @@
-#summary Known Limitations of the JW Player Video Ad Streamer
-#sidebar TableOfContents
+== Free Open Source Standards Based Video Ad Delivery (BETA) ==
 
-The following limitations in functionality exist for this release:
-  
-  * Overlay 'click to play video' not permitted if "allowPlaylistControl:true" because clips must be loaded on at a time to support that functionality
-  * "autoPlay" is not implemented at an AdSlot level
-  * pseudo-streaming will only work with Lighttpd and the H.264 streaming module. Broad support for different pseudo-streamers being added to the next release
+*IMPORTANT:*
 
-For more information on the restrictions, planned enhancements and currently outstanding defects, please review the [http://code.google.com/p/open-video-ads/issues/list Issues log]
+Open Video Ads has a new home at Longtail Video ([http://www.openvideoads.org www.openvideoads.org]).
+
+You can find all of the new documentation @ [http://www.openvideoads.org/community http://www.openvideoads.org/community] and product information @ [http://www.openvideoads.org www.openvideoads.org].
+
+We also have a number of forums open @ [http://www.longtailvideo.com/support/forums/open-video-ads www.openvideoads.org/forums] - if you have a question to ask, that's the place to do it.
+
+For the latest source, issues and general updates on the technology please visit OVA's new developer home @ [http://www.openvideoads.org developer.longtailvideo.com/ova]
+
+The latest releases are no longer available on this site. Please go to the new [http://developer.longtailvideo.com/ova OVA developer site] to download the latest binary and source releases of the AS3 framework, Flowplayer and JW 4 & 5 plugins.
+
+The issue log has also been moved - for updates on these issues, please track them via the ticketing system at [http://developer.longtailvideo.com/ova developer.longtailvideo.com/ova]
